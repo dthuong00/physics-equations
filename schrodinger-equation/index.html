@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schrödinger equation — from E = T + V to time evolution</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<div class="progress"><i id="pbar"></i></div>
+
+<div class="deck" id="deck">
+
+  <!-- ========== 0 — TITLE ========== -->
+  <section class="slide" data-title="Overview">
+    <div class="inner title-slide">
+      <div class="eyebrow">An intuitive walk-through</div>
+      <h1>The Schrödinger equation,<br>one step at a time</h1>
+      <p class="lede">
+        Nothing here is invented out of thin air. The equation is the ordinary energy bookkeeping of
+        classical physics — <b>total = kinetic + potential</b> — rewritten for an object that is a
+        <i>wave</i> rather than a point.
+      </p>
+      <p class="lede">
+        Follow the steps, then press play and watch that same energy budget shuffle back and forth
+        in real time.
+      </p>
+      <div class="toc" id="toc"></div>
+    </div>
+  </section>
+
+  <!-- ========== 1 — CLASSICAL ========== -->
+  <section class="slide" data-title="Classical energy">
+    <div class="inner">
+      <div class="slide-head"><span class="num">STEP 1</span><h2>Starts from: classical energy</h2></div>
+      <p class="body">
+        A rolling ball has two kinds of energy. <b>Kinetic</b> because it is moving, and
+        <b>potential</b> because of where it sits — up a hill, inside a valley, near a charge.
+        Add them and you get the total, which never changes as long as nothing external interferes.
+        This one sentence is the whole seed of quantum mechanics.
+      </p>
+
+      <div class="grid cls">
+        <div class="card c1 sym"><span class="math">E</span></div>
+        <div class="op">=</div>
+        <div class="card c2 sym"><span class="math">T</span></div>
+        <div class="op">+</div>
+        <div class="card c3 sym"><span class="math">V</span></div>
+
+        <div class="card c1 sym"><span class="math md">E</span></div>
+        <div class="op">=</div>
+        <div class="card c2 sym">
+          <span class="math md"><span class="frac"><span class="num">p<sup>2</sup></span><span class="den">2m</span></span></span>
+        </div>
+        <div class="op">+</div>
+        <div class="card c3 sym">
+          <span class="math md">V<span class="paren">(</span>x, t<span class="paren">)</span></span>
+        </div>
+
+        <div class="card note c1">
+          <div class="ttl">Total energy</div>
+          <ul>
+            <li>the conserved budget</li>
+            <li>fixed for an isolated system</li>
+          </ul>
+        </div>
+        <div class="spacer"></div>
+        <div class="card note c2">
+          <div class="ttl">Kinetic — motion</div>
+          <ul>
+            <li>written with momentum, not speed</li>
+            <li><span class="math small">T = ½mv<sup>2</sup> = p<sup>2</sup>/2m</span></li>
+          </ul>
+        </div>
+        <div class="spacer"></div>
+        <div class="card note c3">
+          <div class="ttl">Potential — position</div>
+          <ul>
+            <li>depends on <i>where</i>, not how fast</li>
+            <li>the hill, well or barrier</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="body" style="margin-top:13px">
+        Why swap <span class="math small">½mv<sup>2</sup></span> for <span class="math small">p<sup>2</sup>/2m</span>?
+        Because a wave has no well-defined velocity, but it does have a wavelength — and de Broglie's
+        <span class="math small">p = h/λ</span> ties wavelength directly to momentum. Momentum is the bridge.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== 2 — OPERATORS FROM THE PLANE WAVE ========== -->
+  <section class="slide" data-title="Operators">
+    <div class="inner">
+      <div class="slide-head"><span class="num">STEP 2</span><h2>Differentiate the wave — the physics falls out</h2></div>
+      <p class="body" style="margin-bottom:11px">
+        A particle is a wave, so take the simplest one there is: a <b>plane wave</b>, single
+        wavelength, single frequency, marching steadily in one direction. Nothing below is
+        postulated. We <b>differentiate it and read off what drops out.</b>
+      </p>
+
+      <div class="pw">
+        <div>
+          <div class="k">THE PLANE WAVE</div>
+          <span class="math md">Ψ<span class="paren">(</span>x, t<span class="paren">)</span><span class="sp"></span><span class="up">=</span><span class="sp"></span>A<span class="sp"></span><span class="r">e<sup><i>i</i>(<i>kx</i> − <i>ωt</i>)</sup></span></span>
+        </div>
+        <div class="sub">
+          <span class="math small">k</span> = how fast it wiggles through <i>space</i> &nbsp;·&nbsp;
+          <span class="math small">ω</span> = how fast it wiggles through <i>time</i>.<br>
+          Two experimental facts tie those to physics:
+          <span class="tag t2">de Broglie</span> <span class="math small">p = ħk</span> &nbsp;and&nbsp;
+          <span class="tag t1">Planck–Einstein</span> <span class="math small">E = ħω</span>.
+        </div>
+      </div>
+
+      <div class="deriv">
+
+        <!-- ---- space → momentum ---- -->
+        <div class="dcol g">
+          <div class="dhead">Differentiate in space → momentum → KINETIC ENERGY</div>
+
+          <div class="dstep">
+            <div class="n">1 · DIFFERENTIATE BOTH SIDES BY x</div>
+            <div class="eqline"><span class="math dm"><span class="frac"><span class="num"><span class="up">∂</span>Ψ</span><span class="den"><span class="up">∂</span>x</span></span><span class="sp"></span><span class="up">=</span><span class="sp"></span>A<span class="sp"></span><span class="paren">(</span>ik<span class="paren">)</span><span class="sp"></span><span class="r">e<sup><i>i</i>(<i>kx</i> − <i>ωt</i>)</sup></span><span class="sp"></span><span class="up">=</span><span class="sp"></span>ik<span class="sp"></span>Ψ</span></div>
+            <div class="cap">The <span class="math small">x</span> in the exponent drops down in front, and what is left is <i>the original wave again</i>. Differentiating gives you Ψ back, multiplied by <span class="math small">ik</span>.</div>
+          </div>
+
+          <div class="dstep">
+            <div class="n">2 · MULTIPLY BOTH SIDES BY −iħ</div>
+            <div class="eqline"><span class="math dm"><span class="up">−iħ</span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span>Ψ</span><span class="den"><span class="up">∂</span>x</span></span><span class="sp"></span><span class="up">=</span><span class="sp"></span><span class="up">−iħ</span><span class="paren">(</span>ik<span class="paren">)</span>Ψ<span class="sp"></span><span class="up">=</span><span class="sp"></span>ħk<span class="sp"></span>Ψ</span></div>
+            <div class="cap">Because <span class="math small">−i × i = 1</span>, the imaginary units annihilate each other and leave a plain real number in front of Ψ.</div>
+          </div>
+
+          <div class="dstep out">
+            <div class="n">3 · THAT NUMBER IS THE MOMENTUM</div>
+            <div class="eqline"><span class="math dm"><span class="up">−iħ</span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span>Ψ</span><span class="den"><span class="up">∂</span>x</span></span><span class="sp"></span><span class="up">=</span><span class="sp"></span>p<span class="sp"></span>Ψ</span></div>
+            <div class="cap">de Broglie says <span class="math small">ħk</span> <i>is</i> <span class="math small">p</span>. So the <span class="math small">−iħ</span> was not a guess — it is precisely the factor that cancels the <span class="math small">i</span> and leaves momentum standing alone.</div>
+          </div>
+
+          <div class="dstep out">
+            <div class="n">4 · NOW DO IT TWICE → KINETIC ENERGY</div>
+            <div class="eqline"><span class="math dm"><span class="frac"><span class="num"><span class="up">∂</span><sup>2</sup>Ψ</span><span class="den"><span class="up">∂</span>x<sup>2</sup></span></span><span class="sp"></span><span class="up">=</span><span class="sp"></span><span class="r">(<i>ik</i>)<sup>2</sup></span><span class="sp"></span>Ψ<span class="sp"></span><span class="up">=</span><span class="sp"></span><span class="up">−</span><span class="r">k<sup>2</sup></span><span class="sp"></span>Ψ</span></div>
+            <div class="eqline"><span class="math dm"><span class="up">−</span><span class="frac"><span class="num"><span class="up">ħ</span><sup>2</sup></span><span class="den">2m</span></span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span><sup>2</sup>Ψ</span><span class="den"><span class="up">∂</span>x<sup>2</sup></span></span><span class="sp"></span><span class="up">=</span><span class="sp"></span><span class="frac"><span class="num"><span class="r">ħ<sup>2</sup>k<sup>2</sup></span></span><span class="den">2m</span></span><span class="sp"></span>Ψ<span class="sp"></span><span class="up">=</span><span class="sp"></span><span class="frac"><span class="num"><span class="r">p<sup>2</sup></span></span><span class="den">2m</span></span><span class="sp"></span>Ψ<span class="sp"></span><span class="up">=</span><span class="sp"></span>T<span class="sp"></span>Ψ</span></div>
+            <div class="cap">Kinetic energy needs no new idea — it is momentum applied a second time, Since <span class="math small">ħk = p</span>, what lands in front of Ψ is exactly the classical <span class="math small">p²/2m</span> from Step 1.</div>
+          </div>
+        </div>
+
+        <!-- ---- time → energy ---- -->
+        <div class="dcol b">
+          <div class="dhead">Differentiate in time → energy</div>
+
+          <div class="dstep">
+            <div class="n">1 · DIFFERENTIATE BOTH SIDES BY t</div>
+            <div class="eqline"><span class="math dm"><span class="frac"><span class="num"><span class="up">∂</span>Ψ</span><span class="den"><span class="up">∂</span>t</span></span><span class="sp"></span><span class="up">=</span><span class="sp"></span>A<span class="sp"></span><span class="paren">(</span><span class="up">−</span>iω<span class="paren">)</span><span class="sp"></span><span class="r">e<sup><i>i</i>(<i>kx</i> − <i>ωt</i>)</sup></span><span class="sp"></span><span class="up">=</span><span class="sp"></span><span class="up">−</span>iω<span class="sp"></span>Ψ</span></div>
+            <div class="cap">Identical move on the other variable. The <span class="math small">t</span> term carries a minus sign in the exponent, so a <span class="math small">−</span> comes down with it.</div>
+          </div>
+
+          <div class="dstep">
+            <div class="n">2 · MULTIPLY BOTH SIDES BY +iħ</div>
+            <div class="eqline"><span class="math dm"><span class="up">iħ</span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span>Ψ</span><span class="den"><span class="up">∂</span>t</span></span><span class="sp"></span><span class="up">=</span><span class="sp"></span><span class="up">iħ</span><span class="paren">(</span><span class="up">−</span>iω<span class="paren">)</span>Ψ<span class="sp"></span><span class="up">=</span><span class="sp"></span>ħω<span class="sp"></span>Ψ</span></div>
+            <div class="cap"><span class="math small">i × (−i) = 1</span> this time. The prefactor here is <span class="math small">+iħ</span> rather than <span class="math small">−iħ</span> <i>only</i> because of that minus in the exponent.</div>
+          </div>
+
+          <div class="dstep out">
+            <div class="n">3 · THAT NUMBER IS THE ENERGY</div>
+            <div class="eqline"><span class="math dm"><span class="up">iħ</span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span>Ψ</span><span class="den"><span class="up">∂</span>t</span></span><span class="sp"></span><span class="up">=</span><span class="sp"></span>E<span class="sp"></span>Ψ</span></div>
+            <div class="cap">Planck–Einstein says <span class="math small">ħω</span> <i>is</i> <span class="math small">E</span>. <b>This is the entire left-hand side of the Schrödinger equation</b> — derived, not assumed.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="opnote">
+        <p>
+          <b>Now the word.</b> Every line above has the same shape: <i>do something to Ψ</i>
+          <span class="math small">→</span> <i>get a physical quantity back, times Ψ</i>. The quantity
+          was never the interesting part — <b>the instruction on the left was.</b> Give that
+          instruction a name and a hat, and you have an <b>operator</b>:
+        </p>
+        <div class="oprow">
+          <div class="opc c2">
+            <div class="w">momentum</div>
+            <span class="math dm"><span class="hat">p</span><span class="sp"></span><span class="up">= −iħ</span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span></span><span class="den"><span class="up">∂</span>x</span></span></span>
+          </div>
+          <div class="opc c2">
+            <div class="w">kinetic energy</div>
+            <span class="math dm"><span class="hat">T</span><span class="sp"></span><span class="up">= −</span><span class="frac"><span class="num"><span class="up">ħ</span><sup>2</sup></span><span class="den">2m</span></span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span><sup>2</sup></span><span class="den"><span class="up">∂</span>x<sup>2</sup></span></span></span>
+          </div>
+          <div class="opc c1">
+            <div class="w">total energy</div>
+            <span class="math dm"><span class="hat">E</span><span class="sp"></span><span class="up">= iħ</span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span></span><span class="den"><span class="up">∂</span>t</span></span></span>
+          </div>
+          <div class="opc c3">
+            <div class="w">potential</div>
+            <span class="math dm"><span class="hat">V</span><span class="sp"></span><span class="up">=</span><span class="sp"></span><span class="up" style="font-size:.62em">multiply by V(x, t)</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gen">
+        <h3>One wave proves it for every wave</h3>
+        <p>
+          A plane wave is not a realistic particle — it stretches to infinity with the same amplitude
+          everywhere. So why does proving things on it count?
+        </p>
+        <p>
+          <b>Because every other wave is made of them.</b> Fourier's theorem says any shape, however
+          lumpy, can be built by adding plane waves of different <span class="math small">k</span> in
+          the right proportions — <span class="math small">Ψ = ∫ φ(k) e<sup>i(kx − ωt)</sup> dk</span>.
+          And differentiation is <b>linear</b>: the derivative of a sum is the sum of the derivatives.
+          An operator that behaves correctly on each ingredient therefore behaves correctly on any
+          recipe made from them. Prove it once on the simplest case, and every wave inherits it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3 — LADDER ========== -->
+  <section class="slide" data-title="The derivation">
+    <div class="inner">
+      <div class="slide-head"><span class="num">STEP 3</span><h2>Now put those operators into E = T + V</h2></div>
+
+      <div class="carry">
+        <div class="lead">
+          <b>Nothing new from here on.</b> Step 2 turned a plane wave into these three instructions.
+        </div>
+        <div class="chips">
+          <span class="mc c1"><span class="math" style="font-size:15px"><span class="hat">E</span><span class="sp"></span><span class="up">= iħ</span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span></span><span class="den"><span class="up">∂</span>t</span></span></span></span>
+          <span class="mc c2"><span class="math" style="font-size:15px"><span class="hat">T</span><span class="sp"></span><span class="up">= −</span><span class="frac"><span class="num"><span class="up">ħ</span><sup>2</sup></span><span class="den">2m</span></span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span><sup>2</sup></span><span class="den"><span class="up">∂</span>x<sup>2</sup></span></span></span></span>
+          <span class="mc c3"><span class="math" style="font-size:15px"><span class="hat">V</span><span class="sp"></span><span class="up">=</span><span class="sp"></span><span class="up" style="font-size:.72em">× V(x, t)</span></span></span>
+        </div>
+      </div>
+
+      <div class="ladder">
+        <div class="rung">
+          <div class="lbl"><div class="k">CLASSICAL</div><div class="s">energy bookkeeping</div></div>
+          <div class="eq">
+            <span class="math md">E <span class="up">=</span> <span class="sp"></span><span class="frac"><span class="num">p<sup>2</sup></span><span class="den">2m</span></span><span class="sp"></span> <span class="up">+</span> <span class="sp"></span>V<span class="paren">(</span>x, t<span class="paren">)</span></span>
+            <div class="cap">Three ordinary numbers. True for a planet, a pendulum, a ball on a hill.</div>
+          </div>
+          <div class="between"><span class="dn">↓</span> replace each number by its operator</div>
+        </div>
+
+        <div class="rung">
+          <div class="lbl"><div class="k">OPERATORS</div><div class="s">same statement, new alphabet</div></div>
+          <div class="eq">
+            <span class="math md"><span class="hat">E</span> <span class="up">=</span> <span class="hat">T</span> <span class="up">+</span> <span class="hat">V</span> <span class="up">= −</span><span class="frac"><span class="num"><span class="up">ħ</span><sup>2</sup></span><span class="den">2m</span></span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span><sup>2</sup></span><span class="den"><span class="up">∂</span>x<sup>2</sup></span></span> <span class="up">+</span> <span class="sp"></span>V<span class="paren">(</span>x, t<span class="paren">)</span></span>
+            <div class="cap"><b>Naming note:</b> most books write <span class="math small"><span class="hat">H</span></span> here instead of <span class="math small"><span class="hat">E</span></span> and call it the <b>Hamiltonian</b>, after Hamilton's classical mechanics. Identical operator, older name. <i>And yes — Step 2 also gave you <span class="math small"><span class="hat">E</span> = iħ ∂/∂t</span>. Hold that thought; the last rung is precisely the two of them meeting.</i></div>
+          </div>
+          <div class="between"><span class="dn">↓</span> an operator is meaningless until it acts on a wave — apply both sides to Ψ</div>
+        </div>
+
+        <div class="rung">
+          <div class="lbl"><div class="k">ACTING ON Ψ</div><div class="s">the abstract form</div></div>
+          <div class="eq">
+            <span class="math md"><span class="hat">E</span><span class="sp"></span>Ψ <span class="up">=</span> <span class="hat">T</span><span class="sp"></span>Ψ <span class="up">+</span> <span class="hat">V</span><span class="sp"></span>Ψ</span>
+            <div class="cap">Read it as: <i>the total energy carried by this wave</i> = <i>its kinetic share</i> + <i>its potential share</i>.</div>
+          </div>
+          <div class="between"><span class="dn">↓</span> now use the <i>other</i> face of <span class="math small" style="margin:0 3px"><span class="hat">E</span></span> from Step 2 — <span class="math small" style="margin:0 4px">iħ ∂/∂t</span> — on the left</div>
+        </div>
+
+        <div class="rung final">
+          <div class="lbl"><div class="k">SCHRÖDINGER</div><div class="s">the time-dependent equation</div></div>
+          <div class="eq">
+            <span class="math"><span class="up">iħ</span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span>Ψ</span><span class="den"><span class="up">∂</span>t</span></span> <span class="up">=</span> <span class="up">−</span><span class="frac"><span class="num"><span class="up">ħ</span><sup>2</sup></span><span class="den">2m</span></span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span><sup>2</sup>Ψ</span><span class="den"><span class="up">∂</span>x<sup>2</sup></span></span> <span class="up">+</span> <span class="sp"></span>V<span class="paren">(</span>x, t<span class="paren">)</span><span class="sp"></span>Ψ</span>
+            <div class="cap">Same sentence as <span class="math small">E = T + V</span>, only now every term is an instruction about a wave. The left side says <b>how Ψ changes next instant</b>; the right side says <b>the energy content decides that change</b>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4 — TERM BREAKDOWN ========== -->
+  <section class="slide" data-title="Term by term">
+    <div class="inner">
+      <div class="slide-head"><span class="num">STEP 4</span><h2>What each term is doing</h2></div>
+
+      <div class="grid">
+        <div class="card c1 sym"><span class="math"><span class="hat">E</span><span class="sp"></span>Ψ</span></div>
+        <div class="op">=</div>
+        <div class="card c2 sym"><span class="math"><span class="hat">T</span><span class="sp"></span>Ψ</span></div>
+        <div class="op">+</div>
+        <div class="card c3 sym"><span class="math"><span class="hat">V</span><span class="sp"></span>Ψ</span></div>
+
+        <div class="card c1 sym">
+          <span class="math"><span class="up">iħ</span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span>Ψ</span><span class="den"><span class="up">∂</span>t</span></span></span>
+        </div>
+        <div class="op">=</div>
+        <div class="card c2 sym">
+          <span class="math"><span class="up">−</span><span class="frac"><span class="num"><span class="up">ħ</span><sup>2</sup></span><span class="den">2m</span></span><span class="sp"></span><span class="frac"><span class="num"><span class="up">∂</span><sup>2</sup>Ψ</span><span class="den"><span class="up">∂</span>x<sup>2</sup></span></span></span>
+        </div>
+        <div class="op">+</div>
+        <div class="card c3 sym">
+          <span class="math">V<span class="paren">(</span>x, t<span class="paren">)</span><span class="sp"></span>Ψ</span>
+        </div>
+
+        <div class="xc k1">
+          <h3>Total energy <span class="math small" style="color:inherit"><span class="hat">E</span></span> - why the <i>i</i>?</h3>
+          <div class="phase-row">
+            <canvas id="phasor" width="208" height="208"></canvas>
+            <div>
+              <p>Drop the <span class="math small">i</span> and you get the heat equation: everything
+                smooths out and dies. Keep it, and the same "rate of change" instruction becomes a
+                <b>rotation in the complex plane</b> instead of a decay.</p>
+            </div>
+          </div>
+          <p style="margin-top:8px">A state of definite energy does not sit still - its phase spins
+            at <span class="math small">E/ħ</span> radians per second while
+            <span class="math small">|Ψ|²</span> stays perfectly still. Higher energy, faster spin.
+            That is why energy and frequency are the same thing.</p>
+        </div>
+        <div class="spacer"></div>
+
+        <div class="xc k2">
+          <h3>Kinetic <span class="math small" style="color:inherit"><span class="hat">T</span></span> - energy <i>is</i> curvature</h3>
+          <p>A second derivative measures <b>how sharply a curve bends</b>. A long, lazy wave barely
+            bends and carries almost no kinetic energy. A tight spike bends violently and is expensive.</p>
+          <p><b>This is why atoms don't collapse.</b> squeezing an electron toward the nucleus lowers V but the forced curvature drives T up faster.</p>
+          <p>The same rule says a trapped wave can never stop bending, so its kinetic energy can
+            never reach zero, even at absolute zero.</p>
+        </div>
+        <div class="spacer"></div>
+
+        <div class="xc k3">
+          <h3>Potential <span class="math small" style="color:inherit"><span class="hat">V</span></span> - the shape of the problem</h3>
+          <p>Notice it only <b>multiplies</b>. It never differentiates, never mixes neighbouring
+            points. At each location it just says "energy here costs this much", and the wave responds
+            by choosing where it can live.</p>
+          <p>Everything you actually model lives in this one term ---- a Coulomb well for hydrogen (-ke^2/r), a
+            parabola for a vibrating bond, a rectangle for a quantum dot. You supply
+            <span class="math small">V</span>; that <i>is</i> the problem, and the equation does the rest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5 — SIMULATOR ========== -->
+  <section class="slide" data-title="Watch it evolve" data-sim="1">
+    <div class="inner">
+      <div class="slide-head"><span class="num">STEP 5</span><h2>Watch the evolution</h2></div>
+      <p class="body" style="margin-bottom:11px">
+        The equation actually running — integrated live with a split-step solver
+        (<span class="math small">ħ = m = 1</span>). Watch the bars:
+        <b>⟨T⟩ and ⟨V⟩ trade back and forth while ⟨E⟩ stays flat.</b> That flat blue bar is
+        <span class="math small">E = T + V</span>
+      </p>
+
+      <div class="sim">
+        <canvas id="wave"></canvas>
+        <div class="legend">
+          <span><i class="swatch area" style="background:#5b5bd6"></i> |Ψ|² probability density</span>
+          <span><i class="swatch" style="background:#5b5bd6"></i> Re Ψ</span>
+          <span style="color:#9a9ad8"><i class="swatch dash"></i> Im Ψ</span>
+          <span><i class="swatch" style="background:#d9762f"></i> V(x) potential</span>
+          <span><i class="swatch" style="background:#2e9c66"></i> ⟨E⟩ energy level</span>
+        </div>
+
+        <div class="bar-wrap" id="barwrap">
+          <div class="ebar">
+            <div class="nm n2">⟨T⟩ kinetic</div>
+            <div class="track"><div class="zero" id="z2"></div><div class="fill f2" id="bT"></div></div>
+            <div class="val" id="vT">0.00</div>
+          </div>
+          <div class="ebar">
+            <div class="nm n3">⟨V⟩ potential</div>
+            <div class="track"><div class="zero" id="z3"></div><div class="fill f3" id="bV"></div></div>
+            <div class="val" id="vV">0.00</div>
+          </div>
+          <div class="ebar">
+            <div class="nm n1">⟨E⟩ total</div>
+            <div class="track"><div class="zero" id="z1"></div><div class="fill f1" id="bE"></div></div>
+            <div class="val" id="vE">0.00</div>
+          </div>
+          <div class="readout">
+            t = <span id="tval">0.00</span>
+            &nbsp;·&nbsp; ⟨x⟩ = <span id="xval">0.00</span>
+            &nbsp;·&nbsp; chance the particle is still in view = <span id="nval">100%</span>
+            <span id="leak" style="display:none;color:var(--c-tx);margin-left:6px"></span>
+            <span id="hint" style="margin-left:6px"></span>
+          </div>
+        </div>
+
+        <div class="ctrls">
+          <div class="ctrl">
+            <label for="pot">Potential V(x)</label>
+            <select id="pot">
+              <option value="free">Free particle — V = 0</option>
+              <option value="harm" selected>Harmonic well — quantum pendulum</option>
+              <option value="barrier">Barrier — tunnelling</option>
+              <option value="step">Step — partial reflection</option>
+              <option value="box">Square well — bound states</option>
+            </select>
+          </div>
+          <div class="ctrl">
+            <label for="k0">Momentum k₀ <span class="rv" id="k0v">0.0</span></label>
+            <input type="range" id="k0" min="0" max="6" step="0.1" value="0">
+          </div>
+          <div class="ctrl">
+            <label for="sig">Width σ <span class="rv" id="sigv">1.20</span></label>
+            <input type="range" id="sig" min="0.4" max="3" step="0.05" value="1.2">
+          </div>
+          <div class="ctrl">
+            <label for="v0">V strength <span class="rv" id="v0v">1.00</span></label>
+            <input type="range" id="v0" min="0.1" max="3" step="0.05" value="1">
+          </div>
+          <div class="ctrl">
+            <label for="spd">Speed <span class="rv" id="spdv">1.0×</span></label>
+            <input type="range" id="spd" min="0.2" max="4" step="0.1" value="1">
+          </div>
+          <div class="ctrl">
+            <label>&nbsp;</label>
+            <div class="btns">
+              <button class="btn pri" id="play">Pause</button>
+              <button class="btn" id="reset">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cols tight">
+        <div class="xc k2">
+          <h3>Try: the quantum pendulum</h3>
+          <p>Harmonic well, k₀ = 0. The packet slides down, speeds up, climbs the far side and comes
+            back — like a ball in a bowl. Green and orange swap; blue never moves.</p>
+        </div>
+        <div class="xc k3">
+          <h3>Try: tunnelling</h3>
+          <p>Barrier, k₀ ≈ 2.5, strength ≈ 1. Classically it must bounce. Quantum-mechanically a
+            sliver leaks through. That leak is why the sun shines.</p>
+        </div>
+        <div class="xc k1">
+          <h3>Try: spreading</h3>
+          <p>Free particle, σ = 0.5. A pinched packet needs sharp curvature, sharp curvature means
+            large kinetic energy, and it flies apart. σ = 3 barely spreads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<nav class="nav">
+  <button class="nbtn" id="prev">← Prev</button>
+  <div class="dots" id="dots"></div>
+  <div class="counter"><b id="cur">1</b> / <span id="tot">1</span> · <span id="ctitle"></span>
+    <span class="kb">← → arrows · Home · End</span></div>
+  <button class="nbtn pri" id="next">Next →</button>
+</nav>
+
+<script src="./simulator.js"></script>
+</body>
+</html>

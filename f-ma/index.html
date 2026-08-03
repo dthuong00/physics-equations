@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>F = ma — a force and motion experiment</title>
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./world-lab.css">
+</head>
+<body>
+<div class="progress"><i id="progress"></i></div>
+<main class="deck">
+<section class="slide" data-title="Start"><div class="inner center"><div class="eyebrow">Newton’s second law · a visual experiment</div><h1>Push it. Weigh it.<br>Watch what changes.</h1><div class="formula-hero"><span class="f">F</span><span>=</span><span class="m">m</span><span class="a">a</span></div><p class="lede">One equation, one cart, and three controls. The explanation is short; the experiment does the teaching.</p><div class="toc" id="toc"></div></div></section>
+<section class="slide" data-title="Three ingredients"><div class="inner center"><div class="head"><span class="step">01</span><h2>Three ingredients. One relationship.</h2></div><p class="intro">Acceleration is what you observe. Force and mass are the two knobs that decide it.</p><div class="terms"><article class="term force"><div class="symbol">F</div><h3>Net force</h3><p>The combined push after opposing forces are subtracted. Measured in newtons (N).</p></article><article class="term mass"><div class="symbol">m</div><h3>Mass</h3><p>How much matter resists a change in motion. Measured in kilograms (kg).</p></article><article class="term accel"><div class="symbol">a</div><h3>Acceleration</h3><p>How quickly velocity changes. Measured in metres per second, every second (m/s²).</p></article></div><p class="one-line">More net force → more acceleration. More mass → less acceleration.</p></div></section>
+<section class="slide" data-title="Cart laboratory" data-lab="true"><div class="inner"><div class="head"><span class="step">02</span><h2>Run the cart experiment</h2></div><p class="intro">Change one thing at a time. The arrow shows applied force; friction points back. The glowing marks are equal slices of time—wider gaps mean the cart is speeding up.</p><div class="lab"><div class="stage-wrap"><canvas id="labCanvas" aria-label="Animated cart on a track showing force, friction, and acceleration"></canvas><div class="live-equation"><span class="force-text" id="eqForce">8.0</span><span>÷</span><span class="mass-text" id="eqMass">2.0</span><span>=</span><span class="accel-text" id="eqAccel">4.0</span><strong>m/s²</strong></div><div class="readouts"><div class="readout"><small>time</small><b id="timeOut">0.00 s</b></div><div class="readout"><small>speed</small><b id="speedOut">0.00 m/s</b></div><div class="readout"><small>distance</small><b id="distanceOut">0.00 m</b></div></div></div><div class="controls"><div class="control"><label for="force">Applied force <output id="forceOut">8 N</output></label><input id="force" type="range" min="-12" max="12" step="1" value="8"></div><div class="control mass-control"><label for="mass">Cart mass <output id="massOut">2 kg</output></label><input id="mass" type="range" min="1" max="8" step="0.5" value="2"></div><div class="control friction-control"><label for="friction">Friction <output id="frictionOut">0 N</output></label><input id="friction" type="range" min="0" max="6" step="0.5" value="0"></div><div class="actions"><button class="action primary" id="play">Pause</button><button class="action" id="reset">Reset</button></div></div><div class="hint" id="hint">With no friction, all 8 N accelerates the 2 kg cart.</div></div></div></section>
+<section class="slide" data-title="Compare experiments"><div class="inner center"><div class="head"><span class="step">03</span><h2>Keep one knob fixed</h2></div><p class="intro">Each pair runs for exactly the same time. Pick an experiment and compare where the carts finish.</p><div class="experiment-grid"><div class="preset-list"><button class="preset on" data-test="force"><b>Double the force</b><span>Same 2 kg cart; compare 4 N with 8 N.</span></button><button class="preset" data-test="mass"><b>Double the mass</b><span>Same 8 N push; compare 2 kg with 4 kg.</span></button><button class="preset" data-test="balance"><b>Balance the forces</b><span>Push and friction cancel: net force is zero.</span></button></div><div class="comparison"><h3 id="compareTitle">Twice the force, twice the acceleration</h3><p id="compareCopy">Mass stays fixed at 2 kg. Only the push changes.</p><div class="lanes"><div class="lane"><span class="lane-label" id="laneALabel">4 N ÷ 2 kg</span><span class="lane-result" id="laneAResult">a = 2 m/s²</span><i class="lane-arrow" id="arrowA"></i><i class="lane-cart" id="cartA"></i></div><div class="lane"><span class="lane-label" id="laneBLabel">8 N ÷ 2 kg</span><span class="lane-result" id="laneBResult">a = 4 m/s²</span><i class="lane-arrow" id="arrowB"></i><i class="lane-cart" id="cartB"></i></div></div><div class="conclusion" id="conclusion">The second cart covers twice the distance because it has twice the acceleration for the same amount of time.</div></div></div></div></section>
+<section class="slide world-slide" data-title="Real-world laboratory" data-world="true">
+  <div class="inner">
+    <div class="world-head">
+      <div><div class="head"><span class="step">04</span><h2>Real forces. Real motion.</h2></div><p class="intro">Choose a system, change its physical inputs, and run the numerical simulation.</p></div>
+      <div class="world-tabs" role="tablist" aria-label="Choose a physical system">
+        <button class="world-tab on" data-world-mode="rocket" type="button">Rocket</button>
+        <button class="world-tab" data-world-mode="ball" type="button">Ball</button>
+        <button class="world-tab" data-world-mode="elevator" type="button">Elevator</button>
+      </div>
+    </div>
+    <div class="world-lab">
+      <div class="world-stage"><canvas id="worldCanvas" aria-label="Physics simulation with force vectors and trajectory"></canvas><div class="world-equation" id="worldEquation">Fnet = thrust − mg − drag</div></div>
+      <div class="world-telemetry">
+        <div><span>Time</span><b id="worldTime">0.00 s</b></div><div><span>Position</span><b id="worldPosition">0.0 m</b></div><div><span>Velocity</span><b id="worldVelocity">0.0 m/s</b></div><div><span>Acceleration</span><b id="worldAcceleration">0.0 m/s²</b></div><div><span>Net force</span><b id="worldNet">0 N</b></div><div><span>Fuel · weight</span><b id="worldFuel">450 kg · 4.41 kN</b></div>
+      </div>
+      <div class="world-controls">
+        <div class="world-control"><label for="worldForce"><span id="worldForceLabel">Thrust</span><output id="worldForceOut">18.0 kN</output></label><input id="worldForce" type="range"></div>
+        <div class="world-control"><label for="worldMass"><span id="worldMassLabel">Initial mass</span><output id="worldMassOut">1000 kg</output></label><input id="worldMass" type="range"></div>
+        <div class="world-control"><label for="worldExtra"><span id="worldExtraLabel">Fuel burn</span><output id="worldExtraOut">18 kg/s</output></label><input id="worldExtra" type="range"></div>
+        <div class="world-actions"><button class="action primary" id="worldPlay" type="button">Launch</button><button class="action" id="worldReset" type="button">Reset</button></div>
+      </div>
+      <div class="world-note"><b id="worldTitle">Rocket equation</b><span id="worldNote">Thrust fights weight and aerodynamic drag. Burning fuel reduces mass, so the same thrust produces increasing acceleration.</span></div>
+    </div>
+  </div>
+</section>
+</main>
+<nav class="nav"><button id="prev">← Previous</button><div class="dots" id="dots"></div><div class="counter"><b id="current">1</b> / <span id="total">5</span> · <span id="title">Start</span></div><button class="next" id="next">Next →</button></nav>
+<script src="./js/lesson.js"></script>
+<script src="./js/world-lab.js"></script>
+</body>
+</html>

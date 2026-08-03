@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explore physics equations through intuitive, interactive illustrations.">
+<title>Physics Equations — visual and interactive</title>
+<link rel="stylesheet" href="./assets/index.css">
+</head>
+<body>
+<main class="page">
+  <header>
+    <div class="eyebrow">Physics · made visible</div>
+    <h1>Equations you can see, touch, and understand.</h1>
+    <p class="intro">Short, intuitive walkthroughs with interactive illustrations. Pick an equation and experiment with the physics yourself.</p>
+  </header>
+
+  <div class="heading-row">
+    <h2>Available equations</h2>
+    <span class="count">2 lessons</span>
+  </div>
+
+  <section class="equations" aria-label="Available physics equations">
+    <a class="equation schrodinger" href="./schrodinger-equation/">
+      <div class="art wave-art" aria-hidden="true">
+        <i class="axis"></i>
+        <div class="wave">
+          <svg viewBox="0 0 500 130" preserveAspectRatio="none">
+            <defs><linearGradient id="waveGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6565d9" stop-opacity=".28"/><stop offset="1" stop-color="#6565d9" stop-opacity="0"/></linearGradient></defs>
+            <path class="wave-fill" d="M0 70 C45 70 70 70 103 63 C145 53 167 18 210 25 C252 33 265 101 309 108 C358 115 373 72 414 68 C449 65 473 70 500 70 L500 130 L0 130 Z"/>
+            <path class="wave-line" d="M0 70 C45 70 70 70 103 63 C145 53 167 18 210 25 C252 33 265 101 309 108 C358 115 373 72 414 68 C449 65 473 70 500 70"/>
+            <line class="energy-line" x1="0" y1="37" x2="500" y2="37"/>
+            <text class="energy-label" x="454" y="29">⟨E⟩</text>
+          </svg>
+        </div>
+      </div>
+      <div class="copy">
+        <span class="number">EQUATION 01</span>
+        <h2>Schrödinger equation <span class="formula">iℏ ∂ψ/∂t = Ĥψ</span></h2>
+        <p>Build quantum time evolution from familiar energy bookkeeping, then watch a wave packet evolve.</p>
+        <span class="open">Explore the equation <i>→</i></span>
+      </div>
+    </a>
+
+    <a class="equation newton" href="./f-ma/">
+      <div class="art cart-art" aria-hidden="true">
+        <i class="motion-dot dot-one"></i><i class="motion-dot dot-two"></i><i class="motion-dot dot-three"></i>
+        <i class="track"></i>
+        <div class="cart"><span class="mass-label">2 kg</span></div>
+        <div class="force-arrow"><span class="force-label">8 N</span></div>
+      </div>
+      <div class="copy">
+        <span class="number">EQUATION 02</span>
+        <h2>Newton’s second law <span class="formula">F = ma</span></h2>
+        <p>Push an animated cart, change its mass and friction, and compare controlled force experiments.</p>
+        <span class="open">Run the experiment <i>→</i></span>
+      </div>
+    </a>
+  </section>
+
+  <footer><span>Physics Equations Break Down</span><span>More equations coming soon.</span></footer>
+</main>
+</body>
+</html>
