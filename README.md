@@ -8,3 +8,5 @@ Open [`index.html`](./index.html) to browse the available equations.
 
 1. **Schrödinger equation** — [`schrodinger/`](./schrodinger/)
 2. **Newton's second law, F = ma** — [`f-ma/`](./f-ma/)
+3. **Dirac equation** — coming soon
+4. **Bell's inequality** — coming soon
