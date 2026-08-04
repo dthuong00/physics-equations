@@ -1,6 +1,6 @@
 # Physics Equations Break Down
 
-Easy, intuitive break down of physics equations — with interactive illustrations.
+Easy, intuitive break down of physics equations — with interactive visualization.
 
 **Live site:** [dthuong00.github.io/physics-equations](https://dthuong00.github.io/physics-equations/)
 
