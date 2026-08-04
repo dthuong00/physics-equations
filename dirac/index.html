@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An intuitive visual walkthrough of the Dirac equation with an interactive relativistic spinor simulation.">
+<title>Dirac equation — relativity meets quantum mechanics</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="progress"><i id="progress"></i></div>
+<main class="deck">
+  <section class="slide" data-title="Start">
+    <div class="inner center title-slide">
+      <div class="eyebrow">Relativistic quantum mechanics · made visible</div>
+      <h1>When a quantum wave<br>cannot outrun light.</h1>
+      <div class="hero-equation"><i>iℏ</i><span>∂ψ</span><b>=</b><em>(cα·p + βmc²)ψ</em></div>
+      <p class="lede">Dirac asked for a quantum equation that is first-order in time, respects special relativity, and conserves probability. The answer forced spin and antimatter into the mathematics.</p>
+      <div class="toc" id="toc"></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="The conflict">
+    <div class="inner center">
+      <div class="head"><span class="step">01</span><h2>Two successful theories disagree on energy</h2></div>
+      <p class="intro">Schrödinger uses the non-relativistic kinetic energy. Einstein says energy and momentum belong to a different geometry.</p>
+      <div class="compare-grid">
+        <article class="theory quantum"><span class="tag">QUANTUM MECHANICS</span><div class="big-math">E = <span>p²/2m</span> + V</div><p>Excellent when speed is much smaller than <i>c</i>. Its free-particle energy grows quadratically with momentum.</p><div class="curve nonrel"><i></i><b>p</b><em>E</em></div></article>
+        <div class="versus">but</div>
+        <article class="theory relativity"><span class="tag">SPECIAL RELATIVITY</span><div class="big-math">E² = <span>p²c²</span> + m²c⁴</div><p>Energy has positive and negative branches. No massive excitation reaches or crosses the light speed.</p><div class="curve rel"><i></i><b>p</b><em>E</em></div></article>
+      </div>
+      <div class="insight">Taking a square root gives <span>E = ±√(p²c² + m²c⁴)</span>. Dirac wanted an equation linear in both energy and momentum without discarding either sign.</div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Dirac's move">
+    <div class="inner center">
+      <div class="head"><span class="step">02</span><h2>Factor the relativistic energy relation</h2></div>
+      <p class="intro">Ordinary numbers cannot make the cross-terms disappear. Dirac replaced them with matrices that anticommute.</p>
+      <div class="factor-card">
+        <div class="factor-row"><span class="muted">Start with</span><div class="math">E² = p²c² + m²c⁴</div></div>
+        <div class="down">↓ <span>seek a linear Hamiltonian</span></div>
+        <div class="factor-row final"><span class="muted">Dirac proposes</span><div class="math"><b>E</b> = cα·p + βmc²</div></div>
+      </div>
+      <div class="matrix-grid">
+        <article><span class="matrix-symbol">αᵢ² = β² = I</span><h3>Square to identity</h3><p>Each momentum and mass term reproduces the required square.</p></article>
+        <article><span class="matrix-symbol">{αᵢ, αⱼ} = 0</span><h3>Momentum axes anticommute</h3><p>Mixed terms cancel instead of contaminating the energy relation.</p></article>
+        <article><span class="matrix-symbol">{αᵢ, β} = 0</span><h3>Mass anticommutes too</h3><p>The momentum–mass cross-term vanishes for the same reason.</p></article>
+      </div>
+      <div class="insight">The smallest matrices that satisfy all three spatial directions are <b>4 × 4</b>. Therefore ψ cannot be a single complex number: it must be a four-component spinor.</div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="The spinor">
+    <div class="inner center">
+      <div class="head"><span class="step">03</span><h2>One wavefunction, four coupled amplitudes</h2></div>
+      <p class="intro">The components are not four separate particles. Together they encode spin and the positive/negative-energy sectors of one relativistic quantum state.</p>
+      <div class="spinor-layout">
+        <div class="spinor-bracket"><b>(</b><div><span class="s1">ψ₁</span><span class="s2">ψ₂</span><span class="s3">ψ₃</span><span class="s4">ψ₄</span></div><b>)</b></div>
+        <div class="spinor-map">
+          <article class="positive"><i>ψ₁</i><strong>particle · spin up</strong><span>positive-energy amplitude</span></article>
+          <article class="positive"><i>ψ₂</i><strong>particle · spin down</strong><span>positive-energy amplitude</span></article>
+          <article class="negative"><i>ψ₃</i><strong>antiparticle · spin up</strong><span>negative-energy sector</span></article>
+          <article class="negative"><i>ψ₄</i><strong>antiparticle · spin down</strong><span>negative-energy sector</span></article>
+        </div>
+      </div>
+      <div class="consequences">
+        <article><b>Spin</b><p>Intrinsic angular momentum appears before being added as a separate assumption.</p></article>
+        <article><b>Antimatter</b><p>The second energy branch becomes physical antiparticles, not a mathematical nuisance.</p></article>
+        <article><b>Conserved current</b><p>ρ = ψ†ψ is positive and obeys a local continuity equation.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide simulator-slide" data-title="Relativistic laboratory" data-simulator="true">
+    <div class="inner">
+      <div class="sim-head"><div><div class="head"><span class="step">04</span><h2>Run the 1D Dirac equation</h2></div><p class="intro">In one dimension the four-spinor separates into equivalent two-component sectors. This canvas evolves one sector with ℏ = c = 1.</p></div><div class="scenario-tabs"><button class="scenario on" data-scene="free">Free packet</button><button class="scenario" data-scene="zitter">Zitterbewegung</button><button class="scenario" data-scene="klein">Klein barrier</button><button class="scenario" data-scene="massless">Massless</button></div></div>
+      <div class="simulator">
+        <div class="canvas-wrap"><canvas id="diracCanvas" aria-label="One-dimensional Dirac spinor wave packet simulation"></canvas><div class="sim-equation">i∂ₜψ = (−iσₓ∂ₓ + mσ_z + V)ψ</div></div>
+        <div class="telemetry"><div><span>time</span><b id="timeValue">0.00</b></div><div><span>⟨x⟩</span><b id="positionValue">0.00</b></div><div><span>⟨v⟩ / c</span><b id="velocityValue">0.00</b></div><div><span>norm</span><b id="normValue">1.000</b></div><div><span>right of barrier</span><b id="transmissionValue">—</b></div></div>
+        <div class="sim-controls">
+          <div class="control"><label for="momentum">Momentum p₀ <output id="momentumValue">2.0</output></label><input id="momentum" type="range" min="0" max="5" step=".1" value="2"></div>
+          <div class="control"><label for="mass">Mass m <output id="massValue">1.0</output></label><input id="mass" type="range" min="0" max="3" step=".1" value="1"></div>
+          <div class="control"><label for="barrier">Barrier V₀ <output id="barrierValue">0.0</output></label><input id="barrier" type="range" min="0" max="8" step=".1" value="0"></div>
+          <div class="control"><label for="simSpeed">Speed <output id="speedValue">1.0×</output></label><input id="simSpeed" type="range" min=".2" max="3" step=".1" value="1"></div>
+          <div class="sim-actions"><button class="action primary" id="simPlay">Pause</button><button class="action" id="simReset">Reset</button></div>
+        </div>
+        <div class="legend"><span><i class="density-key"></i>|ψ|² probability</span><span><i class="upper-key"></i>upper component</span><span><i class="lower-key"></i>lower component</span><span><i class="cone-key"></i>light cone · speed c</span><span><i class="potential-key"></i>potential V</span></div>
+        <div class="sim-note"><b id="sceneTitle">Free positive-energy packet</b><span id="sceneNote">Its group velocity is p/E, always below c for nonzero mass. The light-cone edges show the causal speed limit.</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+<nav class="nav"><button id="prev">← Previous</button><div class="dots" id="dots"></div><div class="counter"><b id="current">1</b> / <span id="total">5</span> · <span id="slideTitle">Start</span></div><button class="next" id="next">Next →</button></nav>
+<script src="./lesson.js"></script>
+<script src="./simulator.js"></script>
+</body>
+</html>
