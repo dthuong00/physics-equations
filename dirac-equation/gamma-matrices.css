@@ -59,13 +59,17 @@
 .summary-link {
   display: inline-block;
   width: fit-content;
-  margin-top: 18px;
-  border-bottom: 1px solid var(--violet);
-  padding-bottom: 3px;
-  color: var(--violet);
-  font-size: 12px;
-  font-weight: 750;
+  margin-top: 9px;
+  color: var(--soft);
+  font-size: 9px;
+  font-weight: 600;
   text-decoration: none;
+}
+
+.summary-link:hover,
+.summary-link:focus-visible {
+  color: var(--violet);
+  text-decoration: underline;
 }
 
 .factor-explain {
