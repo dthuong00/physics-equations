@@ -4,6 +4,58 @@
   gap: 10px;
 }
 
+/* Slide 01's two energy curves, plotted rather than suggested: an upward
+   parabola for p²/2m, and both hyperbola branches closing on E = pc. */
+.curve-plot {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.curve-plot .axis {
+  fill: none;
+  stroke: #b4b4b0;
+  stroke-width: 1;
+}
+
+.curve-plot .asymptote {
+  fill: none;
+  stroke: rgba(146, 148, 154, .8);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.curve-plot .plot-line {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.curve-plot .nonrel {
+  stroke: var(--blue);
+}
+
+.curve-plot .rel {
+  stroke: var(--orange);
+}
+
+.curve-plot .plot-label {
+  fill: var(--soft);
+  font: italic 12px Georgia, serif;
+}
+
+.curve-plot .plot-note {
+  fill: var(--soft);
+  font: 800 8px Inter, sans-serif;
+  letter-spacing: .04em;
+}
+
+.curve-plot .gap {
+  fill: var(--orange);
+}
+
 .summary-link {
   display: inline-block;
   width: fit-content;
@@ -520,6 +572,11 @@
   text-align: center;
 }
 
+/* the flow is a row on wide screens and a column when it stacks */
+.derivation-arrow::after {
+  content: " →";
+}
+
 .gamma-definitions {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -661,6 +718,11 @@
   font: italic 23px Georgia, serif;
 }
 
+/* γ and its exponent have to be one flex item, or space-between pulls them apart */
+.gamma-name b {
+  font-weight: 400;
+}
+
 .gamma-name span {
   color: var(--soft);
   font: 800 9px Inter, sans-serif;
@@ -799,6 +861,10 @@
 
   .derivation-arrow {
     max-width: none;
+  }
+
+  .derivation-arrow::after {
+    content: " ↓";
   }
 
   .set-translation > i {

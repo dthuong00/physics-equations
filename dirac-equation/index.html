@@ -16,7 +16,7 @@
     <div class="inner center title-slide">
       <div class="eyebrow">Relativistic quantum mechanics · made visible</div>
       <h1>When a quantum wave<br>cannot outrun light.</h1>
-      <div class="hero-equation"><i>iℏ</i><span>∂ψ</span><b>=</b><em>(cα·p + βmc²)ψ</em></div>
+      <div class="hero-equation"><i>iℏ</i><span>∂ψ/∂t</span><b>=</b><em>(cα·p + βmc²)ψ</em></div>
       <p class="lede">Dirac asked for a quantum equation that is first-order in time, respects special relativity, and conserves probability. The answer forced spin and antimatter into the mathematics.</p>
       <a class="summary-link" href="./summary.html">Summary</a>
       <div class="toc" id="toc"></div>
@@ -28,9 +28,29 @@
       <div class="head"><span class="step">01</span><h2>Two successful theories disagree on energy</h2></div>
       <p class="intro">Schrödinger uses the non-relativistic kinetic energy. Einstein says energy and momentum belong to a different geometry.</p>
       <div class="compare-grid">
-        <article class="theory quantum"><span class="tag">SCHRÖDINGER EQUATION</span><div class="big-math">E = <span>p²/2m</span> + V</div><p>Tells us how a quantum wavefunction changes with time. Its usual form works well at low speeds but is not compatible with special relativity.</p><div class="curve nonrel"><i></i><b>p</b><em>E</em></div></article>
+        <article class="theory quantum"><span class="tag">SCHRÖDINGER'S ENERGY RULE</span><div class="big-math">E = <span>p²/2m</span> + V</div><p>The rule behind the Schrödinger equation. One branch, rising as the square of momentum with no ceiling — it works well at low speeds but is not compatible with special relativity.</p>
+          <svg class="curve-plot" viewBox="0 0 260 96" role="img" aria-label="Energy rises as the square of momentum, without limit">
+            <path class="axis" d="M18 6V80H252"/>
+            <path class="plot-line nonrel" d="M18 80Q135 80 252 10"/>
+            <text class="plot-label" x="5" y="13">E</text>
+            <text class="plot-label" x="250" y="93">p</text>
+            <text class="plot-note" x="30" y="20">no ceiling</text>
+          </svg>
+        </article>
         <div class="versus">but</div>
-        <article class="theory relativity"><span class="tag">SPECIAL RELATIVITY</span><div class="big-math">E² = <span>p²c²</span> + m²c⁴</div><p>Energy has positive and negative branches. No massive excitation reaches or crosses the light speed.</p><div class="curve rel"><i></i><b>p</b><em>E</em></div></article>
+        <article class="theory relativity"><span class="tag">EINSTEIN'S ENERGY RULE</span><div class="big-math">E² = <span>p²c²</span> + m²c⁴</div><p>Two branches, separated by a gap of 2mc², each bending toward the dotted light line E = pc. No massive excitation reaches or crosses light speed.</p>
+          <svg class="curve-plot" viewBox="0 0 260 96" role="img" aria-label="Two energy branches separated by a mass gap, each approaching the light line">
+            <path class="axis" d="M18 6V90M18 48H252"/>
+            <path class="asymptote" d="M18 48L252 8.2M18 48L252 87.8"/>
+            <path class="plot-line rel" d="M18 34.7L37.5 34.3L57 33.2L76.5 31.4L96 29.2L115.5 26.7L135 24.1L154.5 21.2L174 18.3L193.5 15.3L213 12.2L232.5 9.1L252 6"/>
+            <path class="plot-line rel" d="M18 61.3L37.5 61.7L57 62.8L76.5 64.6L96 66.8L115.5 69.3L135 71.9L154.5 74.8L174 77.7L193.5 80.7L213 83.8L232.5 86.9L252 90"/>
+            <text class="plot-label" x="5" y="13">E</text>
+            <text class="plot-label" x="250" y="44">p</text>
+            <text class="plot-note gap" x="26" y="31">+mc²</text>
+            <text class="plot-note gap" x="26" y="71">−mc²</text>
+            <text class="plot-note" x="248" y="21" text-anchor="end">E → pc</text>
+          </svg>
+        </article>
       </div>
       <div class="insight">Taking a square root gives <span>E = ±√(p²c² + m²c⁴)</span>. Dirac wanted an equation linear in both energy and momentum without discarding either sign.</div>
     </div>
@@ -89,7 +109,7 @@
       </div>
       <div class="rule-summary">
         <article><span>Why mixed terms cancel</span><b>α₁α₂ = −α₂α₁</b><p>Reversing the order reverses the sign, so the two unwanted terms add to zero. The other matrix pairs behave the same way.</p></article>
-        <article><span>We need 4 4 × 4 matrices</span><b>α₁, α₂, α₃ and β</b><p>A 2 × 2 matrix can provide only three sign-reversing choices, so the smallest matrix that can provide all four is 4 × 4.</p></article>
+        <article><span>We need four 4 × 4 matrices</span><b>α₁, α₂, α₃ and β</b><p>A 2 × 2 matrix can provide only three sign-reversing choices, so the smallest matrix that can provide all four is 4 × 4.</p></article>
       </div>
     </div>
   </section>
@@ -101,9 +121,9 @@
       <div class="set-translation"><div><span>Energy-equation names</span><b>(β, α₁, α₂, α₃)</b></div><i>same information</i><div><span>Spacetime names</span><b>(γ⁰, γ¹, γ², γ³)</b></div></div>
       <div class="gamma-derivation">
         <article><span>1 · Start with the α-and-β equation</span><b>[iℏ∂<sub>t</sub> + iℏc αᵢ∂<sub>i</sub> − βmc²]ψ = 0</b><p>Here αᵢ means: include α₁, α₂ and α₃.</p></article>
-        <div class="derivation-arrow">multiply every term by β ↓</div>
+        <div class="derivation-arrow">multiply every term by β</div>
         <article><span>2 · β joins every term</span><b>[iℏβ∂<sub>t</sub> + iℏc βαᵢ∂<sub>i</sub> − β²mc²]ψ = 0</b><p>This creates the combinations β and βαᵢ.</p></article>
-        <div class="derivation-arrow">use β² = I ↓</div>
+        <div class="derivation-arrow">use β² = I</div>
         <article class="simplified"><span>3 · Give those combinations shorter names</span><b>γ⁰ ≡ β &nbsp;&nbsp; γⁱ ≡ βαᵢ</b><p>The mass term becomes ordinary mc² because I acts like 1.</p></article>
       </div>
       <div class="gamma-definitions"><article><span>time</span><b>γ⁰ = β</b></article><article><span>x, y and z</span><b>γ¹ = βα₁ &nbsp; γ² = βα₂ &nbsp; γ³ = βα₃</b></article><article><span>translate back</span><b>αᵢ = γ⁰γⁱ</b></article></div>
@@ -116,10 +136,10 @@
       <div class="head"><span class="step">03</span><h2>The four gamma matrices</h2></div>
       <p class="intro">In the standard Dirac representation, one matrix belongs to time and three belong to space. Their pattern makes the relativistic energy relation emerge when the Dirac operator is squared.</p>
       <div class="gamma-grid" aria-label="The four Dirac gamma matrices">
-        <article><div class="gamma-name">&gamma;<sup>0</sup> <span>time</span></div><div class="matrix"><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>&minus;1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>&minus;1</span></div><p>Separates positive- and negative-energy components. It is the same matrix as &beta;.</p></article>
-        <article><div class="gamma-name">&gamma;<sup>1</sup> <span>x direction</span></div><div class="matrix"><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>&minus;1</span><span>0</span><span>0</span><span>&minus;1</span><span>0</span><span>0</span><span>0</span></div><p>Couples spinor components to momentum along the x-axis.</p></article>
-        <article><div class="gamma-name">&gamma;<sup>2</sup> <span>y direction</span></div><div class="matrix"><span>0</span><span>0</span><span>0</span><span>&minus;i</span><span>0</span><span>0</span><span>i</span><span>0</span><span>0</span><span>i</span><span>0</span><span>0</span><span>&minus;i</span><span>0</span><span>0</span><span>0</span></div><p>Handles y-momentum; its imaginary entries encode the second spin direction.</p></article>
-        <article><div class="gamma-name">&gamma;<sup>3</sup> <span>z direction</span></div><div class="matrix"><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>&minus;1</span><span>&minus;1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span></div><p>Couples spinor components to momentum along the z-axis.</p></article>
+        <article><div class="gamma-name"><b>&gamma;<sup>0</sup></b><span>time</span></div><div class="matrix"><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>&minus;1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>&minus;1</span></div><p>Separates positive- and negative-energy components. It is the same matrix as &beta;.</p></article>
+        <article><div class="gamma-name"><b>&gamma;<sup>1</sup></b><span>x direction</span></div><div class="matrix"><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>&minus;1</span><span>0</span><span>0</span><span>&minus;1</span><span>0</span><span>0</span><span>0</span></div><p>Couples spinor components to momentum along the x-axis.</p></article>
+        <article><div class="gamma-name"><b>&gamma;<sup>2</sup></b><span>y direction</span></div><div class="matrix"><span>0</span><span>0</span><span>0</span><span>&minus;i</span><span>0</span><span>0</span><span>i</span><span>0</span><span>0</span><span>i</span><span>0</span><span>0</span><span>&minus;i</span><span>0</span><span>0</span><span>0</span></div><p>Handles y-momentum; its imaginary entries encode the second spin direction.</p></article>
+        <article><div class="gamma-name"><b>&gamma;<sup>3</sup></b><span>z direction</span></div><div class="matrix"><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>&minus;1</span><span>&minus;1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span></div><p>Couples spinor components to momentum along the z-axis.</p></article>
       </div>
       <div class="gamma-rules-simple"><article><span>Time matrix</span><b>(&gamma;<sup>0</sup>)² = I</b></article><article><span>Space matrices</span><b>(&gamma;<sup>1</sup>)² = (&gamma;<sup>2</sup>)² = (&gamma;<sup>3</sup>)² = &minus;I</b></article><article><span>Any two different matrices</span><b>&gamma;<sup>1</sup>&gamma;<sup>2</sup> = &minus;&gamma;<sup>2</sup>&gamma;<sup>1</sup></b><p>The same sign-reversal rule holds for every different pair.</p></article></div>
     </div>
