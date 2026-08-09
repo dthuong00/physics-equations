@@ -12,3 +12,4 @@ Easy, intuitive break down of physics equations — with interactive visualizati
 4. **Bell's inequality** — coming soon
 5. **Relativistic energy–momentum relation, E² = p²c² + m²c⁴** — coming soon
 6. **Einstein field equations** — coming soon
+7. **Heisenberg's meth: uncertainty principle σₓ σₚ ≥ ℏ/2** — coming soon

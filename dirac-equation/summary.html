@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A one-page, beginner-friendly explanation of the Dirac equation.">
+<title>The Dirac equation — one-page guide</title>
+<link rel="stylesheet" href="./summary.css">
+</head>
+<body>
+<div class="toolbar"><a href="./">← Full lesson</a></div>
+<main class="sheet">
+  <header>
+    <div><h1>The Dirac equation</h1><p>A quantum rule for very small particles moving near the speed of light.</p></div>
+    <div class="hero">iℏ <span>∂ψ/∂t</span> = (cα·p + βmc²)ψ</div>
+  </header>
+
+  <section class="problem">
+    <h2>1 · The problem Dirac wanted to solve</h2>
+    <div class="two-up">
+      <article><b>Schrödinger equation</b><p>tells us how a quantum wavefunction changes with time, but its usual form is not compatible with special relativity.</p></article>
+      <article><b>Special relativity</b><p>says energy and momentum must obey E² = p²c² + m²c⁴.</p></article>
+    </div>
+    <p class="bridge">Dirac needed one equation that obeyed both theories—and used only a first time derivative, so the future state follows directly from the present state.</p>
+  </section>
+
+  <section>
+    <h2>2 · Read the equation from left to right</h2>
+    <div class="reading">
+      <article class="change"><b>iℏ ∂ψ/∂t</b><span>change</span><p>How the quantum state changes with time. ∂ψ/∂t means “change in ψ when time changes.”</p></article>
+      <i>=</i>
+      <article class="motion"><b>cα·p</b><span>motion</span><p>The energy associated with momentum. The dot means x, y and z contributions are added.</p></article>
+      <i>+</i>
+      <article class="rest"><b>βmc²</b><span>rest energy</span><p>The particle's mass contribution. The familiar mc² appears inside the quantum rule.</p></article>
+      <article class="state"><b>× ψ</b><span>state</span><p>Both energy terms act on the same wavefunction.</p></article>
+    </div>
+    <div class="symbols"><span><b>ψ</b> quantum state</span><span><b>i</b> √−1</span><span><b>ℏ</b> quantum scale</span><span><b>p</b> momentum</span><span><b>m</b> mass</span><span><b>c</b> speed of light</span><span><b>α</b> three matrices: α₁, α₂, α₃</span><span><b>β</b> mass matrix</span></div>
+  </section>
+
+  <section>
+    <h2>3 · Why do matrices appear?</h2>
+    <div class="steps">
+      <article><span>1</span><b>Start with relativity</b><p>E² = p²c² + m²c⁴</p></article>
+      <article><span>2</span><b>Try a linear energy rule</b><p>Ê = cα·p + βmc²</p></article>
+      <article><span>3</span><b>Square it</b><p>Wanted squares appear, plus unwanted mixed terms.</p></article>
+      <article><span>4</span><b>Cancel the extras</b><p>Choose matrices that change sign when their order is reversed.</p></article>
+    </div>
+    <div class="plain-math"><b>αᵢαⱼ + αⱼαᵢ = 0</b><span>for different directions</span><b>αᵢβ + βαᵢ = 0</b><span>for momentum and mass</span></div>
+    <p class="note"><b>In plain language:</b> ordinary numbers give ab = ba, so the unwanted terms add. These matrices can give AB = −BA, so the pair cancels. Their squares equal the identity matrix I, which behaves like the number 1.</p>
+  </section>
+
+  <section class="gamma-section">
+    <h2>4 · One matching set of four gamma matrices</h2>
+    <div class="gamma-summary" aria-label="Four gamma matrices in the standard Dirac representation">
+      <article><header><b>γ⁰</b><span>time · equals β</span></header><div class="mini-matrix"><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>−1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>−1</span></div></article>
+      <article><header><b>γ¹</b><span>x direction</span></header><div class="mini-matrix"><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>−1</span><span>0</span><span>0</span><span>−1</span><span>0</span><span>0</span><span>0</span></div></article>
+      <article><header><b>γ²</b><span>y direction</span></header><div class="mini-matrix"><span>0</span><span>0</span><span>0</span><span>−i</span><span>0</span><span>0</span><span>i</span><span>0</span><span>0</span><span>i</span><span>0</span><span>0</span><span>−i</span><span>0</span><span>0</span><span>0</span></div></article>
+      <article><header><b>γ³</b><span>z direction</span></header><div class="mini-matrix"><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>−1</span><span>−1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span></div></article>
+    </div>
+    <p class="gamma-caption">These are the same information repackaged: γ⁰ = β and γⁱ = βαᵢ. Multiplying the equation by β removes β from the mass term because β² = I. The simple rules are: (γ⁰)² = I, each space matrix squares to −I, and any two different gamma matrices reverse sign when their order is reversed.</p>
+  </section>
+
+  <section class="bottom-grid">
+    <div>
+      <h2>5 · Why four components?</h2>
+      <p>Three matrices are needed for momentum in the x, y and z directions. A fourth is needed for mass. A 2 × 2 system can fit only three mutually anticommuting matrices, so the smallest working system is <b>4 × 4</b>.</p>
+      <div class="spinor"><b>ψ =</b><span>( ψ₁ &nbsp; ψ₂ &nbsp; ψ₃ &nbsp; ψ₄ )ᵀ</span></div>
+      <p>The four entries form one object called a <b>spinor</b>. They are not four separate particles.</p>
+      <p class="gamma-connection"><b>The four gamma matrices</b> package the same structure: γ⁰ = β and γⁱ = βαᵢ for the three spatial directions.</p>
+    </div>
+    <div>
+      <h2>6 · What falls out of the equation?</h2>
+      <ul><li><b>Spin:</b> two possible spin states appear naturally.</li><li><b>Antimatter:</b> the negative-energy branch predicts antiparticles.</li><li><b>Probability:</b> Hermitian α and β keep total probability conserved.</li><li><b>Speed limit:</b> signals do not outrun light.</li><li><b>Zitterbewegung:</b> mixing energy branches can produce rapid trembling motion.</li></ul>
+    </div>
+  </section>
+
+  <footer><b>Big idea</b><span>Dirac found a linear “square root” of Einstein's energy equation. The matrices required to make that square root work automatically brought spin and antimatter into quantum physics.</span></footer>
+</main>
+</body>
+</html>

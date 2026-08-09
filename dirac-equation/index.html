@@ -6,6 +6,8 @@
 <meta name="description" content="An intuitive visual walkthrough of the Dirac equation with an interactive relativistic spinor simulation.">
 <title>Dirac equation — relativity meets quantum mechanics</title>
 <link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./gamma-matrices.css">
+<link rel="stylesheet" href="./simulator.css">
 </head>
 <body>
 <div class="progress"><i id="progress"></i></div>
@@ -16,6 +18,7 @@
       <h1>When a quantum wave<br>cannot outrun light.</h1>
       <div class="hero-equation"><i>iℏ</i><span>∂ψ</span><b>=</b><em>(cα·p + βmc²)ψ</em></div>
       <p class="lede">Dirac asked for a quantum equation that is first-order in time, respects special relativity, and conserves probability. The answer forced spin and antimatter into the mathematics.</p>
+      <a class="summary-link" href="./summary.html">Summary</a>
       <div class="toc" id="toc"></div>
     </div>
   </section>
@@ -25,7 +28,7 @@
       <div class="head"><span class="step">01</span><h2>Two successful theories disagree on energy</h2></div>
       <p class="intro">Schrödinger uses the non-relativistic kinetic energy. Einstein says energy and momentum belong to a different geometry.</p>
       <div class="compare-grid">
-        <article class="theory quantum"><span class="tag">QUANTUM MECHANICS</span><div class="big-math">E = <span>p²/2m</span> + V</div><p>Excellent when speed is much smaller than <i>c</i>. Its free-particle energy grows quadratically with momentum.</p><div class="curve nonrel"><i></i><b>p</b><em>E</em></div></article>
+        <article class="theory quantum"><span class="tag">SCHRÖDINGER EQUATION</span><div class="big-math">E = <span>p²/2m</span> + V</div><p>Tells us how a quantum wavefunction changes with time. Its usual form works well at low speeds but is not compatible with special relativity.</p><div class="curve nonrel"><i></i><b>p</b><em>E</em></div></article>
         <div class="versus">but</div>
         <article class="theory relativity"><span class="tag">SPECIAL RELATIVITY</span><div class="big-math">E² = <span>p²c²</span> + m²c⁴</div><p>Energy has positive and negative branches. No massive excitation reaches or crosses the light speed.</p><div class="curve rel"><i></i><b>p</b><em>E</em></div></article>
       </div>
@@ -33,61 +36,192 @@
     </div>
   </section>
 
-  <section class="slide" data-title="Dirac's move">
+  <section class="slide" data-title="Square it in 1D">
     <div class="inner center">
-      <div class="head"><span class="step">02</span><h2>Factor the relativistic energy relation</h2></div>
-      <p class="intro">Ordinary numbers cannot make the cross-terms disappear. Dirac replaced them with matrices that anticommute.</p>
-      <div class="factor-card">
-        <div class="factor-row"><span class="muted">Start with</span><div class="math">E² = p²c² + m²c⁴</div></div>
-        <div class="down">↓ <span>seek a linear Hamiltonian</span></div>
-        <div class="factor-row final"><span class="muted">Dirac proposes</span><div class="math"><b>E</b> = cα·p + βmc²</div></div>
+      <div class="head"><span class="step">03</span><h2>See every term appear in one dimension</h2></div>
+      <p class="intro">Use one momentum direction first. The energy rule has a momentum part and a mass part. We will name those parts A and B, then multiply the rule by itself.</p>
+      <details class="symbol-details">
+        <summary><span>Need help?</span><b>Symbols used in the steps below</b><i>Open +</i></summary>
+        <div class="symbol-details-body">
+          <div class="term-glossary">
+            <article><b>E&#770;</b><span>energy rule</span><p>The hat says it acts on a quantum state.</p></article>
+            <article><b>c</b><span>speed of light</span><p>Converts momentum into an energy scale.</p></article>
+            <article><b>α</b><span>momentum matrix</span><p>The matrix paired with p in one dimension.</p></article>
+            <article><b>p</b><span>momentum</span><p>How much motion the particle has.</p></article>
+            <article><b>β</b><span>mass matrix</span><p>The matrix paired with the mass term.</p></article>
+            <article><b>m</b><span>rest mass</span><p>The particle's mass when it is at rest.</p></article>
+            <article><b>A, B</b><span>short names</span><p>A = cαp and B = βmc².</p></article>
+            <article><b>I</b><span>identity</span><p>A matrix that acts like the number 1.</p></article>
+          </div>
+          <div class="guide-bridge"><span>Use these symbols below</span><b>E&#770; = <em>cαp</em> + <strong>βmc²</strong> &nbsp;→&nbsp; E&#770; = A + B</b></div>
+        </div>
+      </details>
+      <div class="one-d-build">
+        <div><span>Proposed energy operator</span><b>E&#770; = cαp + βmc²</b></div>
+        <div><span>Short names</span><b>A = cαp &nbsp;&nbsp; B = βmc²</b></div>
+        <div><span>Multiply E&#770; by itself</span><b>E&#770;² = (A + B)(A + B)</b></div>
+        <div class="expanded"><span>Distribute both brackets</span><b>E&#770;² = A² + AB + BA + B²</b></div>
       </div>
-      <div class="matrix-grid">
-        <article><span class="matrix-symbol">αᵢ² = β² = I</span><h3>Square to identity</h3><p>Each momentum and mass term reproduces the required square.</p></article>
-        <article><span class="matrix-symbol">{αᵢ, αⱼ} = 0</span><h3>Momentum axes anticommute</h3><p>Mixed terms cancel instead of contaminating the energy relation.</p></article>
-        <article><span class="matrix-symbol">{αᵢ, β} = 0</span><h3>Mass anticommutes too</h3><p>The momentum–mass cross-term vanishes for the same reason.</p></article>
+      <div class="product-grid">
+        <article><b>A² = c²α²p²</b><p>Momentum squared. To become c²p²I, require <strong>α² = I</strong>.</p></article>
+        <article><b>B² = β²m²c⁴</b><p>Mass squared. To become m²c⁴I, require <strong>β² = I</strong>.</p></article>
+        <article class="mixed"><b>AB = mc³αpβ</b><p>Momentum followed by mass. This term is absent from Einstein's equation.</p></article>
+        <article class="mixed"><b>BA = mc³β αp</b><p>Mass followed by momentum. Matrices may change the result when their order changes.</p></article>
       </div>
-      <div class="insight">The smallest matrices that satisfy all three spatial directions are <b>4 × 4</b>. Therefore ψ cannot be a single complex number: it must be a four-component spinor.</div>
+      <div class="cancel-row"><span>Remove the unwanted pair</span><b>AB + BA = mc³p(αβ + βα) = 0</b><p>Therefore αβ = −βα, written <strong>{α, β} = 0</strong>. Ordinary nonzero numbers commute, so they cannot do this.</p></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Add three directions">
+    <div class="inner center">
+      <div class="head"><span class="step">04</span><h2>Now restore all three momentum directions</h2></div>
+      <p class="intro"><b>Important:</b> bold α is not one matrix. It is shorthand for a collection of three matrices—one for each spatial direction.</p>
+      <div class="direction-equation"><span>Two three-item collections</span><b>α = (α₁, α₂, α₃) &nbsp;&nbsp; p = (p₁, p₂, p₃)</b><p>The dot product pairs matching items: α·p = α₁p₁ + α₂p₂ + α₃p₃.</p></div>
+      <div class="matrix-count"><article><b>α₁</b><span>multiplies p₁ · x</span></article><article><b>α₂</b><span>multiplies p₂ · y</span></article><article><b>α₃</b><span>multiplies p₃ · z</span></article><i>plus</i><article class="mass"><b>β</b><span>multiplies mc² · mass</span></article></div>
+      <div class="momentum-expansion">
+        <div><span>Square it</span><b>(α·p)² = α₁²p₁² + α₂²p₂² + α₃²p₃²<br><em>+ (α₁α₂ + α₂α₁)p₁p₂ + (α₁α₃ + α₃α₁)p₁p₃ + (α₂α₃ + α₃α₂)p₂p₃</em></b></div>
+        <div><span>What Einstein needs</span><b>p²I = (p₁² + p₂² + p₃²)I</b></div>
+      </div>
+      <div class="condition-grid">
+        <article><span>Each direction squares correctly</span><b>α₁² = α₂² = α₃² = I</b><p>This makes the three main terms become p₁²I, p₂²I and p₃²I.</p></article>
+        <article><span>Mass conditions</span><b>β² = I &nbsp; and &nbsp; {αᵢ, β} = 0</b><p>The first matches the pure mass term. The second cancels each momentum–mass cross-term.</p></article>
+        <article><span>Physical requirement</span><b>αᵢ† = αᵢ &nbsp; and &nbsp; β† = β</b><p>The dagger means conjugate transpose. These conditions make E&#770; Hermitian, giving real measured energies and probability-conserving evolution.</p></article>
+      </div>
+      <div class="rule-summary">
+        <article><span>Why mixed terms cancel</span><b>α₁α₂ = −α₂α₁</b><p>Reversing the order reverses the sign, so the two unwanted terms add to zero. The other matrix pairs behave the same way.</p></article>
+        <article><span>We need 4 4 × 4 matrices</span><b>α₁, α₂, α₃ and β</b><p>A 2 × 2 matrix can provide only three sign-reversing choices, so the smallest matrix that can provide all four is 4 × 4.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Rename the four matrices">
+    <div class="inner center">
+      <div class="head"><span class="step">05</span><h2>The same four matrices, rewritten as γ</h2></div>
+      <p class="intro">We now know why the equation needs four 4 × 4 matrices: α₁, α₂, α₃ for space and β for mass. Before displaying their entries, physicists commonly rename this same set as γ⁰, γ¹, γ², γ³.</p>
+      <div class="set-translation"><div><span>Energy-equation names</span><b>(β, α₁, α₂, α₃)</b></div><i>same information</i><div><span>Spacetime names</span><b>(γ⁰, γ¹, γ², γ³)</b></div></div>
+      <div class="gamma-derivation">
+        <article><span>1 · Start with the α-and-β equation</span><b>[iℏ∂<sub>t</sub> + iℏc αᵢ∂<sub>i</sub> − βmc²]ψ = 0</b><p>Here αᵢ means: include α₁, α₂ and α₃.</p></article>
+        <div class="derivation-arrow">multiply every term by β ↓</div>
+        <article><span>2 · β joins every term</span><b>[iℏβ∂<sub>t</sub> + iℏc βαᵢ∂<sub>i</sub> − β²mc²]ψ = 0</b><p>This creates the combinations β and βαᵢ.</p></article>
+        <div class="derivation-arrow">use β² = I ↓</div>
+        <article class="simplified"><span>3 · Give those combinations shorter names</span><b>γ⁰ ≡ β &nbsp;&nbsp; γⁱ ≡ βαᵢ</b><p>The mass term becomes ordinary mc² because I acts like 1.</p></article>
+      </div>
+      <div class="gamma-definitions"><article><span>time</span><b>γ⁰ = β</b></article><article><span>x, y and z</span><b>γ¹ = βα₁ &nbsp; γ² = βα₂ &nbsp; γ³ = βα₃</b></article><article><span>translate back</span><b>αᵢ = γ⁰γⁱ</b></article></div>
+      <div class="insight"><b>This is a change of notation, not a new physical step.</b> The next slide simply shows the numerical entries of these four renamed matrices.</div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="The four matrices">
+    <div class="inner center">
+      <div class="head"><span class="step">03</span><h2>The four gamma matrices</h2></div>
+      <p class="intro">In the standard Dirac representation, one matrix belongs to time and three belong to space. Their pattern makes the relativistic energy relation emerge when the Dirac operator is squared.</p>
+      <div class="gamma-grid" aria-label="The four Dirac gamma matrices">
+        <article><div class="gamma-name">&gamma;<sup>0</sup> <span>time</span></div><div class="matrix"><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>&minus;1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>&minus;1</span></div><p>Separates positive- and negative-energy components. It is the same matrix as &beta;.</p></article>
+        <article><div class="gamma-name">&gamma;<sup>1</sup> <span>x direction</span></div><div class="matrix"><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>&minus;1</span><span>0</span><span>0</span><span>&minus;1</span><span>0</span><span>0</span><span>0</span></div><p>Couples spinor components to momentum along the x-axis.</p></article>
+        <article><div class="gamma-name">&gamma;<sup>2</sup> <span>y direction</span></div><div class="matrix"><span>0</span><span>0</span><span>0</span><span>&minus;i</span><span>0</span><span>0</span><span>i</span><span>0</span><span>0</span><span>i</span><span>0</span><span>0</span><span>&minus;i</span><span>0</span><span>0</span><span>0</span></div><p>Handles y-momentum; its imaginary entries encode the second spin direction.</p></article>
+        <article><div class="gamma-name">&gamma;<sup>3</sup> <span>z direction</span></div><div class="matrix"><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>&minus;1</span><span>&minus;1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span></div><p>Couples spinor components to momentum along the z-axis.</p></article>
+      </div>
+      <div class="gamma-rules-simple"><article><span>Time matrix</span><b>(&gamma;<sup>0</sup>)² = I</b></article><article><span>Space matrices</span><b>(&gamma;<sup>1</sup>)² = (&gamma;<sup>2</sup>)² = (&gamma;<sup>3</sup>)² = &minus;I</b></article><article><span>Any two different matrices</span><b>&gamma;<sup>1</sup>&gamma;<sup>2</sup> = &minus;&gamma;<sup>2</sup>&gamma;<sup>1</sup></b><p>The same sign-reversal rule holds for every different pair.</p></article></div>
     </div>
   </section>
 
   <section class="slide" data-title="The spinor">
     <div class="inner center">
-      <div class="head"><span class="step">03</span><h2>One wavefunction, four coupled amplitudes</h2></div>
-      <p class="intro">The components are not four separate particles. Together they encode spin and the positive/negative-energy sectors of one relativistic quantum state.</p>
+      <div class="head"><span class="step">04</span><h2>One wavefunction, four coupled amplitudes</h2></div>
+      <p class="intro">The four components come from two spin contributions × two energy branches. They are not four particles: only the complete four-component spinor describes the physical state.</p>
       <div class="spinor-layout">
         <div class="spinor-bracket"><b>(</b><div><span class="s1">ψ₁</span><span class="s2">ψ₂</span><span class="s3">ψ₃</span><span class="s4">ψ₄</span></div><b>)</b></div>
         <div class="spinor-map">
-          <article class="positive"><i>ψ₁</i><strong>particle · spin up</strong><span>positive-energy amplitude</span></article>
-          <article class="positive"><i>ψ₂</i><strong>particle · spin down</strong><span>positive-energy amplitude</span></article>
-          <article class="negative"><i>ψ₃</i><strong>antiparticle · spin up</strong><span>negative-energy sector</span></article>
-          <article class="negative"><i>ψ₄</i><strong>antiparticle · spin down</strong><span>negative-energy sector</span></article>
+          <article class="positive"><i>ψ₁</i><strong>upper pair · spin-up contribution</strong><span>dominant for a positive-energy particle near rest</span></article>
+          <article class="positive"><i>ψ₂</i><strong>upper pair · spin-down contribution</strong><span>dominant for a positive-energy particle near rest</span></article>
+          <article class="negative"><i>ψ₃</i><strong>lower pair · spin-up contribution</strong><span>associated with the second energy branch</span></article>
+          <article class="negative"><i>ψ₄</i><strong>lower pair · spin-down contribution</strong><span>associated with the second energy branch</span></article>
         </div>
       </div>
+      <div class="spinor-explain">
+        <article><span>What is an amplitude?</span><p>Each ψᵢ is a complex number with a size and phase. It is not a probability by itself; |ψᵢ|² contributes to the total probability.</p></article>
+        <article><span>Coupled = the components affect one another</span><p>If ψ₁ changes, the equation can make ψ₃ change too. Entries away from the matrix diagonal connect their equations, so ψ₁, ψ₂, ψ₃ and ψ₄ must be calculated together—not as four independent wavefunctions.</p></article>
+      </div>
       <div class="consequences">
-        <article><b>Spin</b><p>Intrinsic angular momentum appears before being added as a separate assumption.</p></article>
+        <article><b>Spin</b><p>Intrinsic angular momentum appears without being added as a separate assumption.</p></article>
         <article><b>Antimatter</b><p>The second energy branch becomes physical antiparticles, not a mathematical nuisance.</p></article>
-        <article><b>Conserved current</b><p>ρ = ψ†ψ is positive and obeys a local continuity equation.</p></article>
+        <article><b>Conserved probability</b><p>ρ = ψ†ψ = |ψ₁|² + |ψ₂|² + |ψ₃|² + |ψ₄|² stays positive and obeys a local conservation rule.</p></article>
       </div>
     </div>
   </section>
 
-  <section class="slide simulator-slide" data-title="Relativistic laboratory" data-simulator="true">
+  <section class="slide simulator-slide lab" data-title="Race the two equations" data-simulator="true">
     <div class="inner">
-      <div class="sim-head"><div><div class="head"><span class="step">04</span><h2>Run the 1D Dirac equation</h2></div><p class="intro">In one dimension the four-spinor separates into equivalent two-component sectors. This canvas evolves one sector with ℏ = c = 1.</p></div><div class="scenario-tabs"><button class="scenario on" data-scene="free">Free packet</button><button class="scenario" data-scene="zitter">Zitterbewegung</button><button class="scenario" data-scene="klein">Klein barrier</button><button class="scenario" data-scene="massless">Massless</button></div></div>
-      <div class="simulator">
-        <div class="canvas-wrap"><canvas id="diracCanvas" aria-label="One-dimensional Dirac spinor wave packet simulation"></canvas><div class="sim-equation">i∂ₜψ = (−iσₓ∂ₓ + mσ_z + V)ψ</div></div>
-        <div class="telemetry"><div><span>time</span><b id="timeValue">0.00</b></div><div><span>⟨x⟩</span><b id="positionValue">0.00</b></div><div><span>⟨v⟩ / c</span><b id="velocityValue">0.00</b></div><div><span>norm</span><b id="normValue">1.000</b></div><div><span>right of barrier</span><b id="transmissionValue">—</b></div></div>
-        <div class="sim-controls">
-          <div class="control"><label for="momentum">Momentum p₀ <output id="momentumValue">2.0</output></label><input id="momentum" type="range" min="0" max="5" step=".1" value="2"></div>
-          <div class="control"><label for="mass">Mass m <output id="massValue">1.0</output></label><input id="mass" type="range" min="0" max="3" step=".1" value="1"></div>
-          <div class="control"><label for="barrier">Barrier V₀ <output id="barrierValue">0.0</output></label><input id="barrier" type="range" min="0" max="8" step=".1" value="0"></div>
-          <div class="control"><label for="simSpeed">Speed <output id="speedValue">1.0×</output></label><input id="simSpeed" type="range" min=".2" max="3" step=".1" value="1"></div>
-          <div class="sim-actions"><button class="action primary" id="simPlay">Pause</button><button class="action" id="simReset">Reset</button></div>
+      <div class="sim-head">
+        <div>
+          <div class="head"><span class="step">07</span><h2>Race the two equations</h2></div>
+          <p class="intro">One packet, two rules for its energy, integrated side by side. Below the present moment, the same axis is redrawn against time: the light cone becomes a 45° wedge, and anything leaving it has outrun light. <a class="cross-link" href="../schrodinger-equation/#6">Schrödinger simulator ↗</a></p>
         </div>
-        <div class="legend"><span><i class="density-key"></i>|ψ|² probability</span><span><i class="upper-key"></i>upper component</span><span><i class="lower-key"></i>lower component</span><span><i class="cone-key"></i>light cone · speed c</span><span><i class="potential-key"></i>potential V</span></div>
-        <div class="sim-note"><b id="sceneTitle">Free positive-energy packet</b><span id="sceneNote">Its group velocity is p/E, always below c for nonzero mass. The light-cone edges show the causal speed limit.</span></div>
+        <div class="scenario-tabs">
+          <button class="scenario on" data-scene="race">Light-speed race</button>
+          <button class="scenario" data-scene="spread">Spreading</button>
+          <button class="scenario" data-scene="barrier">Tunnelling</button>
+          <button class="scenario" data-scene="klein">Klein step</button>
+          <button class="scenario" data-scene="zitter">Zitterbewegung</button>
+        </div>
       </div>
+
+      <div class="lab-grid">
+        <div class="lab-main">
+          <section class="panel wave-panel">
+            <header><b>Now</b><span>probability density · both lanes share one vertical scale</span></header>
+            <canvas id="waveCanvas" aria-label="Dirac and Schrödinger probability densities on a shared position axis"></canvas>
+            <footer class="legend lab-legend">
+              <span><i class="k-total"></i>Dirac total ψ†ψ</span>
+              <span><i class="k-upper"></i>upper pair ψ₁ ψ₂</span>
+              <span><i class="k-lower"></i>lower pair ψ₃ ψ₄</span>
+              <span><i class="k-sch"></i>Schrödinger |ψ|²</span>
+              <span><i class="k-cone"></i>light cone of the starting packet</span>
+              <span><i class="k-pot"></i>raised potential</span>
+            </footer>
+          </section>
+          <section class="panel spacetime-panel">
+            <header><b>Spacetime</b><span>position and width against time · the shaded wedge is the light cone · t = <em id="timeValue">0.00</em></span></header>
+            <canvas id="spacetimeCanvas" aria-label="Minkowski diagram of both average positions with the light cone"></canvas>
+          </section>
+        </div>
+
+        <aside class="lab-rail">
+          <div class="verdict" id="verdict"><b id="verdictHead">—</b><span id="verdictDetail">—</span></div>
+          <section class="panel">
+            <header><b>Energy vs momentum</b><span>slope = speed</span></header>
+            <canvas id="dispersionCanvas" aria-label="Relativistic and non-relativistic energy curves against momentum"></canvas>
+            <p class="panel-note">The slope of each curve is the packet's speed. Dirac <i>√(p²c² + m²c⁴)</i> bends toward the light line and never reaches <i>c</i>; Schrödinger <i>mc² + p²/2m</i> keeps climbing, and passes <i>c</i> at <i>p = mc</i>.</p>
+          </section>
+          <section class="panel">
+            <header><b>Speed history</b><span id="speedLabel">average speed ⟨v⟩ · in units of c</span></header>
+            <canvas id="speedCanvas" aria-label="Measured speed of both packets over time against the light-speed limit"></canvas>
+          </section>
+          <section class="panel">
+            <header><b>Live readings</b><span>ℏ = c = 1</span></header>
+            <table class="scoreboard">
+              <thead><tr><th></th><th class="d">Dirac</th><th class="s">Schrödinger</th></tr></thead>
+              <tbody>
+                <tr><th>average position ⟨x⟩</th><td id="diracPosition">0.00</td><td id="schPosition">0.00</td></tr>
+                <tr><th>speed ⟨v⟩ ÷ c</th><td id="diracSpeed">0.000</td><td id="schSpeed">0.000</td></tr>
+                <tr><th>packet width σ</th><td id="diracWidth">0.00</td><td id="schWidth">0.00</td></tr>
+                <tr><th>still in the window</th><td id="diracNorm">100%</td><td id="schNorm">100%</td></tr>
+                <tr><th>transmitted</th><td id="diracTransmitted">—</td><td id="schTransmitted">—</td></tr>
+                <tr><th>upper / lower pair</th><td id="diracParts">—</td><td>one component</td></tr>
+              </tbody>
+            </table>
+          </section>
+        </aside>
+      </div>
+
+      <div class="sim-controls">
+        <div class="control"><label for="momentum">Starting momentum <output id="momentumValue">2.4</output></label><input id="momentum" type="range" min="0" max="5" step=".1" value="2.4"></div>
+        <div class="control"><label for="mass">Mass m <output id="massValue">1.0</output></label><input id="mass" type="range" min=".2" max="3" step=".1" value="1"></div>
+        <div class="control"><label for="barrier">Potential height <output id="barrierValue">0.0</output></label><input id="barrier" type="range" min="0" max="10" step=".1" value="0"></div>
+        <div class="control"><label for="simSpeed">Playback <output id="speedValue">1.0×</output></label><input id="simSpeed" type="range" min=".2" max="3" step=".1" value="1"></div>
+        <div class="sim-actions"><button class="action primary" id="simPlay">Pause</button><button class="action" id="simReset">Reset</button></div>
+      </div>
+      <div class="sim-note"><b id="sceneTitle">Light-speed race</b><span id="sceneNote">—</span></div>
     </div>
   </section>
 </main>

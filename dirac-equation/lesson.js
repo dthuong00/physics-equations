@@ -5,6 +5,11 @@
   const toc = document.getElementById("toc");
   let index = 0;
 
+  document.getElementById("total").textContent = slides.length;
+  slides.slice(1).forEach((slide, slideIndex) => {
+    slide.querySelector(".step").textContent = String(slideIndex + 1).padStart(2, "0");
+  });
+
   slides.forEach((slide, slideIndex) => {
     const dot = document.createElement("button");
     dot.type = "button";
