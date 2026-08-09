@@ -1001,12 +1001,19 @@
     const wall = scenes[sceneName].edge !== null;
     if (wall && Math.max(dirac.transmitted, schrodinger.transmitted) > .02) {
       const ahead = dirac.transmitted > schrodinger.transmitted;
+      /* Whichever solution failed to get through is now running backwards, and
+         ⟨v⟩ averages over the whole wave, so its sign is the clearest report of
+         which theory hit a wall. */
+      const turned = [dirac.speed < -.05 && "Dirac", schrodinger.speed < -.05 && "Schrödinger"].filter(Boolean);
+      const bounce = turned.length
+        ? ` ${turned.join(" and ")} now ${turned.length > 1 ? "read" : "reads"} a negative ⟨v⟩: that is the bounce, with most of the wave heading back the way it came.`
+        : "";
       return {
         tone: ahead ? "ok" : "bad",
         head: `Through the wall: Dirac ${percentage(dirac.transmitted)}, Schrödinger ${percentage(schrodinger.transmitted)}`,
         detail: ahead
-          ? `The relativistic equation lets far more through, because the second energy branch gives the wave somewhere to go inside the wall. Its lower pair ψ₃ ψ₄ now carries ${Math.round(dirac.lowerShare * 100)}% of the probability, up from a few per cent on the way in.`
-          : `Schrödinger gets far more through, because p²/2m credits this packet with more kinetic energy than it really has and it passes clean over the top. Dirac has to tunnel, and mostly fails.`
+          ? `The relativistic equation lets far more through, because the second energy branch gives the wave somewhere to go inside the wall. Its lower pair ψ₃ ψ₄ now carries ${Math.round(dirac.lowerShare * 100)}% of the probability, up from a few per cent on the way in.${bounce}`
+          : `Schrödinger gets far more through, because p²/2m credits this packet with more kinetic energy than it really has and it passes clean over the top. Dirac has to tunnel, and mostly fails.${bounce}`
       };
     }
     if (!schrodinger.live) {
