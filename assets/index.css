@@ -110,7 +110,8 @@ h1 { max-width: 740px; margin: 16px 0 17px; font-size: clamp(39px, 6vw, 70px); l
 .energy-rings i:nth-child(1) { width: 105px; height: 105px; }.energy-rings i:nth-child(2) { width: 150px; height: 150px; }.energy-rings i:nth-child(3) { width: 195px; height: 195px; }
 .energy-burst { position: absolute; left: 50%; top: 50%; width: 54px; height: 2px; background: linear-gradient(90deg,var(--orange),transparent); transform-origin: left center; }
 .burst-one { transform: rotate(12deg) translateX(42px); }.burst-two { transform: rotate(102deg) translateX(42px); }.burst-three { transform: rotate(192deg) translateX(42px); }.burst-four { transform: rotate(282deg) translateX(42px); }
-.mass-energy .formula { color: var(--orange); }
+.mass-energy .formula { color: var(--orange); font-size: 19px; }
+.mass-energy .open { color: var(--orange); }
 .gravity-art { background: linear-gradient(180deg,#f0f4ff,#fff); perspective: 500px; }
 .spacetime-grid { position: absolute; left: -8%; right: -8%; top: 16px; height: 220px; background-image: linear-gradient(rgba(49,90,159,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(49,90,159,.2) 1px,transparent 1px); background-size: 28px 28px; transform: rotateX(58deg) rotateZ(-5deg); transform-origin: center 65%; mask-image: radial-gradient(ellipse at center,#000 35%,transparent 76%); }
 .gravity-mass { position: absolute; z-index: 2; left: 50%; top: 52%; width: 55px; height: 55px; border-radius: 50%; background: radial-gradient(circle at 35% 30%,#879ecc,#315a9f 70%); transform: translate(-50%,-50%); box-shadow: 0 14px 27px rgba(49,90,159,.28); }
