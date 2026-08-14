@@ -31,8 +31,13 @@ npm run record -- "bell-inequality/#7" --crop .bench-panel --gif
 npm run record -- "bell-inequality/#7" --click "#view2d" --crop .bench-panel --gif
 
 # any other lesson or slide
-npm run record -- "dirac-equation/#8" --crop .lab-grid --seconds 20
-npm run record -- "schrodinger-equation/#6" --gif
+npm run record -- "dirac-equation/#8" --crop .lab-grid --gif --seconds 20
+npm run record -- "schrodinger-equation/#6" --gif --seconds 10
+
+# newton rocket launch (click starts the sim before capture)
+npm run record -- "newton-2nd-law/#4" --click "#worldPlay" --crop .world-lab --seconds 12 --gif
 ```
 
 Useful flags: `--seconds` (length), `--click <selector>` (setup interactions, repeatable), `--crop <selector>` (capture one element instead of the full page), `--fps` / `--gif-width` (GIF quality), `--out` (output basename). Run `python tools/record.py --help` for everything.
+
+The README gallery GIFs live in `assets/media/` (committed, unlike `recordings/`). To regenerate one, add `--fps 10 --gif-width 720 --out assets/media/<lesson-name>` to the matching command above and delete the leftover `.webm`.
