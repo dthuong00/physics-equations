@@ -94,6 +94,8 @@ h1 { max-width: 740px; margin: 16px 0 17px; font-size: clamp(39px, 6vw, 70px); l
 .particle { left: 22%; color: #315a9f; }.antiparticle { right: 17%; color: var(--orange); }
 .dirac .formula { color: #315a9f; font-size: 18px; }.dirac .open { color: #315a9f; }
 .bell-art { background: radial-gradient(circle at 50% 50%, #fff 0 15%, #f5f3ed 70%); }
+.bell .formula { color: var(--violet); font-size: 20px; }
+.bell .open { color: var(--violet); }
 .entangled-source { position: absolute; left: 50%; top: 50%; display: grid; width: 43px; height: 43px; place-items: center; border: 2px solid var(--violet); border-radius: 50%; background: white; color: var(--violet); font: italic 19px Georgia, serif; transform: translate(-50%,-50%); box-shadow: 0 0 0 9px rgba(78,78,182,.08); }
 .beam { position: absolute; top: 50%; width: 27%; border-top: 2px dashed rgba(78,78,182,.42); }
 .beam-left { left: 17%; }.beam-right { right: 17%; }

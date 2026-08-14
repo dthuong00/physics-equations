@@ -1,0 +1,17 @@
+{
+  "name": "physics-equations",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Easy, intuitive break down of physics equations — with interactive visualization.",
+  "scripts": {
+    "start": "npx --yes http-server -p 8000 -c-1 .",
+    "record": "python tools/record.py",
+    "vendor": "node -e \"const fs=require('fs');fs.copyFileSync('node_modules/three/build/three.module.js','assets/three.module.js');fs.copyFileSync('node_modules/three/LICENSE','assets/three.LICENSE.txt');console.log('three '+JSON.parse(fs.readFileSync('node_modules/three/package.json')).version+' copied to assets/')\""
+  },
+  "dependencies": {
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.3.0"
+  }
+}
