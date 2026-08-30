@@ -2,7 +2,7 @@
   "name": "physics-equations",
   "version": "1.0.0",
   "private": true,
-  "description": "Easy, intuitive break down of physics equations — with interactive visualization.",
+  "description": "Easy, intuitive breakdowns of physics equations - with interactive visualization. A just-for-fun, non-profit project.",
   "scripts": {
     "start": "npx --yes http-server -p 8000 -c-1 .",
     "record": "python tools/record.py",

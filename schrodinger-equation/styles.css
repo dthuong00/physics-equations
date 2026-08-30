@@ -231,7 +231,7 @@ p.body b{color:var(--ink);font-weight:650}
 .cols.tight .xc p{font-size:12px;line-height:1.5}
 /* explanation cards living inside .grid, so they align to the equation columns */
 .grid > .xc{margin-top:8px}
-/* the dial sits above its text — the term column is far too narrow to put a
+/* the dial sits above its text - the term column is far too narrow to put a
    104px canvas beside a paragraph without shredding the line breaks */
 .phase-row{display:flex;flex-direction:column;gap:9px;margin-top:3px}
 .phase-row canvas{width:104px;height:104px;align-self:center;background:#fff;

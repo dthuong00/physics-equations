@@ -1,0 +1,123 @@
+#boxCanvas {
+  flex: 1 1 0;
+  min-height: clamp(360px, 50vh, 580px);
+}
+
+.box-lab .lab-rail {
+  grid-template-rows: auto auto auto 1fr;
+}
+
+.budget {
+  display: grid;
+  gap: 7px;
+  padding: 10px 12px;
+}
+
+.budget-row {
+  display: grid;
+  grid-template-columns: 96px 1fr 62px;
+  align-items: center;
+  gap: 8px;
+}
+
+.budget-row > span {
+  color: var(--muted);
+  font-size: 9.5px;
+  line-height: 1.3;
+}
+
+.budget-row > b {
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 750;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.budget-track {
+  height: 11px;
+  border-radius: 3px;
+  background: var(--wash);
+  overflow: hidden;
+}
+
+.budget-track i {
+  display: block;
+  height: 100%;
+  transition: width .25s ease;
+}
+
+.budget-track .parts {
+  background: var(--blue);
+}
+
+.budget-track .motion {
+  background: linear-gradient(90deg, var(--orange), #f0a17f);
+}
+
+.budget-note {
+  margin: 0;
+  border-top: 1px solid var(--line);
+  padding: 7px 12px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.budget-note b {
+  color: var(--ink);
+}
+
+.scoreboard tfoot th,
+.scoreboard tfoot td {
+  border-top: 1px solid var(--line);
+  padding: 3px 10px;
+  text-align: right;
+  font-size: 10.5px;
+  font-weight: 750;
+}
+
+.scoreboard tfoot th {
+  color: var(--muted);
+  font-weight: 650;
+  text-align: left;
+}
+
+.scoreboard tfoot .wall-row th,
+.scoreboard tfoot .wall-row td {
+  border-top: 0;
+  color: var(--soft);
+  font-style: italic;
+}
+
+.scoreboard tfoot .wall-row.live th,
+.scoreboard tfoot .wall-row.live td {
+  background: var(--orange-pale);
+  color: var(--orange);
+}
+
+.scoreboard tfoot .s-row th,
+.scoreboard tfoot .s-row td {
+  border-top: 0;
+  background: var(--green-pale);
+  color: var(--green);
+  font-weight: 850;
+}
+
+.weigh-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+  padding: 6px 12px;
+  background: var(--wash);
+  color: var(--soft);
+  font-size: 9.5px;
+}
+
+.weigh-line b {
+  color: var(--ink);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,59 @@
+#histCanvas {
+  flex: 1 1 0;
+  min-height: clamp(360px, 50vh, 580px);
+}
+
+#eventCanvas {
+  height: clamp(170px, 23vh, 240px);
+}
+
+.disc-lab .lab-rail {
+  grid-template-rows: auto auto auto 1fr;
+}
+
+.hist-legend i.k-sig {
+  background: rgba(217, 93, 57, .82);
+}
+
+.hist-legend i.k-bkg {
+  background: #dcdde1;
+}
+
+.hist-legend i.k-window {
+  background: #f2f2f1;
+  border: 1px solid var(--line);
+  height: 9px;
+}
+
+.hist-legend i.k-true {
+  background: repeating-linear-gradient(90deg, var(--soft) 0 4px, transparent 4px 8px);
+}
+
+.disc-lab .scoreboard tbody td {
+  font-size: 11px;
+}
+
+.disc-lab .scoreboard tbody td.big {
+  font-size: 12.5px;
+  font-weight: 850;
+}
+
+.disc-lab .scoreboard .s-row td {
+  color: var(--orange);
+  background: var(--orange-pale);
+}
+
+@media (max-width: 1080px) {
+  .disc-lab .lab-rail,
+  .box-lab .lab-rail {
+    grid-template-rows: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .disc-lab .lab-rail,
+  .box-lab .lab-rail {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,6 +1,6 @@
 # Development
 
-The site is static — no build step. GitHub Pages serves the repository as-is.
+The site is static - no build step. GitHub Pages serves the repository as-is.
 
 ## Running locally
 
@@ -12,7 +12,7 @@ then open <http://localhost:8000/>. Any static server works (`python -m http.ser
 
 ## Dependencies
 
-The dependency is managed through npm and vendored into `assets/` so GitHub Pages can serve it directly. `assets/three.module.js` must stay committed — Pages never runs npm. To upgrade it, bump the version in `package.json`, then:
+The dependency is managed through npm and vendored into `assets/` so GitHub Pages can serve it directly. `assets/three.module.js` must stay committed - Pages never runs npm. To upgrade it, bump the version in `package.json`, then:
 
 ```sh
 npm install
@@ -25,10 +25,10 @@ npm run vendor
 
 ```sh
 # Bell simulator, cropped to the 3D bench, with a GIF
-npm run record -- "bell-inequality/#7" --crop .bench-panel --gif
+npm run record -- "bell-inequality/#8" --crop .bench-panel --gif
 
 # same but switched to the 2D view first
-npm run record -- "bell-inequality/#7" --click "#view2d" --crop .bench-panel --gif
+npm run record -- "bell-inequality/#8" --click "#view2d" --crop .bench-panel --gif
 
 # any other lesson or slide
 npm run record -- "dirac-equation/#8" --crop .lab-grid --gif --seconds 20

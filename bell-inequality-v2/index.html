@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A slow, student-paced walk to Bell's inequality: what entanglement is, what Einstein and quantum mechanics each claimed, the little bit of math that settles it - and a two-universe CHSH simulator.">
+<title>Bell's inequality - no answers until you ask</title>
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./simulator.css">
+</head>
+<body>
+<div class="progress"><i id="progress"></i></div>
+<main class="deck">
+
+  <section class="slide" data-title="Start">
+    <div class="inner center title-slide">
+      <div class="eyebrow">Quantum entanglement · Bell's inequality</div>
+      <h1>Does a particle know the answer before you ask the question?</h1>
+      <div class="hero-equation"><i>|S|</i><b>&nbsp;≤&nbsp;</b><span class="t-t">2</span><span class="hero-tail">- the hard ceiling for any universe that writes its answers in advance. Ours scores 2.83.</span></div>
+      <p class="lede">Einstein was sure that quantum particles secretly carry their measurement results with them, the way a sealed letter carries its contents before anyone opens it. Bohr said no - the result does not exist until you look. For thirty years this sounded like philosophy, untestable even in principle. Then in 1964 John Bell noticed something everyone had missed: the two pictures disagree about a number. This lesson walks there slowly - what entanglement actually is, what each side claimed, the small piece of math that springs the trap - and ends with a lab where you run the experiment in both universes.</p>
+      <div class="toc" id="toc"></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Entanglement">
+    <div class="inner center">
+      <div class="head"><span class="step">01</span><h2>First, the ingredients: photons, filters, and a strange pair</h2></div>
+      <p class="intro">The experiment at the heart of this story needs only two things: light, and polarizing filters - the same stuff as good sunglasses. Everything deep later on hangs on this one humble measurement, so let's meet it properly.</p>
+      <div class="analogy-grid">
+        <article><b>The measurement: will this photon pass a filter?</b>
+          <svg viewBox="0 0 200 130" role="img" aria-label="A photon travels toward a polarizing filter drawn as a hatched disc; it either passes, marked +1, or is blocked, marked −1">
+            <line class="a-ray" x1="8" y1="65" x2="62" y2="65"/>
+            <circle class="a-photon" cx="30" cy="65" r="5"/>
+            <g transform="translate(92,65)">
+              <circle class="a-filter" r="30"/>
+              <line class="a-hatch" x1="-10" y1="-27" x2="-10" y2="27"/><line class="a-hatch" x1="10" y1="-27" x2="10" y2="27"/><line class="a-hatch" x1="-20" y1="-21" x2="-20" y2="21"/><line class="a-hatch" x1="20" y1="-21" x2="20" y2="21"/>
+              <line class="a-axis" x1="0" y1="-28" x2="0" y2="28"/>
+            </g>
+            <text class="a-lab" x="92" y="122" text-anchor="middle">filter at some angle</text>
+            <line class="a-ray" x1="124" y1="45" x2="168" y2="32"/>
+            <circle class="a-pass" cx="172" cy="31" r="5"/><text class="a-note pass" x="182" y="34">+1</text>
+            <circle class="a-block" cx="130" cy="90" r="5"/><text class="a-note block" x="140" y="93">−1</text>
+          </svg>
+          <p>Light is a wave that wiggles in a direction across its travel - its <b>polarization</b>. A polarizing filter is a gate with a preferred angle: light aligned with the angle sails through, light across it is stopped. But light arrives in indivisible <b>photons</b>, so each photon must answer whole: pass (<b>+1</b>) or blocked (<b>−1</b>). One filter angle = one yes/no question put to one photon.</p>
+        </article>
+        <article><b>The strange part: entangled pairs</b>
+          <svg viewBox="0 0 200 130" role="img" aria-label="A crystal source emits two photons in opposite directions toward two filters set to the same angle; both photons give the answer +1">
+            <rect class="a-src" x="88" y="53" width="24" height="24" rx="4" transform="rotate(45 100 65)"/>
+            <text class="a-lab" x="100" y="112" text-anchor="middle">one crystal, two photons</text>
+            <line class="a-ray" x1="84" y1="65" x2="52" y2="65"/><line class="a-ray" x1="116" y1="65" x2="148" y2="65"/>
+            <circle class="a-photon" cx="66" cy="65" r="4.5"/><circle class="a-photon" cx="134" cy="65" r="4.5"/>
+            <g transform="translate(30,65)"><circle class="a-filter" r="19"/><line class="a-axis" x1="0" y1="-17" x2="0" y2="17"/></g>
+            <g transform="translate(170,65)"><circle class="a-filter" r="19"/><line class="a-axis" x1="0" y1="-17" x2="0" y2="17"/></g>
+            <text class="a-note pass" x="30" y="32" text-anchor="middle">+1</text>
+            <text class="a-note pass" x="170" y="32" text-anchor="middle">+1</text>
+            <text class="a-lab" x="100" y="20" text-anchor="middle">same angle → same answer, always</text>
+          </svg>
+          <p>Certain crystals absorb one laser photon and emit <b>two</b> lower-energy photons flying apart. Test either photon alone, at any angle you like: a perfect coin flip, 50/50, no pattern at all. But set <b>both</b> filters to the <b>same</b> angle and compare notebooks afterwards: the answers <b>always match</b> - both passed, or both blocked. Every single time, no matter how far apart the two labs are.</p>
+        </article>
+      </div>
+      <div class="steps-card">
+        <header><b>Three facts any explanation must survive</b><span>memorize these - the whole argument rests on them</span></header>
+        <div class="steps-row">
+          <span><b>1</b><em>Alone, pure noise.</em> Each photon by itself answers 50/50 at every filter angle. No experiment on one photon shows anything special.</span>
+          <span><b>2</b><em>Together, perfect agreement.</em> Same angle on both sides → the two answers agree 100% of the time.</span>
+          <span><b>3</b><em>Distance is irrelevant.</em> It holds across a lab bench - and across 1,200 km, photon pairs beamed down from the Micius satellite in 2017.</span>
+        </div>
+      </div>
+      <div class="insight">Careful, though: matching alone is <b>not yet spooky</b>. Two gloves from one pair, boxed and shipped apart, also "always match". The real mystery only appears when the two filters are <b>tilted differently</b> - <span>hold that thought; the tilt is the whole story</span>.</div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Einstein's view">
+    <div class="inner center">
+      <div class="head"><span class="step">02</span><h2>Einstein: "The answers were written down in advance"</h2></div>
+      <p class="intro">In 1935 Einstein - with Podolsky and Rosen - looked at those perfect correlations and gave the explanation any detective would: nobody is communicating, the twins simply agreed on their story before they parted. His picture rests on two assumptions so natural you barely notice they are assumptions:</p>
+      <div class="term-cards">
+        <article class="tc-g"><b>Realism - answers exist before the question</b><p>Each photon leaves the crystal carrying, in effect, a filled-in answer sheet: <b>"at 0° I'll pass, at 22.5° pass, at 45° blocked…"</b> - a definite plan for every angle it might meet. Physicists call the hidden sheet a <b>hidden variable</b> and write it λ. We can't read it; the photon can.</p></article>
+        <article class="tc-t"><b>Locality - no influence outruns light</b><p>Whatever Alice does to her photon in one lab <b>cannot instantly change</b> anything about Bob's photon far away. Influences need time to travel - at most at light speed. This is the beating heart of Einstein's own relativity.</p></article>
+        <article class="tc-l"><b>Together: "local realism"</b><p>A world with both properties - things have definite features, and influence travels no faster than light - is called <b>locally real</b>. It is the world of Newton, of relativity, of everyday experience. Keep the name in mind: Bell's inequality applies to <b>every</b> such world, with no exceptions.</p></article>
+      </div>
+      <div class="steps-card">
+        <header><b>The glove story - why the matching seems innocent</b><span>Einstein's explanation of facts 1–3, in one shipment</span></header>
+        <div class="steps-row">
+          <span><b>1</b>Pack one <em>left</em> glove and one <em>right</em> glove into two identical boxes. Shuffle them. Ship one to Paris, one to Tokyo.</span>
+          <span><b>2</b>Paris opens theirs: left! At that instant Paris knows - with certainty - that Tokyo's box holds the right glove.</span>
+          <span><b>3</b>Nothing spooky happened. No signal flew between the boxes. <em>The correlation was packed at the source.</em> Entangled photons, says Einstein, are exactly like this.</span>
+        </div>
+        <p class="steps-note">In this picture quantum "randomness" isn't real randomness - it's <b>ignorance</b>. The photon knows perfectly well what it will do; we just can't see λ. Hence Einstein's famous complaint: <b>"God does not play dice."</b></p>
+      </div>
+      <div class="fact-cards">
+        <article><b>"Spooky action at a distance"</b><p>Einstein's mocking name (<i>spukhafte Fernwirkung</i>) for the only alternative he could see: that measuring one photon instantly shapes its partner, wherever it is. To him this was obviously absurd - proof that quantum theory was <b>incomplete</b>, a good statistics book missing its final chapter.</p></article>
+        <article><b>Bohr's reply</b><p>Niels Bohr insisted the pair is <b>one indivisible system</b>: asking what one photon "really carried" on its own is a question without meaning. Frustratingly, both men matched every experiment anyone could then imagine.</p></article>
+        <article><b>Thirty years of shrugging</b><p>Since the two pictures predicted the same numbers for every test people thought of, most physicists filed the debate under philosophy and went to lunch. It took a CERN accelerator theorist working in his spare time - John Bell - to notice that they <b>don't always</b> predict the same numbers.</p></article>
+      </div>
+      <div class="insight">Einstein's picture explains the perfect same-angle matching without breaking a sweat - that's what makes it so persuasive. To beat it we need a question the pre-written answer sheet <b>cannot fake</b>. <span>Bell found it hiding in the tilted angles.</span></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="The quantum view">
+    <div class="inner center">
+      <div class="head"><span class="step">03</span><h2>Quantum mechanics: "There is no answer until you ask"</h2></div>
+      <p class="intro">Quantum theory refuses to hand each photon its own answer sheet. Its claim is stranger, so take it in three careful sips:</p>
+      <div class="term-cards">
+        <article class="tc-g"><b>One description for two photons</b><p>The theory writes a <b>single</b> state for the whole pair - "both aligned vertically, plus both aligned horizontally, in superposition." Notice what's missing: any statement about photon 1 by itself. The pair has a definite <b>relationship</b>; neither partner has a polarization of its own.</p></article>
+        <article class="tc-t"><b>Measurement creates the outcome</b><p>When Alice's photon meets her filter it must decide - and the theory insists the decision happens <b>there and then, genuinely at random</b>, following no hidden script. The instant it decides, the shared state snaps: Bob's photon is now exactly aligned with whatever Alice's photon did.</p></article>
+        <article class="tc-l"><b>Correlation, yes - communication, no</b><p>Bob cannot feel the snap. His own photon still answers 50/50 at whatever angle he chooses; his data alone is pure noise (fact 1!). The correlation only becomes visible later, when the two notebooks travel - at light speed or slower - to the same table. Relativity survives, if a little uncomfortably.</p></article>
+      </div>
+      <div class="eq-card">
+        <span>The one number quantum theory adds - the chance the two filters give the same answer</span>
+        <div class="eq-line"><b class="t-g">P(agree)</b><i>=</i><b class="t-t">cos²(α − β)</b><span class="eq-tail">α, β = the two filter angles</span></div>
+      </div>
+      <div class="steps-card">
+        <header><b>Read the formula slowly</b><span>it contains everything we've seen - and one new promise</span></header>
+        <div class="steps-row">
+          <span><b>1</b><em>Same angle:</em> α − β = 0, and cos² 0 = 1 → agree <em>always</em>. ✓ That's the perfect matching from fact 2.</span>
+          <span><b>2</b><em>Crossed at 90°:</em> cos² 90° = 0 → answers always <em>opposite</em>. Also perfectly rigid, just inverted.</span>
+          <span><b>3</b><em>In between</em> - say 22.5° apart - cos² 22.5° ≈ 0.85 → agree 85% of the time. This in-between region is where the two worldviews will finally part ways.</span>
+        </div>
+      </div>
+      <div class="insight">"They carried a plan" and "they decide on the spot" both explain facts 1–3, and both sound equally untestable. Bell's discovery: <b>every conceivable plan leaves an arithmetic fingerprint</b> at the in-between angles - and the cos² rule doesn't have it. <span>Time for the math. Gently.</span></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Scoring agreement">
+    <div class="inner center">
+      <div class="head"><span class="step">04</span><h2>Turning "how much do they agree?" into one number</h2></div>
+      <p class="intro">To compare the two worldviews we need agreement as a <b>number</b>. Score each pair like this: write +1 when a photon passes, −1 when it's blocked, and <b>multiply the two sides</b>. Agreement (+1·+1 or −1·−1) scores +1; disagreement scores −1. The average score over many pairs is called the <b>correlation, E</b>.</p>
+      <div class="steps-card">
+        <header><b>A ten-pair warm-up</b><span>correlation is nothing more than an average</span></header>
+        <div class="steps-row">
+          <span><b>1</b>You run 10 photon pairs. On 8 of them the answers match (each scores +1); on 2 they differ (each scores −1).</span>
+          <span><b>2</b>E = (8 − 2) ⁄ 10 = <em>+0.6</em>. Positive means "mostly agreeing". That's the whole calculation.</span>
+          <span><b>3</b>The scale: <em>E = +1</em> always agree · <em>E = 0</em> no relationship at all · <em>E = −1</em> always disagree.</span>
+        </div>
+      </div>
+      <div class="eq-card">
+        <span>Quantum theory's prediction, straight from the cos² rule on the last slide</span>
+        <div class="eq-line"><b class="t-g">E(α, β)</b><i>=</i><b class="t-k">P(agree) − P(disagree)</b><i>=</i><b class="t-t">cos 2(α − β)</b></div>
+      </div>
+      <figure class="chart-fig">
+        <figcaption><b>Two predictions for the same experiment</b><span>correlation E against the tilt θ between the filters</span></figcaption>
+        <div class="chart-legend"><span><i class="sw-q"></i>quantum: E = cos 2θ</span><span><i class="sw-hv"></i>best answer-sheet plan: a straight line</span></div>
+        <svg viewBox="0 0 460 258" role="img" aria-label="Correlation E plotted against filter tilt from 0 to 90 degrees. The quantum cosine curve bulges above the straight hidden-plan line, with the largest gaps at 22.5 degrees, 0.71 versus 0.50, and at 67.5 degrees, minus 0.71 versus minus 0.50.">
+          <g class="cg">
+            <line x1="46" y1="26" x2="440" y2="26"/><line x1="46" y1="74" x2="440" y2="74"/><line x1="46" y1="122" x2="440" y2="122"/><line x1="46" y1="170" x2="440" y2="170"/><line x1="46" y1="218" x2="440" y2="218"/>
+            <line x1="144.5" y1="26" x2="144.5" y2="218"/><line x1="243" y1="26" x2="243" y2="218"/><line x1="341.5" y1="26" x2="341.5" y2="218"/>
+          </g>
+          <g class="ct">
+            <text x="40" y="29" text-anchor="end">+1</text><text x="40" y="77" text-anchor="end">+0.5</text><text x="40" y="125" text-anchor="end">0</text><text x="40" y="173" text-anchor="end">−0.5</text><text x="40" y="221" text-anchor="end">−1</text>
+            <text x="46" y="234" text-anchor="middle">0°</text><text x="144.5" y="234" text-anchor="middle">22.5°</text><text x="243" y="234" text-anchor="middle">45°</text><text x="341.5" y="234" text-anchor="middle">67.5°</text><text x="440" y="234" text-anchor="middle">90°</text>
+            <text class="caxis" x="243" y="252" text-anchor="middle">tilt between the two filters, θ</text>
+            <text class="caxis" x="8" y="14">correlation E</text>
+          </g>
+          <line class="c-hv" x1="46" y1="26" x2="440" y2="218"/>
+          <polyline class="c-q" points="46,26 67.9,27.4 89.8,31.8 111.7,38.9 133.6,48.5 155.4,60.3 177.3,74 199.2,89.2 221.1,105.3 243,122 264.9,138.7 286.8,154.8 308.7,170 330.6,183.7 352.4,195.5 374.3,205.1 396.2,212.2 418.1,216.6 440,218"/>
+          <g class="c-gap"><line x1="144.5" y1="54.1" x2="144.5" y2="74"/><line x1="341.5" y1="170" x2="341.5" y2="189.9"/></g>
+          <circle class="c-dot-q" cx="144.5" cy="54.1" r="3.5"/><circle class="c-dot-hv" cx="144.5" cy="74" r="3.5"/>
+          <circle class="c-dot-hv" cx="341.5" cy="170" r="3.5"/><circle class="c-dot-q" cx="341.5" cy="189.9" r="3.5"/>
+          <text class="c-lab-q" x="152" y="52">0.71</text><text class="c-lab-hv" x="138" y="90" text-anchor="end">0.50</text>
+          <text class="c-lab-hv" x="348" y="164">−0.50</text><text class="c-lab-q" x="333" y="205" text-anchor="end">−0.71</text>
+        </svg>
+      </figure>
+      <div class="fact-cards">
+        <article><b>A first crack: the triangle rule</b><p>In any plan-world, mismatches obey a triangle rule: tilting by 45° can't produce more mismatches than two 22.5° tilts combined. But quantum: mismatch at 22.5° is 15%, at 45° it's 50% - and <b>50 &gt; 15 + 15</b>. The cosine's lazy start near 0° is what no answer sheet can quite imitate.</p></article>
+        <article><b>But maybe a cleverer plan…?</b><p>Fair objection. One suspicious angle is not a proof, and there are infinitely many possible plans - random ones, correlated ones, conspiracies. Bell's move on the next slide: combine <b>four</b> measurements so that every plan, no matter how clever, is trapped by pure arithmetic.</p></article>
+      </div>
+      <div class="insight">Keep the picture: <b>the violet cosine bulges past the straight line</b>, by at most 0.71 vs 0.50 at 22.5°. Bell's inequality is the machine that turns this small bulge into an ironclad contradiction. <span>Next: the trap, in four steps you can check by hand.</span></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Bell's trap">
+    <div class="inner center">
+      <div class="head"><span class="step">05</span><h2>Bell's trap: four questions, one impossible score</h2></div>
+      <p class="intro">Here is the modern (CHSH, 1969) form of Bell's 1964 idea. Alice randomly asks her photon one of <b>two</b> questions - filter at <b>a = 0°</b> or <b>a′ = 45°</b>. Bob randomly asks one of his two - <b>b = 22.5°</b> or <b>b′ = 67.5°</b>. After thousands of pairs they compute the four correlations and combine them into a single score:</p>
+      <div class="eq-card">
+        <span>The CHSH score - note the single minus sign; it is the trap's spring</span>
+        <div class="eq-line"><b class="t-g">S</b><i>=</i><b class="t-k">E(a, b)</b><i>−</i><b class="t-t">E(a, b′)</b><i>+</i><b class="t-k">E(a′, b)</b><i>+</i><b class="t-k">E(a′, b′)</b></div>
+      </div>
+      <div class="bound-steps">
+        <article><span>Step 1 <i>suppose Einstein is right</i></span><b>Then every pair carries four pre-written answers: <em>A</em> and <em>A′</em> for Alice's two possible angles, <em>B</em> and <em>B′</em> for Bob's - each simply +1 or −1, all four fixed at the source, even though each run only ever asks two of them.</b></article>
+        <article><span>Step 2 <i>one line of algebra</i></span><b>For one answer sheet, look at A·B − A·B′ + A′·B + A′·B′ = <em>A(B − B′) + A′(B + B′)</em>. Since B and B′ are each ±1, either B = B′ (then B − B′ = 0 and B + B′ = ±2) or B = −B′ (then B + B′ = 0 and B − B′ = ±2). Either way one bracket vanishes and the other is ±2: <em>every sheet scores exactly +2 or −2.</em></b></article>
+        <article><span>Step 3 <i>the ceiling</i></span><b>S is the average of those per-sheet scores. An average of numbers that are all +2 or −2 must land between −2 and +2. That's it - that is Bell's inequality: <em>|S| ≤ 2</em> in every local-realist world. No assumption about how the sheets are written: clever, random, correlated - the ceiling holds.</b></article>
+        <article class="final"><span>Step 4 <i>quantum's score</i></span><b>Now quantum mechanics: E = cos 2(tilt). The four tilts are 22.5°, 67.5°, 22.5°, 22.5°, giving E's of +0.71, −0.71, +0.71, +0.71. The minus sign flips the −0.71 into a fourth +0.71: <em>S = 4 × 0.71 = 2√2 ≈ 2.83.</em> Above the ceiling. The two worldviews finally, cleanly disagree.</b></article>
+      </div>
+      <div class="fact-cards">
+        <article><b>"But only two questions get asked!"</b><p>Right - each pair reveals only one of A/A′ and one of B/B′; the ±2 concerns answers that mostly stay hidden. That's fine: <b>if</b> all four answers exist, the averaging argument holds no matter which two you happen to sample - provided the choices are random and independent of the sheet. That proviso is why real experiments pick the angles at the last nanosecond, while the photons are already in flight.</p></article>
+        <article><b>Why 22.5°, of all angles?</b><p>Look back at the chart: 22.5° is where the cosine beats the straight line by the most. The four CHSH settings are rigged so <b>every</b> pair of questions sits at that sweet spot - the one 67.5° tilt contributes E = −0.71, and the minus sign in S turns it into a fourth +0.71.</p></article>
+        <article><b>The ±2 trick is the whole theorem</b><p>No wave functions, no philosophy - just the fact that B − B′ and B + B′ can't both be nonzero when B, B′ = ±1. Don't take our word for it: there are only 16 ways to fill in A, A′, B, B′. <b>Check all 16 on a napkin</b>; every one scores ±2.</p></article>
+      </div>
+      <div class="insight">One line of algebra says <b>S ≤ 2</b>; one line of trigonometry says <b>S = 2.83</b>. They cannot both describe our universe. <span>All that's left is to ask the universe - next slide, and then you'll ask it yourself.</span></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="The verdict">
+    <div class="inner center">
+      <div class="head"><span class="step">06</span><h2>Nature's verdict: the ceiling breaks</h2></div>
+      <p class="intro">From tabletop lasers to a satellite in orbit, every honest run of the experiment lands on the quantum side: S comes out <b>above 2</b>, standard deviation after standard deviation, loophole after closed loophole.</p>
+      <div class="s-scale">
+        <svg viewBox="0 0 460 118" role="img" aria-label="A number line of the CHSH score S from 1.8 to 3. Einstein's ceiling sits at 2, the quantum limit at 2.83. Measured results - Micius 2017 at 2.37, Delft 2015 at 2.42, Aspect 1982 at 2.70 - all sit above the ceiling.">
+          <rect class="sz-cl" x="30" y="58" width="66.7" height="20"/>
+          <rect class="sz-q" x="96.7" y="58" width="333.3" height="20"/>
+          <text class="s-lab ink" x="101" y="22">Einstein's ceiling: S = 2</text>
+          <text class="s-lab q" x="367" y="22" text-anchor="end">quantum limit: 2√2 ≈ 2.83</text>
+          <text class="s-lab" x="237" y="36" text-anchor="middle">Delft 2015 · 2.42 ± 0.20 (loophole-free)</text>
+          <text class="s-lab" x="198" y="50" text-anchor="middle">Micius 2017 · 2.37</text>
+          <text class="s-lab" x="318" y="50" text-anchor="middle">Aspect 1982 · 2.70</text>
+          <line class="s-ceiling" x1="96.7" y1="26" x2="96.7" y2="82"/>
+          <line class="s-qlimit" x1="372.7" y1="26" x2="372.7" y2="82"/>
+          <line class="s-err" x1="190" y1="63" x2="250" y2="63"/><circle class="s-dot" cx="220" cy="63" r="4"/>
+          <line class="s-err" x1="170" y1="73" x2="303.4" y2="73"/><circle class="s-dot" cx="236.7" cy="73" r="4"/>
+          <line class="s-err" x1="325" y1="68" x2="335" y2="68"/><circle class="s-dot" cx="330" cy="68" r="4"/>
+          <line class="s-axis" x1="30" y1="78" x2="430" y2="78"/>
+          <g class="s-tick"><line x1="96.7" y1="78" x2="96.7" y2="83"/><line x1="180" y1="78" x2="180" y2="83"/><line x1="263.3" y1="78" x2="263.3" y2="83"/><line x1="346.7" y1="78" x2="346.7" y2="83"/><line x1="430" y1="78" x2="430" y2="83"/></g>
+          <g class="s-num"><text x="96.7" y="94" text-anchor="middle">2.0</text><text x="180" y="94" text-anchor="middle">2.25</text><text x="263.3" y="94" text-anchor="middle">2.5</text><text x="346.7" y="94" text-anchor="middle">2.75</text><text x="430" y="94" text-anchor="middle">3.0</text></g>
+          <text class="s-cap" x="30" y="112">left of the ceiling: all answer-sheet worlds · measured reality: to the right</text>
+        </svg>
+      </div>
+      <div class="milestones">
+        <span><b>1964</b>Bell publishes the inequality</span>
+        <span><b>1972</b>Freedman &amp; Clauser: first test - quantum wins</span>
+        <span><b>1982</b>Aspect: angles switched while photons fly · S = 2.70</span>
+        <span><b>2015</b>Delft, NIST, Vienna: loophole-free tests</span>
+        <span><b>2017</b>Micius satellite: violation across 1,200 km</span>
+        <span><b>2022</b>Nobel Prize: Clauser, Aspect, Zeilinger</span>
+      </div>
+      <div class="fact-cards">
+        <article><b>What died</b><p><b>Local realism.</b> At least one of Einstein's two common-sense assumptions is false: either particles do not carry pre-set answers (most physicists' pick), or influences ignore the light-speed limit. You may choose which to abandon - but you cannot keep both.</p></article>
+        <article><b>What survived</b><p><b>Relativity - exactly.</b> The correlations cannot carry a message: Bob's raw data stays a perfect coin flip until Alice's notebook arrives by ordinary channels. Spooky correlations, yes; usable faster-than-light signal, no. The peace between quantum theory and relativity is uneasy but unbroken.</p></article>
+        <article><b>What it built</b><p>The "useless philosophy" became hardware. <b>Quantum key distribution</b>: an eavesdropper's touch collapses the correlations, and the drop in S exposes them. Plus certified random-number generators, and entanglement as the working currency of quantum computers and networks.</p></article>
+      </div>
+      <div class="insight">Bell's ±2 argument was airtight, so the universe had to give up the other side: <b>there are no answer sheets</b>. The photon genuinely does not decide until it is asked. <span>Now go watch it decide - the lab is on the next slide.</span></div>
+    </div>
+  </section>
+
+  <section class="slide simulator-slide" data-title="Run the experiment" data-simulator="true">
+    <div class="inner">
+      <div class="sim-head">
+        <div>
+          <div class="head"><span class="step">07</span><h2>Run the experiment yourself</h2></div>
+          <p class="intro">The bench fires entangled photon pairs at two polarizers. You choose the filter angles - and, the switch Bell never had, <b>which universe manufactures the pairs</b>. Fire, watch the correlation dot land on the cosine or on the straight line, then run the full four-setting CHSH test and read S. Click a scoreboard row to jump to its angles.</p>
+        </div>
+        <div class="scenario-tabs">
+          <button class="scenario on" type="button" data-world="quantum">Quantum world</button>
+          <button class="scenario" type="button" data-world="hidden">Einstein's world (hidden plan)</button>
+        </div>
+      </div>
+
+      <div class="lab-grid">
+        <div class="lab-main">
+          <section class="panel">
+            <header><b>Optical bench</b><span>source → two polarizers → +1 pass / −1 blocked</span></header>
+            <canvas id="benchCanvas" aria-label="Animated optical bench: a source at the center fires photon pairs toward Alice's and Bob's polarizer discs; each photon flashes +1 when it passes or −1 when it is blocked"></canvas>
+            <footer class="counts">
+              <span><b id="cPP">0</b>+1 · +1</span>
+              <span><b id="cPM">0</b>+1 · −1</span>
+              <span><b id="cMP">0</b>−1 · +1</span>
+              <span><b id="cMM">0</b>−1 · −1</span>
+              <span class="e-read"><b id="eNow">E = -</b><i id="eN">0 pairs at this setting</i></span>
+            </footer>
+          </section>
+          <section class="panel">
+            <header><b>Correlation vs filter tilt</b><span>your data must land on one of two curves</span></header>
+            <canvas id="chartCanvas" aria-label="Live chart of correlation E against the tilt between the filters, showing the quantum cosine, the hidden-plan straight line, and dots for your accumulated measurements"></canvas>
+            <p class="panel-note"><span class="sw sw-q"></span>quantum cos 2θ · <span class="sw sw-hv"></span>hidden-plan line · <span class="sw sw-dot"></span>your measurements (bigger dot = more pairs) · hover the chart to read values</p>
+          </section>
+        </div>
+
+        <aside class="lab-rail">
+          <div class="verdict waiting" id="verdict"><b id="verdictHead">The bench is ready</b><span id="verdictDetail">Fire pairs at any angles - or press "Run the CHSH test" to collect all four settings automatically.</span></div>
+          <section class="panel">
+            <header><b>CHSH scoreboard</b><span>S = E(a,b) − E(a,b′) + E(a′,b) + E(a′,b′)</span></header>
+            <table class="scoreboard">
+              <thead><tr><th>term</th><th>angles</th><th>E</th><th>pairs</th></tr></thead>
+              <tbody>
+                <tr data-setting="0"><th>+ E(a, b)</th><td>0° · 22.5°</td><td><b id="e0">-</b></td><td id="n0">0</td></tr>
+                <tr data-setting="1"><th>− E(a, b′)</th><td>0° · 67.5°</td><td><b id="e1">-</b></td><td id="n1">0</td></tr>
+                <tr data-setting="2"><th>+ E(a′, b)</th><td>45° · 22.5°</td><td><b id="e2">-</b></td><td id="n2">0</td></tr>
+                <tr data-setting="3"><th>+ E(a′, b′)</th><td>45° · 67.5°</td><td><b id="e3">-</b></td><td id="n3">0</td></tr>
+              </tbody>
+            </table>
+            <div class="meter">
+              <div class="meter-track">
+                <b class="meter-mark" style="left:66.67%"><span>2 - the ceiling</span></b>
+                <b class="meter-mark q" style="left:94.28%"><span>2√2</span></b>
+                <u class="meter-needle" id="sNeedle"></u>
+              </div>
+              <div class="meter-read"><b id="sValue">S = -</b><span id="sSigma">collect all four settings</span></div>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+      <div class="sim-controls">
+        <div class="control"><label for="alphaSlider">Alice's filter <output id="alphaOut">α = 0°</output></label><input id="alphaSlider" type="range" min="0" max="180" step="0.5" value="0"></div>
+        <div class="control"><label for="betaSlider">Bob's filter <output id="betaOut">β = 22.5°</output></label><input id="betaSlider" type="range" min="0" max="180" step="0.5" value="22.5"></div>
+        <div class="sim-actions">
+          <button class="action" id="fire1Btn" type="button">Fire 1 pair</button>
+          <button class="action" id="fire500Btn" type="button">Fire 500</button>
+          <button class="action primary" id="chshBtn" type="button">Run the CHSH test</button>
+          <button class="action" id="resetBtn" type="button">Reset</button>
+        </div>
+      </div>
+      <div class="sim-note"><b id="modeTitle">Quantum world</b><span id="modeNote">No answer sheets on board. Alice's photon decides at random at her filter; the shared state then makes Bob's photon agree with probability cos²(α − β). Prediction: dots on the violet cosine, and S ≈ 2.83.</span></div>
+    </div>
+  </section>
+
+</main>
+<nav class="nav"><button id="prev">← Previous</button><div class="dots" id="dots"></div><div class="counter"><b id="current">1</b> / <span id="total">8</span> · <span id="slideTitle">Start</span></div><button class="next" id="next">Next →</button></nav>
+<script src="./lesson.js"></script>
+<script src="./simulator.js"></script>
+</body>
+</html>

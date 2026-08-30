@@ -2,8 +2,8 @@
   "use strict";
 
   /* The grid runs far wider than the plotted window on purpose. A packet's tails
-     reach the absorbing edges long before its centre does — by the time the race
-     packet's mean is at x = 34 its 4σ edge is 30 units further on — so the sponge
+     reach the absorbing edges long before its centre does - by the time the race
+     packet's mean is at x = 34 its 4σ edge is 30 units further on - so the sponge
      has to sit well past VIEW for a run to stay honest until the packet leaves
      the picture. DX is unchanged from the narrower grid it replaces; the step
      count per frame is halved to pay for the larger transform. */
@@ -94,21 +94,21 @@
       duration: 21,
       momentum: 0, mass: 1, barrier: 0, width: .55, start: 0, wall: 0,
       shape: "free", branch: "positive", edge: null, focus: "width",
-      note: "Neither packet is going anywhere — both averages sit at zero — yet look at the width bands below. A pinched packet is a wide mixture of momenta, and Schrödinger lets those momenta travel at p/m with no ceiling, so its edges push out through the light cone at better than c. Dirac gives every component a speed below c, so no matter how sharply you pinch it, its width stays inside the cone."
+      note: "Neither packet is going anywhere - both averages sit at zero - yet look at the width bands below. A pinched packet is a wide mixture of momenta, and Schrödinger lets those momenta travel at p/m with no ceiling, so its edges push out through the light cone at better than c. Dirac gives every component a speed below c, so no matter how sharply you pinch it, its width stays inside the cone."
     },
     barrier: {
       title: "Tunnelling through a wall",
       duration: 22,
       momentum: 4, mass: 1, barrier: 5, width: 1.9, start: -12, wall: 3,
       shape: "barrier", branch: "positive", edge: 3,
-      note: "At p = 4 the two energy curves have come badly apart: Schrödinger credits this packet with p²/2m = 8 and simply flies over a wall of height 5, while Dirac's honest √(p²c² + m²c⁴) − mc² = 3.1 leaves it stuck underneath, tunnelling. Over-estimating a fast particle's kinetic energy is not a small error — it changes what the particle is allowed to do. Wait for the violet packet; it arrives well after the green one."
+      note: "At p = 4 the two energy curves have come badly apart: Schrödinger credits this packet with p²/2m = 8 and simply flies over a wall of height 5, while Dirac's honest √(p²c² + m²c⁴) − mc² = 3.1 leaves it stuck underneath, tunnelling. Over-estimating a fast particle's kinetic energy is not a small error - it changes what the particle is allowed to do. Wait for the violet packet; it arrives well after the green one."
     },
     klein: {
       title: "The Klein step",
       duration: 34,
       momentum: 1.2, mass: 1, barrier: 5.5, width: 2.6, start: -10, wall: 0,
       shape: "step", branch: "positive", edge: 1.5,
-      note: "Raise the step past E + mc² and Dirac stops treating it as a wall: a large share of the packet crosses, and inside the step it is carried almost entirely by the lower pair ψ₃ ψ₄ — the negative-energy branch, which is to say antiparticles. Schrödinger simply reflects. This is the Klein paradox, and it is the Dirac equation asking to be replaced by a quantum field theory."
+      note: "Raise the step past E + mc² and Dirac stops treating it as a wall: a large share of the packet crosses, and inside the step it is carried almost entirely by the lower pair ψ₃ ψ₄ - the negative-energy branch, which is to say antiparticles. Schrödinger simply reflects. This is the Klein paradox, and it is the Dirac equation asking to be replaced by a quantum field theory."
     },
     zitter: {
       title: "Zitterbewegung",
@@ -485,7 +485,7 @@
   }
 
   /* Each scene runs for as long as it has something worth trusting, then holds
-     its last frame rather than snapping back to the start — that frame is the
+     its last frame rather than snapping back to the start - that frame is the
      one with the settled numbers and the fully drawn worldlines. The norm test
      is only a guard for slider settings that empty the window early, at which
      point every average is reporting on a leftover fragment. */
@@ -1020,7 +1020,7 @@
       return {
         tone: "bad",
         head: `Schrödinger has run off the picture`,
-        detail: `Only ${percentage(schrodinger.norm)} of it is left in the window, so the italic figures below are held at the last reading backed by a real wave — ${schrodinger.speed.toFixed(2)} c. Dirac is still here, at ${diracSpeed.toFixed(2)} c with ${percentage(dirac.norm)} of its probability on screen.`
+        detail: `Only ${percentage(schrodinger.norm)} of it is left in the window, so the italic figures below are held at the last reading backed by a real wave - ${schrodinger.speed.toFixed(2)} c. Dirac is still here, at ${diracSpeed.toFixed(2)} c with ${percentage(dirac.norm)} of its probability on screen.`
       };
     }
     if (scenes[sceneName].branch === "mixed") {
@@ -1044,7 +1044,7 @@
       return {
         tone: "bad",
         head: `Schrödinger is doing ${schSpeed.toFixed(2)} c`,
-        detail: `Nothing carrying mass may reach 1.00 c, so the green solution has left physics behind — its worldline is outside the cone. Dirac holds at ${diracSpeed.toFixed(2)} c, which is exactly pc²/E.`
+        detail: `Nothing carrying mass may reach 1.00 c, so the green solution has left physics behind - its worldline is outside the cone. Dirac holds at ${diracSpeed.toFixed(2)} c, which is exactly pc²/E.`
       };
     }
     return {
@@ -1074,8 +1074,8 @@
     ["diracPosition", "diracSpeed", "diracWidth", "diracParts"].forEach((id) => readouts[id].classList.toggle("stale", !dirac.live));
     ["schPosition", "schSpeed", "schWidth"].forEach((id) => readouts[id].classList.toggle("stale", !schrodinger.live));
     const hasWall = scenes[sceneName].edge !== null;
-    readouts.diracTransmitted.textContent = hasWall ? percentage(dirac.transmitted) : "—";
-    readouts.schTransmitted.textContent = hasWall ? percentage(schrodinger.transmitted) : "—";
+    readouts.diracTransmitted.textContent = hasWall ? percentage(dirac.transmitted) : "-";
+    readouts.schTransmitted.textContent = hasWall ? percentage(schrodinger.transmitted) : "-";
     readouts.diracParts.textContent = `${Math.round((1 - dirac.lowerShare) * 100)}% / ${Math.round(dirac.lowerShare * 100)}%`;
 
     const description = describeVerdict();

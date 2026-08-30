@@ -241,7 +241,7 @@ function setBar(el, zero, val){
 function updateBars(){
   const keep = normLeft/norm0;
   /* Below ~1% there is nothing left but numerical dust, and every average is a
-     ratio — so it still returns a perfectly finite, perfectly meaningless number.
+     ratio - so it still returns a perfectly finite, perfectly meaningless number.
      Freeze the display at the last reading that was backed by a real wave. */
   const spent = keep < 0.01;
   if(!spent){ shownT = expT; shownV = expV; shownE = expE; shownX = expX; }
@@ -259,10 +259,10 @@ function updateBars(){
 
   const leak = $('leak');
   if(spent){
-    leak.textContent = '· the particle has left the window — these are the last readings backed by a real wave. Press Reset.';
+    leak.textContent = '· the particle has left the window - these are the last readings backed by a real wave. Press Reset.';
     leak.style.display = '';
   } else if(keep < 0.995){
-    leak.textContent = '· some of the wave has left the window — ⟨E⟩ is now the average over what is still on screen, not the true total';
+    leak.textContent = '· some of the wave has left the window - ⟨E⟩ is now the average over what is still on screen, not the true total';
     leak.style.display = '';
   } else {
     leak.style.display = 'none';
@@ -274,7 +274,7 @@ let W = 0, H = 0;
 function resize(){
   const dpr = window.devicePixelRatio || 1;
   W = cv.clientWidth; H = cv.clientHeight;
-  if(W < 2 || H < 2) return false;          // hidden slide — nothing to size yet
+  if(W < 2 || H < 2) return false;          // hidden slide - nothing to size yet
   cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   return true;
@@ -295,12 +295,12 @@ function draw(){
     const d = pr[i]*pr[i] + pi[i]*pi[i];
     if(d > maxD) maxD = d;
   }
-  /* the |Ψ|² scale may grow (interference spikes) but never shrink — otherwise a
+  /* the |Ψ|² scale may grow (interference spikes) but never shrink - otherwise a
      spreading packet is silently re-normalised to full height and looks unchanged */
   if(maxD > dRef) dRef = maxD;
   const dScale = (base - 24) / Math.max(dRef, 0.05);
 
-  /* scale the potential to the energy, not to its own maximum — tall walls
+  /* scale the potential to the energy, not to its own maximum - tall walls
      simply clip at the ceiling instead of flattening everything else */
   const vRef = Math.max(expE*2.2, 0.5);
   const vScale = (base - 24) / vRef;

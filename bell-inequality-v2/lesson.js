@@ -19,7 +19,7 @@
     if (slideIndex > 0) {
       const item = document.createElement("button");
       item.type = "button";
-      item.innerHTML = `<b>${String(slideIndex).padStart(2, "0")}</b>${slide.dataset.title}`;
+      item.innerHTML = `<b>0${slideIndex}</b>${slide.dataset.title}`;
       item.addEventListener("click", () => show(slideIndex));
       toc.appendChild(item);
     }
@@ -34,7 +34,7 @@
     document.getElementById("prev").disabled = index === 0;
     document.getElementById("next").disabled = index === slides.length - 1;
     document.getElementById("progress").style.width = `${index / (slides.length - 1) * 100}%`;
-    window.dispatchEvent(new CustomEvent("lesson:slide", { detail: { simulator: slides[index].dataset.simulator || "" } }));
+    window.dispatchEvent(new CustomEvent("lesson:slide", { detail: { simulator: Boolean(slides[index].dataset.simulator) } }));
     history.replaceState(null, "", `#${index + 1}`);
   }
 

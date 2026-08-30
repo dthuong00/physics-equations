@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An intuitive walkthrough of the Einstein field equations Gμν + Λgμν = (8πG/c⁴)Tμν, with interactive 3D labs: bend spacetime with mass, then collide two black holes and watch the gravitational waves spiral out.">
+<title>Einstein field equations - matter tells spacetime how to curve</title>
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./simulator.css">
+<link rel="stylesheet" href="./merger.css">
+<script type="importmap">{"imports":{"three":"../assets/three.module.js"}}</script>
+</head>
+<body>
+<div class="progress"><i id="progress"></i></div>
+<main class="deck">
+  <section class="slide" data-title="Start">
+    <div class="inner center title-slide">
+      <div class="eyebrow">General relativity · gravity as geometry</div>
+      <h1>Gravity is not a force.<br>It's the shape of spacetime.</h1>
+      <div class="hero-equation"><i>G<sub>μν</sub></i><b>+</b><span class="t-l">Λg<sub>μν</sub></span><b>=</b><span class="t-t">(8πG∕c⁴)&hairsp;T<sub>μν</sub></span><span class="hero-tail">- ten equations that replaced Newton's one</span></div>
+      <p class="lede">In November 1915 Einstein replaced gravity-the-force with a single idea: mass and energy bend the geometry of space and time, and everything else simply coasts through the bends. This one line predicts falling apples, drifting GPS clocks, black holes, gravitational waves and the expanding universe. Walk through what each symbol says - then pour mass into spacetime and bend it yourself.</p>
+      <div class="toc" id="toc"></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Reading the equation">
+    <div class="inner center">
+      <div class="head"><span class="step">01</span><h2>Two sides of a cosmic conversation</h2></div>
+      <p class="intro">The left side is pure <b>geometry</b> - how spacetime curves. The right side is pure <b>content</b> - what's in it. The equals sign forces them to agree, everywhere, at every instant. The indices μ and ν each run over the four directions of spacetime {t, x, y, z}:</p>
+      <div class="eq-card">
+        <span>One tensor equation - a 4 × 4 grid of statements, one per pair of spacetime directions</span>
+        <div class="eq-line"><b class="t-g">G<sub>μν</sub></b><i>+</i><b class="t-l">Λg<sub>μν</sub></b><i>=</i><b class="t-k">8πG∕c⁴</b><i>·</i><b class="t-t">T<sub>μν</sub></b><span class="eq-tail">curvature = content, at every point in the universe</span></div>
+      </div>
+      <div class="term-cards">
+        <article class="tc-g"><b>G<sub>μν</sub> - the curvature side</b><p>The Einstein tensor: a distilled summary of how spacetime bends at a point - how free-falling paths converge, volumes shrink, and clocks fall out of step. It is built entirely from the metric g<sub>μν</sub>, the field that says how much time ticks and rulers stretch. The metric <b>is</b> the gravitational field.</p></article>
+        <article class="tc-l"><b>Λg<sub>μν</sub> - the vacuum's own gravity</b><p>The cosmological constant: empty space carries a whisper of energy, and it gravitates - repulsively. Einstein inserted Λ in 1917, later called it his greatest blunder, and in 1998 supernova surveys resurrected it as <b>dark energy</b>: today it makes up roughly 68% of the universe.</p></article>
+        <article class="tc-t"><b>T<sub>μν</sub> - everything in it</b><p>The stress–energy tensor: a complete inventory of energy density, momentum, pressure and stress at each point. <b>This</b> is what sources gravity - not mass alone. Mass is just the densest entry in the ledger.</p></article>
+      </div>
+      <div class="fact-cards">
+        <article><b>Ten equations in one</b><p>The 4×4 grid is symmetric (μν = νμ), so 16 slots hold <b>10 independent equations</b> - coupled, nonlinear partial differential equations for the metric. Newton needed one line; spacetime needs ten.</p></article>
+        <article><b>8πG∕c⁴ ≈ 2×10⁻⁴³</b><p>The exchange rate from energy to curvature is absurdly small - c⁴ in the denominator sees to that. Spacetime is the <b>stiffest material there is</b>: it takes a star to dent it visibly.</p></article>
+        <article><b>It feeds on itself</b><p>Curvature carries energy, and energy curves: <b>gravity gravitates</b>. That self-feeding nonlinearity is why exact solutions are rare treasures, and why merging black holes ring spacetime like a struck bell.</p></article>
+      </div>
+      <div class="insight">John Wheeler compressed all ten into one sentence: <b>"Spacetime tells matter how to move; matter tells spacetime how to curve."</b> Read the equals sign as a two-way conversation - <span>the right side sculpts the left, and matter then coasts along the sculpture</span>.</div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Gravity is curved time">
+    <div class="inner center">
+      <div class="head"><span class="step">02</span><h2>The part that pulls the apple is <em>time</em></h2></div>
+      <p class="intro">Everyone has seen the rubber-sheet picture: a mass dents <b>space</b>. But for anything slow - apples, planets, you - the term doing nearly all the work is the <b>time–time</b> component of the metric: near mass, time itself runs slower. Free objects follow the straightest possible path through space<b>time</b>, and when the rate of time varies from place to place, "straight" tilts toward where time runs slow.</p>
+      <div class="analogy-grid">
+        <article><b>Why uneven time turns a path</b>
+          <svg viewBox="0 0 190 130" role="img" aria-label="A path curving toward a region where time runs slower, like a marching column wheeling toward its slow side">
+            <rect class="a-slow" x="8" y="92" width="174" height="30" rx="6"/>
+            <text class="a-slow-label" x="52" y="111">time runs slower here</text>
+            <line class="a-straight" x1="12" y1="30" x2="182" y2="30"/>
+            <path class="a-bent" d="M12 30 C70 30 120 40 176 76"/>
+            <circle class="a-walker" cx="12" cy="30" r="4"/><circle class="a-walker" cx="97" cy="33.5" r="4"/><circle class="a-walker" cx="176" cy="76" r="4"/>
+          </svg>
+          <p>A marching column wheels toward its slow side: the marchers nearer it cover less ground, so the whole line pivots. In spacetime the "marchers" are the ticks of local clocks - a body's path bends toward the region of slow time. That bending <b>is</b> the pull you call gravity: g = c²·(gradient of the time rate).</p>
+        </article>
+        <article><b>Lower means slower - measurably</b>
+          <svg viewBox="0 0 190 130" role="img" aria-label="A tower with a slow clock at its base and a faster clock at its top, and a photon climbing between them">
+            <line class="a-ground" x1="10" y1="118" x2="180" y2="118"/>
+            <line class="a-towerline" x1="70" y1="118" x2="70" y2="16"/><line class="a-towerline" x1="120" y1="118" x2="120" y2="16"/>
+            <line class="a-photon" x1="95" y1="96" x2="95" y2="40"/>
+            <circle class="a-clock" cx="95" cy="100" r="15"/><line class="a-hand" x1="95" y1="100" x2="95" y2="89"/><line class="a-hand" x1="95" y1="100" x2="102" y2="103"/>
+            <circle class="a-clock" cx="95" cy="26" r="15"/><line class="a-hand fast" x1="95" y1="26" x2="103" y2="18"/><line class="a-hand fast" x1="95" y1="26" x2="99" y2="35"/>
+            <text class="a-note fast" x="126" y="30">runs fast</text>
+            <text class="a-note slow" x="126" y="104">runs slow</text>
+          </svg>
+          <p>In 1959 Pound and Rebka caught time dilation across a <b>22-metre tower</b> at Harvard. Today's optical clocks resolve the warp across <b>one millimetre</b> of height. Summed over 4.5 billion years, Earth's core - deeper in the well - is about <b>2½ years younger</b> than its crust.</p>
+        </article>
+      </div>
+      <div class="steps-card">
+        <header><b>Relativity in your pocket</b><span>why GPS must run Einstein's equations</span></header>
+        <div class="steps-row">
+          <span><b>1</b>GPS satellite clocks sit higher in Earth's time-well, so they tick <b>fast</b>: +45 μs per day.</span>
+          <span><b>2</b>They also orbit at 3.9 km/s, so special relativity ticks them <b>slow</b>: −7 μs per day.</span>
+          <span><b>3</b>Net drift: <b>+38 μs per day</b>. Uncorrected, position fixes would slide ~10 km every day - useless by lunchtime.</span>
+        </div>
+        <p class="steps-note"><b>The fix is applied before launch:</b> the clocks are built to tick slightly slow on the ground, so that from orbit they tick exactly right. Every satnav fix is a test of general relativity - passed, billions of times a day.</p>
+      </div>
+      <div class="insight">Curved <b>space</b> is real - it doubles the bending of starlight - but the everyday gravity holding you in your chair is almost entirely <b>curved time</b>: <span>you fall because your future points slightly downhill</span>.</div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="What feeds gravity">
+    <div class="inner center">
+      <div class="head"><span class="step">03</span><h2>Newton billed mass. Einstein bills everything.</h2></div>
+      <p class="intro">In Newton's law the only source of gravity is mass. The field equations replace it with T<sub>μν</sub> - a 4×4 ledger of everything energy and momentum are doing at a point. Each row and column is one spacetime direction:</p>
+      <div class="tensor-figure">
+        <div class="tensor-grid" role="img" aria-label="The 4 by 4 stress-energy tensor: the time-time slot is energy density, the time-space slots are energy flux and momentum density, the space-space diagonal is pressure and the off-diagonal is shear stress">
+          <span class="tg-head"></span><span class="tg-head">t</span><span class="tg-head">x</span><span class="tg-head">y</span><span class="tg-head">z</span>
+          <span class="tg-head">t</span>
+          <span class="tg-cell energy"><b>T<sup>tt</sup></b><span>energy density</span></span>
+          <span class="tg-cell flux"><b>T<sup>tx</sup></b><span>energy flux</span></span>
+          <span class="tg-cell flux"><b>T<sup>ty</sup></b><span>energy flux</span></span>
+          <span class="tg-cell flux"><b>T<sup>tz</sup></b><span>energy flux</span></span>
+          <span class="tg-head">x</span>
+          <span class="tg-cell flux"><b>T<sup>xt</sup></b><span>momentum density</span></span>
+          <span class="tg-cell press"><b>T<sup>xx</sup></b><span>pressure</span></span>
+          <span class="tg-cell shear"><b>T<sup>xy</sup></b><span>shear</span></span>
+          <span class="tg-cell shear"><b>T<sup>xz</sup></b><span>shear</span></span>
+          <span class="tg-head">y</span>
+          <span class="tg-cell flux"><b>T<sup>yt</sup></b><span>momentum density</span></span>
+          <span class="tg-cell shear"><b>T<sup>yx</sup></b><span>shear</span></span>
+          <span class="tg-cell press"><b>T<sup>yy</sup></b><span>pressure</span></span>
+          <span class="tg-cell shear"><b>T<sup>yz</sup></b><span>shear</span></span>
+          <span class="tg-head">z</span>
+          <span class="tg-cell flux"><b>T<sup>zt</sup></b><span>momentum density</span></span>
+          <span class="tg-cell shear"><b>T<sup>zx</sup></b><span>shear</span></span>
+          <span class="tg-cell shear"><b>T<sup>zy</sup></b><span>shear</span></span>
+          <span class="tg-cell press"><b>T<sup>zz</sup></b><span>pressure</span></span>
+        </div>
+        <div class="tensor-key">
+          <span><i class="key-energy"></i><b>Energy density</b> - Newton's "mass", promoted: all energy counts, at E = mc² rates.</span>
+          <span><i class="key-flux"></i><b>Energy flux / momentum density</b> - energy on the move gravitates too. (The grid is symmetric: these pair up.)</span>
+          <span><i class="key-press"></i><b>Pressure</b> - pushing outward in x, y, z. Yes: pressure itself is a source of gravity.</span>
+          <span><i class="key-shear"></i><b>Shear stress</b> - sideways drags, as inside a twisting fluid or a stressed solid.</span>
+        </div>
+      </div>
+      <div class="fact-cards">
+        <article><b>Pressure gravitates</b><p>Inside a massive neutron star, the pressure fighting collapse <b>adds</b> gravity, which demands more pressure, which adds more gravity… past roughly two solar masses nothing wins. That runaway is why black holes must form.</p></article>
+        <article><b>A hot thing outweighs a cold one</b><p>A wound spring, a charged battery, a box of trapped light - each weighs more than its relaxed twin by E/c². Immeasurably small in the lab, but this democracy of energy is exactly what the equation demands.</p></article>
+        <article><b>Conservation comes free</b><p>The geometry side obeys an identity: ∇·G ≡ 0, always. So the equation <b>forces</b> ∇·T = 0 - energy and momentum must be conserved. Matter literally cannot move in a way spacetime's bookkeeping forbids: the law of motion hides inside the field equation.</p></article>
+      </div>
+      <div class="insight">The sources of gravity are democratic: <b>anything carrying energy or momentum bends spacetime</b> - matter, light, pressure, even gravity's own field energy. Mass is merely <span>the densest currency in circulation</span>.</div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="The simplest solution">
+    <div class="inner center">
+      <div class="head"><span class="step">04</span><h2>One lonely mass, and a whole zoo appears</h2></div>
+      <p class="intro">Weeks after Einstein published - computing from an artillery post on the Russian front - <b>Karl Schwarzschild</b> solved the equations exactly for the empty space around a single sphere of mass M. The entire geometry hangs on one length:</p>
+      <div class="eq-card">
+        <span>The Schwarzschild radius - how small a mass must be squeezed for its escape speed to reach c</span>
+        <div class="eq-line"><b class="t-g">r<sub>s</sub></b><i>=</i><b class="t-t">2GM∕c²</b></div>
+      </div>
+      <div class="rs-chips">
+        <span><b>Sun</b>r<sub>s</sub> = 3.0 km</span>
+        <span><b>Earth</b>r<sub>s</sub> = 9 mm</span>
+        <span><b>You</b>r<sub>s</sub> ≈ 10⁻²⁵ m</span>
+        <span><b>M87* black hole</b>r<sub>s</sub> ≈ 120 × Earth's orbit</span>
+      </div>
+      <div class="bound-steps">
+        <article><span>r = r<sub>s</sub> · <i>the horizon</i></span><b>The rate of time falls to <em>zero</em>. Not a wall - just the surface where every future direction points inward. One-way glass, made of geometry.</b></article>
+        <article><span>r = 1.5 r<sub>s</sub> · <i>the photon sphere</i></span><b>Light itself orbits in circles here (unstably). This skimming light draws the bright ring in the Event Horizon Telescope images.</b></article>
+        <article><span>r = 3 r<sub>s</sub> · <i>the ISCO</i></span><b>The <em>innermost stable circular orbit</em>. Closer in, no orbit can hold - matter spirals down. This edge sets the inner rim of accretion discs.</b></article>
+        <article class="final"><span>r ≫ r<sub>s</sub> · <i>Newton restored</i></span><b>Far from the mass, orbits close into ellipses and the equation quietly hands back <em>F = GMm/r²</em>… almost.</b></article>
+      </div>
+      <div class="fact-cards">
+        <article><b>…almost: Mercury's 43″</b><p>Schwarzschild orbits don't quite close - each ellipse <b>precesses</b>. Mercury's perihelion creeps 43 arcseconds per century beyond every known tug. When Einstein's new equations produced exactly that number, he reported heart palpitations.</p></article>
+        <article><b>Light bends double</b><p>Curved time alone gives Newton's guess for grazing starlight: 0.87″. Curved <b>space</b> doubles it to 1.75″. Eddington's 1919 eclipse measured the double - and made Einstein a household name overnight.</p></article>
+        <article><b>Stars have a floor</b><p>Buchdahl's theorem: no static star can hold itself smaller than <b>9/8 r<sub>s</sub></b>. Squeeze past that and no pressure in physics can win. Black holes aren't decoration - they're the equation running out of other answers.</p></article>
+      </div>
+      <div class="insight">Every landmark - horizon, photon sphere, ISCO, precession, bending - sits at a fixed multiple of <b>r<sub>s</sub></b>. Learn one number and you know the whole neighborhood. <span>The simulator two slides ahead draws all of them to scale</span>.</div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="What it predicts">
+    <div class="inner center">
+      <div class="head"><span class="step">05</span><h2>Feed it a different T<sub>μν</sub>, get a different universe</h2></div>
+      <p class="intro">The field equations are a machine: describe the contents, and the machine returns the shape of spacetime. A century of physics is just different entries fed into the right-hand side:</p>
+      <div class="fact-cards four">
+        <article><b>An expanding cosmos</b><p>Fill T<sub>μν</sub> with a uniform gas of galaxies and the equations refuse to sit still: spacetime must expand or contract (Friedmann, 1922). Einstein resisted - then Hubble measured the recession. Big Bang cosmology is this equation plus hydrogen.</p></article>
+        <article><b>Ripples in the vacuum</b><p>Set T<sub>μν</sub> = 0 and shake: curvature travels as <b>waves at c</b>. A century later, LIGO heard two black holes merge 1.3 billion light-years away - a 0.2-second chirp that briefly out-shone, in wave power, all the stars in the observable universe.</p></article>
+        <article><b>Lenses made of gravity</b><p>Galaxy clusters bend passing light into arcs and Einstein rings - telescopes made of spacetime. Weighing the lensing against the visible matter is how we map <b>dark matter</b>.</p></article>
+        <article><b>Time-keeping tech</b><p>GPS corrects for curved time by design, and modern optical clocks sense the warp of a <b>one-millimetre</b> lift. Einstein's equations are now a surveying instrument.</p></article>
+      </div>
+      <div class="milestones">
+        <span><b>1915</b>field equations; Mercury's 43″ explained</span>
+        <span><b>1916</b>Schwarzschild's solution; waves predicted</span>
+        <span><b>1919</b>eclipse: light bends the full double</span>
+        <span><b>1959</b>Pound–Rebka: time dilation in a tower</span>
+        <span><b>1974</b>binary pulsar: orbit decays as waves predict</span>
+        <span><b>2015</b>LIGO hears black holes merge</span>
+        <span><b>2019</b>EHT photographs M87*'s shadow</span>
+      </div>
+      <div class="insight">One line of geometry spans clock experiments at 10⁻³ m and cosmology at 10²⁶ m - <b>29 orders of magnitude on a single equals sign</b>. Now take the controls: <span>pour mass into a patch of spacetime and read the curvature yourself</span>.</div>
+    </div>
+  </section>
+
+  <section class="slide simulator-slide lab" data-title="Bend spacetime" data-simulator="well">
+    <div class="inner">
+      <div class="sim-head">
+        <div>
+          <div class="head"><span class="step">06</span><h2>Bend spacetime yourself</h2></div>
+          <p class="intro">No rubber sheet here - curved space is drawn honestly, in all three dimensions. <b>Color is the local rate of time.</b> The dashed lattice is a grid of <b>taut strings</b>: each drawn as the straightest possible line the curved space allows. Far from the mass they are ruler-straight - real curvature genuinely dies off as r<sub>s</sub>∕r - but a string passing at distance b is forced to bend by ≈ r<sub>s</sub>∕b (tens of degrees when it grazes), and a string aimed inside the horizon simply <b>ends on it</b>: there is no straight line through. That forced bending, in every direction, <i>is</i> the curvature. You hold the <b>green launcher</b>: drag its body anywhere, drag its arrow tip to aim any direction, then <b>Launch matter</b> or <b>Fire light</b> from exactly there. Try aiming straight along a dashed string - light peels away at twice the string's bend, and matter bends harder still, because moving objects travel through space<b>time</b>. And if the grid looks almost straight while orbits loop right around the mass - <b>that is the discovery</b>: a body moving at speed v bends about (c∕v)² times more than a taut string, so a slow planet's orbit is almost entirely <b>curved time</b>, with space curvature only a whisper on top. Race Einstein against Newton's ghost, push a star past Buchdahl's limit. Drag moves the view, right-drag orbits - or go full screen.</p>
+        </div>
+        <div class="scenario-tabs">
+          <button class="scenario" data-scenario="sun">Sun-like star</button>
+          <button class="scenario" data-scenario="neutron">Neutron star</button>
+          <button class="scenario on" data-scenario="bh">Black hole</button>
+          <button class="scenario" data-scenario="solar">Solar system</button>
+        </div>
+      </div>
+
+      <div class="lab-grid">
+        <div class="lab-main">
+          <section class="panel bench-panel">
+            <header><b>Spacetime</b><div class="view-toggle"><button id="ghostBtn" class="on" type="button">Newton's ghost</button><i class="vt-gap"></i><button id="homeBtn" type="button">⌖ Reset view</button><button id="fsBtn" type="button">⛶ Full screen</button></div><span>drag moves the view · right-drag orbits · scroll zooms · <em id="regimeTag">-</em></span></header>
+            <canvas id="wellCanvas" aria-label="3D view of spacetime around a mass: a lattice of straight rulers bending and crowding toward the mass, colored by the local rate of time, with orbiting matter, bending light rays, ticking clocks and landmark rings"></canvas>
+            <div class="no3d" id="no3d" hidden>This visualization needs WebGL, which your browser has disabled.</div>
+            <footer class="legend lab-legend">
+              <span><i class="k-gr"></i>matter - Einstein's orbit</span>
+              <span><i class="k-newton"></i>Newton's ghost, same launch</span>
+              <span><i class="k-light"></i>light</span>
+              <span><i class="k-rate"></i>grid color = local clock rate</span>
+              <span><i class="k-launch"></i>launcher - drag to place, drag the tip to aim</span>
+              <span><i class="k-shell"></i>dashed lattice: taut strings - the straightest lines space allows</span>
+              <span><i class="k-ring"></i>photon sphere · ISCO</span>
+            </footer>
+          </section>
+        </div>
+
+        <aside class="lab-rail">
+          <div class="verdict waiting" id="verdict"><b id="verdictHead">Spacetime is ready</b><span id="verdictDetail">Launch a particle to start the conversation between matter and geometry.</span></div>
+          <section class="panel">
+            <header><b>Orbit energy landscape</b><span>V<sub>eff</sub>(r) - GR vs Newton</span></header>
+            <canvas id="potentialCanvas" aria-label="Effective potential against radius: Einstein's curve develops a pit near the mass that Newton's curve does not have; the particle's energy and position are marked"></canvas>
+            <p class="panel-note">Violet: Einstein's potential for the latest launch. Blue dashes: Newton's, same launch. Near the mass GR digs a <i>pit</i> Newton doesn't have - the reason orbits precess, and below the ISCO, plunge. <span id="landmarks">-</span></p>
+          </section>
+          <section class="panel">
+            <header><b>Theory vs your experiment</b><span>measured live off the lattice</span></header>
+            <table class="scoreboard">
+              <thead><tr><th></th><th>GR predicts</th><th>your run</th></tr></thead>
+              <tbody>
+                <tr><th>perihelion advance / orbit</th><td id="periTheory">-</td><td id="periMeas">-</td></tr>
+                <tr><th>light bent by <em id="bendB">-</em></th><td id="bendTheory">-</td><td id="bendMeas">-</td></tr>
+                <tr><th>clock rate at r₀</th><td id="clockTheory">-</td><td id="clockMeas">-</td></tr>
+                <tr><th>horizon r<sub>s</sub></th><td id="rsCell">-</td><td>drawn</td></tr>
+                <tr><th>photon sphere 1.5 r<sub>s</sub></th><td id="psCell">-</td><td>drawn</td></tr>
+                <tr class="s-row"><th>ISCO 3 r<sub>s</sub></th><td id="iscoCell">-</td><td>drawn</td></tr>
+              </tbody>
+            </table>
+            <p class="panel-note">Predictions use the textbook weak-field formulas - 6πGM∕(c²a(1−e²)) per orbit, 4GM∕(c²b) for light - so close to the hole your measured numbers should <i>beat</i> them. That gap is the strong field talking. The clock row compares a clock parked at r₀ (theory) with your orbiting particle's own clock - the orbiter runs slower still, because its motion adds special-relativistic dilation on top.</p>
+          </section>
+        </aside>
+      </div>
+
+      <div class="sim-controls">
+        <div class="control"><label for="massSlider">Mass <output id="massValue">rₛ = 1.20</output></label><input id="massSlider" type="range" min="0.03" max="2.4" step="0.01" value="1.2"></div>
+        <div class="control"><label for="speedSlider">Launch speed <output id="speedValue">1.10 × circular</output></label><input id="speedSlider" type="range" min="0.4" max="1.4" step="0.01" value="1.1"></div>
+        <div class="sim-actions"><button class="action primary" id="launchBtn">Launch matter</button><button class="action" id="lightBtn">Fire light</button><button class="action" id="clearBtn">Clear</button></div>
+      </div>
+      <div class="sim-note"><b id="modeTitle">Black hole</b><span id="modeNote">-</span></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Ripples in the geometry">
+    <div class="inner center">
+      <div class="head"><span class="step">07</span><h2>Now <em>move</em> the mass - and spacetime rings</h2></div>
+      <p class="intro">Everything so far has been frozen: park a mass somewhere, read off the dent. So ask the obvious next question - what if the mass <b>moves</b>? Newton has a strange answer: his gravity is instantaneous, so nudge the Sun and the Earth feels it in the same instant, however far away it sits. Einstein's equations forbid that flatly. Nothing outruns light - <b>not even news about geometry</b>. So when mass moves, the change in curvature has to travel outward at c, and a travelling ripple of curvature is a <b>gravitational wave</b>: a passing squeeze in the very distances between things.</p>
+      <div class="eq-card">
+        <span>Einstein's 1918 quadrupole formula - the wave a moving mass sends out</span>
+        <div class="eq-line"><b class="t-g">h<sub>ij</sub></b><i>=</i><b class="t-k">2G∕c⁴r</b><i>·</i><b class="t-t">d²Q<sub>ij</sub>∕dt²</b><span class="eq-tail">h is a <i>strain</i>: the fractional stretch ΔL∕L of every ruler the wave passes through</span></div>
+      </div>
+      <p class="intro">Read it right to left. <b>Q</b> is the mass <b>quadrupole</b> - a number saying how far a lump of mass departs from being a perfect sphere, and along which axis. Take how fast that lopsidedness is <em>changing</em> (the second derivative in time), divide by the same brutal c⁴∕G stiffness that appears in the field equations, and let the result fade as 1∕r. That formula already tells you which motions are silent:</p>
+      <div class="radiator-grid">
+        <article><b>Pulse a ball - silence</b>
+          <svg viewBox="0 0 130 108" role="img" aria-label="A sphere pulsing in and out, radiating nothing">
+            <circle class="rd-ghost" cx="65" cy="50" r="31"/>
+            <circle class="rd-body" cx="65" cy="50" r="20"/>
+            <g class="rd-arrow">
+              <path d="M65 24v-9M61 19l4-5 4 5"/><path d="M65 76v9M61 81l4 5 4-5"/>
+              <path d="M39 50h-9M34 46l-5 4 5 4"/><path d="M91 50h9M96 46l5 4-5 4"/>
+            </g>
+            <text class="rd-tag no" x="65" y="102" text-anchor="middle">no waves</text>
+          </svg>
+          <p>Squeeze a star in and out, perfectly evenly, and its <b>total mass never changes</b> - a sphere is a sphere however big it is. There is no gravitational loudspeaker: the geometry outside just sits there. (Birkhoff's theorem - and the reason a pulsating star is gravitationally mute.)</p>
+        </article>
+        <article><b>Shake it sideways - still silence</b>
+          <svg viewBox="0 0 130 108" role="img" aria-label="A mass shaken side to side against its recoil, radiating nothing">
+            <circle class="rd-ghost" cx="88" cy="50" r="16"/>
+            <circle class="rd-body" cx="48" cy="50" r="16"/>
+            <g class="rd-arrow"><path d="M24 78h82M29 74l-5 4 5 4M101 74l5 4-5 4"/></g>
+            <text class="rd-tag no" x="65" y="102" text-anchor="middle">no waves</text>
+          </svg>
+          <p>Shake a mass back and forth and something has to push back - momentum is conserved, so the recoil moves the opposite way and its contribution <b>cancels yours exactly</b>. Radio antennas work by sloshing charge like this; gravity has no negative mass to make an unbalanced pair, so its dipole is silenced.</p>
+        </article>
+        <article><b>Spin a dumbbell - <em>waves</em></b>
+          <svg viewBox="0 0 130 108" role="img" aria-label="Two masses orbiting each other, radiating arcs of gravitational waves">
+            <path class="rd-wave" d="M23 26A50 50 0 0 0 23 82"/>
+            <path class="rd-wave" d="M107 26A50 50 0 0 1 107 82"/>
+            <path class="rd-bar" d="M43 66 87 42"/>
+            <circle class="rd-solid" cx="43" cy="66" r="13"/>
+            <circle class="rd-solid" cx="87" cy="42" r="11"/>
+            <path class="rd-spin" d="M65 20A34 34 0 0 1 92 33"/><path class="rd-spin" d="M88 27l4 6-7 2"/>
+            <text class="rd-tag yes" x="65" y="102" text-anchor="middle">waves</text>
+          </svg>
+          <p>What survives is the <b>quadrupole</b>: mass arranged so that its <em>shape</em> changes with time. Set the dumbbell spinning and the lopsidedness turns over twice per revolution - so the wave comes out at <b>twice the orbital frequency</b>. Two black holes circling each other are the loudest quadrupole the universe knows how to build.</p>
+        </article>
+      </div>
+      <div class="analogy-grid">
+        <article><b>What arrives: a stretch and a squeeze, at right angles</b>
+          <svg viewBox="0 0 190 130" role="img" aria-label="A ring of free test masses, undistorted, then stretched vertically by plus polarization and diagonally by cross polarization">
+            <circle class="gw-ref" cx="33" cy="52" r="22"/>
+            <circle class="gw-ring" cx="33" cy="52" r="22"/>
+            <circle class="gw-dot" cx="33" cy="30" r="2.6"/><circle class="gw-dot" cx="33" cy="74" r="2.6"/><circle class="gw-dot" cx="11" cy="52" r="2.6"/><circle class="gw-dot" cx="55" cy="52" r="2.6"/>
+            <circle class="gw-ref" cx="95" cy="52" r="22"/>
+            <ellipse class="gw-ring" cx="95" cy="52" rx="15" ry="29"/>
+            <circle class="gw-dot" cx="95" cy="23" r="2.6"/><circle class="gw-dot" cx="95" cy="81" r="2.6"/><circle class="gw-dot" cx="80" cy="52" r="2.6"/><circle class="gw-dot" cx="110" cy="52" r="2.6"/>
+            <circle class="gw-ref" cx="157" cy="52" r="22"/>
+            <g transform="rotate(-45 157 52)"><ellipse class="gw-ring" cx="157" cy="52" rx="29" ry="15"/><circle class="gw-dot" cx="128" cy="52" r="2.6"/><circle class="gw-dot" cx="186" cy="52" r="2.6"/><circle class="gw-dot" cx="157" cy="37" r="2.6"/><circle class="gw-dot" cx="157" cy="67" r="2.6"/></g>
+            <text class="gw-note" x="33" y="98" text-anchor="middle">no wave</text>
+            <text class="gw-note big" x="95" y="98" text-anchor="middle">h₊</text>
+            <text class="gw-note big" x="157" y="98" text-anchor="middle">h×</text>
+            <text class="gw-note" x="95" y="118" text-anchor="middle">one wave, two independent ways to squeeze</text>
+          </svg>
+          <p>Float a ring of beads in space. A wave coming straight at you never pushes the beads along its own direction of travel - it works purely <b>sideways</b>, stretching one diameter while squeezing the one at 90°, then swapping, twice per wave cycle. Those two orientations, upright (<b>h₊</b>) and tilted (<b>h×</b>), are the only two shapes a gravitational wave has. Seen face-on down the axis of an orbit the two mix into a squeeze that <b>rotates</b> - the binary's spin, printed onto space itself.</p>
+        </article>
+        <article><b>The shape of the sound: chirp, then bell</b>
+          <svg viewBox="0 0 190 130" role="img" aria-label="A chirp waveform: rising frequency and amplitude, a peak at merger, then a fast damped ringdown">
+            <line class="gw-axis" x1="4" y1="52" x2="186" y2="52"/>
+            <line class="gw-mark" x1="168" y1="8" x2="168" y2="92"/>
+            <path class="gw-trace" d="M6 32 L9 34 11 40 14 48 16 57 19 65 21 70 24 72 26 70 29 65 31 56 34 47 36 39 39 33 41 31 43 33 46 39 48 48 50 57 53 66 55 72 57 74 60 71 62 65 64 56 66 46 68 38 71 32 73 30 75 32 77 39 79 48 81 58 83 67 85 73 87 75 89 72 91 66 93 56 95 46 97 36 99 30 101 28 103 31 105 38 107 48 108 59 110 68 112 75 114 77 116 74 117 66 119 56 121 45 122 35 124 28 126 26 127 29 129 37 130 48 132 60 133 70 135 77 136 79 138 76 139 67 140 56 142 44 143 33 145 26 146 24 147 27 148 36 150 48 151 61 152 73 153 80 154 82 155 78 156 69 157 56 158 42 159 30 160 22 161 20 162 24 163 34 164 48 164 63 165 76 166 84 166 86 167 81 168 70 168 56 169 41 169 30 169 24 170 25 170 31 171 40 171 50 172 59 172 66 172 69 173 69 173 65 174 59 174 53 174 48 175 43 175 42 176 42 176 44 177 47 177 51 177 55 178 57 178 58 179 58 179 57 179 55 180 52 180 50 181 49 181 48 182 48 182 49 182 50 183 52 183 53 184 54 184 54"/>
+            <text class="gw-note" x="62" y="112" text-anchor="middle">inspiral</text>
+            <text class="gw-note hot" x="166" y="100" text-anchor="end">merger</text>
+            <text class="gw-note" x="186" y="112" text-anchor="end">ringdown</text>
+            <text class="gw-note" x="6" y="126">time →</text>
+          </svg>
+          <p>Waves carry energy away, so the orbit has to pay for them: it shrinks, which makes it faster, which makes the waves louder - a runaway that ends in a collision. Pitch and volume climb together into a <b>chirp</b>, spike as the two horizons swallow each other, and then a single lopsided black hole shudders back into shape, humming its own <b>bell note</b> for a few milliseconds. Shifted into audio it sounds like a slide whistle followed by a thud.</p>
+        </article>
+      </div>
+      <div class="steps-card">
+        <header><b>GW150914 - three acts, 0.2 seconds</b><span>the first gravitational wave ever recorded, 14 September 2015</span></header>
+        <div class="steps-row">
+          <span><b>1</b><b>Inspiral.</b> Two black holes of <b>36</b> and <b>29</b> solar masses, 1.3 billion light-years away, spiral from under a thousand kilometres apart to touching. In LIGO's ears the pitch sweeps 35 → 250 Hz in eight cycles.</span>
+          <span><b>2</b><b>Merger.</b> The last orbit runs at <b>0.6 c</b>. The horizons touch and fuse. Peak radiated power: <b>3.6 × 10⁴⁹ watts</b> - briefly some 50× the light of every star in the observable universe.</span>
+          <span><b>3</b><b>Ringdown.</b> One black hole of <b>62</b> solar masses, spinning at 0.67 of its maximum, rings near 250 Hz and falls quiet in about <b>4 ms</b>. Three solar masses have left the universe as waves.</span>
+        </div>
+        <p class="steps-note"><b>36 + 29 = 62.</b> The missing three solar masses is <i>E = mc²</i> spent on geometry - at its peak this pair turned mass into curvature faster than anything else we have ever observed. And that entire fortune reached Earth as a wobble of <b>h ≈ 10⁻²¹</b>: LIGO's 4-kilometre arms changed length by 4×10⁻¹⁸ m - a few thousandths of the width of a proton.</p>
+      </div>
+      <div class="fact-cards">
+        <article><b>Why it took a century</b><p>Einstein predicted waves in 1916 and doubted anyone could ever catch one - c⁴∕G again. A strain of 10⁻²¹ across the whole Earth comes to about the width of an atomic nucleus. LIGO gets there by beating two 4 km laser arms against each other and resolving <b>10⁻¹⁹ m</b>, far below the size of a proton.</p></article>
+        <article><b>The orbit pays, and it shows</b><p>You do not have to catch the wave to know it is leaving. Hulse and Taylor tracked the binary pulsar <b>PSR B1913+16</b> from 1974 and found its orbit shrinking by <b>3.5 m per year</b> - exactly the rate the quadrupole formula demands. Nobel Prize 1993, for waves nobody had yet heard.</p></article>
+        <article><b>The pitch names the masses</b><p>How fast the chirp rises fixes one combination of the two masses, the <b>chirp mass</b> ℳ = (m₁m₂)<sup>3/5</sup>∕(m₁+m₂)<sup>1/5</sup>, straight out of the quadrupole formula. Read the rising pitch and you have the masses; read the loudness and you have the distance. The waveform <em>is</em> the measurement.</p></article>
+      </div>
+      <div class="insight">Two black holes in a tight orbit is the one problem where <b>every</b> term in the field equations matters at once - curvature feeding on curvature - and no exact solution exists. It took until <b>2005</b> for supercomputers to simulate a merger without the code crashing. <span>Next slide: run one, and watch the geometry ring</span>.</div>
+    </div>
+  </section>
+
+  <section class="slide simulator-slide lab gw-lab" data-title="Merge two black holes" data-simulator="merger">
+    <div class="inner">
+      <div class="sim-head">
+        <div>
+          <div class="head"><span class="step">08</span><h2>Collide two black holes</h2></div>
+          <p class="intro">The sheet is a patch of the <b>orbital plane</b>, about 5,000 km across for a pair like GW150914, and <b>colour is the strain</b> h passing through that spot - orange stretches, blue squeezes. Two funnels are the horizons. The pattern winds into a two-armed spiral for one honest reason: the crest leaving the pair now only reaches the rim later, travelling at exactly the speed of light. That is <b>retardation</b> - the thing Newton's instant gravity does not have. The orbit runs on the quadrupole equations, bleeding energy into the waves until the horizons touch and one ringing black hole is left. The green ring above is a detector: free test masses squeezed by the wave arriving from below, magnified about 10²⁰× or you would see nothing. Drag to orbit, scroll to zoom, and press <b>Hear it</b> - that whoop is this chirp, shifted into your speakers.</p>
+        </div>
+        <div class="gw-tabs">
+          <button class="gwtab on" data-gw="gw150914">GW150914</button>
+          <button class="gwtab" data-gw="twins">Equal twins</button>
+          <button class="gwtab" data-gw="lopsided">Lopsided 5:1</button>
+          <button class="gwtab" data-gw="monsters">Supermassive</button>
+        </div>
+      </div>
+
+      <div class="lab-grid">
+        <div class="lab-main">
+          <section class="panel bench-panel gw-bench">
+            <header><b>Spacetime, radiating</b><div class="view-toggle"><button id="gwFaceBtn" type="button">Face-on</button><button id="gwEdgeBtn" type="button">Edge-on</button><button id="gwCloseBtn" type="button">Close up</button><i class="vt-gap"></i><button id="gwAmpBtn" class="on" type="button">r·h</button><button id="gwRingBtn" class="on" type="button">Test masses</button><button id="gwSpinBtn" type="button">Auto-orbit</button><i class="vt-gap"></i><button id="gwFsBtn" type="button">⛶ Full screen</button></div><span>drag orbits · right-drag pans · scroll zooms · <em id="gwRegime">-</em></span></header>
+            <canvas id="gwCanvas" aria-label="3D view of two black holes spiralling together on a sheet of spacetime, sending out a two-armed spiral of gravitational waves coloured by strain, with a ring of test masses above being squeezed by the passing wave"></canvas>
+            <div class="no3d" id="gwNo3d" hidden>This visualization needs WebGL, which your browser has disabled.</div>
+            <footer class="legend lab-legend gw-legend">
+              <span><i class="k-sheet"></i>colour = wave strain · blue squeeze, orange stretch</span>
+              <span><i class="k-relief"></i>height = the pair's wells + the passing ripple</span>
+              <span><i class="k-hole"></i>horizons, to scale (r<sub>s</sub> = 2Gm∕c²)</span>
+              <span><i class="k-track"></i>orbital track</span>
+              <span><i class="k-detring"></i>ring of free test masses - distortion magnified</span>
+              <span><i class="k-front"></i>merger wavefront, travelling at c</span>
+            </footer>
+          </section>
+        </div>
+
+        <aside class="lab-rail">
+          <div class="verdict waiting" id="gwVerdict"><b id="gwVerdictHead">Inspiral</b><span id="gwVerdictDetail">Two black holes, circling, leaking their orbit into waves.</span></div>
+          <section class="panel">
+            <header><b>The chirp</b><span>strain now · pitch over the whole event</span></header>
+            <canvas id="chirpCanvas" aria-label="Top: the strain waveform scrolling past, growing in amplitude and frequency. Bottom: the gravitational-wave frequency climbing across the whole event on a logarithmic scale, with the detector band shaded"></canvas>
+            <p class="panel-note"><b>Top:</b> what a detector writes down - the wave rolling past right now, newest on the right. <b>Bottom:</b> the pitch of the whole event start to finish, on a log scale; the shaded strip is the <span id="bandName">LIGO–Virgo</span> band. Watch them together: the cycles bunch up as the track climbs, then the merger spike, then a fast decaying hum.</p>
+          </section>
+          <section class="panel">
+            <header><b>Live numbers</b><span>leading-order quadrupole</span></header>
+            <table class="scoreboard">
+              <thead><tr><th></th><th>now</th><th>at merger</th></tr></thead>
+              <tbody>
+                <tr><th>separation</th><td id="sbSep">-</td><td id="sbSepM">-</td></tr>
+                <tr><th>relative speed</th><td id="sbV">-</td><td id="sbVM">-</td></tr>
+                <tr><th>wave frequency</th><td id="sbFreq">-</td><td id="sbFreqM">-</td></tr>
+                <tr><th>strain h at <em id="sbDist">-</em></th><td id="sbStrain">-</td><td id="sbStrainM">-</td></tr>
+                <tr><th>4 km arm stretches</th><td id="sbArm">-</td><td id="sbArmM">-</td></tr>
+                <tr><th>mass radiated</th><td id="sbErad">-</td><td id="sbEradM">-</td></tr>
+                <tr><th>power</th><td id="sbPow">-</td><td id="sbPowM">-</td></tr>
+                <tr><th>… × all starlight</th><td id="sbStars">-</td><td id="sbStarsM">-</td></tr>
+                <tr class="s-row"><th>time to merger</th><td id="sbTime">-</td><td id="sbCycles">-</td></tr>
+              </tbody>
+            </table>
+            <p class="panel-note">Strain falls as 1∕distance, so the same collision at twice the range is half as loud. <i>All starlight</i> means every star in the observable universe added up, ≈7×10⁴⁷ W. The live tally counts only what has left since the film opened; the merger column is the total from an infinitely wide orbit, taken from numerical-relativity fits. <span id="sbCycNote">-</span></p>
+          </section>
+        </aside>
+      </div>
+
+      <div class="sim-controls gw-controls">
+        <div class="control"><label for="totalMass">Total mass <output id="totalMassOut">65 M☉</output></label><input id="totalMass" type="range" min="0" max="1" step="0.001" value="0.1355"></div>
+        <div class="control"><label for="ratio">Mass ratio <output id="ratioOut">1.24 : 1</output></label><input id="ratio" type="range" min="1" max="8" step="0.01" value="1.24"></div>
+        <div class="control"><label for="distance">Distance <output id="distanceOut">410 Mpc</output></label><input id="distance" type="range" min="0" max="1" step="0.001" value="0.5805"></div>
+        <div class="sim-actions"><button class="action primary" id="gwPlayBtn">⏸ Pause</button><button class="action" id="gwSlowBtn">¼ speed</button><button class="action" id="gwReplayBtn">↺ Replay</button><button class="action" id="gwSoundBtn">🔊 Hear it</button></div>
+      </div>
+      <div class="sim-note"><b id="gwTitle">GW150914</b><span id="gwNote">-</span></div>
+    </div>
+  </section>
+</main>
+<nav class="nav"><button id="prev">← Previous</button><div class="dots" id="dots"></div><div class="counter"><b id="current">1</b> / <span id="total">7</span> · <span id="slideTitle">Start</span></div><button class="next" id="next">Next →</button></nav>
+<script src="./lesson.js"></script>
+<script type="module" src="./simulator.js"></script>
+<script type="module" src="./merger.js"></script>
+</body>
+</html>

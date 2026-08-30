@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="An intuitive walkthrough of Bell's inequality (CHSH) with an interactive 3D entanglement experiment.">
-<title>Bell's inequality — the universe on trial</title>
+<title>Bell's inequality - the universe on trial</title>
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="./simulator.css">
 <script type="importmap">{"imports":{"three":"../assets/three.module.js"}}</script>
@@ -16,16 +16,29 @@
     <div class="inner center title-slide">
       <div class="eyebrow">Quantum entanglement · put to the test</div>
       <h1>The universe fails<br>a common-sense test.</h1>
-      <div class="hero-equation"><i>|S|</i><b>≤</b><em>2</em><span class="hero-tail">— says every local, realistic theory</span></div>
-      <p class="lede">In 1964 John Bell found a number that no world of pre-existing, locally decided facts can push past 2. Quantum mechanics predicts 2√2 ≈ 2.83 — and every experiment since agrees with quantum mechanics. Walk through the argument, then run the experiment yourself.</p>
+      <div class="hero-equation"><i>|S|</i><b>≤</b><em>2</em><span class="hero-tail">- says every local, realistic theory</span></div>
+      <p class="lede">In 1964 John Bell found a number that no world of pre-existing, locally decided facts can push past 2. Quantum mechanics predicts 2√2 ≈ 2.83 - and every experiment since agrees with quantum mechanics. Walk through the argument, then run the experiment yourself.</p>
       <div class="toc" id="toc"></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Two worldviews">
+    <div class="inner center">
+      <div class="head"><span class="step">01</span><h2>Two ways to explain a perfect correlation</h2></div>
+      <p class="intro">Send two photons from one source to two distant labs. Measure both the same way, and the results always match. Everyone agrees on the data - the fight is over <b>why</b> they match.</p>
+      <div class="assumption-grid">
+        <article class="assumption"><span class="tag">EINSTEIN'S VIEW · HIDDEN VARIABLES</span><h3>"They agreed on answers at the source."</h3><p>Like a pair of gloves shipped in two boxes: open yours and find a left glove, and you instantly know the far box holds the right one. No magic - the information travelled inside the boxes all along. Each photon carries a hidden instruction list λ, written at the source; measurement just reads it out.</p></article>
+        <div class="plus-join">vs</div>
+        <article class="assumption quantum-view"><span class="tag">QUANTUM VIEW · ENTANGLEMENT</span><h3>"There are no answers until you look."</h3><p>The pair is one shared state - neither photon has a polarization of its own. A measurement is the moment an answer comes into existence, for both photons at once, however far apart they are. Einstein called this "spooky action at a distance" and refused to accept it.</p></article>
+      </div>
+      <div class="insight">For thirty years this stayed philosophy, not physics: <b>both views predicted identical results</b> for every experiment anyone could imagine. In 1964 John Bell found the loophole - a measurable number the two views <span>cannot agree on</span>. The rest of this lesson builds that number.</div>
     </div>
   </section>
 
   <section class="slide" data-title="The experiment">
     <div class="inner center">
-      <div class="head"><span class="step">01</span><h2>One source, two far-away stations</h2></div>
-      <p class="intro">A source produces photon pairs and sends one photon to Alice, one to Bob. Each station holds a polarizer that can be set to one of two angles, and behind it two detectors that answer <b>+1</b> or <b>−1</b>. That is the entire experiment.</p>
+      <div class="head"><span class="step">02</span><h2>One source, two far-away stations</h2></div>
+      <p class="intro">A source produces photon pairs and sends one photon to Alice, one to Bob. Each station holds a polarizer that can be set to one of two angles, with a detector behind each of its two exits. Every photon comes out of exactly one exit - that is the measurement, and its result is written as <b>+1</b> or <b>−1</b>.</p>
       <div class="bench-figure">
         <svg class="bench-svg" viewBox="0 0 920 200" role="img" aria-label="Source in the middle sending photon pairs to Alice's and Bob's polarizers, each followed by a +1 and a −1 detector">
           <defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#92949a"/></marker></defs>
@@ -54,19 +67,20 @@
         </svg>
       </div>
       <div class="pillars">
-        <article><b>Two settings each</b><p>Alice measures at angle a or a′, Bob at b or b′. Each picks one, freshly and at random, for every single pair.</p></article>
-        <article><b>One bit out</b><p>Whatever the setting, a measurement returns only +1 or −1 — the photon exits through one detector or the other.</p></article>
-        <article><b>Too far to whisper</b><p>The settings are chosen while the photons are already in flight, so no signal — not even at light speed — can carry Alice's choice to Bob's photon in time.</p></article>
+        <article><b>What +1 and −1 mean</b><p>The polarizer splits light between two exits. Leaving through the exit <b>aligned with the filter's axis</b> clicks the green detector: <b>+1</b>. Leaving through the <b>perpendicular</b> exit clicks the orange one: <b>−1</b>. Never both, never neither.</p></article>
+        <article><b>Two settings each</b><p>Alice measures at angle a or a′, Bob at b or b′. Each picks one, freshly and at random, for every single pair - while the photons are already in flight.</p></article>
+        <article><b>Too far to whisper</b><p>Because the settings are chosen in flight, no signal - not even at light speed - can carry Alice's choice to Bob's photon in time. Each photon answers on its own.</p></article>
       </div>
+      <div class="insight"><b>Why two angles per station?</b> Ask each side only one question and Einstein wins automatically - a glove-style instruction list can mimic any single-question statistics, even perfect matching. The trap needs each photon to be prepared for <span>two incompatible questions</span> while only one is ever asked. Two settings per side make four possible question pairs - and one pre-written list must cover all four at once. That overconstraint is where the limit comes from.</div>
     </div>
   </section>
 
   <section class="slide" data-title="The classical bet">
     <div class="inner center">
-      <div class="head"><span class="step">02</span><h2>What a common-sense world would promise</h2></div>
-      <p class="intro">Einstein's camp made two assumptions that feel almost too obvious to state. Together they are called <b>local realism</b>, and together they are exactly what Bell put on trial.</p>
+      <div class="head"><span class="step">03</span><h2>What a common-sense world would promise</h2></div>
+      <p class="intro">Spell the glove picture out carefully and Einstein's side rests on two assumptions, each almost too obvious to state. Together they are called <b>local realism</b> - and together they are exactly what Bell put on trial.</p>
       <div class="assumption-grid">
-        <article class="assumption"><span class="tag">REALISM</span><h3>Answers exist before anyone asks</h3><p>Each photon leaves the source already carrying an answer for every question it could be asked — a hidden instruction list, usually written λ. Measurement just reads the list.</p></article>
+        <article class="assumption"><span class="tag">REALISM</span><h3>Answers exist before anyone asks</h3><p>Each photon leaves the source already carrying an answer for every question it could be asked - a hidden instruction list, usually written λ. Measurement just reads the list.</p></article>
         <div class="plus-join">and</div>
         <article class="assumption locality"><span class="tag">LOCALITY</span><h3>No faster-than-light updates</h3><p>What happens at Alice's station depends only on her setting and her photon. Which knob Bob turns, far away and at the same moment, cannot change her outcome.</p></article>
       </div>
@@ -82,7 +96,7 @@
           </tbody>
         </table>
       </div>
-      <div class="insight">The bet: <b>a list like this exists for every pair</b>, whatever clever recipe the source uses to write it. Bell's inequality is a hard limit obeyed by <span>all possible lists</span> — that is what makes it testable.</div>
+      <div class="insight">The bet: <b>a list like this exists for every pair</b>, whatever clever recipe the source uses to write it. Bell's inequality is a hard limit obeyed by <span>all possible lists</span> - that is what makes it testable.</div>
     </div>
   </section>
 
@@ -93,11 +107,11 @@
       <div class="corr-def"><span>Correlation between the two stations</span><b>E(a, b) = ⟨A · B⟩ = P(same) − P(different)</b></div>
       <div class="corr-scale">
         <article><b>E = +1</b><p>The outcomes always match: both +1 or both −1, every single pair.</p></article>
-        <article><b>E = 0</b><p>No relation at all — like comparing two independent coin flips.</p></article>
+        <article><b>E = 0</b><p>No relation at all - like comparing two independent coin flips.</p></article>
         <article><b>E = −1</b><p>The outcomes always disagree, every single pair.</p></article>
       </div>
-      <div class="s-build"><span>The CHSH combination — four correlations, one with a minus sign</span><b>S = <i class="term-plus">E(a, b)</i> − <i class="term-minus">E(a, b′)</i> + <i class="term-plus">E(a′, b)</i> + <i class="term-plus">E(a′, b′)</i></b></div>
-      <div class="insight">Three of the four setting pairs are asked to <b>agree</b>, one is asked to <b>disagree</b>. A world of pre-written answers cannot win all four bets at once — <span>that tension is the entire trick</span>.</div>
+      <div class="s-build"><span>The CHSH combination - four correlations, one with a minus sign</span><b>S = <i class="term-plus">E(a, b)</i> − <i class="term-minus">E(a, b′)</i> + <i class="term-plus">E(a′, b)</i> + <i class="term-plus">E(a′, b′)</i></b></div>
+      <div class="insight">Three of the four setting pairs are asked to <b>agree</b>, one is asked to <b>disagree</b>. A world of pre-written answers cannot win all four bets at once - <span>that tension is the entire trick</span>.</div>
     </div>
   </section>
 
@@ -122,7 +136,7 @@
         <p class="combo-note">Whatever B and B′ are, one bracket vanishes and the other is ±2. Multiplying by A or A′ (also ±1) keeps it at <b>s = ±2, always</b>.</p>
       </div>
       <div class="bound-steps"><article class="final"><span>Average over many pairs</span><b>S = ⟨s⟩ &nbsp;⟹&nbsp; −2 ≤ S ≤ +2</b></article></div>
-      <div class="insight">An average of numbers that are each ±2 can never leave [−2, +2]. <b>No physics was used</b> — only the assumption that the four answers exist per pair and ignore the far-away setting. Any theory built that way, <span>however λ is distributed</span>, is stuck at |S| ≤ 2.</div>
+      <div class="insight">An average of numbers that are each ±2 can never leave [−2, +2]. <b>No physics was used</b> - only the assumption that the four answers exist per pair and ignore the far-away setting. Any theory built that way, <span>however λ is distributed</span>, is stuck at |S| ≤ 2.</div>
     </div>
   </section>
 
@@ -153,7 +167,7 @@
             <article><b>E(a′, b)</b><span>cos 45° = +0.71</span></article>
             <article><b>E(a′, b′)</b><span>cos 45° = +0.71</span></article>
           </div>
-          <div class="s-result"><span>Add them up</span><b>S = 4 × 1/√2 = 2√2 ≈ 2.83</b><p>Past the classical cap of 2 — and exactly at the quantum ceiling (the Tsirelson bound). Quantum mechanics does not just break the rule, it breaks it by the largest amount it allows itself.</p></div>
+          <div class="s-result"><span>Add them up</span><b>S = 4 × 1/√2 = 2√2 ≈ 2.83</b><p>Past the classical cap of 2 - and exactly at the quantum ceiling (the Tsirelson bound). Quantum mechanics does not just break the rule, it breaks it by the largest amount it allows itself.</p></div>
         </div>
       </div>
       <div class="milestones">
@@ -164,7 +178,7 @@
         <span><b>2015</b>loophole-free tests (Delft · NIST · Vienna)</span>
         <span><b>2022</b>Nobel Prize: Clauser, Aspect, Zeilinger</span>
       </div>
-      <div class="insight">Experiments keep landing at 2√2. So at least one common-sense assumption is wrong: <b>either outcomes are not decided in advance, or nature is not local</b> — <span>the universe refuses to be both</span>.</div>
+      <div class="insight">Experiments keep landing at 2√2. So at least one common-sense assumption is wrong: <b>either outcomes are not decided in advance, or nature is not local</b> - <span>the universe refuses to be both</span>.</div>
     </div>
   </section>
 
@@ -177,7 +191,7 @@
         </div>
         <div class="scenario-tabs">
           <button class="scenario on" data-mode="quantum">Entangled pairs</button>
-          <button class="scenario" data-mode="local">Hidden-variable pairs</button>
+          <button class="scenario" data-mode="local">Einstein's pairs</button>
         </div>
       </div>
 
@@ -192,7 +206,7 @@
               <span><i class="k-minus"></i>detector −1</span>
               <span><i class="k-hidden"></i>pre-written polarization λ</span>
               <span><i class="k-measured"></i>polarization gained at measurement</span>
-              <span><i class="k-fuzzy"></i>entangled — no polarization of its own yet</span>
+              <span><i class="k-fuzzy"></i>entangled - no polarization of its own yet</span>
             </footer>
           </section>
         </div>
@@ -200,7 +214,7 @@
         <aside class="lab-rail">
           <div class="verdict waiting" id="verdict"><b id="verdictHead">Collecting pairs…</b><span id="verdictDetail">Waiting for the first photon pairs.</span></div>
           <section class="panel">
-            <header><b>CHSH score</b><span>S = <em id="sValue">—</em></span></header>
+            <header><b>CHSH score</b><span>S = <em id="sValue">-</em></span></header>
             <canvas id="meterCanvas" aria-label="Gauge of the CHSH score against the classical bound 2 and the quantum maximum 2 root 2"></canvas>
           </section>
           <section class="panel">
@@ -213,11 +227,11 @@
             <table class="scoreboard">
               <thead><tr><th></th><th>Δ</th><th>pairs</th><th>E</th></tr></thead>
               <tbody>
-                <tr><th>+ E(a, b)</th><td id="dAB">22.5°</td><td id="nAB">0</td><td id="eAB">—</td></tr>
-                <tr><th>− E(a, b′)</th><td id="dAB2">67.5°</td><td id="nAB2">0</td><td id="eAB2">—</td></tr>
-                <tr><th>+ E(a′, b)</th><td id="dA2B">22.5°</td><td id="nA2B">0</td><td id="eA2B">—</td></tr>
-                <tr><th>+ E(a′, b′)</th><td id="dA2B2">22.5°</td><td id="nA2B2">0</td><td id="eA2B2">—</td></tr>
-                <tr class="s-row"><th>S</th><td>—</td><td id="nTotal">0</td><td id="sCell">—</td></tr>
+                <tr><th>+ E(a, b)</th><td id="dAB">22.5°</td><td id="nAB">0</td><td id="eAB">-</td></tr>
+                <tr><th>− E(a, b′)</th><td id="dAB2">67.5°</td><td id="nAB2">0</td><td id="eAB2">-</td></tr>
+                <tr><th>+ E(a′, b)</th><td id="dA2B">22.5°</td><td id="nA2B">0</td><td id="eA2B">-</td></tr>
+                <tr><th>+ E(a′, b′)</th><td id="dA2B2">22.5°</td><td id="nA2B2">0</td><td id="eA2B2">-</td></tr>
+                <tr class="s-row"><th>S</th><td>-</td><td id="nTotal">0</td><td id="sCell">-</td></tr>
               </tbody>
             </table>
           </section>
@@ -232,11 +246,11 @@
         <div class="control"><label for="pairRate">Pair rate <output id="pairRateValue">50 /s</output></label><input id="pairRate" type="range" min="0" max="3" step=".05" value="1.7"></div>
         <div class="sim-actions"><button class="action primary" id="simPlay">Pause</button><button class="action" id="simReset">Reset counts</button><button class="action" id="simOptimal">Bell angles</button></div>
       </div>
-      <div class="sim-note"><b id="modeTitle">Entangled pairs</b><span id="modeNote">—</span></div>
+      <div class="sim-note"><b id="modeTitle">Entangled pairs</b><span id="modeNote">-</span></div>
     </div>
   </section>
 </main>
-<nav class="nav"><button id="prev">← Previous</button><div class="dots" id="dots"></div><div class="counter"><b id="current">1</b> / <span id="total">7</span> · <span id="slideTitle">Start</span></div><button class="next" id="next">Next →</button></nav>
+<nav class="nav"><button id="prev">← Previous</button><div class="dots" id="dots"></div><div class="counter"><b id="current">1</b> / <span id="total">8</span> · <span id="slideTitle">Start</span></div><button class="next" id="next">Next →</button></nav>
 <script src="./lesson.js"></script>
 <script type="module" src="./simulator.js"></script>
 </body>

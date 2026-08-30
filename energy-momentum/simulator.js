@@ -15,7 +15,7 @@ const VIOLET = "#5552b9";
 const PARTICLES = {
   electron: {
     label: "Electron", mc2: 0.511, pSlider: -0.3,
-    note: "mc² = 0.511 MeV — so light that a few million volts already make it relativistic. Push pc past a couple of MeV and watch the triangle flatten.",
+    note: "mc² = 0.511 MeV - so light that a few million volts already make it relativistic. Push pc past a couple of MeV and watch the triangle flatten.",
   },
   proton: {
     label: "Proton", mc2: 938.272, pSlider: 3,
@@ -23,7 +23,7 @@ const PARTICLES = {
   },
   photon: {
     label: "Photon", mc2: 0, pSlider: 0,
-    note: "m = 0, so E = pc exactly — at every energy from radio waves to gamma rays. β = pc ∕ E = 1: it cannot slow down, and no boost can catch it.",
+    note: "m = 0, so E = pc exactly - at every energy from radio waves to gamma rays. β = pc ∕ E = 1: it cannot slow down, and no boost can catch it.",
   },
   custom: {
     label: "Custom particle", mc2: 100, pSlider: 2,
@@ -36,6 +36,10 @@ const target = { p: 0, m: 0, pl: 0 };
 const disp = { p: 0, m: 0, pl: 0 };
 let posLight = 0.12;
 let posPart = 0.12;
+/* recent boosted momenta, so the hypotenuse can leave a fan behind it while it swings */
+const trail = [];
+let sweeping = false;
+let sweepT = 0;
 
 const byId = (id) => document.getElementById(id);
 const triCanvas = byId("triCanvas");
@@ -72,7 +76,7 @@ function lightGap(E, pc) {
 const SUP = { 0: "⁰", 1: "¹", 2: "²", 3: "³", 4: "⁴", 5: "⁵", 6: "⁶", 7: "⁷", 8: "⁸", 9: "⁹" };
 
 function sig(x) {
-  return Number(x.toPrecision(3)).toString();
+  return Number(x.toPrecision(3)).toString().replace("-", "−");
 }
 
 function fmtTiny(x) {
@@ -149,10 +153,10 @@ function updateVerdict() {
       const shifted = b.E < E;
       const factor = sig(shifted ? E / b.E : b.E / E);
       head.textContent = "Light: uncatchable.";
-      detail.textContent = `You are moving at ${fmtBeta(state.u)} and it still recedes at exactly c. The chase changed only its energy: ${fmtE(E)} in the lab, ${fmtE(b.E)} for you — ${shifted ? "redshifted" : "blueshifted"} ${factor}×.`;
+      detail.textContent = `You are moving at ${fmtBeta(state.u)} and it still recedes at exactly c. The chase changed only its energy: ${fmtE(E)} in the lab, ${fmtE(b.E)} for you - ${shifted ? "redshifted" : "blueshifted"} ${factor}×.`;
     } else {
       head.textContent = "E = pc: pure motion-energy.";
-      detail.textContent = "No mass leg at all — the triangle is a flat line at every energy. Press “Chase it” and see what a 0.9999997 c pursuit accomplishes.";
+      detail.textContent = "No mass leg at all - the triangle is a flat line at every energy. Press “Chase it” and see what a 0.9999997 c pursuit accomplishes.";
     }
     return;
   }
@@ -162,12 +166,12 @@ function updateVerdict() {
   const newtonErr = (b.E - state.mc2) / (2 * state.mc2);
   if (Math.abs(b.pc) < b.E * 1e-6) {
     verdict.className = "verdict rest";
-    head.textContent = "Caught it — this is its rest frame.";
+    head.textContent = "Caught it - this is its rest frame.";
     detail.textContent = `The momentum leg is gone and only mass remains: E = mc² = ${fmtE(state.mc2)}. You are standing in the one frame where Einstein’s famous shortcut is the whole story.`;
   } else if (gb < 1.05) {
     verdict.className = "verdict newton";
     head.textContent = "Newton’s territory.";
-    detail.textContent = `At ${fmtBeta(beta)}, relativity barely matters: Newton’s ½mv² overshoots by only ${sig(newtonErr * 100)}%. The triangle is nearly a vertical stick — motion is a rounding error on mass.`;
+    detail.textContent = `At ${fmtBeta(beta)}, relativity barely matters: Newton’s ½mv² overshoots by only ${sig(newtonErr * 100)}%. The triangle is nearly a vertical stick - motion is a rounding error on mass.`;
   } else if (gb < 8) {
     verdict.className = "verdict";
     head.textContent = "Fully relativistic.";
@@ -175,7 +179,7 @@ function updateVerdict() {
   } else {
     verdict.className = "verdict";
     head.textContent = "Nearly light-like.";
-    detail.textContent = `The mass leg is only ${sig(state.mc2 / b.E * 100)}% of the hypotenuse — energetically this particle is almost pure light. Yet its speed still misses c, by ${fmtTiny(lightGap(b.E, b.pc))} of c.`;
+    detail.textContent = `The mass leg is only ${sig(state.mc2 / b.E * 100)}% of the hypotenuse - energetically this particle is almost pure light. Yet its speed still misses c, by ${fmtTiny(lightGap(b.E, b.pc))} of c.`;
   }
 }
 
@@ -267,6 +271,35 @@ function drawTriangleArea(ctx, w, splitY, Ed, betaD) {
   const bx = x0 + p * scale;
   const by = y0 - m * scale;
 
+  /* the hinge: the mass leg is a rod of fixed length, so every boost leaves the tip
+     on this one rail and only swings the hypotenuse across it */
+  if (m * scale > 14) {
+    ctx.strokeStyle = GREEN;
+    ctx.globalAlpha = 0.35;
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([3, 4]);
+    ctx.beginPath();
+    ctx.moveTo(x0, by);
+    ctx.lineTo(w - padR + 20, by);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.globalAlpha = 1;
+    label(ctx, "mc² - the rail the tip can never leave", x0 + 6, by - 7, GREEN, "650 9.5px Inter, sans-serif", "left");
+  }
+
+  if (trail.length > 1) {
+    ctx.strokeStyle = ORANGE;
+    ctx.lineWidth = 1;
+    for (let i = 0; i < trail.length; i += 2) {
+      ctx.globalAlpha = 0.05 + 0.16 * (i / trail.length);
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(Math.min(x0 + Math.abs(trail[i]) * scale, w - padR + 20), by);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
   if (p * scale > 16 && m * scale > 16) {
     ctx.strokeStyle = SOFT;
     ctx.lineWidth = 1.3;
@@ -329,7 +362,7 @@ function drawTriangleArea(ctx, w, splitY, Ed, betaD) {
   ctx.restore();
 
   label(ctx, `v = ${fmtBeta(betaD)}`, 24, 30, INK, "800 16px Inter, sans-serif", "left");
-  const gammaText = disp.m > 0 ? `γ = E ∕ mc² = ${fmtGamma(Ed / disp.m)}` : "γ = ∞ — no rest frame";
+  const gammaText = disp.m > 0 ? `γ = E ∕ mc² = ${fmtGamma(Ed / disp.m)}` : "γ = ∞ - no rest frame";
   label(ctx, gammaText, 24, 50, MUTED, "650 11px Inter, sans-serif", "left");
 }
 
@@ -356,9 +389,9 @@ function drawRace(ctx, w, h, splitY, betaD) {
     ctx.stroke();
   }
 
-  label(ctx, "light — c", 24, laneLight + 4, ORANGE, "750 10px Inter, sans-serif", "left");
+  label(ctx, "light - c", 24, laneLight + 4, ORANGE, "750 10px Inter, sans-serif", "left");
   const massless = state.mc2 === 0;
-  const name = massless ? "your photon — c" : `this particle — ${fmtBeta(betaD)}`;
+  const name = massless ? "your photon - c" : `this particle - ${fmtBeta(betaD)}`;
   label(ctx, name, 24, lanePart + 4, massless ? ORANGE : BLUE, "750 10px Inter, sans-serif", "left");
 
   const lx = trackL + posLight * (trackR - trackL);
@@ -459,6 +492,16 @@ function drawMap() {
   label(ctx, "pc", w - R, Y(0) + 14, SOFT, "650 9px Inter, sans-serif", "right");
   label(ctx, "E", L - 8, T + 8, SOFT, "650 9px Inter, sans-serif", "right");
 
+  ctx.fillStyle = VIOLET;
+  for (let i = 0; i < trail.length; i += 2) {
+    if (Math.abs(trail[i]) > pMax) continue;
+    ctx.globalAlpha = 0.08 + 0.3 * (i / trail.length);
+    ctx.beginPath();
+    ctx.arc(X(trail[i]), Y(Math.hypot(trail[i], m)), 2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+
   const ghost = Math.abs(state.u) > 0.002;
   if (ghost) {
     ctx.fillStyle = "white";
@@ -483,6 +526,7 @@ function drawMap() {
 
 function setParticle(key) {
   state.key = key;
+  trail.length = 0;
   const def = PARTICLES[key];
   state.mc2 = key === "custom" ? Math.pow(10, Number(mSlider.value)) : def.mc2;
   pSlider.value = def.pSlider;
@@ -490,7 +534,7 @@ function setParticle(key) {
   boostSlider.value = 0;
   state.u = 0;
   mSlider.disabled = key !== "custom";
-  document.querySelectorAll(".scenario").forEach((tab) => {
+  document.querySelectorAll("#triTabs .scenario").forEach((tab) => {
     tab.classList.toggle("on", tab.dataset.particle === key);
   });
   byId("modeTitle").textContent = def.label;
@@ -499,7 +543,7 @@ function setParticle(key) {
   Object.assign(disp, target);
 }
 
-document.querySelectorAll(".scenario").forEach((tab) => {
+document.querySelectorAll("#triTabs .scenario").forEach((tab) => {
   tab.addEventListener("click", () => setParticle(tab.dataset.particle));
 });
 
@@ -514,11 +558,24 @@ mSlider.addEventListener("input", () => {
 });
 
 boostSlider.addEventListener("input", () => {
+  stopSweep();
   state.u = Math.tanh(Number(boostSlider.value));
   updateAll();
 });
 
+function stopSweep() {
+  sweeping = false;
+  byId("sweepBtn").textContent = "Swing the boost";
+}
+
+byId("sweepBtn").addEventListener("click", () => {
+  sweeping = !sweeping;
+  sweepT = Math.asin(Math.max(-1, Math.min(1, Math.atanh(state.u) / 2.4))) / 0.85;
+  byId("sweepBtn").textContent = sweeping ? "Stop swinging" : "Swing the boost";
+});
+
 byId("chaseBtn").addEventListener("click", () => {
+  stopSweep();
   if (state.mc2 === 0) {
     boostSlider.value = 8;
     state.u = Math.tanh(8);
@@ -531,12 +588,14 @@ byId("chaseBtn").addEventListener("click", () => {
 });
 
 byId("labBtn").addEventListener("click", () => {
+  stopSweep();
   boostSlider.value = 0;
   state.u = 0;
   updateAll();
 });
 
 byId("resetBtn").addEventListener("click", () => {
+  stopSweep();
   if (state.key === "custom") mSlider.value = 2;
   setParticle(state.key);
 });
@@ -552,6 +611,14 @@ function frame(now) {
   const dt = Math.min(0.05, (now - last) / 1000 || 0);
   last = now;
 
+  if (sweeping) {
+    sweepT += dt;
+    const rapidity = 2.4 * Math.sin(sweepT * 0.85);
+    boostSlider.value = rapidity;
+    state.u = Math.tanh(rapidity);
+    updateAll();
+  }
+
   const ease = 1 - Math.pow(0.002, dt);
   for (const key of ["p", "m", "pl"]) {
     disp[key] += (target[key] - disp[key]) * ease;
@@ -562,6 +629,9 @@ function frame(now) {
   const betaD = Ed > 0 ? disp.p / Ed : 0;
   posLight = (posLight + dt * 0.17) % 1;
   posPart = ((posPart + dt * 0.17 * betaD) % 1 + 1) % 1;
+
+  trail.push(disp.p);
+  if (trail.length > 70) trail.shift();
 
   drawTriangle();
   drawMap();
@@ -578,8 +648,8 @@ function setActive(on) {
   }
 }
 
-window.addEventListener("lesson:slide", (event) => setActive(Boolean(event.detail.simulator)));
+window.addEventListener("lesson:slide", (event) => setActive(event.detail.simulator === "triangle"));
 
 setParticle("electron");
-setActive(Boolean(document.querySelector(".slide.on")?.dataset.simulator));
+setActive(document.querySelector(".slide.on")?.dataset.simulator === "triangle");
 }());

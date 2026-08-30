@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="An intuitive visual walkthrough of the Dirac equation with an interactive relativistic spinor simulation.">
-<title>Dirac equation — relativity meets quantum mechanics</title>
+<title>Dirac equation - relativity meets quantum mechanics</title>
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="./gamma-matrices.css">
 <link rel="stylesheet" href="./simulator.css">
@@ -28,7 +28,7 @@
       <div class="head"><span class="step">01</span><h2>Two successful theories disagree on energy</h2></div>
       <p class="intro">Schrödinger uses the non-relativistic kinetic energy. Einstein says energy and momentum belong to a different geometry.</p>
       <div class="compare-grid">
-        <article class="theory quantum"><span class="tag">SCHRÖDINGER'S ENERGY RULE</span><div class="big-math">E = <span>p²/2m</span> + V</div><p>The rule behind the Schrödinger equation. One branch, rising as the square of momentum with no ceiling — it works well at low speeds but is not compatible with special relativity.</p>
+        <article class="theory quantum"><span class="tag">SCHRÖDINGER'S ENERGY RULE</span><div class="big-math">E = <span>p²/2m</span> + V</div><p>The rule behind the Schrödinger equation. One branch, rising as the square of momentum with no ceiling - it works well at low speeds but is not compatible with special relativity.</p>
           <svg class="curve-plot" viewBox="0 0 260 96" role="img" aria-label="Energy rises as the square of momentum, without limit">
             <path class="axis" d="M18 6V80H252"/>
             <path class="plot-line nonrel" d="M18 80Q135 80 252 10"/>
@@ -95,7 +95,7 @@
   <section class="slide" data-title="Add three directions">
     <div class="inner center">
       <div class="head"><span class="step">04</span><h2>Now restore all three momentum directions</h2></div>
-      <p class="intro"><b>Important:</b> bold α is not one matrix. It is shorthand for a collection of three matrices—one for each spatial direction.</p>
+      <p class="intro"><b>Important:</b> bold α is not one matrix. It is shorthand for a collection of three matrices-one for each spatial direction.</p>
       <div class="direction-equation"><span>Two three-item collections</span><b>α = (α₁, α₂, α₃) &nbsp;&nbsp; p = (p₁, p₂, p₃)</b><p>The dot product pairs matching items: α·p = α₁p₁ + α₂p₂ + α₃p₃.</p></div>
       <div class="matrix-count"><article><b>α₁</b><span>multiplies p₁ · x</span></article><article><b>α₂</b><span>multiplies p₂ · y</span></article><article><b>α₃</b><span>multiplies p₃ · z</span></article><i>plus</i><article class="mass"><b>β</b><span>multiplies mc² · mass</span></article></div>
       <div class="momentum-expansion">
@@ -160,7 +160,7 @@
       </div>
       <div class="spinor-explain">
         <article><span>What is an amplitude?</span><p>Each ψᵢ is a complex number with a size and phase. It is not a probability by itself; |ψᵢ|² contributes to the total probability.</p></article>
-        <article><span>Coupled = the components affect one another</span><p>If ψ₁ changes, the equation can make ψ₃ change too. Entries away from the matrix diagonal connect their equations, so ψ₁, ψ₂, ψ₃ and ψ₄ must be calculated together—not as four independent wavefunctions.</p></article>
+        <article><span>Coupled = the components affect one another</span><p>If ψ₁ changes, the equation can make ψ₃ change too. Entries away from the matrix diagonal connect their equations, so ψ₁, ψ₂, ψ₃ and ψ₄ must be calculated together-not as four independent wavefunctions.</p></article>
       </div>
       <div class="consequences">
         <article><b>Spin</b><p>Intrinsic angular momentum appears without being added as a separate assumption.</p></article>
@@ -207,7 +207,7 @@
         </div>
 
         <aside class="lab-rail">
-          <div class="verdict" id="verdict"><b id="verdictHead">—</b><span id="verdictDetail">—</span></div>
+          <div class="verdict" id="verdict"><b id="verdictHead">-</b><span id="verdictDetail">-</span></div>
           <section class="panel">
             <header><b>Energy vs momentum</b><span>slope = speed</span></header>
             <canvas id="dispersionCanvas" aria-label="Relativistic and non-relativistic energy curves against momentum"></canvas>
@@ -226,8 +226,8 @@
                 <tr><th>speed ⟨v⟩ ÷ c</th><td id="diracSpeed">0.000</td><td id="schSpeed">0.000</td></tr>
                 <tr><th>packet width σ</th><td id="diracWidth">0.00</td><td id="schWidth">0.00</td></tr>
                 <tr><th>still in the window</th><td id="diracNorm">100%</td><td id="schNorm">100%</td></tr>
-                <tr><th>transmitted</th><td id="diracTransmitted">—</td><td id="schTransmitted">—</td></tr>
-                <tr><th>upper / lower pair</th><td id="diracParts">—</td><td>one component</td></tr>
+                <tr><th>transmitted</th><td id="diracTransmitted">-</td><td id="schTransmitted">-</td></tr>
+                <tr><th>upper / lower pair</th><td id="diracParts">-</td><td>one component</td></tr>
               </tbody>
             </table>
           </section>
@@ -241,7 +241,7 @@
         <div class="control"><label for="simSpeed">Playback <output id="speedValue">1.0×</output></label><input id="simSpeed" type="range" min=".2" max="3" step=".1" value="1"></div>
         <div class="sim-actions"><button class="action primary" id="simPlay">Pause</button><button class="action" id="simReset">Reset</button></div>
       </div>
-      <div class="sim-note"><b id="sceneTitle">Light-speed race</b><span id="sceneNote">—</span></div>
+      <div class="sim-note"><b id="sceneTitle">Light-speed race</b><span id="sceneNote">-</span></div>
     </div>
   </section>
 </main>

@@ -23,7 +23,7 @@ const DETECTOR_Y = 1.3;
 const SOURCE_GAP = .7;
 const T_ANALYZER = .62;
 const T_DETECTOR = .34;
-/* One animated pair every ~1.5 s regardless of the statistical rate — any faster
+/* One animated pair every ~1.5 s regardless of the statistical rate - any faster
    and the flights overlap into visual noise; the silent pairs still count. */
 const VISUAL_INTERVAL = 1.5;
 
@@ -33,11 +33,11 @@ const OPTIMAL = { a: 0, a2: 45, b: 22.5, b2: 67.5 };
 const MODE_NOTES = {
   quantum: {
     title: "Entangled pairs",
-    note: "Each pair is one shared state Φ⁺ = (|HH⟩ + |VV⟩)/√2 — neither photon has a polarization of its own until one is measured, which is why they fly as fuzzy glows. Quantum mechanics predicts E = cos 2Δ, and at the Bell angles S settles at 2√2 ≈ 2.83."
+    note: "The quantum view: each pair is one shared state Φ⁺ = (|HH⟩ + |VV⟩)/√2 - neither photon has a polarization of its own until one is measured, which is why they fly as fuzzy glows. Quantum mechanics predicts E = cos 2Δ, and at the Bell angles S settles at 2√2 ≈ 2.83."
   },
   local: {
-    title: "Hidden-variable pairs",
-    note: "Each pair leaves the source with the same pre-written polarization λ (the blue stick), and each analyzer simply reports +1 when λ lies within 45° of its axis. This is the classic local-realist recipe — its correlations flatten from a cosine into straight lines, and S can reach 2 but never pass it."
+    title: "Einstein's pairs",
+    note: "Einstein's glove picture made concrete: each pair leaves the source with the same pre-written polarization λ (the blue stick), and each analyzer simply reports +1 when λ lies within 45° of its axis. This is the strongest local-realist recipe - its correlations flatten from a cosine into straight lines, and S can reach 2 but never pass it."
   }
 };
 
@@ -727,13 +727,13 @@ function updateVerdict(res) {
   if (res.total < 300 || res.min < 20) {
     cls += " waiting";
     head = "Collecting pairs…";
-    detail = `S = ${res.total ? fmtSigned(res.S) : "—"} ± ${res.total ? res.sigma.toFixed(2) : "—"} so far. A verdict needs a few hundred pairs at every setting combination.`;
+    detail = `S = ${res.total ? fmtSigned(res.S) : "-"} ± ${res.total ? res.sigma.toFixed(2) : "-"} so far. A verdict needs a few hundred pairs at every setting combination.`;
   } else if (excess > 0 && kSigma >= 4) {
     head = "Bell's inequality is violated";
-    detail = `S = ${fmtSigned(res.S)} ± ${res.sigma.toFixed(3)} — that is ${kSigma.toFixed(1)}σ beyond the classical bound of 2. No local hidden-variable story survives these correlations.`;
+    detail = `S = ${fmtSigned(res.S)} ± ${res.sigma.toFixed(3)} - that is ${kSigma.toFixed(1)}σ beyond the classical bound of 2. No local hidden-variable story survives these correlations.`;
   } else if (excess > 0) {
     cls += " waiting";
-    head = "Past 2 — gathering significance";
+    head = "Past 2 - gathering significance";
     detail = `S = ${fmtSigned(res.S)} ± ${res.sigma.toFixed(3)} is only ${kSigma.toFixed(1)}σ above the bound. Let it run, or raise the pair rate.`;
   } else if (mode === "local") {
     cls += " classical";
@@ -742,7 +742,7 @@ function updateVerdict(res) {
   } else {
     cls += " classical";
     head = "No violation at these settings";
-    detail = `S = ${fmtSigned(res.S)} ± ${res.sigma.toFixed(3)}. Entangled pairs only beat 2 for the right angle pattern — try “Bell angles”.`;
+    detail = `S = ${fmtSigned(res.S)} ± ${res.sigma.toFixed(3)}. Entangled pairs only beat 2 for the right angle pattern - try “Bell angles”.`;
   }
   verdictBox.className = cls;
   verdictHead.textContent = head;
@@ -753,12 +753,12 @@ function refreshPanels() {
   const res = results();
   for (const combo of combos) {
     combo.nCell.textContent = combo.n.toLocaleString("en-US");
-    combo.eCell.textContent = combo.n ? fmtSigned(combo.sum / combo.n) : "—";
+    combo.eCell.textContent = combo.n ? fmtSigned(combo.sum / combo.n) : "-";
   }
   byId("nTotal").textContent = res.total.toLocaleString("en-US");
   byId("pairsSeen").textContent = res.total.toLocaleString("en-US");
-  byId("sCell").textContent = res.total ? fmtSigned(res.S) : "—";
-  byId("sValue").textContent = res.total ? `${fmtSigned(res.S)} ± ${res.sigma.toFixed(3)}` : "—";
+  byId("sCell").textContent = res.total ? fmtSigned(res.S) : "-";
+  byId("sValue").textContent = res.total ? `${fmtSigned(res.S)} ± ${res.sigma.toFixed(3)}` : "-";
   updateVerdict(res);
   drawMeter(res);
   drawCorrelation();

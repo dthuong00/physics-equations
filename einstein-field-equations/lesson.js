@@ -19,7 +19,7 @@
     if (slideIndex > 0) {
       const item = document.createElement("button");
       item.type = "button";
-      item.innerHTML = `<b>${String(slideIndex).padStart(2, "0")}</b>${slide.dataset.title}`;
+      item.innerHTML = `<b>0${slideIndex}</b>${slide.dataset.title}`;
       item.addEventListener("click", () => show(slideIndex));
       toc.appendChild(item);
     }

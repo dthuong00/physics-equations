@@ -33,7 +33,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def find_ffmpeg():
     """Return (path, is_full_build). Playwright's bundled ffmpeg can only write
-    webm — no gif muxer, no palette filters — so it counts as a limited build."""
+    webm - no gif muxer, no palette filters - so it counts as a limited build."""
     exe = shutil.which("ffmpeg")
     if exe:
         return exe, True
@@ -95,9 +95,9 @@ def main():
 
     ffmpeg, full_build = find_ffmpeg()
     if not ffmpeg:
-        sys.exit("no ffmpeg found — run `npm install`, or install ffmpeg on your PATH")
+        sys.exit("no ffmpeg found - run `npm install`, or install ffmpeg on your PATH")
     if args.gif and not full_build:
-        sys.exit("gif output needs a full ffmpeg — run `npm install` (provides ffmpeg-static) "
+        sys.exit("gif output needs a full ffmpeg - run `npm install` (provides ffmpeg-static) "
                  "or put ffmpeg on your PATH")
 
     slug = args.path.strip("/").replace("/", "-").replace("#", "slide").strip("-") or "index"
