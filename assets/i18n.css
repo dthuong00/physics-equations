@@ -1,0 +1,64 @@
+/* Language switcher. Lives in the deck's bottom nav when there is one, and falls back
+   to a floating pill otherwise, so a lesson only has to include the stylesheet. */
+
+[data-i18n-pending] .deck,
+[data-i18n-pending] .page {
+  visibility: hidden;
+}
+
+.i18n-switch {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--line, #dedfe3);
+  border-radius: 8px;
+  background: var(--wash, #f5f5f3);
+}
+
+.i18n-switch button {
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  padding: 4px 8px;
+  color: var(--muted, #65676d);
+  font: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  cursor: pointer;
+}
+
+.i18n-switch button:hover {
+  color: var(--ink, #1b1d20);
+}
+
+.i18n-switch button.on {
+  background: var(--paper, #fff);
+  color: var(--orange, #d95d39);
+  box-shadow: 0 1px 4px rgba(30, 30, 40, .1);
+}
+
+/* the deck nav is a fixed four-column grid; make room for one more item */
+.nav:has(.i18n-switch) {
+  grid-template-columns: auto 1fr auto auto auto;
+}
+
+.nav:not(:has(.i18n-switch)) ~ .i18n-switch,
+body > .i18n-switch {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 30;
+  background: var(--paper, #fff);
+  box-shadow: 0 6px 20px rgba(30, 30, 40, .12);
+}
+
+@media (max-width: 760px) {
+  .nav:has(.i18n-switch) {
+    grid-template-columns: auto 1fr auto auto;
+  }
+
+  .i18n-switch button {
+    padding: 4px 6px;
+  }
+}

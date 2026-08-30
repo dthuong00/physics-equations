@@ -1,5 +1,6 @@
 (function () {
   "use strict";
+  const t = (key, english, vars) => (window.I18N ? window.I18N.t(key, english, vars) : english);
   const slides = [...document.querySelectorAll(".slide")];
   const dots = document.getElementById("dots");
   const toc = document.getElementById("toc");
@@ -13,7 +14,7 @@
   slides.forEach((slide, slideIndex) => {
     const dot = document.createElement("button");
     dot.type = "button";
-    dot.setAttribute("aria-label", `Go to ${slide.dataset.title}`);
+    dot.setAttribute("aria-label", t("js.lesson.goto", "Go to {title}", { title: slide.dataset.title }));
     dot.addEventListener("click", () => show(slideIndex));
     dots.appendChild(dot);
     if (slideIndex > 0) {
@@ -37,6 +38,16 @@
     window.dispatchEvent(new CustomEvent("lesson:slide", { detail: { simulator: slides[index].dataset.simulator || "" } }));
     history.replaceState(null, "", `#${index + 1}`);
   }
+
+  window.addEventListener("i18n:change", () => {
+    [...toc.children].forEach((item, tocIndex) => {
+      item.innerHTML = `<b>${String(tocIndex + 1).padStart(2, "0")}</b>${slides[tocIndex + 1].dataset.title}`;
+    });
+    [...dots.children].forEach((dot, dotIndex) => {
+      dot.setAttribute("aria-label", t("js.lesson.goto", "Go to {title}", { title: slides[dotIndex].dataset.title }));
+    });
+    show(index);
+  });
 
   document.getElementById("prev").addEventListener("click", () => show(index - 1));
   document.getElementById("next").addEventListener("click", () => show(index + 1));

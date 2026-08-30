@@ -1,6 +1,8 @@
 (function () {
 "use strict";
 
+const t = (key, english, vars) => (window.I18N ? window.I18N.t(key, english, vars) : english);
+
 /* The mass shell: E over the whole momentum plane, E = √(px² + py² + m²).
    One knob - the mass - takes the surface continuously from a light cone to a bowl,
    and the bowl's vertex sits at exactly E = mc². Everything a particle of that mass
@@ -105,7 +107,7 @@ function drawGround(ctx) {
   }
   const edge = project(PMAX, 0, 0);
   const edgeX = Math.max(70, Math.min(view.x0 * 2 - 70, edge.x));
-  label(ctx, "momentum plane · pc", edgeX, edge.y + 16, SOFT, "650 9.5px Inter, sans-serif");
+  label(ctx, t("js.shell.plane", "momentum plane · pc"), edgeX, edge.y + 16, SOFT, "650 9.5px Inter, sans-serif");
 }
 
 /* kept deliberately sparse: the rim ring plus the two generators in the drawn slice,
@@ -134,7 +136,7 @@ function drawCone(ctx) {
   ctx.setLineDash([]);
   ctx.globalAlpha = 1;
   const anchor = project(-PMAX * 0.6, 0, PMAX * 0.6);
-  label(ctx, "light cone · E = pc", anchor.x - 6, anchor.y + 15, ORANGE, "700 10px Inter, sans-serif", "right");
+  label(ctx, t("js.shell.cone", "light cone · E = pc"), anchor.x - 6, anchor.y + 15, ORANGE, "700 10px Inter, sans-serif", "right");
 }
 
 function drawShell(ctx) {
@@ -182,7 +184,7 @@ function drawSlice(ctx) {
   }
   ctx.stroke();
   const end = project(PMAX, 0, shellE(PMAX));
-  label(ctx, "the slice through py = 0 - your hyperbola", end.x, end.y - 10, GREEN, "700 10px Inter, sans-serif", "right");
+  label(ctx, t("js.shell.slice", "the slice through py = 0 - your hyperbola"), end.x, end.y - 10, GREEN, "700 10px Inter, sans-serif", "right");
 }
 
 function drawVertex(ctx) {
@@ -230,7 +232,7 @@ function drawState(ctx) {
   ctx.beginPath();
   ctx.arc(dot.x, dot.y, 5, 0, Math.PI * 2);
   ctx.fill();
-  label(ctx, "your particle", dot.x, dot.y - 17, VIOLET, "750 10px Inter, sans-serif");
+  label(ctx, t("js.shell.you", "your particle"), dot.x, dot.y - 17, VIOLET, "750 10px Inter, sans-serif");
 }
 
 function draw() {
@@ -249,7 +251,7 @@ function draw() {
   drawVertex(ctx);
   drawState(ctx);
 
-  label(ctx, "drag to turn it over", 14, h - 10, SOFT, "650 9.5px Inter, sans-serif", "left");
+  label(ctx, t("js.shell.drag", "drag to turn it over"), 14, h - 10, SOFT, "650 9.5px Inter, sans-serif", "left");
 }
 
 /* ---------- readouts ---------- */
@@ -257,7 +259,7 @@ function draw() {
 function refresh() {
   const E = Math.hypot(state.p, state.m);
   const beta = state.p / E;
-  byId("shellMassValue").textContent = state.m === 0 ? "0 · massless" : state.m.toFixed(2);
+  byId("shellMassValue").textContent = state.m === 0 ? t("js.shell.massless", "0 · massless") : state.m.toFixed(2);
   byId("shellMomValue").textContent = state.p.toFixed(2);
   byId("shellDirValue").textContent = Math.round(state.phi * 180 / Math.PI) + "°";
   byId("shellE").textContent = E.toFixed(3);
@@ -271,20 +273,20 @@ function refresh() {
   const detail = byId("shellVerdictDetail");
   if (state.m < 0.02) {
     verdict.className = "verdict";
-    head.textContent = "A cone. No vertex, no rest.";
-    detail.textContent = "With the mass gone the bowl has closed onto the light cone: the surface touches E = 0 at a single point and every part of it has slope 1. There is no lowest energy to sit at, which is another way of saying a massless particle can never be at rest.";
+    head.textContent = t("js.shell.cone.head", "A cone. No vertex, no rest.");
+    detail.textContent = t("js.shell.cone.detail", "With the mass gone the bowl has closed onto the light cone: the surface touches E = 0 at a single point and every part of it has slope 1. There is no lowest energy to sit at, which is another way of saying a massless particle can never be at rest.");
   } else if (beta > 0.95) {
     verdict.className = "verdict";
-    head.textContent = "Out on the rim, hugging the cone.";
-    detail.textContent = "Far from the axis the bowl becomes indistinguishable from the cone - that is the ultra-relativistic limit, E ≈ pc. The mass is still there, it is just an ever smaller share of the height.";
+    head.textContent = t("js.shell.rim.head", "Out on the rim, hugging the cone.");
+    detail.textContent = t("js.shell.rim.detail", "Far from the axis the bowl becomes indistinguishable from the cone - that is the ultra-relativistic limit, E ≈ pc. The mass is still there, it is just an ever smaller share of the height.");
   } else if (beta < 0.2) {
     verdict.className = "verdict rest";
-    head.textContent = "Down in the bowl - Newton's country.";
-    detail.textContent = "Near the vertex the surface is a parabola, E ≈ mc² + p²∕2m. That parabola is Newtonian kinetic energy, sitting on a pedestal of height mc². Slide further out and the bowl bends away from it.";
+    head.textContent = t("js.shell.bowl.head", "Down in the bowl - Newton's country.");
+    detail.textContent = t("js.shell.bowl.detail", "Near the vertex the surface is a parabola, E ≈ mc² + p²∕2m. That parabola is Newtonian kinetic energy, sitting on a pedestal of height mc². Slide further out and the bowl bends away from it.");
   } else {
     verdict.className = "verdict newton";
-    head.textContent = "On the shoulder of the bowl.";
-    detail.textContent = "Between the vertex and the rim: γ = " + (E / state.m).toFixed(2) + ". This is the region where neither Newton's parabola nor the light cone is a good enough description, and you need the full surface.";
+    head.textContent = t("js.shell.shoulder.head", "On the shoulder of the bowl.");
+    detail.textContent = t("js.shell.shoulder.detail", "Between the vertex and the rim: γ = {g}. This is the region where neither Newton's parabola nor the light cone is a good enough description, and you need the full surface.", { g: (E / state.m).toFixed(2) });
   }
 }
 
@@ -323,7 +325,9 @@ byId("shellRestBtn").addEventListener("click", () => {
 
 byId("shellSpinBtn").addEventListener("click", () => {
   state.spin = !state.spin;
-  byId("shellSpinBtn").textContent = state.spin ? "Stop turning" : "Turn it";
+  byId("shellSpinBtn").textContent = state.spin
+    ? t("js.shell.stopTurning", "Stop turning")
+    : t("js.shell.turn", "Turn it");
 });
 
 byId("shellResetBtn").addEventListener("click", () => {
@@ -388,6 +392,12 @@ function setActive(on) {
 }
 
 window.addEventListener("lesson:slide", (event) => setActive(event.detail.simulator === "shell"));
+window.addEventListener("i18n:change", () => {
+  byId("shellSpinBtn").textContent = state.spin
+    ? t("js.shell.stopTurning", "Stop turning")
+    : t("js.shell.turn", "Turn it");
+  refresh();
+});
 
 refresh();
 setActive(document.querySelector(".slide.on")?.dataset.simulator === "shell");

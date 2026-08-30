@@ -15,7 +15,7 @@
 
 .budget-row {
   display: grid;
-  grid-template-columns: 96px 1fr 62px;
+  grid-template-columns: 112px 1fr 62px;
   align-items: center;
   gap: 8px;
 }

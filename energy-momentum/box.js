@@ -1,6 +1,8 @@
 (function () {
 "use strict";
 
+const t = (key, english, vars) => (window.I18N ? window.I18N.t(key, english, vars) : english);
+
 /* Mass from confined energy.
    Every constituent is tracked in the box's own rest frame, where the mirrors are at
    rest and a bounce simply flips the sign of p'. The lab picture is then built by
@@ -20,39 +22,39 @@ const LOOP = 1.4;       // scene period for the wall-free scenarios, set so the 
 
 const SCENARIOS = {
   photon: {
-    label: "One photon", walls: false, scales: true,
-    head: "Massless - and no chase can change that.",
+    walls: false, scales: true,
+    head: () => t("js.box.photon.head", "Massless - and no chase can change that."),
     build: (e0) => [{ name: "photon", m: 0, p: e0, x0: 0.5 }],
-    note: "A lone photon has E = pc, so E squared minus (pc) squared is zero. Chase it as hard as you like: the energy reddens, the invariant stays nailed to zero, and it still leaves at c.",
+    note: () => t("js.box.photon.note", "A lone photon has E = pc, so E squared minus (pc) squared is zero. Chase it as hard as you like: the energy reddens, the invariant stays nailed to zero, and it still leaves at c."),
   },
   pair: {
-    label: "Two photons", walls: false, scales: true,
-    head: "Two massless things, one massive system.",
+    walls: false, scales: true,
+    head: () => t("js.box.pair.head", "Two massless things, one massive system."),
     build: (e0) => [
       { name: "photon", m: 0, p: e0, x0: 0.5 },
       { name: "photon", m: 0, p: -e0, x0: 0.5 },
     ],
-    note: "Back to back, the momenta cancel while the energies add. The pair as a whole has E = 2E₀ and p = 0, so its invariant mass is 2E₀ - mass, built out of two things that have none.",
+    note: () => t("js.box.pair.note", "Back to back, the momenta cancel while the energies add. The pair as a whole has E = 2E₀ and p = 0, so its invariant mass is 2E₀ - mass, built out of two things that have none."),
   },
   box: {
-    label: "Mirror box", walls: true, scales: true,
-    head: "You could put this box on a scale.",
+    walls: true, scales: true,
+    head: () => t("js.box.box.head", "You could put this box on a scale."),
     build: (e0) => [
       { name: "photon", m: 0, p: e0, x0: 0.5 },
       { name: "photon", m: 0, p: -e0, x0: 0.5 },
     ],
-    note: "Trap the same pair between mirrors and the mass stops being bookkeeping: the box is harder to push and heavier to weigh, while containing nothing but light. Slow the clock right down and watch the walls hold the momentum between the two staggered bounces.",
+    note: () => t("js.box.box.note", "Trap the same pair between mirrors and the mass stops being bookkeeping: the box is harder to push and heavier to weigh, while containing nothing but light. Slow the clock right down and watch the walls hold the momentum between the two staggered bounces."),
   },
   proton: {
-    label: "Proton", walls: true, scales: false,
-    head: "Almost all of it is motion.",
+    walls: true, scales: false,
+    head: () => t("js.box.proton.head", "Almost all of it is motion."),
     build: () => [
-      { name: "up quark", m: 2.2, p: 169.1, x0: 0.24 },
-      { name: "up quark", m: 2.2, p: -169.1, x0: 0.62 },
-      { name: "down quark", m: 4.7, p: 300, x0: 0.78 },
-      { name: "gluon field", m: 0, p: -300, x0: 0.13 },
+      { name: "up", m: 2.2, p: 169.1, x0: 0.24 },
+      { name: "up", m: 2.2, p: -169.1, x0: 0.62 },
+      { name: "down", m: 4.7, p: 300, x0: 0.78 },
+      { name: "gluon", m: 0, p: -300, x0: 0.13 },
     ],
-    note: "Three quarks rattling around inside a box a femtometre wide, plus the gluon field that keeps them there. Add up the quark rest masses and you get 9 MeV. The proton weighs 938. The other 99% is exactly this: energy with nowhere to go.",
+    note: () => t("js.box.proton.note", "Three quarks rattling around inside a box a femtometre wide, plus the gluon field that keeps them there. Add up the quark rest masses and you get 9 MeV. The proton weighs 938. The other 99% is exactly this: energy with nowhere to go."),
   },
 };
 
@@ -169,11 +171,18 @@ function snapshot() {
 
 /* ---------- panels ---------- */
 
+const PART_NAMES = {
+  photon: () => t("js.box.part.photon", "photon"),
+  up: () => t("js.box.part.up", "up quark"),
+  down: () => t("js.box.part.down", "down quark"),
+  gluon: () => t("js.box.part.gluon", "gluon field"),
+};
+
 /* "photon" twice reads as one thing counted twice, so number the duplicates */
 function partLabel(part) {
+  const name = PART_NAMES[part.name]();
   const twins = parts.filter((other) => other.name === part.name);
-  if (twins.length < 2) return part.name;
-  return part.name + " " + (twins.indexOf(part) + 1);
+  return twins.length < 2 ? name : name + " " + (twins.indexOf(part) + 1);
 }
 
 function rebuildRows() {
@@ -207,7 +216,9 @@ function refresh(snap) {
   byId("boxWallP").textContent = fmtE(snap.sys.pc - snap.sumP);
   byId("wallRow").classList.toggle("live", Math.abs(snap.sys.pc - snap.sumP) > Math.abs(snap.sys.E) * 0.02);
   byId("boxInv").textContent = fmtE(snap.M);
-  byId("boxFrame").textContent = Math.abs(state.u) < 0.005 ? "at rest" : "moving at " + fmtBeta(state.u);
+  byId("boxFrame").textContent = Math.abs(state.u) < 0.005
+    ? t("js.box.atRest", "at rest")
+    : t("js.box.movingAt", "moving at {v}", { v: fmtBeta(state.u) });
 
   const restSum = parts.reduce((acc, part) => acc + part.m, 0);
   const share = snap.M > 0 ? restSum / snap.M : 0;
@@ -216,18 +227,18 @@ function refresh(snap) {
   byId("budgetPartsValue").textContent = fmtE(restSum);
   byId("budgetMotionValue").textContent = fmtE(snap.M - restSum);
   byId("budgetShare").textContent = snap.M > 0
-    ? sig((1 - share) * 100, 4) + "% of this system's mass is motion, not matter."
-    : "No rest frame, no mass - there is nothing here to weigh.";
-  byId("boxWeight").textContent = snap.M > 0 ? fmtKg(snap.M) : "weightless";
+    ? t("js.box.share", "{pct}% of this system's mass is motion, not matter.", { pct: sig((1 - share) * 100, 4) })
+    : t("js.box.noMass", "No rest frame, no mass - there is nothing here to weigh.");
+  byId("boxWeight").textContent = snap.M > 0 ? fmtKg(snap.M) : t("js.box.weightless", "weightless");
 
   const scenario = SCENARIOS[state.key];
   byId("boxVerdict").className = snap.M > 0 ? "verdict rest" : "verdict";
-  byId("boxVerdictHead").textContent = scenario.head;
-  byId("boxVerdictDetail").textContent = scenario.note;
+  byId("boxVerdictHead").textContent = scenario.head();
+  byId("boxVerdictDetail").textContent = scenario.note();
 
-  byId("boxEnergyValue").textContent = scenario.scales ? fmtE(state.e0) : "set by QCD";
-  byId("boxSpeedValue").textContent = Math.abs(state.u) < 0.005 ? "0 · at rest" : fmtBeta(state.u);
-  byId("boxRateValue").textContent = state.rate === 0 ? "frozen" : state.rate.toFixed(2) + "×";
+  byId("boxEnergyValue").textContent = scenario.scales ? fmtE(state.e0) : t("js.box.qcd", "set by QCD");
+  byId("boxSpeedValue").textContent = Math.abs(state.u) < 0.005 ? t("js.box.speedZero", "0 · at rest") : fmtBeta(state.u);
+  byId("boxRateValue").textContent = state.rate === 0 ? t("js.box.frozen", "frozen") : state.rate.toFixed(2) + "×";
 }
 
 /* ---------- canvas ---------- */
@@ -296,7 +307,7 @@ function drawScene(ctx, w, sceneH, snap) {
     ctx.lineTo(cx + dir * 46, arrowY);
     ctx.stroke();
     arrowHead(ctx, cx + dir * 46, arrowY, dir, SOFT);
-    label(ctx, "the whole system is moving at " + fmtBeta(state.u), cx, arrowY - 12, MUTED, "650 10px Inter, sans-serif");
+    label(ctx, t("js.box.systemMoving", "the whole system is moving at {v}", { v: fmtBeta(state.u) }), cx, arrowY - 12, MUTED, "650 10px Inter, sans-serif");
   }
 
   if (scenario.walls) {
@@ -321,8 +332,10 @@ function drawScene(ctx, w, sceneH, snap) {
       ctx.stroke();
       ctx.globalAlpha = 1;
     }
-    const shape = g > 1.005 ? "squashed to " + (100 / g).toFixed(0) + "% of its own length" : "one unit of proper length";
-    label(ctx, "perfect mirrors · " + shape, cx, boxBottom + 21, SOFT, "650 10px Inter, sans-serif");
+    const shape = g > 1.005
+      ? t("js.box.squashed", "squashed to {pct}% of its own length", { pct: (100 / g).toFixed(0) })
+      : t("js.box.properLength", "one unit of proper length");
+    label(ctx, t("js.box.mirrors", "perfect mirrors · {shape}", { shape }), cx, boxBottom + 21, SOFT, "650 10px Inter, sans-serif");
   } else {
     for (let i = 0; i < parts.length; i += 1) {
       const y = boxTop + boxH * (i + 0.5) / parts.length;
@@ -339,7 +352,7 @@ function drawScene(ctx, w, sceneH, snap) {
       ctx.arc(cx, y, 16 * Math.max(0, 1 - snap.tLab / 0.35), 0, Math.PI * 2);
       ctx.fill();
     }
-    label(ctx, "no walls - released from the centre, over and over", cx, boxBottom + 21, SOFT, "650 10px Inter, sans-serif");
+    label(ctx, t("js.box.noWalls", "no walls - released from the centre, over and over"), cx, boxBottom + 21, SOFT, "650 10px Inter, sans-serif");
   }
 
   const refP = g * (1 + Math.abs(state.u)) * Math.max(...parts.map((part) => Math.hypot(part.m, part.p)));
@@ -383,7 +396,7 @@ function drawScene(ctx, w, sceneH, snap) {
 
   const held = Math.abs(snap.sys.pc - snap.sumP);
   if (scenario.walls && held > Math.abs(snap.sys.E) * 0.02) {
-    label(ctx, "the mirrors are holding " + fmtE(held) + " of momentum right now", cx, boxTop - 10, ORANGE, "750 10px Inter, sans-serif");
+    label(ctx, t("js.box.holding", "the mirrors are holding {p} of momentum right now", { p: fmtE(held) }), cx, boxTop - 10, ORANGE, "750 10px Inter, sans-serif");
   }
 
   const rulerY = boxBottom + 40;
@@ -405,7 +418,9 @@ function drawScene(ctx, w, sceneH, snap) {
     ctx.lineTo(x, rulerY + 6);
     ctx.stroke();
   }
-  const rulerNote = Math.abs(state.u) < 0.004 ? "lab ruler - nothing is moving" : "lab ruler - sliding past underneath";
+  const rulerNote = Math.abs(state.u) < 0.004
+    ? t("js.box.rulerStill", "lab ruler - nothing is moving")
+    : t("js.box.rulerMoving", "lab ruler - sliding past underneath");
   label(ctx, rulerNote, cx, rulerY + 20, SOFT, "650 9.5px Inter, sans-serif");
 }
 
@@ -458,8 +473,8 @@ function drawTriangle(ctx, w, top, h, snap) {
   } else {
     label(ctx, "ΣE = " + fmtE(snap.sys.E), x0 - 10, (y0 + by) / 2 - 8, ORANGE, undefined, "right");
   }
-  label(ctx, "the system's own triangle", 24, top + 26, MUTED, "650 10px Inter, sans-serif", "left");
-  label(ctx, "the green leg never moves", 24, top + 43, GREEN, "750 10px Inter, sans-serif", "left");
+  label(ctx, t("js.box.ownTriangle", "the system's own triangle"), 24, top + 26, MUTED, "650 10px Inter, sans-serif", "left");
+  label(ctx, t("js.box.greenLeg", "the green leg never moves"), 24, top + 43, GREEN, "750 10px Inter, sans-serif", "left");
 }
 
 function draw(snap) {
@@ -566,6 +581,10 @@ function setActive(on) {
 }
 
 window.addEventListener("lesson:slide", (event) => setActive(event.detail.simulator === "box"));
+window.addEventListener("i18n:change", () => {
+  rebuildRows();
+  refresh(snapshot());
+});
 
 setScenario("box");
 setActive(document.querySelector(".slide.on")?.dataset.simulator === "box");

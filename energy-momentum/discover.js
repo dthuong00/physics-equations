@@ -1,6 +1,8 @@
 (function () {
 "use strict";
 
+const t = (key, english, vars) => (window.I18N ? window.I18N.t(key, english, vars) : english);
+
 /* Finding a particle you cannot see, by weighing its debris.
    Every event is generated honestly: a parent of mass M is given a random momentum,
    decays isotropically in its own rest frame, and the two daughters are boosted into
@@ -18,18 +20,18 @@ const BINS = 64;
 const PARENTS = {
   jpsi: {
     label: "J/ψ", channel: "J/ψ → e⁺e⁻", M: 3.0969, md: 0.000511,
-    lo: 2.4, hi: 3.8, res: 0.02, bkg: 0.45, daughter: "electron",
-    note: "1974, found twice in the same month at SLAC and Brookhaven. It was so narrow and so obvious that the discovery reorganised particle physics in a weekend - the “November Revolution”. Its debris is an electron and a positron.",
+    lo: 2.4, hi: 3.8, res: 0.02, bkg: 0.45, daughter: () => t("js.disc.jpsi.daughter", "electron"),
+    note: () => t("js.disc.jpsi.note", "1974, found twice in the same month at SLAC and Brookhaven. It was so narrow and so obvious that the discovery reorganised particle physics in a weekend - the “November Revolution”. Its debris is an electron and a positron."),
   },
   z: {
     label: "Z boson", channel: "Z → μ⁺μ⁻", M: 91.188, md: 0.10566,
-    lo: 60, hi: 120, res: 0.025, bkg: 0.35, daughter: "muon",
-    note: "1983, at CERN. The carrier of the weak neutral force, ninety-seven times heavier than a proton and gone in 10⁻²⁵ seconds. All anyone ever sees is a pair of muons whose invariant mass keeps landing on the same number.",
+    lo: 60, hi: 120, res: 0.025, bkg: 0.35, daughter: () => t("js.disc.z.daughter", "muon"),
+    note: () => t("js.disc.z.note", "1983, at CERN. The carrier of the weak neutral force, ninety-seven times heavier than a proton and gone in 10⁻²⁵ seconds. All anyone ever sees is a pair of muons whose invariant mass keeps landing on the same number."),
   },
   higgs: {
     label: "Higgs boson", channel: "H → γγ", M: 125.25, md: 0,
-    lo: 100, hi: 150, res: 0.015, bkg: 0.95, daughter: "photon",
-    note: "2012, at the LHC. Two photons - massless, both of them - whose energies and opening angle keep reconstructing 125 GeV. This channel is drowning in background: only a few percent of the pairs here are really Higgs decays, which is why it took a hundred trillion collisions to gather the photon pairs in a histogram like this one.",
+    lo: 100, hi: 150, res: 0.015, bkg: 0.95, daughter: () => t("js.disc.higgs.daughter", "photon"),
+    note: () => t("js.disc.higgs.note", "2012, at the LHC. Two photons - massless, both of them - whose energies and opening angle keep reconstructing 125 GeV. This channel is drowning in background: only a few percent of the pairs here are really Higgs decays, which is why it took a hundred trillion collisions to gather the photon pairs in a histogram like this one."),
   },
 };
 
@@ -185,36 +187,36 @@ function refresh(stats) {
   const decimals = err > 0 ? Math.min(4, Math.max(1, Math.ceil(-Math.log10(err)) + 1)) : 2;
   setCell("discMass", stats.excess > 4
     ? stats.measured.toFixed(decimals) + " ± " + err.toFixed(decimals) + " GeV"
-    : "not yet");
+    : t("js.disc.notYet", "not yet"));
 
   const verdict = byId("discVerdict");
   const head = byId("discVerdictHead");
   const detail = byId("discVerdictDetail");
   if (hist.total < 30) {
     verdict.className = "verdict waiting";
-    head.textContent = "Collecting collisions…";
-    detail.textContent = "Every event dumps one number into the histogram: the invariant mass rebuilt from two measured tracks. Random combinations land anywhere. Keep going.";
+    head.textContent = t("js.disc.early.head", "Collecting collisions…");
+    detail.textContent = t("js.disc.early.detail", "Every event dumps one number into the histogram: the invariant mass rebuilt from two measured tracks. Random combinations land anywhere. Keep going.");
   } else if (stats.sigma < 2) {
     verdict.className = "verdict waiting";
-    head.textContent = "No peak - just background.";
-    detail.textContent = "So far this is a smooth falling spectrum, exactly what uncorrelated pairs of " + spec.daughter + "s produce. A real particle would refuse to spread out.";
+    head.textContent = t("js.disc.none.head", "No peak - just background.");
+    detail.textContent = t("js.disc.none.detail", "So far this is a smooth falling spectrum, exactly what uncorrelated pairs of {daughter}s produce. A real particle would refuse to spread out.", { daughter: spec.daughter() });
   } else if (stats.sigma < 3) {
     verdict.className = "verdict newton";
-    head.textContent = "Something is piling up.";
-    detail.textContent = "A " + stats.sigma.toFixed(1) + "σ bump. Physics calls this nothing at all - fluctuations this big turn up by luck several times a year. Take more data.";
+    head.textContent = t("js.disc.hint.head", "Something is piling up.");
+    detail.textContent = t("js.disc.hint.detail", "A {sigma}σ bump. Physics calls this nothing at all - fluctuations this big turn up by luck several times a year. Take more data.", { sigma: stats.sigma.toFixed(1) });
   } else if (stats.sigma < 5) {
     verdict.className = "verdict";
-    head.textContent = stats.sigma.toFixed(1) + "σ - evidence.";
-    detail.textContent = "Real enough to publish as evidence, not yet enough to claim. The excess sits at " + stats.measured.toFixed(1) + " GeV and refuses to move as data accumulates.";
+    head.textContent = t("js.disc.evidence.head", "{sigma}σ - evidence.", { sigma: stats.sigma.toFixed(1) });
+    detail.textContent = t("js.disc.evidence.detail", "Real enough to publish as evidence, not yet enough to claim. The excess sits at {mass} GeV and refuses to move as data accumulates.", { mass: stats.measured.toFixed(1) });
   } else {
     verdict.className = "verdict rest";
-    head.textContent = "Discovery - " + Math.min(stats.sigma, 99).toFixed(1) + "σ.";
-    detail.textContent = "Above five sigma the community calls it a particle. You never saw it: it was gone in 10⁻²² seconds. You weighed its debris with E² − (pc)², and the answer kept coming back the same.";
+    head.textContent = t("js.disc.found.head", "Discovery - {sigma}σ.", { sigma: Math.min(stats.sigma, 99).toFixed(1) });
+    detail.textContent = t("js.disc.found.detail", "Above five sigma the community calls it a particle. You never saw it: it was gone in 10⁻²² seconds. You weighed its debris with E² − (pc)², and the answer kept coming back the same.");
   }
 
   setCell("discResValue", (state.res * 100).toFixed(1) + "%");
   setCell("discBkgValue", Math.round(state.bkg * 100) + "%");
-  setCell("discRateValue", state.running ? Math.round(state.rate) + "/s" : "paused");
+  setCell("discRateValue", state.running ? Math.round(state.rate) + "/s" : t("js.disc.paused", "paused"));
 }
 
 /* ---------- canvas ---------- */
@@ -300,7 +302,7 @@ function drawHistogram(stats) {
   ctx.lineTo(X(spec.M), padT + plotH);
   ctx.stroke();
   ctx.setLineDash([]);
-  label(ctx, "true mass, " + spec.M + " GeV", X(spec.M), padT - 10, SOFT, "650 9.5px Inter, sans-serif");
+  label(ctx, t("js.disc.trueMass", "true mass, {m} GeV", { m: spec.M }), X(spec.M), padT - 10, SOFT, "650 9.5px Inter, sans-serif");
 
   ctx.strokeStyle = LINE;
   ctx.beginPath();
@@ -318,14 +320,14 @@ function drawHistogram(stats) {
     ctx.stroke();
     label(ctx, m.toFixed(spec.hi - spec.lo < 5 ? 1 : 0), X(m), padT + plotH + 17, SOFT, "650 9.5px Inter, sans-serif");
   }
-  label(ctx, "reconstructed invariant mass √(E² − (pc)²)  ·  GeV", padL + plotW / 2, h - 10, MUTED, "700 10.5px Inter, sans-serif");
+  label(ctx, t("js.disc.xAxis", "reconstructed invariant mass √(E² − (pc)²)  ·  GeV"), padL + plotW / 2, h - 10, MUTED, "700 10.5px Inter, sans-serif");
   ctx.save();
   ctx.translate(14, padT + plotH / 2);
   ctx.rotate(-Math.PI / 2);
-  label(ctx, "events per bin", 0, 0, MUTED, "700 10.5px Inter, sans-serif");
+  label(ctx, t("js.disc.yAxis", "events per bin"), 0, 0, MUTED, "700 10.5px Inter, sans-serif");
   ctx.restore();
 
-  label(ctx, hist.total.toLocaleString() + " collisions", w - padR, padT - 10, MUTED, "750 10.5px Inter, sans-serif", "right");
+  label(ctx, t("js.disc.collisions", "{n} collisions", { n: hist.total.toLocaleString() }), w - padR, padT - 10, MUTED, "750 10.5px Inter, sans-serif", "right");
 }
 
 function drawEvent() {
@@ -372,10 +374,10 @@ function drawEvent() {
   ctx.fill();
 
   if (recent[0]) {
-    label(ctx, "√(E² − (pc)²) = " + recent[0].m.toFixed(2) + " GeV", cx, h - 6,
+    label(ctx, t("js.disc.eventMass", "√(E² − (pc)²) = {m} GeV", { m: recent[0].m.toFixed(2) }), cx, h - 6,
       recent[0].signal ? ORANGE : MUTED, "750 10.5px Inter, sans-serif");
   }
-  label(ctx, "two " + spec.daughter + "s, energies in GeV", cx, 12, SOFT, "650 9px Inter, sans-serif");
+  label(ctx, t("js.disc.tracks", "two {daughter}s, energies in GeV", { daughter: spec.daughter() }), cx, 12, SOFT, "650 9px Inter, sans-serif");
 }
 
 /* ---------- controls ---------- */
@@ -391,7 +393,7 @@ function setParent(key) {
     tab.classList.toggle("on", tab.dataset.parent === key);
   });
   byId("discTitle").textContent = spec.channel;
-  byId("discNote").textContent = spec.note;
+  byId("discNote").textContent = spec.note();
   byId("discChannel").textContent = spec.channel;
   reset();
   refresh(analyse());
@@ -427,7 +429,7 @@ byId("discRunBtn").addEventListener("click", () => {
 
 byId("discPauseBtn").addEventListener("click", () => {
   state.running = !state.running;
-  byId("discPauseBtn").textContent = state.running ? "Pause" : "Resume";
+  byId("discPauseBtn").textContent = state.running ? t("js.disc.pause", "Pause") : t("js.disc.resume", "Resume");
 });
 
 byId("discResetBtn").addEventListener("click", () => {
@@ -474,6 +476,11 @@ function setActive(on) {
 }
 
 window.addEventListener("lesson:slide", (event) => setActive(event.detail.simulator === "discover"));
+window.addEventListener("i18n:change", () => {
+  byId("discNote").textContent = parent().note();
+  byId("discPauseBtn").textContent = state.running ? t("js.disc.pause", "Pause") : t("js.disc.resume", "Resume");
+  refresh(analyse());
+});
 
 setParent("higgs");
 setActive(document.querySelector(".slide.on")?.dataset.simulator === "discover");

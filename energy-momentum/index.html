@@ -5,11 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="An intuitive walkthrough of the relativistic energy–momentum relation E² = p²c² + m²c⁴, with four interactive simulators: the energy triangle, the mass shell, a box of light with weight, and a particle discovered from its debris.">
 <title>Energy–momentum relation - the triangle inside E = mc²</title>
+<link rel="stylesheet" href="../assets/i18n.css">
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="./simulator.css">
 <link rel="stylesheet" href="./shell.css">
 <link rel="stylesheet" href="./box.css">
 <link rel="stylesheet" href="./discover.css">
+<script src="../assets/i18n.js" data-langs="en:English,vi:Tiếng Việt" data-dir="./i18n"></script>
 </head>
 <body>
 <div class="progress"><i id="progress"></i></div>
@@ -150,7 +152,7 @@
       <div class="lab-grid">
         <div class="lab-main">
           <section class="panel bench-panel">
-            <header><b>Energy triangle · race against light</b><span>viewing from: <em id="frameTag">lab frame</em></span></header>
+            <header><b>Energy triangle · race against light</b><span><span>viewing from:</span> <em id="frameTag" data-i18n-skip>lab frame</em></span></header>
             <canvas id="triCanvas" aria-label="Live right triangle with momentum and rest-energy legs and total-energy hypotenuse, above a race track comparing the particle's speed against light"></canvas>
             <footer class="legend lab-legend">
               <span><i class="k-p"></i>momentum leg pc</span>
@@ -162,7 +164,7 @@
         </div>
 
         <aside class="lab-rail">
-          <div class="verdict waiting" id="verdict"><b id="verdictHead">Warming up…</b><span id="verdictDetail">Move the momentum slider to push the particle.</span></div>
+          <div class="verdict waiting" id="verdict" data-i18n-skip><b id="verdictHead">Warming up…</b><span id="verdictDetail">Move the momentum slider to push the particle.</span></div>
           <section class="panel">
             <header><b>Mass hyperbola</b><span>E² − (pc)² = (mc²)²</span></header>
             <canvas id="mapCanvas" aria-label="The E versus pc plane showing the particle's mass hyperbola, the light lines E equals pc, Newton's approximation, and dots for the lab and boosted observers"></canvas>
@@ -189,9 +191,9 @@
         <div class="control"><label for="pSlider">Momentum pc <output id="pValue">0.5 MeV</output></label><input id="pSlider" type="range" min="-2" max="5" step="0.01" value="-0.3"></div>
         <div class="control"><label for="mSlider">Custom mass mc² <output id="mValue">100 MeV</output></label><input id="mSlider" type="range" min="-1" max="4" step="0.01" value="2" disabled></div>
         <div class="control"><label for="boostSlider">Observer boost <output id="boostValue">0 · lab</output></label><input id="boostSlider" type="range" min="-8" max="8" step="0.02" value="0"></div>
-        <div class="sim-actions"><button class="action primary" id="chaseBtn">Chase it</button><button class="action" id="sweepBtn">Swing the boost</button><button class="action" id="labBtn">Lab frame</button><button class="action" id="resetBtn">Reset</button></div>
+        <div class="sim-actions"><button class="action primary" id="chaseBtn">Chase it</button><button class="action" id="sweepBtn" data-i18n-skip>Swing the boost</button><button class="action" id="labBtn">Lab frame</button><button class="action" id="resetBtn">Reset</button></div>
       </div>
-      <div class="sim-note"><b id="modeTitle">Electron</b><span id="modeNote">-</span></div>
+      <div class="sim-note"><b id="modeTitle" data-i18n-skip>Electron</b><span id="modeNote" data-i18n-skip>-</span></div>
     </div>
   </section>
 
@@ -219,7 +221,7 @@
         </div>
 
         <aside class="lab-rail">
-          <div class="verdict" id="shellVerdict"><b id="shellVerdictHead">-</b><span id="shellVerdictDetail">-</span></div>
+          <div class="verdict" id="shellVerdict" data-i18n-skip><b id="shellVerdictHead">-</b><span id="shellVerdictDetail">-</span></div>
           <section class="panel">
             <header><b>Where you are standing</b><span>energy units, c = 1</span></header>
             <table class="scoreboard">
@@ -240,7 +242,7 @@
         <div class="control"><label for="shellMass">Mass mc² <output id="shellMassValue">1.00</output></label><input id="shellMass" type="range" min="0" max="2.5" step="0.01" value="1"></div>
         <div class="control"><label for="shellMom">Momentum |p|c <output id="shellMomValue">1.20</output></label><input id="shellMom" type="range" min="0" max="2.6" step="0.01" value="1.2"></div>
         <div class="control"><label for="shellDir">Direction of travel <output id="shellDirValue">34°</output></label><input id="shellDir" type="range" min="0" max="6.28" step="0.01" value="0.6"></div>
-        <div class="sim-actions"><button class="action primary" id="shellLightBtn">Collapse to light</button><button class="action" id="shellRestBtn">Stand still</button><button class="action" id="shellSpinBtn">Stop turning</button><button class="action" id="shellResetBtn">Reset</button></div>
+        <div class="sim-actions"><button class="action primary" id="shellLightBtn">Collapse to light</button><button class="action" id="shellRestBtn">Stand still</button><button class="action" id="shellSpinBtn" data-i18n-skip>Stop turning</button><button class="action" id="shellResetBtn">Reset</button></div>
       </div>
       <div class="sim-note"><b>Why it matters</b><span>The whole equation is this one shape. “Massive” and “massless” are not two different kinds of physics - they are the same surface with the vertex lifted off the floor or resting on it, and the height of that lift is <i>E = mc²</i>.</span></div>
     </div>
@@ -299,7 +301,7 @@
       <div class="lab-grid">
         <div class="lab-main">
           <section class="panel bench-panel">
-            <header><b>The box, seen from the lab</b><span>the system is <em id="boxFrame">at rest</em></span></header>
+            <header><b>The box, seen from the lab</b><span><span>the system is</span> <em id="boxFrame" data-i18n-skip>at rest</em></span></header>
             <canvas id="boxCanvas" aria-label="A mirrored box containing bouncing photons, drawn in the lab frame, above the right triangle formed by the system's total momentum, invariant mass and total energy"></canvas>
             <footer class="legend lab-legend">
               <span><i class="k-p"></i>blueshifted - running into you</span>
@@ -311,21 +313,21 @@
         </div>
 
         <aside class="lab-rail">
-          <div class="verdict rest" id="boxVerdict"><b id="boxVerdictHead">-</b><span id="boxVerdictDetail">-</span></div>
+          <div class="verdict rest" id="boxVerdict" data-i18n-skip><b id="boxVerdictHead">-</b><span id="boxVerdictDetail">-</span></div>
           <section class="panel">
             <header><b>Mass budget</b><span>what the scale is really weighing</span></header>
             <div class="budget">
-              <div class="budget-row"><span>rest mass of the parts</span><i class="budget-track"><i class="parts" id="budgetParts"></i></i><b id="budgetPartsValue">-</b></div>
-              <div class="budget-row"><span>energy of the motion</span><i class="budget-track"><i class="motion" id="budgetMotion"></i></i><b id="budgetMotionValue">-</b></div>
+              <div class="budget-row"><span>rest mass of the parts</span><i class="budget-track"><i class="parts" id="budgetParts"></i></i><b id="budgetPartsValue" data-i18n-skip>-</b></div>
+              <div class="budget-row"><span>energy of the motion</span><i class="budget-track"><i class="motion" id="budgetMotion"></i></i><b id="budgetMotionValue" data-i18n-skip>-</b></div>
             </div>
-            <p class="budget-note" id="budgetShare">-</p>
-            <div class="weigh-line"><span>put it on a scale and you would read</span><b id="boxWeight">-</b></div>
+            <p class="budget-note" id="budgetShare" data-i18n-skip>-</p>
+            <div class="weigh-line"><span>put it on a scale and you would read</span><b id="boxWeight" data-i18n-skip>-</b></div>
           </section>
           <section class="panel">
             <header><b>Adding up the contents</b><span>lab frame</span></header>
             <table class="scoreboard">
               <thead><tr><th></th><th>E</th><th>pc</th></tr></thead>
-              <tbody id="boxRows"></tbody>
+              <tbody id="boxRows" data-i18n-skip></tbody>
               <tfoot>
                 <tr><th>Σ over the contents</th><td id="boxSumE">-</td><td id="boxSumP">-</td></tr>
                 <tr class="wall-row" id="wallRow"><th>parked in the walls</th><td id="boxWallE">-</td><td id="boxWallP">-</td></tr>
@@ -364,7 +366,7 @@
       <div class="lab-grid">
         <div class="lab-main">
           <section class="panel bench-panel">
-            <header><b>Invariant mass of every pair</b><span>channel: <em id="discChannel">H → γγ</em></span></header>
+            <header><b>Invariant mass of every pair</b><span><span>channel:</span> <em id="discChannel" data-i18n-skip>H → γγ</em></span></header>
             <canvas id="histCanvas" aria-label="A histogram of reconstructed invariant mass filling up event by event, with a smooth background and a growing peak at the parent particle's mass"></canvas>
             <footer class="legend hist-legend">
               <span><i class="k-bkg"></i>random pairs - background</span>
@@ -376,7 +378,7 @@
         </div>
 
         <aside class="lab-rail">
-          <div class="verdict waiting" id="discVerdict"><b id="discVerdictHead">-</b><span id="discVerdictDetail">-</span></div>
+          <div class="verdict waiting" id="discVerdict" data-i18n-skip><b id="discVerdictHead">-</b><span id="discVerdictDetail">-</span></div>
           <section class="panel">
             <header><b>One collision</b><span>all the detector ever sees</span></header>
             <canvas id="eventCanvas" aria-label="A detector cross-section showing the two measured tracks of the most recent event and the invariant mass computed from them"></canvas>
@@ -402,9 +404,9 @@
         <div class="control"><label for="discRes">Detector resolution <output id="discResValue">1.5%</output></label><input id="discRes" type="range" min="0.003" max="0.06" step="0.001" value="0.015"></div>
         <div class="control"><label for="discBkg">Background fraction <output id="discBkgValue">95%</output></label><input id="discBkg" type="range" min="0" max="0.99" step="0.01" value="0.95"></div>
         <div class="control"><label for="discRate">Collision rate <output id="discRateValue">40/s</output></label><input id="discRate" type="range" min="0" max="400" step="2" value="40"></div>
-        <div class="sim-actions"><button class="action primary" id="discRunBtn">Run 500</button><button class="action" id="discOneBtn">Fire one</button><button class="action" id="discPauseBtn">Pause</button><button class="action" id="discResetBtn">Reset</button></div>
+        <div class="sim-actions"><button class="action primary" id="discRunBtn">Run 500</button><button class="action" id="discOneBtn">Fire one</button><button class="action" id="discPauseBtn" data-i18n-skip>Pause</button><button class="action" id="discResetBtn">Reset</button></div>
       </div>
-      <div class="sim-note"><b id="discTitle">H → γγ</b><span id="discNote">-</span></div>
+      <div class="sim-note"><b id="discTitle" data-i18n-skip>H → γγ</b><span id="discNote" data-i18n-skip>-</span></div>
     </div>
   </section>
 </main>

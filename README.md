@@ -10,7 +10,7 @@ Easy, intuitive breakdowns of physics equations - with interactive visualization
 2. **Newton's second law, F = ma** - [live lesson](https://dthuong00.github.io/physics-equations/newton-2nd-law/)
 3. **Dirac equation** - [live lesson](https://dthuong00.github.io/physics-equations/dirac-equation/)
 4. **Bell's inequality, |S| ≤ 2** - [live lesson](https://dthuong00.github.io/physics-equations/bell-inequality/)
-5. **Relativistic energy–momentum relation, E² = p²c² + m²c⁴** - [live lesson](https://dthuong00.github.io/physics-equations/energy-momentum/)
+5. **Relativistic energy–momentum relation, E² = p²c² + m²c⁴** - [live lesson](https://dthuong00.github.io/physics-equations/energy-momentum/) · [tiếng Việt](https://dthuong00.github.io/physics-equations/energy-momentum/?lang=vi)
 6. **Einstein field equations, Gμν + Λgμν = 8πG Tμν/c⁴** - [live lesson](https://dthuong00.github.io/physics-equations/einstein-field-equations/)
 7. **Heisenberg's meth: uncertainty principle σₓ σₚ ≥ ℏ/2** - coming soon
 8. **Feynman diagrams: the QED perturbation series, M = Σ diagrams·αⁿ** - coming soon

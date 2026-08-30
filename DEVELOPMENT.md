@@ -19,6 +19,58 @@ npm install
 npm run vendor
 ```
 
+## Translations
+
+English lives in the source files and is always the fallback. A language pack is an
+overlay: `assets/i18n.js` walks the page, hashes each English string into a key, and
+swaps in the translation for the chosen language. Nothing in the markup has to be
+annotated, and editing the English can never leave a stale translation behind - the key
+stops matching and the page falls back to the new English until it is retranslated.
+
+`energy-momentum` is translated into Vietnamese. To add a language to a lesson:
+
+1. Include the runtime in `<head>`:
+
+   ```html
+   <link rel="stylesheet" href="../assets/i18n.css">
+   <script src="../assets/i18n.js" data-langs="en:English,vi:Tiếng Việt" data-dir="./i18n"></script>
+   ```
+
+   `data-langs` is `code:Label` pairs; the first is the default. The switcher is injected
+   into the deck's bottom nav, and the choice is remembered in `localStorage` and can be
+   forced with `?lang=vi`.
+
+2. Generate the key list:
+
+   ```sh
+   python tools/i18n.py energy-momentum --lang vi
+   ```
+
+   That writes `energy-momentum/i18n/vi.js` with every string on the page, each preceded
+   by the English it replaces as a comment. Fill in the values. Re-run it after editing
+   the English to add new keys and list ones that no longer match; `--check` reports
+   without writing.
+
+3. Strings built in JavaScript go through `I18N.t()` with an explicit key, so the tool can
+   find them:
+
+   ```js
+   const t = (key, english, vars) => (window.I18N ? window.I18N.t(key, english, vars) : english);
+   label(ctx, t("js.box.atRest", "at rest"), x, y);
+   detail.textContent = t("js.disc.hint.detail", "A {sigma}σ bump.", { sigma: value });
+   ```
+
+   The English stays at the call site as the fallback, so a missing pack changes nothing.
+
+Two rules keep it working:
+
+- **Anything a simulator rewrites needs `data-i18n-skip`** - verdict cards, live readouts,
+  toggle button labels. Otherwise the translator captures whatever it happened to say on
+  load and restores that snapshot on every language change. Elements holding only numbers,
+  `<output>`, and `.scoreboard td` are skipped automatically.
+- **Simulators should listen for `i18n:change`** and re-render whatever they only write on
+  demand. Canvas text redraws itself every frame, so it needs nothing.
+
 ## Recording videos / GIFs
 
 `tools/record.py` captures any lesson as `.webm` (and optionally `.gif`) into `recordings/`. It needs Python with Playwright (`pip install playwright && python -m playwright install chromium`); ffmpeg comes from `npm install` (ffmpeg-static).
