@@ -21,6 +21,7 @@ import json
 import pathlib
 import re
 import socketserver
+import sys
 import textwrap
 import threading
 
@@ -122,6 +123,10 @@ def write_pack(path, lang, entries, existing):
 
 
 def main():
+    # the report quotes translated strings, which a cp1252 console cannot encode
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("lesson", help="lesson directory, e.g. energy-momentum")
     parser.add_argument("--lang", required=True, help="language code, e.g. vi")

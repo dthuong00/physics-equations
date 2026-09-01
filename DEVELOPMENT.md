@@ -2,6 +2,58 @@
 
 The site is static - no build step. GitHub Pages serves the repository as-is.
 
+## Writing a lesson: question first
+
+**Every lesson in this repo is question-driven. A reader must be holding the question
+before the answer arrives.** An answer that lands before the question does not read as an
+insight - it reads as a fact to memorise, and it slides off. The same sentence lands as
+"of course" once the reader has spent ten seconds wanting it.
+
+So no slide may open by stating its result. It opens by making the reader want it.
+
+### The shape of a slide
+
+1. **Ask.** The title carries the question, or the opening line poses it in one sentence.
+   Ask it in the reader's own language - the words they would use before knowing any of
+   the physics.
+2. **Make it bite.** Say why the obvious answer fails, or why two things the reader
+   already believes cannot both be true. This is the part that is usually skipped, and it
+   is the part that does the work: a question with no tension is not a question.
+3. **Answer it.** Now the physics, the notation, the arithmetic - and only the piece that
+   this question needs.
+4. **Hand over the next question.** Close by pointing at what the answer just left
+   unexplained. That is the next slide's opening question, so the deck never needs a
+   "next, we will discuss" bridge.
+
+### Rules
+
+- **Titles are claims or questions, never topic labels.** `Two successful theories
+  disagree on energy`, `A box of light has weight`, `Find a particle you can never see` -
+  each one is an itch. `The Dirac equation`, `Invariant mass`, `Applications` are labels;
+  they tell the reader a subject is about to happen and nothing more.
+- **The deck opens on a question that needs no physics to feel.** Slide 1 has to be
+  answerable-sounding to somebody who has never seen the equation. If understanding the
+  first question requires the lesson, the lesson has no way in.
+- **Never introduce notation before the reader has asked for it.** A symbol is an answer
+  to "what do I call this thing I now need to talk about". Define every ingredient before
+  it is used, and put the analogy before the formalism.
+- **Answer the objection a student would actually raise.** If a step invites "but hang on
+  -", write that objection down in the reader's voice and answer it. Unanswered, it
+  blocks everything after it.
+- **Simulators are questions too.** The intro states what you are about to find out and
+  what to do to find it; the verdict card answers it in words as the numbers move. A
+  simulator that only exposes controls is a toy, not a slide - the reader must know what
+  they are looking for before they touch a slider.
+- **The closing slide answers the question the title asked.** State plainly what the
+  reader now knows that they did not at slide 1.
+
+### Checking a deck
+
+Read only the titles, in order. They should read as a chain of questions and claims that
+pulls forward on its own. Then read the last line of each slide against the first line of
+the next: if the join needs a connective you had to invent, the earlier slide has not
+handed over a question and one of the two needs rewriting.
+
 ## Running locally
 
 ```sh

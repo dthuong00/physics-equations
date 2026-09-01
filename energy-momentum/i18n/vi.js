@@ -20,26 +20,28 @@ I18N.register("vi", {
   "t:4ea8a420": "- đúng cho mọi thứ: electron, hành tinh, ánh sáng",
 
   // The world's most famous equation is the special case for objects standing still. The full
-  // relation ties total energy to momentum and mass by nothing fancier than the Pythagorean theorem
-  // - and explains in one line why light can push a solar sail, why nothing massive reaches light
-  // speed, and where 99% of your own weight comes from. Walk through it, then drive a particle to
-  // the edge of c, turn the mass shell over in your hands, weigh a box containing nothing but light,
-  // and discover a particle from its debris.
-  "t:2b604fe3": "Phương trình nổi tiếng nhất thế giới chỉ là trường hợp riêng dành cho vật đứng yên. Hệ thức đầy đủ nối năng lượng toàn phần với động lượng và khối lượng bằng đúng định lý Pythagoras - và giải thích chỉ trong một dòng vì sao ánh sáng đẩy được buồm mặt trời, vì sao không vật có khối lượng nào chạm tới tốc độ ánh sáng, và 99% trọng lượng của chính bạn đến từ đâu. Hãy đi qua từng bước, rồi tự tay đẩy một hạt tới sát c, xoay mặt khối lượng trong tay, cân một chiếc hộp chỉ chứa ánh sáng, và khám phá một hạt từ mảnh vỡ của nó.",
+  // relation ties total energy to momentum and mass - and explains in one line why light can push a
+  // solar sail, why nothing massive reaches light speed, and where 99% of your own weight comes
+  // from. Walk through it, then use it to discover a particle from its debris - the way the Higgs
+  // was found.
+  "t:0db9b3f8": "Phương trình nổi tiếng nhất thế giới chỉ là trường hợp riêng cho vật đứng yên. Hệ thức đầy đủ nối năng lượng toàn phần với động lượng và khối lượng - và chỉ trong một dòng, nó giải thích vì sao ánh sáng đẩy được buồm mặt trời, vì sao không vật có khối lượng nào đạt tới tốc độ ánh sáng, và 99% trọng lượng của chính bạn từ đâu mà có. Hãy đi qua từng bước, rồi dùng chính nó để khám phá một hạt từ mảnh vỡ của nó - đúng như cách người ta đã tìm ra Higgs.",
 
   /* ---- The full equation ---- */
   // The full equation
   "a:a7555859": "Phương trình đầy đủ",
 
   /* ---- page ---- */
-  // Three quantities, one bookkeeping law
-  "t:84694550": "Ba đại lượng, một quy tắc kế toán",
+  // Why is it E<i>squared</i>, and not just E?
+  "t:3618bc61": "Vì sao lại là E<i>bình phương</i>, chứ không phải chỉ E?",
 
+  /* ---- Start ---- */
   // A moving particle carries energy for two reasons: because it <b>moves</b>, and because it
-  // <b>exists</b>. The equation adds the two contributions - but not the way everyday intuition
-  // would. First, regroup the constants:
-  "t:56c777f7": "Một hạt đang chuyển động mang năng lượng vì hai lý do: vì nó <b>chuyển động</b>, và vì nó <b>tồn tại</b>. Phương trình cộng hai phần đó lại - nhưng không theo cách trực giác thường ngày mách bảo. Trước hết, hãy gom lại các hằng số:",
+  // <b>exists</b>. Everyday intuition says you add the two up. The equation says you do not - you
+  // add their <b>squares</b>, and that single difference is what the rest of this lesson is about.
+  // Start by regrouping the constants, which makes the two contributions comparable:
+  "t:d20a50c3": "Một hạt đang chuyển động mang năng lượng vì hai lý do: vì nó <b>chuyển động</b>, và vì nó <b>tồn tại</b>. Trực giác thường ngày bảo cứ cộng hai phần đó lại. Hệ thức nói là không - bạn cộng <b>bình phương</b> của chúng, và đúng một khác biệt đó là nội dung của cả phần còn lại bài này. Hãy bắt đầu bằng việc gom lại các hằng số, để hai phần đóng góp có thể đem so với nhau:",
 
+  /* ---- page ---- */
   // Group each c with its partner - every term becomes an energy, squared
   "t:5893944e": "Ghép mỗi c với đại lượng đi kèm - mọi số hạng đều trở thành một năng lượng, bình phương",
 
@@ -64,23 +66,25 @@ I18N.register("vi", {
   // fixed property of the particle that no amount of speed changes.
   "t:b2d93410": "Năng lượng nghỉ: giá trị của hạt khi đứng yên. m là <b>khối lượng bất biến</b> - một thuộc tính cố định của hạt mà không tốc độ nào làm thay đổi được.",
 
-  // Notice what the c's are doing: they are <b>unit converters</b>, nothing more. Once pc and mc²
-  // are both measured in energy, the equation is free to say something geometric - <span>squares
-  // adding to a square</span>.
-  "t:78e8908d": "Hãy để ý các hằng số c đang làm gì: chúng chỉ là <b>bộ đổi đơn vị</b>, không hơn. Khi pc và mc² cùng được đo bằng năng lượng, phương trình được tự do nói lên một điều hình học - <span>các bình phương cộng lại thành một bình phương</span>.",
+  // Notice what the c's are doing: they are <b>unit converters</b>, nothing more. Squares are why
+  // the bigger contribution swallows the total and the smaller one barely registers - <span>2 and
+  // 100 do not add to 102 here, they add to about 100</span>. So a particle can be almost pure
+  // motion, or almost pure existence, and the same one line covers both. Next: <span>what is left
+  // when one of them disappears completely</span>.
+  "t:01c84c18": "Hãy để ý các hằng số c đang làm gì: chúng chỉ là <b>bộ đổi đơn vị</b>, không hơn. Bình phương chính là lý do phần đóng góp lớn hơn nuốt trọn cả tổng, còn phần nhỏ hơn gần như không đáng kể - <span>2 và 100 ở đây không cộng thành 102, chúng cộng thành khoảng 100</span>. Nên một hạt có thể gần như thuần chuyển động, hoặc gần như thuần tồn tại, mà vẫn chỉ cần đúng một dòng đó bao trọn cả hai. Tiếp theo: <span>còn lại gì khi một trong hai biến mất hoàn toàn</span>.",
 
   /* ---- Two limits ---- */
   // Two limits
   "a:58796cbf": "Hai giới hạn",
 
   /* ---- page ---- */
-  // Collapse the triangle, and two famous facts fall out
-  "t:ceef08bd": "Làm sập tam giác, và hai sự thật nổi tiếng rơi ra",
+  // Switch off one term, and two famous facts fall out
+  "t:1490a6f6": "Tắt đi một số hạng, và hai sự thật nổi tiếng rơi ra",
 
-  // Squares adding to a square is the signature of a <b>right triangle</b> - legs pc and mc²,
-  // hypotenuse E - and a right triangle has two degenerate cases: lose the horizontal leg, or lose
-  // the vertical one. Each collapse is a celebrated piece of physics.
-  "t:7baa7cf1": "Các bình phương cộng lại thành một bình phương chính là dấu hiệu của <b>tam giác vuông</b> - hai cạnh góc vuông pc và mc², cạnh huyền E - và một tam giác vuông có hai trường hợp suy biến: mất cạnh nằm ngang, hoặc mất cạnh thẳng đứng. Mỗi lần sập là một mảnh vật lý lừng danh.",
+  // The relation has exactly two extreme cases: a particle with no momentum, and a particle with no
+  // mass. Each one is a celebrated piece of physics - and between them they account for both halves
+  // of the equation's reputation.
+  "t:17f39a4c": "Hệ thức này có đúng hai trường hợp cực đoan: một hạt không có động lượng, và một hạt không có khối lượng. Mỗi trường hợp là một mảnh vật lý lừng danh - và cùng nhau, chúng giải thích cả hai nửa làm nên danh tiếng của phương trình.",
 
   // SET p = 0 - STAND STILL
   "t:971402b1": "ĐẶT p = 0 - ĐỨNG YÊN",
@@ -88,10 +92,10 @@ I18N.register("vi", {
   // The famous equation is one corner case
   "t:b4bbe37c": "Phương trình nổi tiếng chỉ là một trường hợp góc",
 
-  // With no momentum leg, the hypotenuse falls onto the mass leg. Einstein’s celebrity equation is
+  // With the motion term gone, every scrap of E is the mass term. Einstein’s celebrity equation is
   // the <b>rest-frame reading</b> of the full relation - and it says existing is expensive: one
   // kilogram standing perfectly still stores 9×10¹⁶ J, about 21 megatons of TNT.
-  "t:b1a13055": "Không còn cạnh động lượng, cạnh huyền đổ xuống trùng với cạnh khối lượng. Phương trình trứ danh của Einstein là <b>cách đọc trong hệ quy chiếu nghỉ</b> của hệ thức đầy đủ - và nó nói rằng chỉ riêng việc tồn tại đã rất đắt: một kilôgam đứng yên hoàn toàn vẫn chứa 9×10¹⁶ J, khoảng 21 megaton thuốc nổ TNT.",
+  "t:90c0059b": "Khi số hạng chuyển động biến mất, toàn bộ E chính là số hạng khối lượng. Phương trình trứ danh của Einstein là <b>cách đọc trong hệ quy chiếu nghỉ</b> của hệ thức đầy đủ - và nó nói rằng chỉ riêng việc tồn tại đã rất đắt: một kilôgam đứng yên hoàn toàn vẫn chứa 9×10¹⁶ J, khoảng 21 megaton thuốc nổ TNT.",
 
   // or
   "t:5d342984": "hoặc",
@@ -102,31 +106,64 @@ I18N.register("vi", {
   // Massless means no choice about speed
   "t:c67f1fb6": "Không khối lượng nghĩa là không được chọn tốc độ",
 
-  // With no mass leg, the hypotenuse lies flat on the momentum leg, so β = pc/E = <b>1 exactly</b>.
-  // Anything massless must travel at c, always, in every frame - and it carries momentum with no
-  // mass at all, which is why sunlight can push a solar sail.
-  "t:554f3d1f": "Không còn cạnh khối lượng, cạnh huyền nằm bẹp lên cạnh động lượng, nên β = pc/E = <b>đúng bằng 1</b>. Mọi thứ không khối lượng đều phải đi với tốc độ c, luôn luôn, trong mọi hệ quy chiếu - và nó mang động lượng dù chẳng có chút khối lượng nào, đó là lý do ánh nắng đẩy được buồm mặt trời.",
+  // With the mass term gone, E is nothing but pc, so β = pc/E = <b>1 exactly</b>. Anything massless
+  // must travel at c, always, in every frame - and it carries momentum with no mass at all, which is
+  // why sunlight can push a solar sail.
+  "t:0baa74e9": "Khi số hạng khối lượng biến mất, E không là gì khác ngoài pc, nên β = pc/E = <b>đúng bằng 1</b>. Mọi thứ không khối lượng đều phải đi với tốc độ c, luôn luôn, trong mọi hệ quy chiếu - và nó mang động lượng dù chẳng có chút khối lượng nào, đó là lý do ánh nắng đẩy được buồm mặt trời.",
 
-  // Everything else lives between the two collapses: every electron, proton and rocket is a triangle
-  // with <b>both legs</b>. Massive things can flatten their triangle forever without finishing the
-  // job - <span>pc grows without bound, and E stays one step ahead</span>.
-  "t:846b230e": "Mọi thứ còn lại sống giữa hai lần sập đó: mỗi electron, mỗi proton và mỗi tên lửa đều là một tam giác có <b>cả hai cạnh</b>. Vật có khối lượng có thể làm tam giác của mình bẹp mãi mà không bao giờ xong việc - <span>pc tăng vô hạn, còn E luôn đi trước một bước</span>.",
+  // Everything else lives between the two extremes: every electron, proton and rocket carries
+  // <b>both terms at once</b>. Massive things can drive the motion term as high as they like and
+  // never erase the mass term - <span>pc grows without bound, and E stays one step ahead</span>. But
+  // both terms are numbers <b>somebody measured</b>. Next: <span>what happens when somebody else
+  // measures them</span>.
+  "t:f62591ea": "Mọi thứ còn lại sống giữa hai cực đoan đó: mỗi electron, mỗi proton và mỗi tên lửa đều mang <b>cả hai số hạng cùng lúc</b>. Vật có khối lượng có thể đẩy số hạng chuyển động lên cao tùy ý mà không bao giờ xóa được số hạng khối lượng - <span>pc tăng vô hạn, còn E luôn đi trước một bước</span>. Nhưng cả hai số hạng đều là những con số do <b>ai đó đo được</b>. Tiếp theo: <span>điều gì xảy ra khi một người khác đo chúng</span>.",
 
   /* ---- The invariant ---- */
   // The invariant
   "a:1b74648c": "Đại lượng bất biến",
 
   /* ---- page ---- */
-  // Observers disagree about E and p - never about m
-  "t:c29eeaa4": "Người quan sát bất đồng về E và p - nhưng không bao giờ về m",
+  // If E and p depend on who is looking, what is real?
+  "t:c09de197": "Nếu E và p tùy thuộc vào người đang nhìn, vậy cái gì là thật?",
 
-  // Chase a particle and its energy drops; run toward it and its momentum grows. E and p are
-  // <b>opinions that depend on the observer</b>. Rearranged, the equation names the one combination
-  // every observer computes identically:
-  "t:29304088": "Đuổi theo một hạt thì năng lượng của nó giảm; chạy ngược về phía nó thì động lượng của nó tăng. E và p là <b>ý kiến phụ thuộc vào người quan sát</b>. Viết lại một chút, phương trình chỉ ra tổ hợp duy nhất mà mọi người quan sát đều tính ra như nhau:",
+  // Energy of motion depends on how fast something is going - <b>relative to you</b>. So two people
+  // who are themselves moving differently measure different speeds for the same particle, and write
+  // down a different E and a different p for it. Neither of them has made a mistake. Which leaves an
+  // awkward question: does the particle <i>have</i> an energy at all, or only an energy according to
+  // somebody? Watch three observers measure one proton.
+  "t:c5695a95": "Năng lượng của chuyển động tùy thuộc vào việc vật đi nhanh cỡ nào - <b>so với bạn</b>. Nên hai người mà bản thân họ chuyển động khác nhau sẽ đo được tốc độ khác nhau cho cùng một hạt, rồi ghi xuống một E khác nhau và một p khác nhau. Không ai trong hai người tính sai cả. Điều đó để lại một câu hỏi khó chịu: hạt đó <i>có</i> một năng lượng hay không, hay chỉ có năng lượng theo lời một ai đó? Hãy xem ba người quan sát cùng đo một proton.",
 
-  // The observer-proof combination
-  "t:0dfaaf7e": "Tổ hợp không phụ thuộc người quan sát",
+  // One proton. Three people watching.
+  "t:a18afdd1": "Một proton. Ba người đang nhìn.",
+
+  // nothing about the proton changes - only who is holding the ruler
+  "t:5efc74f8": "không có gì ở proton thay đổi - chỉ có ai đang cầm thước mà thôi",
+
+  // the observer
+  "t:3780027e": "người quan sát",
+
+  // riding alongside it - to them it is standing still
+  "t:95110f00": "bay kèm bên cạnh nó - với họ nó đang đứng yên",
+
+  // watching it fly past at 0.8c
+  "t:2fde1118": "nhìn nó bay qua ở 0,8c",
+
+  // watching it fly past at 0.99c
+  "t:59ba0770": "nhìn nó bay qua ở 0,99c",
+
+  // Everything in GeV. E changes by a factor of seven and pc climbs from nothing to almost the whole
+  // of E - the two of them genuinely are opinions. Yet the last column never moves a digit. Every
+  // observer in the universe gets that same <b>0.938</b>, and that number is what we mean by the
+  // proton's <b>mass</b>.
+  "t:47d9d68d": "Tất cả tính bằng GeV. E đổi tới bảy lần và pc leo từ số không lên gần bằng cả E - hai đại lượng đó đúng là quan điểm riêng của từng người. Vậy mà cột cuối cùng không xê dịch lấy một chữ số. Mọi người quan sát trong vũ trụ đều nhận đúng con số <b>0,938</b> ấy, và con số đó chính là thứ ta gọi là <b>khối lượng</b> của proton.",
+
+  // So the equation, rearranged, is a statement about what nobody can argue with
+  "t:d50d4647": "Vậy nên hệ thức, khi viết lại, là một phát biểu về thứ không ai cãi được",
+
+  // Which leaves one thing to explain: why should <i>subtracting</i> two quantities that both change
+  // leave something that does not? Because that is simply how spacetime measures distance - and you
+  // already know the version with a plus sign.
+  "t:439e1701": "Còn lại đúng một điều cần giải thích: tại sao lấy <i>hiệu</i> của hai đại lượng mà cả hai đều thay đổi lại cho ra một thứ không đổi? Bởi vì đó đơn giản là cách không-thời gian đo khoảng cách - và bạn đã biết sẵn phiên bản mang dấu cộng của nó rồi.",
 
   // Rotate a stick
   "t:6c523501": "Xoay một cây gậy",
@@ -149,29 +186,12 @@ I18N.register("vi", {
   // <b>minus</b> sign: states slide on hyperbolas instead of circles.
   "t:88976206": "E và pc của nó đổi, nhưng E² − (pc)² thì không bao giờ đổi. Hình học không-thời gian bảo toàn đại lượng này với dấu <b>trừ</b>: các trạng thái trượt trên hypebol thay vì đường tròn.",
 
-  // How new particles are actually discovered
-  "t:ccb4a09b": "Các hạt mới thực sự được phát hiện như thế nào",
-
-  // the equation used as a weighing scale
-  "t:ad8d49bc": "phương trình dùng như một chiếc cân",
-
-  // <b>1</b>Smash protons; measure the E and p of every piece of debris.
-  "t:f39b028a": "<b>1</b>Bắn vỡ proton; đo E và p của từng mảnh vỡ.",
-
-  // <b>2</b>For interesting combinations, compute √(E² − (pc)²) - the invariant mass.
-  "t:2a0272b4": "<b>2</b>Với những tổ hợp đáng chú ý, tính √(E² − (pc)²) - khối lượng bất biến.",
-
-  // <b>3</b>Histogram it. Random debris smears out; a real particle piles up at <b>its own mass</b>.
-  "t:b898d91d": "<b>3</b>Dựng biểu đồ. Mảnh vỡ ngẫu nhiên tãi ra khắp nơi; một hạt thật chồng lên nhau đúng tại <b>khối lượng của chính nó</b>.",
-
-  // The Higgs boson announced itself in 2012 exactly this way - as a bump of collisions whose debris
-  // kept computing the same invariant mass, 125 GeV.
-  "t:988ab360": "Boson Higgs đã tự giới thiệu vào năm 2012 đúng theo cách này - như một chỗ gồ lên của những va chạm mà mảnh vỡ cứ cho ra cùng một khối lượng bất biến, 125 GeV.",
-
-  // This is what mass <b>is</b> in relativity: not “amount of stuff”, but the invariant length of
-  // the energy–momentum arrow - <span>the one number about a particle that the whole universe agrees
-  // on</span>.
-  "t:9b5db553": "Đây chính là <b>bản chất</b> của khối lượng trong thuyết tương đối: không phải “lượng vật chất”, mà là độ dài bất biến của mũi tên năng lượng–động lượng - <span>con số duy nhất về một hạt mà cả vũ trụ đồng ý</span>.",
+  // So mass is not “amount of stuff”. It is <b>the part of a particle that survives changing
+  // observer</b> - <span>the one number about it the whole universe agrees on</span>. It is also the
+  // only reason anyone can weigh a particle they never see: point this same subtraction at two
+  // tracks in a detector and out comes the mass of whatever made them, which is the last slide of
+  // this lesson. Next: <span>check the relation against the physics it had to replace</span>.
+  "t:8300ce92": "Vậy khối lượng không phải là “lượng vật chất”. Nó là <b>phần của một hạt còn sống sót khi đổi người quan sát</b> - <span>con số duy nhất về nó mà cả vũ trụ đồng ý</span>. Nó cũng là lý do duy nhất để người ta cân được một hạt mà họ không bao giờ nhìn thấy: chĩa đúng phép trừ này vào hai vệt hạt trong máy dò thì ra ngay khối lượng của thứ đã sinh ra chúng, và đó là trang cuối cùng của bài này. Tiếp theo: <span>đem hệ thức đối chiếu với chính nền vật lý mà nó phải thay thế</span>.",
 
   /* ---- Newton hides inside ---- */
   // Newton hides inside
@@ -182,11 +202,12 @@ I18N.register("vi", {
   "t:fb1dd959": "Chậm lại, và Newton hiện ra",
 
   // If the relation is right, it must contain the mechanics that ran physics for two centuries. Take
-  // the square root and let the triangle be nearly vertical - momentum small compared to mc²:
-  "t:028c9faf": "Nếu hệ thức này đúng, nó phải chứa sẵn cơ học đã dẫn dắt vật lý suốt hai thế kỷ. Lấy căn bậc hai và để tam giác gần như thẳng đứng - động lượng nhỏ so với mc²:",
+  // the square root and let momentum be small compared with mc² - the everyday case, where almost
+  // all of E is just the mass term:
+  "t:82e474c7": "Nếu hệ thức này đúng, nó phải chứa sẵn cơ học đã dẫn dắt vật lý suốt hai thế kỷ. Lấy căn bậc hai và cho động lượng nhỏ so với mc² - trường hợp thường ngày, khi gần như toàn bộ E chỉ là số hạng khối lượng:",
 
-  // Exact, from the triangle
-  "t:71d9eeb1": "Chính xác, từ tam giác",
+  // Exact, from the relation
+  "t:a0da6c7d": "Chính xác, từ hệ thức",
 
   // E = mc² · √(1 + (pc ∕ mc²)²)
   "t:fda79b86": "E = mc² · √(1 + (pc ∕ mc²)²)",
@@ -241,196 +262,11 @@ I18N.register("vi", {
   // <b>2012</b>Higgs found as an invariant-mass bump
   "t:67b0235d": "<b>2012</b>Higgs được tìm thấy như một chỗ gồ khối lượng bất biến",
 
-  // One relation, three regimes: <b>Newton</b> when the triangle is nearly vertical, <b>E = mc²</b>
-  // when it is exactly vertical, <b>pure light</b> when it is flat. Next: <span>drive the triangle
-  // yourself</span>.
-  "t:cbf38af8": "Một hệ thức, ba chế độ: <b>Newton</b> khi tam giác gần thẳng đứng, <b>E = mc²</b> khi nó thẳng đứng hoàn toàn, <b>ánh sáng thuần túy</b> khi nó nằm bẹp. Tiếp theo: <span>tự tay lái chiếc tam giác</span>.",
-
-  /* ---- Drive the triangle ---- */
-  // Drive the triangle
-  "a:a1114620": "Lái chiếc tam giác",
-
-  // Drive the triangle
-  "t:a1114620": "Lái chiếc tam giác",
-
-  /* ---- page ---- */
-  // Pick a particle and crank its momentum: the triangle stretches, its state rides the mass
-  // hyperbola, and the race below shows how close to light speed you really are. Then boost into
-  // another observer’s frame and try to catch it - every number changes except one. Press <b>Swing
-  // the boost</b> to see what a change of observer really is: the green mass leg is a rod of fixed
-  // length, the tip is pinned to its rail, and every observer in the universe is just one more swing
-  // of the hypotenuse across it.
-  "t:9ccec74b": "Chọn một hạt rồi vặn động lượng của nó lên: tam giác giãn ra, trạng thái của nó cưỡi trên đường hypebol khối lượng, và cuộc đua bên dưới cho thấy bạn thực sự gần tốc độ ánh sáng tới mức nào. Rồi chuyển sang hệ quy chiếu của một người quan sát khác và thử đuổi kịp nó - mọi con số đều đổi, trừ một con số. Bấm <b>Đưa võng hệ quy chiếu</b> để thấy đổi người quan sát thực chất là gì: cạnh khối lượng màu xanh lá là một thanh cứng dài cố định, đỉnh bị ghim vào đường ray của nó, và mọi người quan sát trong vũ trụ chỉ là thêm một lần đưa võng của cạnh huyền ngang qua đó.",
-
-  // Electron
-  "t:826d7453": "Electron",
-
-  // Proton
-  "t:03aded2d": "Proton",
-
-  // Photon
-  "t:cae55017": "Photon",
-
-  // Custom
-  "t:9525b78e": "Tùy chỉnh",
-
-  // Energy triangle · race against light
-  "t:f41c6bd0": "Tam giác năng lượng · đua với ánh sáng",
-
-  // viewing from:
-  "t:0eacb04e": "đang nhìn từ:",
-
-  // <i class="k-p"></i>momentum leg pc
-  "t:f43999c0": "<i class=\"k-p\"></i>cạnh động lượng pc",
-
-  // <i class="k-m"></i>rest-energy leg mc²
-  "t:7e428fed": "<i class=\"k-m\"></i>cạnh năng lượng nghỉ mc²",
-
-  // <i class="k-e"></i>total energy E
-  "t:53930c27": "<i class=\"k-e\"></i>năng lượng toàn phần E",
-
-  // <i class="k-ghost"></i>lab-frame triangle, when boosted
-  "t:8953aa45": "<i class=\"k-ghost\"></i>tam giác trong hệ phòng thí nghiệm, khi đã đổi hệ",
-
-  // Mass hyperbola
-  "t:eaaf5cd7": "Hypebol khối lượng",
-
-  // E² − (pc)² = (mc²)²
-  "t:896214f6": "E² − (pc)² = (mc²)²",
-
-  // Green: every (pc, E) this mass can have - one hyperbola. Orange dashes: light, <i>E = |p|c</i>.
-  // Blue dashes: Newton’s estimate. Boosting slides the dot <b>along</b> the curve, never off it.
-  "t:4d51c6ed": "Xanh lá: mọi cặp (pc, E) mà khối lượng này có thể có - một đường hypebol. Nét đứt cam: ánh sáng, <i>E = |p|c</i>. Nét đứt xanh dương: ước lượng của Newton. Đổi hệ quy chiếu làm chấm trượt <b>dọc theo</b> đường cong, không bao giờ rời khỏi nó.",
-
-  // Two observers, one particle
-  "t:83545ff4": "Hai người quan sát, một hạt",
-
-  // E, p are opinions
-  "t:540bb801": "E, p là ý kiến",
-
-  // lab
-  "t:626092f4": "phòng TN",
-
-  // boosted
-  "t:f57c1b1d": "đã đổi hệ",
-
-  // total E
-  "t:0e432206": "E toàn phần",
-
-  // momentum pc
-  "t:1162923c": "động lượng pc",
-
-  // speed v
-  "t:0c33ac22": "tốc độ v",
-
-  // stretch γ
-  "t:917a5277": "hệ số giãn γ",
-
-  // kinetic E − mc²
-  "t:bc6a10c3": "động năng E − mc²",
-
-  // √(E² − (pc)²)
-  "t:f3ea068b": "√(E² − (pc)²)",
-
-  // Momentum pc <output id="pValue">501 keV</output>
-  "t:03710708": "Động lượng pc <output id=\"pValue\">501 keV</output>",
-
-  // Custom mass mc² <output id="mValue">511 keV</output>
-  "t:f98c8656": "Khối lượng tùy chỉnh mc² <output id=\"mValue\">511 keV</output>",
-
-  // Observer boost <output id="boostValue">0 · lab</output>
-  "t:e11a91d5": "Đổi hệ quy chiếu <output id=\"boostValue\">0 · phòng TN</output>",
-
-  // Chase it
-  "t:cb96dc3a": "Đuổi theo nó",
-
-  // Lab frame
-  "t:9f912e19": "Về hệ phòng TN",
-
-  // Reset
-  "t:0ac8a560": "Đặt lại",
-
-  /* ---- The mass shell ---- */
-  // The mass shell
-  "a:d5d3b3c6": "Mặt khối lượng",
-
-  /* ---- page ---- */
-  // One knob turns a cone into a bowl
-  "t:885c4f26": "Một cái núm biến hình nón thành cái bát",
-
-  // So far momentum has been a single number, pointing along one line. Let it point anywhere in a
-  // plane instead, and plot the energy the equation demands as a <b>height</b> above every possible
-  // momentum. The result is a surface - physicists call it the <b>mass shell</b> - and a particle of
-  // that mass is allowed to sit anywhere on it and nowhere else. Now drag the mass down to zero and
-  // watch what the bowl becomes.
-  "t:0589a191": "Tới đây động lượng vẫn chỉ là một con số, chỉ dọc theo một đường thẳng. Hãy cho nó chỉ theo hướng bất kỳ trong một mặt phẳng, rồi vẽ năng lượng mà phương trình đòi hỏi thành <b>chiều cao</b> phía trên mỗi động lượng khả dĩ. Kết quả là một mặt cong - các nhà vật lý gọi nó là <b>mặt khối lượng</b> - và một hạt có khối lượng đó chỉ được phép nằm trên mặt này, không đâu khác. Giờ hãy kéo khối lượng về không và xem cái bát biến thành gì.",
-
-  // The surface E = √((pc)² + (mc²)²)
-  "t:dea94abe": "Mặt cong E = √((pc)² + (mc²)²)",
-
-  // height above the momentum plane
-  "t:56f10614": "chiều cao phía trên mặt phẳng động lượng",
-
-  // <i class="k-shell"></i>the mass shell, green where it is slow, orange where it is light-like
-  "t:6e97d3a6": "<i class=\"k-shell\"></i>mặt khối lượng, xanh lá nơi hạt chậm, cam nơi hạt gần như ánh sáng",
-
-  // <i class="k-cone"></i>light cone, E = pc
-  "t:d5531802": "<i class=\"k-cone\"></i>nón ánh sáng, E = pc",
-
-  // <i class="k-slice"></i>the pᵧ = 0 slice - the hyperbola from slide 03
-  "t:d966d36e": "<i class=\"k-slice\"></i>lát cắt pᵧ = 0 - chính là đường hypebol ở trang 03",
-
-  // <i class="k-dot"></i>your particle
-  "t:bd1cfa49": "<i class=\"k-dot\"></i>hạt của bạn",
-
-  // Where you are standing
-  "t:ad77d6d3": "Bạn đang đứng ở đâu",
-
-  // energy units, c = 1
-  "t:c1c3fa53": "đơn vị năng lượng, c = 1",
-
-  // height E
-  "t:d5e225b9": "chiều cao E",
-
-  // distance from the axis pc
-  "t:00c6c753": "khoảng cách tới trục pc",
-
-  // vertex height mc²
-  "t:ae91906c": "chiều cao đỉnh mc²",
-
-  // speed v = pc ∕ E
-  "t:4bbfc516": "tốc độ v = pc ∕ E",
-
-  // stretch γ = E ∕ mc²
-  "t:9324358a": "hệ số giãn γ = E ∕ mc²",
-
-  // Spin the <b>direction</b> dial and the dot rides around the bowl at a <b>constant height</b>:
-  // the surface does not care which way momentum points, only how much there is. That circular
-  // symmetry is why one number, <i>|p|</i>, was ever enough.
-  "t:62e45aea": "Xoay núm <b>hướng</b> và chấm sẽ chạy vòng quanh cái bát ở <b>độ cao không đổi</b>: mặt cong không quan tâm động lượng chỉ về phía nào, chỉ quan tâm nó lớn bao nhiêu. Chính đối xứng tròn đó là lý do một con số duy nhất, <i>|p|</i>, luôn là đủ.",
-
-  // Mass mc² <output id="shellMassValue">1.00</output>
-  "t:44c4906e": "Khối lượng mc² <output id=\"shellMassValue\">1.00</output>",
-
-  // Momentum |p|c <output id="shellMomValue">1.20</output>
-  "t:e987f582": "Động lượng |p|c <output id=\"shellMomValue\">1.20</output>",
-
-  // Direction of travel <output id="shellDirValue">34°</output>
-  "t:976cbba5": "Hướng chuyển động <output id=\"shellDirValue\">34°</output>",
-
-  // Collapse to light
-  "t:40cd5837": "Sập về ánh sáng",
-
-  // Stand still
-  "t:aa38d535": "Đứng yên",
-
-  // Why it matters
-  "t:f5de3f98": "Vì sao điều này quan trọng",
-
-  // The whole equation is this one shape. “Massive” and “massless” are not two different kinds of
-  // physics - they are the same surface with the vertex lifted off the floor or resting on it, and
-  // the height of that lift is <i>E = mc²</i>.
-  "t:b512ba29": "Toàn bộ phương trình chính là hình dạng duy nhất này. “Có khối lượng” và “không khối lượng” không phải hai loại vật lý khác nhau - chúng là cùng một mặt cong với cái đỉnh được nhấc khỏi sàn hoặc đặt xuống sàn, và độ cao của cú nhấc đó chính là <i>E = mc²</i>.",
+  // One relation, three regimes: <b>Newton</b> when the motion term is a whisper beside the mass
+  // term, <b>E = mc²</b> when it is gone, <b>pure light</b> when there is no mass term at all. Every
+  // one of those was <b>one particle</b>. Next: <span>point the same relation at a bagful of them,
+  // and watch mass stop meaning “amount of stuff”</span>.
+  "t:1eae01a0": "Một hệ thức, ba chế độ: <b>Newton</b> khi số hạng chuyển động chỉ là tiếng thì thầm bên cạnh số hạng khối lượng, <b>E = mc²</b> khi nó biến mất, <b>ánh sáng thuần túy</b> khi hoàn toàn không có số hạng khối lượng. Cả ba đều là chuyện của <b>một hạt</b>. Tiếp theo: <span>chĩa đúng hệ thức đó vào cả một túi đầy hạt, và xem khối lượng thôi còn nghĩa là “lượng vật chất”</span>.",
 
   /* ---- Where mass comes from ---- */
   // Where mass comes from
@@ -527,128 +363,27 @@ I18N.register("vi", {
 
   // Mass was never a substance. It is <b>the invariant length of a system's energy–momentum
   // arrow</b> - so anything that raises the energy inside while leaving the momentum at zero
-  // <span>raises the mass</span>. Next: build one and weigh it.
-  "t:6b822e6e": "Khối lượng chưa bao giờ là một thứ vật chất. Nó là <b>độ dài bất biến của mũi tên năng lượng–động lượng của một hệ</b> - nên bất cứ điều gì làm tăng năng lượng bên trong mà vẫn giữ động lượng bằng không đều <span>làm tăng khối lượng</span>. Tiếp theo: dựng một cái và đem cân.",
+  // <span>raises the mass</span>. Einstein's own 1905 argument was exactly this, run backwards: let
+  // a body emit two flashes of light in opposite directions and it loses energy while gaining no
+  // momentum, so it must have lost <i>mass</i>. That four-page afterthought is where E = mc² first
+  // appears. Next: <span>point the same sum at two tracks in a detector, and weigh something nobody
+  // can see</span>.
+  "t:3402d04d": "Khối lượng chưa bao giờ là một thứ vật chất. Nó là <b>độ dài bất biến của mũi tên năng lượng–động lượng của cả hệ</b> - nên bất cứ thứ gì làm tăng năng lượng bên trong mà vẫn giữ động lượng bằng không thì đều <span>làm tăng khối lượng</span>. Lập luận năm 1905 của chính Einstein đúng là điều này, chạy ngược lại: cho một vật phát ra hai chớp sáng theo hai hướng ngược nhau, nó mất năng lượng mà không nhận thêm chút động lượng nào, vậy nó phải đã mất <i>khối lượng</i>. Bài viết bốn trang thêm vào sau ấy chính là nơi E = mc² xuất hiện lần đầu. Tiếp theo: <span>chĩa đúng phép cộng đó vào hai vệt hạt trong một máy dò, và cân một thứ không ai nhìn thấy được</span>.",
 
-  /* ---- Weigh a box of light ---- */
-  // Weigh a box of light
-  "a:0039a252": "Cân một hộp ánh sáng",
-
-  /* ---- page ---- */
-  // A box of light has weight
-  "t:9137919a": "Một hộp ánh sáng thì có trọng lượng",
-
-  // Two photons bouncing between perfect mirrors. Nothing in the box has any mass at all - yet the
-  // box as a whole is heavier, harder to push, and would tip a scale. Push the box up to speed and
-  // watch the honest consequences: one photon blueshifts, the other reddens, the box squashes along
-  // its length, and the two bounces stop happening at the same moment - so for stretches of each
-  // cycle both photons are heading the same way and the <b>mirrors are holding the missing
-  // momentum</b>. Every number on the right moves. The green one does not.
-  "t:2a4c6ca1": "Hai photon nảy qua lại giữa hai tấm gương hoàn hảo. Không thứ gì trong hộp có chút khối lượng nào - vậy mà cả chiếc hộp lại nặng hơn, khó đẩy hơn, và sẽ làm nghiêng một chiếc cân. Hãy đẩy hộp chạy nhanh lên và xem các hệ quả trung thực: một photon dịch xanh, photon kia đỏ đi, chiếc hộp co ngắn theo chiều dài, và hai cú nảy thôi không còn xảy ra cùng lúc nữa - nên trong nhiều đoạn của mỗi chu kỳ cả hai photon cùng đi về một phía và <b>các tấm gương đang giữ phần động lượng còn thiếu</b>. Mọi con số bên phải đều động đậy. Con số màu xanh lá thì không.",
-
-  // One photon
-  "t:f7104a6f": "Một photon",
-
-  // Two photons
-  "t:86634ba6": "Hai photon",
-
-  // Mirror box
-  "t:71405cb3": "Hộp gương",
-
-  // The box, seen from the lab
-  "t:8a1d3592": "Chiếc hộp, nhìn từ phòng thí nghiệm",
-
-  // the system is
-  "t:7ff0594b": "hệ đang",
-
-  // <i class="k-p"></i>blueshifted - running into you
-  "t:51c17fd3": "<i class=\"k-p\"></i>dịch xanh - đang lao về phía bạn",
-
-  // <i class="k-e"></i>redshifted - running away
-  "t:a3bece1c": "<i class=\"k-e\"></i>dịch đỏ - đang chạy ra xa",
-
-  // <i class="k-m"></i>the invariant mass leg
-  "t:fded3bf7": "<i class=\"k-m\"></i>cạnh khối lượng bất biến",
-
-  // <i class="k-ghost"></i>arrow length is momentum
-  "t:8aaf2b9b": "<i class=\"k-ghost\"></i>độ dài mũi tên là động lượng",
-
-  // Mass budget
-  "t:bf9a4b4e": "Bảng chi tiêu khối lượng",
-
-  // what the scale is really weighing
-  "t:dac2c337": "chiếc cân thực sự đang cân cái gì",
-
-  // rest mass of the parts
-  "t:960eaa67": "khối lượng nghỉ của các thành phần",
-
-  // energy of the motion
-  "t:03c8b2fd": "năng lượng của chuyển động",
-
-  // put it on a scale and you would read
-  "t:7ef02a72": "đặt lên cân thì bạn sẽ đọc được",
-
-  // Adding up the contents
-  "t:1622d748": "Cộng dồn những thứ bên trong",
-
-  // lab frame
-  "t:4d8d72f9": "hệ phòng thí nghiệm",
-
-  // E
-  "t:c00bf080": "E",
-
-  // pc
-  "t:4e4e5564": "pc",
-
-  // Σ over the contents
-  "t:56f4dc73": "Σ trên các thành phần",
-
-  // parked in the walls
-  "t:8370b701": "đang gửi trong vách",
-
-  // The two bounces are simultaneous for the box, but <b>not</b> for you - so for a moment after
-  // each hit, the momentum you can see in the photons is wrong. It is in the mirrors. Slow the clock
-  // right down to catch it.
-  "t:3f435d16": "Hai cú nảy là đồng thời với chiếc hộp, nhưng <b>không</b> đồng thời với bạn - nên trong một khoảnh khắc sau mỗi cú va, động lượng bạn nhìn thấy ở các photon là sai. Nó đang nằm trong gương. Hãy vặn đồng hồ chậm hẳn lại để bắt được điều đó.",
-
-  // Energy of each photon <output id="boxEnergyValue">1 MeV</output>
-  "t:e9ea65b5": "Năng lượng mỗi photon <output id=\"boxEnergyValue\">1 MeV</output>",
-
-  // Push the whole box <output id="boxSpeedValue">0 · at rest</output>
-  "t:6c23a38c": "Đẩy cả chiếc hộp <output id=\"boxSpeedValue\">0 · đứng yên</output>",
-
-  // Clock rate <output id="boxRateValue">1.00×</output>
-  "t:18a669c4": "Nhịp đồng hồ <output id=\"boxRateValue\">1.00×</output>",
-
-  // Push it
-  "t:6cc7a4da": "Đẩy đi",
-
-  // Stop it
-  "t:5e1d4ea2": "Dừng lại",
-
-  // Einstein, 1905
-  "t:63a2fae5": "Einstein, 1905",
-
-  // His own argument was a box like this one: let a body emit two flashes of light in opposite
-  // directions, and it loses energy without gaining any momentum - so it must have lost <i>mass</i>.
-  // That four-page afterthought to special relativity is where E = mc² first appears.
-  "t:15f3b707": "Lập luận của chính ông cũng là một chiếc hộp như thế này: cho một vật phát ra hai chớp sáng theo hai hướng ngược nhau, nó mất năng lượng mà không nhận thêm chút động lượng nào - vậy nó phải đã mất <i>khối lượng</i>. Bài viết bốn trang thêm vào sau thuyết tương đối hẹp ấy chính là nơi E = mc² xuất hiện lần đầu.",
-
-  /* ---- Discover a particle ---- */
-  // Discover a particle
-  "a:301299bd": "Khám phá một hạt",
+  /* ---- Weigh what you cannot see ---- */
+  // Weigh what you cannot see
+  "a:bf21bc04": "Cân thứ bạn không nhìn thấy được",
 
   /* ---- page ---- */
-  // Find a particle you can never see
-  "t:91527dbd": "Tìm một hạt mà bạn không bao giờ nhìn thấy",
+  // How do you weigh a particle nobody can see?
+  "t:b461cdbb": "Làm sao cân được một hạt không ai nhìn thấy?",
 
-  // A heavy particle made in a collision is gone long before it reaches anything: it decays in 10⁻²²
-  // seconds, leaving only debris. So you measure the debris - two tracks, each with an energy and a
-  // direction - and compute <b>√(E² − (pc)²)</b> for the pair. Random combinations give random
-  // answers and smear into a smooth background. But if the two really came from one parent, that
-  // number is the parent's mass <b>every single time</b>. Collect enough events and it stops being a
-  // number and becomes a bump.
-  "t:54264577": "Một hạt nặng sinh ra trong va chạm biến mất từ lâu trước khi kịp chạm tới bất cứ thứ gì: nó phân rã trong 10⁻²² giây, chỉ để lại mảnh vỡ. Vậy nên bạn đo mảnh vỡ - hai vệt, mỗi vệt có một năng lượng và một hướng - rồi tính <b>√(E² − (pc)²)</b> cho cặp đó. Những tổ hợp ngẫu nhiên cho ra kết quả ngẫu nhiên và tãi thành một phông nền trơn tru. Nhưng nếu hai mảnh đó thực sự sinh ra từ cùng một hạt mẹ, con số kia chính là khối lượng của hạt mẹ, <b>lần nào cũng vậy</b>. Góp đủ sự kiện thì nó thôi làm một con số và trở thành một chỗ gồ lên.",
+  // A Higgs boson is gone in 10⁻²² seconds. Nothing you can measure is <i>its</i> energy or
+  // <i>its</i> momentum - only two pieces of debris, flying apart. Its mass sounds unknowable. It is
+  // not, for the one reason this whole lesson has been about: <b>m is invariant</b>, so the debris
+  // still carries the answer. Four questions, then run it yourself - <b>start with the J/ψ</b>,
+  // where it takes seconds.
+  "t:28bd16b0": "Một boson Higgs biến mất trong 10⁻²² giây. Không có gì bạn đo được là năng lượng <i>của nó</i> hay động lượng <i>của nó</i> - chỉ có hai mảnh vỡ đang bay ra xa. Nghe như khối lượng của nó là thứ không thể biết. Nhưng không phải vậy, đúng vì cái lý do mà cả bài này nói tới: <b>m là bất biến</b>, nên mảnh vỡ vẫn mang theo câu trả lời. Bốn câu hỏi, rồi bạn tự chạy thử - <b>hãy bắt đầu với J/ψ</b>, nơi chỉ mất vài giây.",
 
   // J/ψ
   "t:ec39455a": "J/ψ",
@@ -658,6 +393,26 @@ I18N.register("vi", {
 
   // Higgs
   "t:7fa32889": "Higgs",
+
+  // <b>1</b><b class="k">What do you actually measure?</b> Not the particle - two pieces of debris.
+  // For each one the detector gets a <b>direction</b>, plus either its momentum or its energy.
+  "t:ca6a94fb": "<b>1</b><b class=\"k\">Thật ra bạn đo được cái gì?</b> Không phải hạt đó - chỉ hai mảnh vỡ. Với mỗi mảnh, máy dò lấy được một <b>hướng</b>, cộng thêm hoặc động lượng hoặc năng lượng của nó.",
+
+  // <b>2</b><b class="k">How does it get those?</b> A charged piece curves in a magnet: the stiffer
+  // the curve, the bigger p. A photon has no charge, so it is buried in a dense block and the light
+  // it makes gives E. The other half comes from <b>this lesson's own relation</b> - you know which
+  // particle it is, so you know its m.
+  "t:53548d24": "<b>2</b><b class=\"k\">Lấy được bằng cách nào?</b> Mảnh mang điện bị nam châm bẻ cong: cong càng khó thì p càng lớn. Photon không mang điện, nên người ta chôn nó vào một khối vật liệu đặc và ánh sáng nó tạo ra cho ra E. Nửa còn lại đến từ <b>chính hệ thức của bài này</b> - bạn biết đó là hạt gì, nên bạn biết m của nó.",
+
+  // <b>3</b><b class="k">And that gives the parent?</b> Add the two energies to get E, add the two
+  // momenta to get p, compute <b>√(E² − (pc)²)</b>. Mass is invariant, so that number <i>is</i> the
+  // parent's mass, in GeV.
+  "t:98ace749": "<b>3</b><b class=\"k\">Rồi từ đó ra hạt mẹ?</b> Cộng hai năng lượng được E, cộng hai động lượng được p, rồi tính <b>√(E² − (pc)²)</b>. Khối lượng là bất biến, nên con số đó <i>chính là</i> khối lượng của hạt mẹ, tính bằng GeV.",
+
+  // <b>4</b><b class="k">Then why thousands of them?</b> Nothing says which two pieces belonged
+  // together, so you do it for <b>every</b> pair. Wrong pairs land anywhere - the grey slope. Right
+  // pairs land on the same number every time, stacking into a <b>bump</b>. The bump is the particle.
+  "t:fd4d0b75": "<b>4</b><b class=\"k\">Thế sao lại cần hàng nghìn cái?</b> Không có gì cho biết hai mảnh nào vốn đi cùng nhau, nên bạn làm vậy với <b>mọi</b> cặp. Cặp sai rơi vào bất cứ đâu - thành sườn dốc xám. Cặp đúng lần nào cũng rơi vào cùng một con số, chồng lên thành một <b>chỗ gồ</b>. Chỗ gồ đó chính là hạt.",
 
   // Invariant mass of every pair
   "t:725894eb": "Khối lượng bất biến của mọi cặp",
@@ -673,6 +428,9 @@ I18N.register("vi", {
 
   // <i class="k-window"></i>the search window
   "t:fab2476e": "<i class=\"k-window\"></i>cửa sổ tìm kiếm",
+
+  // <i class="k-fit"></i>background fitted to the sidebands
+  "t:b8df4061": "<i class=\"k-fit\"></i>phông nền khớp từ hai dải bên",
 
   // <i class="k-true"></i>the true mass - hidden from a real experiment
   "t:d7e49145": "<i class=\"k-true\"></i>khối lượng thật - thí nghiệm thật không hề biết",
@@ -692,32 +450,43 @@ I18N.register("vi", {
   // collisions recorded
   "t:2f207ef0": "va chạm đã ghi",
 
-  // events in the window
-  "t:7f053134": "sự kiện trong cửa sổ",
+  // pairs in the search window
+  "t:4fb9b03e": "số cặp trong cửa sổ tìm kiếm",
 
-  // background expected there
-  "t:f9837e4d": "phông nền dự kiến ở đó",
+  // expected from background alone
+  "t:c0cbe432": "dự kiến chỉ do phông nền",
 
-  // excess
-  "t:4fb4abea": "phần dôi ra",
+  // excess - the bump
+  "t:6579ff3a": "phần dôi ra - chỗ gồ lên",
 
-  // significance
-  "t:62d5d0b0": "độ ý nghĩa",
+  // how sure, in sigma
+  "t:9af8ff76": "chắc tới mức nào, tính bằng sigma",
 
   // mass you measure
   "t:d891974a": "khối lượng bạn đo được",
 
-  // Background is estimated the way experiments do it: from the <b>sidebands</b>, the parts of the
-  // spectrum where the particle cannot be. Widen the detector's resolution and the same signal
-  // spreads over more bins - the bump flattens and can drown, even though every event is still
-  // perfectly real.
-  "t:091bad37": "Phông nền được ước lượng đúng như cách các thí nghiệm vẫn làm: từ <b>hai dải bên</b>, những phần phổ mà hạt không thể nằm ở đó. Hãy nới độ phân giải của máy dò ra và cùng một tín hiệu sẽ trải trên nhiều ô hơn - chỗ gồ bẹt xuống và có thể chìm nghỉm, dù mọi sự kiện vẫn hoàn toàn có thật.",
+  // the true mass, for comparison
+  "t:b10b48e4": "khối lượng thật, để đối chiếu",
 
-  // Detector resolution <output id="discResValue">1.5%</output>
-  "t:7c9879ef": "Độ phân giải máy dò <output id=\"discResValue\">1.5%</output>",
+  // sigma is just
+  "t:dafbdab2": "sigma chỉ là",
 
-  // Background fraction <output id="discBkgValue">95%</output>
-  "t:f89d6ff7": "Tỉ lệ phông nền <output id=\"discBkgValue\">95%</output>",
+  // <b>2σ</b> luck · <b>3σ</b> evidence · <b>5σ</b> discovery
+  "t:830a4bcb": "<b>2σ</b> may rủi  ·  <b>3σ</b> bằng chứng  ·  <b>5σ</b> khám phá",
+
+  // The orange colouring and the true mass are teaching aids - a real experiment has neither. All it
+  // can do is fit the dark curve to the flanks of the chart, where the particle cannot be, read it
+  // under the bump, and count what rises above. <b>Sigma</b> asks how that excess compares with the
+  // background's own random wobble - and for counting, that wobble is known: a count averaging N
+  // comes out a little different every time, by about <b>√N</b>. So dividing the excess by
+  // √background says how many wobbles' worth of bump you have.
+  "t:cda64775": "Màu cam và khối lượng thật ở đây là công cụ dạy học - một thí nghiệm thật không có cả hai. Tất cả những gì nó làm được là khớp đường cong đậm vào hai rìa biểu đồ, nơi hạt không thể nằm ở đó, đọc tiếp nó xuống dưới chỗ gồ, rồi đếm phần nhô lên trên. <b>Sigma</b> hỏi phần dôi ra ấy lớn cỡ nào so với chính dao động ngẫu nhiên của phông nền - và với phép đếm thì dao động đó đã biết trước: một số đếm trung bình N thì mỗi lần lại lệch đi một chút, cỡ <b>√N</b>. Nên lấy phần dôi ra chia cho √phông nền sẽ cho biết chỗ gồ của bạn đáng mấy lần dao động.",
+
+  // Detector resolution <output id="discResValue">2.0%</output>
+  "t:a708f4a9": "Độ phân giải máy dò <output id=\"discResValue\">2.0%</output>",
+
+  // Background fraction <output id="discBkgValue">45%</output>
+  "t:609ef516": "Tỉ lệ phông nền <output id=\"discBkgValue\">45%</output>",
 
   // Collision rate <output id="discRateValue">40/s</output>
   "t:b215cc08": "Nhịp va chạm <output id=\"discRateValue\">40/s</output>",
@@ -728,141 +497,64 @@ I18N.register("vi", {
   // Fire one
   "t:0af5cfe9": "Bắn một phát",
 
+  // Reset
+  "t:0ac8a560": "Đặt lại",
+
+  // Where you have been
+  "t:96bba9ab": "Bạn đã đi qua những gì",
+
+  // One relation, read four ways: <b>E = mc²</b> when nothing moves, <b>E = pc</b> when nothing has
+  // mass, Newton's ½mv² hiding inside it whenever things are slow, and mass as the <b>invariant</b>
+  // no observer can argue with - that last one being the only way anyone has ever weighed a particle
+  // they could not see.
+  "t:24fd841b": "Một hệ thức, đọc theo bốn cách: <b>E = mc²</b> khi không có gì chuyển động, <b>E = pc</b> khi không có gì mang khối lượng, ½mv² của Newton nấp sẵn bên trong mỗi khi mọi thứ còn chậm, và khối lượng như một <b>đại lượng bất biến</b> mà không người quan sát nào cãi được - chính cái cuối cùng đó là cách duy nhất từng có để cân một hạt mà người ta không thể nhìn thấy.",
+
   // ← Previous
   "t:2cd493c0": "← Trước",
 
   // Next →
   "t:cb20ddde": "Tiếp →",
 
-  // An intuitive walkthrough of the relativistic energy–momentum relation E² = p²c² + m²c⁴, with
-  // four interactive simulators: the energy triangle, the mass shell, a box of light with weight,
-  // and a particle discovered from its debris.
-  "a:baadec40": "Bài giảng trực quan về hệ thức năng lượng–động lượng tương đối tính E² = p²c² + m²c⁴, với bốn mô phỏng tương tác: tam giác năng lượng, mặt khối lượng, một hộp ánh sáng có trọng lượng, và một hạt được khám phá từ mảnh vỡ của nó.",
+  // An intuitive walkthrough of the relativistic energy–momentum relation E² = p²c² + m²c⁴, with an
+  // interactive simulator that discovers a particle from its debris.
+  "a:ef1195c7": "Bài giảng trực quan về hệ thức năng lượng–động lượng tương đối tính E² = p²c² + m²c⁴, kèm một mô phỏng tương tác khám phá một hạt từ mảnh vỡ của nó.",
 
-  // Energy–momentum relation - the triangle inside E = mc²
-  "t:59a9f5e6": "Hệ thức năng lượng–động lượng - chiếc tam giác bên trong E = mc²",
+  // Energy–momentum relation - what E = mc² leaves out
+  "t:8e53d107": "Hệ thức năng lượng–động lượng - điều mà E = mc² bỏ sót",
 
   /* ---- simulators ---- */
-  // Massless - and no chase can change that.
-  "js.box.photon.head": "Không khối lượng - và không cuộc đuổi bắt nào đổi được điều đó.",
-
-  // A lone photon has E = pc, so E squared minus (pc) squared is zero. Chase it as hard as you like:
-  // the energy reddens, the invariant stays nailed to zero, and it still leaves at c.
-  "js.box.photon.note": "Một photon đơn độc có E = pc, nên E bình phương trừ (pc) bình phương bằng không. Hãy đuổi theo nó mạnh tùy ý: năng lượng đỏ dần đi, đại lượng bất biến vẫn đóng đinh ở không, và nó vẫn rời đi với tốc độ c.",
-
-  // Two massless things, one massive system.
-  "js.box.pair.head": "Hai thứ không khối lượng, một hệ có khối lượng.",
-
-  // Back to back, the momenta cancel while the energies add. The pair as a whole has E = 2E₀ and p =
-  // 0, so its invariant mass is 2E₀ - mass, built out of two things that have none.
-  "js.box.pair.note": "Quay lưng vào nhau, động lượng triệt tiêu còn năng lượng cộng lại. Cả cặp có E = 2E₀ và p = 0, nên khối lượng bất biến của nó là 2E₀ - khối lượng, dựng từ hai thứ chẳng có khối lượng nào.",
-
-  // You could put this box on a scale.
-  "js.box.box.head": "Bạn có thể đặt chiếc hộp này lên cân.",
-
-  // Trap the same pair between mirrors and the mass stops being bookkeeping: the box is harder to
-  // push and heavier to weigh, while containing nothing but light. Slow the clock right down and
-  // watch the walls hold the momentum between the two staggered bounces.
-  "js.box.box.note": "Nhốt đúng cặp photon đó giữa hai tấm gương và khối lượng thôi còn là chuyện sổ sách: chiếc hộp khó đẩy hơn và cân nặng hơn, dù bên trong chẳng có gì ngoài ánh sáng. Hãy vặn đồng hồ chậm hẳn lại và xem các vách giữ động lượng giữa hai cú nảy lệch nhau.",
-
-  // Almost all of it is motion.
-  "js.box.proton.head": "Gần như tất cả là chuyển động.",
-
-  // Three quarks rattling around inside a box a femtometre wide, plus the gluon field that keeps
-  // them there. Add up the quark rest masses and you get 9 MeV. The proton weighs 938. The other 99%
-  // is exactly this: energy with nowhere to go.
-  "js.box.proton.note": "Ba quark lộc cộc bên trong một chiếc hộp rộng một femtomet, cùng trường gluon giữ chúng ở đó. Cộng khối lượng nghỉ của các quark lại bạn được 9 MeV. Proton nặng 938. Chỗ 99% còn lại đúng là cái này: năng lượng không có lối nào để đi.",
-
-  // photon
-  "js.box.part.photon": "photon",
-
-  // up quark
-  "js.box.part.up": "quark lên",
-
-  // down quark
-  "js.box.part.down": "quark xuống",
-
-  // gluon field
-  "js.box.part.gluon": "trường gluon",
-
-  // at rest
-  "js.box.atRest": "đứng yên",
-
-  // moving at {v}
-  "js.box.movingAt": "đang chạy ở {v}",
-
-  // {pct}% of this system's mass is motion, not matter.
-  "js.box.share": "{pct}% khối lượng của hệ này là chuyển động, không phải vật chất.",
-
-  // No rest frame, no mass - there is nothing here to weigh.
-  "js.box.noMass": "Không hệ quy chiếu nghỉ, không khối lượng - ở đây chẳng có gì để cân.",
-
-  // weightless
-  "js.box.weightless": "không trọng lượng",
-
-  // set by QCD
-  "js.box.qcd": "do QCD quy định",
-
-  // 0 · at rest
-  "js.box.speedZero": "0 · đứng yên",
-
-  // frozen
-  "js.box.frozen": "đóng băng",
-
-  // the whole system is moving at {v}
-  "js.box.systemMoving": "cả hệ đang chạy ở {v}",
-
-  // squashed to {pct}% of its own length
-  "js.box.squashed": "co lại còn {pct}% chiều dài riêng của nó",
-
-  // one unit of proper length
-  "js.box.properLength": "một đơn vị chiều dài riêng",
-
-  // perfect mirrors · {shape}
-  "js.box.mirrors": "gương hoàn hảo · {shape}",
-
-  // no walls - released from the centre, over and over
-  "js.box.noWalls": "không có vách - phóng ra từ tâm, lặp đi lặp lại",
-
-  // the mirrors are holding {p} of momentum right now
-  "js.box.holding": "các tấm gương đang giữ {p} động lượng ngay lúc này",
-
-  // lab ruler - nothing is moving
-  "js.box.rulerStill": "thước phòng TN - không có gì chuyển động",
-
-  // lab ruler - sliding past underneath
-  "js.box.rulerMoving": "thước phòng TN - đang trượt qua bên dưới",
-
-  // the system's own triangle
-  "js.box.ownTriangle": "tam giác của chính hệ",
-
-  // the green leg never moves
-  "js.box.greenLeg": "cạnh xanh lá không bao giờ nhúc nhích",
-
   // electron
   "js.disc.jpsi.daughter": "electron",
 
-  // 1974, found twice in the same month at SLAC and Brookhaven. It was so narrow and so obvious that
-  // the discovery reorganised particle physics in a weekend - the “November Revolution”. Its debris
-  // is an electron and a positron.
-  "js.disc.jpsi.note": "Năm 1974, được tìm thấy hai lần trong cùng một tháng tại SLAC và Brookhaven. Nó hẹp và rõ tới mức phát hiện này sắp xếp lại cả ngành vật lý hạt chỉ trong một cuối tuần - “Cuộc cách mạng tháng Mười Một”. Mảnh vỡ của nó là một electron và một positron.",
+  // A charm quark bound to its own antiquark, 3.3 proton masses, gone in 10⁻²⁰ s. Found twice in one
+  // month of 1974 - at SLAC and at Brookhaven, and neither group would give up its own letter, so it
+  // kept both. It was the first hard evidence that the charm quark exists, and it reorganised
+  // particle physics in a weekend: the “November Revolution”. Its debris here is an electron and a
+  // positron - charged, so a magnet bends them and the curvature gives p.
+  "js.disc.jpsi.note": "Một quark duyên (charm) liên kết với chính phản quark của nó, nặng bằng 3,3 proton, biến mất trong 10⁻²⁰ giây. Được tìm ra hai lần trong cùng một tháng của năm 1974 - ở SLAC và ở Brookhaven, và không nhóm nào chịu bỏ chữ cái của mình, nên nó giữ cả hai. Đó là bằng chứng chắc chắn đầu tiên rằng quark duyên có thật, và nó đã sắp xếp lại ngành vật lý hạt chỉ trong một cuối tuần: “Cuộc cách mạng tháng Mười một”. Mảnh vỡ của nó ở đây là một electron và một positron - mang điện, nên nam châm bẻ cong chúng và độ cong cho ra p.",
 
   // muon
   "js.disc.z.daughter": "muon",
 
-  // 1983, at CERN. The carrier of the weak neutral force, ninety-seven times heavier than a proton
-  // and gone in 10⁻²⁵ seconds. All anyone ever sees is a pair of muons whose invariant mass keeps
-  // landing on the same number.
-  "js.disc.z.note": "Năm 1983, tại CERN. Hạt truyền tương tác yếu trung hòa, nặng gấp chín mươi bảy lần proton và biến mất trong 10⁻²⁵ giây. Tất cả những gì ai cũng chỉ thấy là một cặp muon mà khối lượng bất biến cứ rơi đúng vào một con số.",
+  // The heavy, electrically neutral carrier of the weak force - the force behind radioactive beta
+  // decay. Where the photon that carries electromagnetism is massless, the Z weighs ninety-seven
+  // protons and is gone in 10⁻²⁵ s, which is exactly why the weak force is weak and reaches nowhere.
+  // Found at CERN in 1983. Its debris is a pair of muons - heavy cousins of the electron, charged,
+  // so again the magnet does the measuring.
+  "js.disc.z.note": "Hạt truyền tương tác yếu, nặng và trung hòa về điện - tương tác yếu chính là thứ đứng sau phân rã beta phóng xạ. Trong khi photon truyền tương tác điện từ thì không có khối lượng, boson Z nặng bằng chín mươi bảy proton và biến mất trong 10⁻²⁵ giây, và đó đúng là lý do vì sao tương tác yếu vừa yếu vừa gần như không vươn xa được. Được tìm ra tại CERN năm 1983. Mảnh vỡ của nó là một cặp muon - anh em họ nặng ký của electron, mang điện, nên lại là nam châm làm việc đo.",
 
   // photon
   "js.disc.higgs.daughter": "photon",
 
-  // 2012, at the LHC. Two photons - massless, both of them - whose energies and opening angle keep
-  // reconstructing 125 GeV. This channel is drowning in background: only a few percent of the pairs
-  // here are really Higgs decays, which is why it took a hundred trillion collisions to gather the
-  // photon pairs in a histogram like this one.
-  "js.disc.higgs.note": "Năm 2012, tại LHC. Hai photon - cả hai đều không khối lượng - mà năng lượng và góc mở cứ dựng lại đúng 125 GeV. Kênh này chìm trong phông nền: chỉ vài phần trăm số cặp ở đây thực sự là Higgs phân rã, đó là lý do phải mất một trăm nghìn tỉ va chạm mới gom được số cặp photon cho một biểu đồ như thế này.",
+  // A ripple in the Higgs field - the field that gives every other elementary particle its mass. It
+  // weighs 133 protons, and it was the last missing piece of the Standard Model until the LHC found
+  // it in 2012. Its debris here is two photons - massless and uncharged, so nothing bends them and a
+  // dense block has to stop them to read E. Only a few percent of the pairs in this window are
+  // really Higgs decays, which is why it took a hundred trillion collisions.
+  "js.disc.higgs.note": "Một gợn sóng của trường Higgs - trường trao khối lượng cho mọi hạt cơ bản khác. Nó nặng bằng 133 proton, và là mảnh ghép cuối cùng còn thiếu của Mô hình Chuẩn cho tới khi LHC tìm ra nó năm 2012. Mảnh vỡ của nó ở đây là hai photon - không khối lượng và không mang điện, nên chẳng gì bẻ cong chúng được và phải có một khối vật liệu đặc chặn chúng lại mới đọc được E. Chỉ vài phần trăm số cặp trong cửa sổ này thực sự là Higgs phân rã, đó là lý do phải mất một trăm nghìn tỉ va chạm.",
+
+  // {excess} ÷ √{under} = {sigma}
+  "js.disc.sigmaCalc": "{excess} ÷ √{under} = {sigma}",
 
   // not yet
   "js.disc.notYet": "chưa có",
@@ -870,37 +562,40 @@ I18N.register("vi", {
   // Collecting collisions…
   "js.disc.early.head": "Đang thu thập va chạm…",
 
-  // Every event dumps one number into the histogram: the invariant mass rebuilt from two measured
-  // tracks. Random combinations land anywhere. Keep going.
-  "js.disc.early.detail": "Mỗi sự kiện thả một con số vào biểu đồ: khối lượng bất biến dựng lại từ hai vệt đo được. Các tổ hợp ngẫu nhiên rơi vào bất cứ đâu. Cứ tiếp tục đi.",
+  // Each collision drops one number into the chart: the mass rebuilt from its two tracks. Random
+  // combinations land anywhere. Keep going.
+  "js.disc.early.detail": "Mỗi va chạm thả một con số vào biểu đồ: khối lượng dựng lại từ hai vệt hạt của nó. Các tổ hợp ngẫu nhiên rơi vào bất cứ đâu. Cứ tiếp tục đi.",
 
   // No peak - just background.
   "js.disc.none.head": "Chưa có đỉnh - mới chỉ là phông nền.",
 
-  // So far this is a smooth falling spectrum, exactly what uncorrelated pairs of {daughter}s
-  // produce. A real particle would refuse to spread out.
-  "js.disc.none.detail": "Tới lúc này đây vẫn là một phổ giảm trơn tru, đúng như những cặp {daughter} không liên quan gì với nhau tạo ra. Một hạt thật sẽ không chịu tãi ra như vậy.",
+  // {inPeak} pairs landed in the window and the fitted background explains about {under} of them on
+  // its own - a leftover well inside the usual wobble. This is still just the smooth slope that
+  // uncorrelated {daughter} pairs make.
+  "js.disc.none.detail": "{inPeak} cặp rơi vào cửa sổ tìm kiếm, và riêng phông nền đã khớp cũng giải thích được khoảng {under} cặp trong số đó - phần dư ra nằm gọn trong dao động thường thấy. Đây vẫn chỉ là cái sườn dốc trơn tru mà những cặp {daughter} không liên quan tạo ra.",
 
   // Something is piling up.
   "js.disc.hint.head": "Có gì đó đang chồng lên nhau.",
 
-  // A {sigma}σ bump. Physics calls this nothing at all - fluctuations this big turn up by luck
-  // several times a year. Take more data.
-  "js.disc.hint.detail": "Một chỗ gồ {sigma}σ. Vật lý coi đây là chưa có gì cả - thăng giáng cỡ này xuất hiện do may rủi vài lần mỗi năm. Hãy lấy thêm dữ liệu.",
+  // {inPeak} pairs in the window against {under} expected from background - an excess of {excess},
+  // which is {sigma}σ. Physics calls this nothing: wobbles this big turn up by luck several times a
+  // year. Take more data.
+  "js.disc.hint.detail": "{inPeak} cặp trong cửa sổ so với {under} cặp dự kiến từ phông nền - dôi ra {excess} cặp, tức {sigma}σ. Vật lý coi đây là chưa có gì: dao động cỡ này xuất hiện do may rủi vài lần mỗi năm. Hãy lấy thêm dữ liệu.",
 
   // {sigma}σ - evidence.
   "js.disc.evidence.head": "{sigma}σ - đã có bằng chứng.",
 
-  // Real enough to publish as evidence, not yet enough to claim. The excess sits at {mass} GeV and
-  // refuses to move as data accumulates.
-  "js.disc.evidence.detail": "Đủ thật để công bố như bằng chứng, nhưng chưa đủ để tuyên bố. Phần dôi ra nằm ở {mass} GeV và không chịu xê dịch khi dữ liệu chồng lên.",
+  // {excess} pairs more than the background can account for. Real enough to publish as evidence, not
+  // yet enough to claim - and the excess sits at {mass} GeV and refuses to move as data accumulates.
+  "js.disc.evidence.detail": "Nhiều hơn {excess} cặp so với những gì phông nền giải thích nổi. Đủ thật để công bố như bằng chứng, nhưng chưa đủ để tuyên bố - và phần dôi ra nằm ở {mass} GeV, không chịu xê dịch khi dữ liệu chồng lên.",
 
   // Discovery - {sigma}σ.
   "js.disc.found.head": "Khám phá - {sigma}σ.",
 
-  // Above five sigma the community calls it a particle. You never saw it: it was gone in 10⁻²²
-  // seconds. You weighed its debris with E² − (pc)², and the answer kept coming back the same.
-  "js.disc.found.detail": "Trên năm sigma thì cộng đồng gọi nó là một hạt. Bạn chưa bao giờ nhìn thấy nó: nó đã biến mất trong 10⁻²² giây. Bạn đã cân mảnh vỡ của nó bằng E² − (pc)², và câu trả lời cứ quay lại y như cũ.",
+  // {excess} pairs above what background explains, at {mass} GeV. Beyond five sigma the community
+  // calls it a particle. You never saw it - it was gone in 10⁻²² seconds. You weighed its debris
+  // with √(E² − (pc)²), and the answer kept coming back the same.
+  "js.disc.found.detail": "Dôi ra {excess} cặp so với những gì phông nền giải thích được, tại {mass} GeV. Vượt quá năm sigma thì cộng đồng gọi nó là một hạt. Bạn chưa bao giờ nhìn thấy nó - nó đã biến mất trong 10⁻²² giây. Bạn đã cân mảnh vỡ của nó bằng √(E² − (pc)²), và câu trả lời cứ quay lại y như cũ.",
 
   // paused
   "js.disc.paused": "đang tạm dừng",
@@ -908,17 +603,26 @@ I18N.register("vi", {
   // true mass, {m} GeV
   "js.disc.trueMass": "khối lượng thật, {m} GeV",
 
-  // reconstructed invariant mass √(E² − (pc)²) · GeV
-  "js.disc.xAxis": "khối lượng bất biến dựng lại √(E² − (pc)²)  ·  GeV",
+  // the mass each pair computes to, √(E² − (pc)²) · GeV
+  "js.disc.xAxis": "khối lượng mà mỗi cặp tính ra,  √(E² − (pc)²)  ·  GeV",
 
-  // events per bin
-  "js.disc.yAxis": "số sự kiện mỗi ô",
+  // how many pairs landed in this slice
+  "js.disc.yAxis": "số cặp rơi vào lát này",
 
   // {n} collisions
   "js.disc.collisions": "{n} va chạm",
 
+  // measured: {e1} GeV, {e2} GeV, {deg}° apart
+  "js.disc.measured": "đo được: {e1} GeV, {e2} GeV, lệch nhau {deg}°",
+
   // √(E² − (pc)²) = {m} GeV
   "js.disc.eventMass": "√(E² − (pc)²) = {m} GeV",
+
+  // same parent - so it lands on the mass, every time
+  "js.disc.realPair": "cùng một hạt mẹ - nên nó rơi đúng vào khối lượng đó, lần nào cũng vậy",
+
+  // unrelated pair - this number means nothing, and lands anywhere
+  "js.disc.fakePair": "cặp không liên quan - con số này chẳng có nghĩa gì, và rơi vào bất cứ đâu",
 
   // two {daughter}s, energies in GeV
   "js.disc.tracks": "hai {daughter}, năng lượng tính bằng GeV",
@@ -931,168 +635,5 @@ I18N.register("vi", {
 
   // Go to {title}
   "js.lesson.goto": "Tới {title}",
-
-  // momentum plane · pc
-  "js.shell.plane": "mặt phẳng động lượng · pc",
-
-  // light cone · E = pc
-  "js.shell.cone": "nón ánh sáng · E = pc",
-
-  // the slice through py = 0 - your hyperbola
-  "js.shell.slice": "lát cắt py = 0 - đường hypebol của bạn",
-
-  // your particle
-  "js.shell.you": "hạt của bạn",
-
-  // drag to turn it over
-  "js.shell.drag": "kéo để xoay nó",
-
-  // 0 · massless
-  "js.shell.massless": "0 · không khối lượng",
-
-  // A cone. No vertex, no rest.
-  "js.shell.cone.head": "Một hình nón. Không đỉnh, không nghỉ.",
-
-  // With the mass gone the bowl has closed onto the light cone: the surface touches E = 0 at a
-  // single point and every part of it has slope 1. There is no lowest energy to sit at, which is
-  // another way of saying a massless particle can never be at rest.
-  "js.shell.cone.detail": "Khối lượng biến mất thì cái bát đã khép lại đúng vào nón ánh sáng: mặt cong chạm E = 0 tại đúng một điểm và mọi phần của nó đều có độ dốc 1. Không có mức năng lượng thấp nhất nào để ngồi vào, đó là một cách khác để nói rằng hạt không khối lượng không bao giờ đứng yên được.",
-
-  // Out on the rim, hugging the cone.
-  "js.shell.rim.head": "Ngoài vành, ôm sát hình nón.",
-
-  // Far from the axis the bowl becomes indistinguishable from the cone - that is the ultra-
-  // relativistic limit, E ≈ pc. The mass is still there, it is just an ever smaller share of the
-  // height.
-  "js.shell.rim.detail": "Xa trục thì cái bát trở nên không phân biệt được với hình nón - đó là giới hạn siêu tương đối tính, E ≈ pc. Khối lượng vẫn còn đó, chỉ là nó chiếm phần ngày càng nhỏ trong chiều cao.",
-
-  // Down in the bowl - Newton's country.
-  "js.shell.bowl.head": "Dưới đáy bát - lãnh địa của Newton.",
-
-  // Near the vertex the surface is a parabola, E ≈ mc² + p²∕2m. That parabola is Newtonian kinetic
-  // energy, sitting on a pedestal of height mc². Slide further out and the bowl bends away from it.
-  "js.shell.bowl.detail": "Gần đỉnh, mặt cong là một parabol, E ≈ mc² + p²∕2m. Parabol đó chính là động năng Newton, đặt trên một cái bệ cao mc². Trượt ra xa hơn thì cái bát cong đi khỏi nó.",
-
-  // On the shoulder of the bowl.
-  "js.shell.shoulder.head": "Trên vai cái bát.",
-
-  // Between the vertex and the rim: γ = {g}. This is the region where neither Newton's parabola nor
-  // the light cone is a good enough description, and you need the full surface.
-  "js.shell.shoulder.detail": "Giữa đỉnh và vành: γ = {g}. Đây là vùng mà cả parabol của Newton lẫn nón ánh sáng đều không đủ tốt để mô tả, và bạn cần đến cả mặt cong.",
-
-  // Stop turning
-  "js.shell.stopTurning": "Dừng xoay",
-
-  // Turn it
-  "js.shell.turn": "Xoay đi",
-
-  // Electron
-  "js.tri.electron.label": "Electron",
-
-  // mc² = 0.511 MeV - so light that a few million volts already make it relativistic. Push pc past a
-  // couple of MeV and watch the triangle flatten.
-  "js.tri.electron.note": "mc² = 0,511 MeV - nhẹ tới mức chỉ vài triệu vôn đã làm nó tương đối tính. Đẩy pc quá vài MeV và xem tam giác bẹt ra.",
-
-  // Proton
-  "js.tri.proton.label": "Proton",
-
-  // mc² = 938 MeV: the same momentum that flattens an electron barely tilts a proton. The LHC pushes
-  // protons to pc ≈ 7 TeV, where γ ≈ 7000.
-  "js.tri.proton.note": "mc² = 938 MeV: cùng một động lượng làm bẹt electron thì chỉ làm proton nghiêng nhẹ. LHC đẩy proton tới pc ≈ 7 TeV, nơi γ ≈ 7000.",
-
-  // Photon
-  "js.tri.photon.label": "Photon",
-
-  // m = 0, so E = pc exactly - at every energy from radio waves to gamma rays. β = pc ∕ E = 1: it
-  // cannot slow down, and no boost can catch it.
-  "js.tri.photon.note": "m = 0, nên E = pc chính xác - ở mọi mức năng lượng từ sóng radio tới tia gamma. β = pc ∕ E = 1: nó không thể chậm lại, và không cách đổi hệ nào bắt kịp nó.",
-
-  // Custom particle
-  "js.tri.custom.label": "Hạt tùy chỉnh",
-
-  // Invent a particle: set its rest energy with the mass slider, then drive it. The same momentum
-  // means very different speeds for different masses.
-  "js.tri.custom.note": "Hãy tự chế một hạt: đặt năng lượng nghỉ của nó bằng thanh trượt khối lượng, rồi lái nó. Cùng một động lượng sẽ cho các tốc độ rất khác nhau với các khối lượng khác nhau.",
-
-  // lab frame
-  "js.tri.labFrame": "hệ phòng thí nghiệm",
-
-  // observer at {v}
-  "js.tri.observerAt": "người quan sát ở {v}",
-
-  // 0 · lab
-  "js.tri.boostZero": "0 · phòng TN",
-
-  // Light: uncatchable.
-  "js.tri.light.head": "Ánh sáng: không thể bắt kịp.",
-
-  // You are moving at {v} and it still recedes at exactly c. The chase changed only its energy:
-  // {lab} in the lab, {you} for you - {shift} {factor}×.
-  "js.tri.light.detail": "Bạn đang chạy ở {v} mà nó vẫn lùi ra xa đúng bằng c. Cuộc đuổi bắt chỉ đổi được năng lượng của nó: {lab} trong phòng thí nghiệm, {you} với bạn - {shift} {factor}×.",
-
-  // redshifted
-  "js.tri.redshifted": "dịch đỏ",
-
-  // blueshifted
-  "js.tri.blueshifted": "dịch xanh",
-
-  // E = pc: pure motion-energy.
-  "js.tri.massless.head": "E = pc: năng lượng thuần chuyển động.",
-
-  // No mass leg at all - the triangle is a flat line at every energy. Press “Chase it” and see what
-  // a 0.9999997 c pursuit accomplishes.
-  "js.tri.massless.detail": "Không có cạnh khối lượng nào cả - tam giác là một đường thẳng bẹt ở mọi mức năng lượng. Hãy bấm “Đuổi theo nó” và xem một cuộc rượt đuổi ở 0,9999997 c làm được gì.",
-
-  // Caught it - this is its rest frame.
-  "js.tri.rest.head": "Bắt được rồi - đây là hệ quy chiếu nghỉ của nó.",
-
-  // The momentum leg is gone and only mass remains: E = mc² = {m}. You are standing in the one frame
-  // where Einstein’s famous shortcut is the whole story.
-  "js.tri.rest.detail": "Cạnh động lượng biến mất và chỉ còn khối lượng: E = mc² = {m}. Bạn đang đứng trong hệ quy chiếu duy nhất mà câu nói tắt trứ danh của Einstein là toàn bộ câu chuyện.",
-
-  // Newton’s territory.
-  "js.tri.newton.head": "Lãnh địa của Newton.",
-
-  // At {v}, relativity barely matters: Newton’s ½mv² overshoots by only {err}%. The triangle is
-  // nearly a vertical stick - motion is a rounding error on mass.
-  "js.tri.newton.detail": "Ở {v}, thuyết tương đối gần như không đáng kể: ½mv² của Newton chỉ vượt quá {err}%. Tam giác gần như một cây gậy dựng đứng - chuyển động chỉ là sai số làm tròn trên khối lượng.",
-
-  // Fully relativistic.
-  "js.tri.relativistic.head": "Tương đối tính hoàn toàn.",
-
-  // γ = {g}: clocks aboard tick {g}× slower than yours, and Newton’s kinetic energy is already
-  // {err}% too big. Both legs of the triangle matter now.
-  "js.tri.relativistic.detail": "γ = {g}: đồng hồ trên hạt chạy chậm hơn đồng hồ của bạn {g} lần, và động năng của Newton đã lớn quá {err}%. Bây giờ cả hai cạnh của tam giác đều quan trọng.",
-
-  // Nearly light-like.
-  "js.tri.ultra.head": "Gần như ánh sáng.",
-
-  // The mass leg is only {share}% of the hypotenuse - energetically this particle is almost pure
-  // light. Yet its speed still misses c, by {gap} of c.
-  "js.tri.ultra.detail": "Cạnh khối lượng chỉ còn chiếm {share}% cạnh huyền - về mặt năng lượng hạt này gần như là ánh sáng thuần túy. Vậy mà tốc độ của nó vẫn hụt so với c, hụt {gap} của c.",
-
-  // lab
-  "js.tri.lab": "phòng TN",
-
-  // mc² - the rail the tip can never leave
-  "js.tri.rail": "mc² - đường ray mà đỉnh không bao giờ rời được",
-
-  // γ = ∞ - no rest frame
-  "js.tri.noRestFrame": "γ = ∞ - không có hệ quy chiếu nghỉ",
-
-  // light - c
-  "js.tri.lightLane": "ánh sáng - c",
-
-  // your photon - c
-  "js.tri.photonLane": "photon của bạn - c",
-
-  // this particle - {v}
-  "js.tri.particleLane": "hạt này - {v}",
-
-  // Swing the boost
-  "js.tri.swing": "Đưa võng hệ quy chiếu",
-
-  // Stop swinging
-  "js.tri.stopSwinging": "Dừng đưa võng",
 
 });

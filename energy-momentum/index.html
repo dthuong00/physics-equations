@@ -3,13 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="An intuitive walkthrough of the relativistic energy–momentum relation E² = p²c² + m²c⁴, with four interactive simulators: the energy triangle, the mass shell, a box of light with weight, and a particle discovered from its debris.">
-<title>Energy–momentum relation - the triangle inside E = mc²</title>
+<meta name="description" content="An intuitive walkthrough of the relativistic energy–momentum relation E² = p²c² + m²c⁴, with an interactive simulator that discovers a particle from its debris.">
+<title>Energy–momentum relation - what E = mc² leaves out</title>
 <link rel="stylesheet" href="../assets/i18n.css">
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="./simulator.css">
-<link rel="stylesheet" href="./shell.css">
-<link rel="stylesheet" href="./box.css">
 <link rel="stylesheet" href="./discover.css">
 <script src="../assets/i18n.js" data-langs="en:English,vi:Tiếng Việt" data-dir="./i18n"></script>
 </head>
@@ -21,15 +19,15 @@
       <div class="eyebrow">Special relativity · the full energy equation</div>
       <h1>E = mc² is only<br>half the story.</h1>
       <div class="hero-equation"><i>E²</i><b>=</b><span class="t-p">p²c²</span><b>+</b><span class="t-m">m²c⁴</span><span class="hero-tail">- true for everything: electrons, planets, light</span></div>
-      <p class="lede">The world's most famous equation is the special case for objects standing still. The full relation ties total energy to momentum and mass by nothing fancier than the Pythagorean theorem - and explains in one line why light can push a solar sail, why nothing massive reaches light speed, and where 99% of your own weight comes from. Walk through it, then drive a particle to the edge of c, turn the mass shell over in your hands, weigh a box containing nothing but light, and discover a particle from its debris.</p>
+      <p class="lede">The world's most famous equation is the special case for objects standing still. The full relation ties total energy to momentum and mass - and explains in one line why light can push a solar sail, why nothing massive reaches light speed, and where 99% of your own weight comes from. Walk through it, then use it to discover a particle from its debris - the way the Higgs was found.</p>
       <div class="toc" id="toc"></div>
     </div>
   </section>
 
   <section class="slide" data-title="The full equation">
     <div class="inner center">
-      <div class="head"><span class="step">01</span><h2>Three quantities, one bookkeeping law</h2></div>
-      <p class="intro">A moving particle carries energy for two reasons: because it <b>moves</b>, and because it <b>exists</b>. The equation adds the two contributions - but not the way everyday intuition would. First, regroup the constants:</p>
+      <div class="head"><span class="step">01</span><h2>Why is it E<i>squared</i>, and not just E?</h2></div>
+      <p class="intro">A moving particle carries energy for two reasons: because it <b>moves</b>, and because it <b>exists</b>. Everyday intuition says you add the two up. The equation says you do not - you add their <b>squares</b>, and that single difference is what the rest of this lesson is about. Start by regrouping the constants, which makes the two contributions comparable:</p>
       <div class="eq-card">
         <span>Group each c with its partner - every term becomes an energy, squared</span>
         <div class="eq-line"><b class="t-e">E²</b><i>=</i><b class="t-p">(pc)²</b><i>+</i><b class="t-m">(mc²)²</b></div>
@@ -39,39 +37,54 @@
         <article class="tc-p"><b>pc - the motion part</b><p>Momentum p, converted to energy units by one factor of c. It grows without limit as the particle is pushed harder - momentum has no ceiling.</p></article>
         <article class="tc-m"><b>mc² - the existence part</b><p>The rest energy: what the particle is worth standing still. m is the <b>invariant mass</b> - a fixed property of the particle that no amount of speed changes.</p></article>
       </div>
-      <div class="insight">Notice what the c's are doing: they are <b>unit converters</b>, nothing more. Once pc and mc² are both measured in energy, the equation is free to say something geometric - <span>squares adding to a square</span>.</div>
+      <div class="insight">Notice what the c's are doing: they are <b>unit converters</b>, nothing more. Squares are why the bigger contribution swallows the total and the smaller one barely registers - <span>2 and 100 do not add to 102 here, they add to about 100</span>. So a particle can be almost pure motion, or almost pure existence, and the same one line covers both. Next: <span>what is left when one of them disappears completely</span>.</div>
     </div>
   </section>
 
   <section class="slide" data-title="Two limits">
     <div class="inner center">
-      <div class="head"><span class="step">03</span><h2>Collapse the triangle, and two famous facts fall out</h2></div>
-      <p class="intro">Squares adding to a square is the signature of a <b>right triangle</b> - legs pc and mc², hypotenuse E - and a right triangle has two degenerate cases: lose the horizontal leg, or lose the vertical one. Each collapse is a celebrated piece of physics.</p>
+      <div class="head"><span class="step">03</span><h2>Switch off one term, and two famous facts fall out</h2></div>
+      <p class="intro">The relation has exactly two extreme cases: a particle with no momentum, and a particle with no mass. Each one is a celebrated piece of physics - and between them they account for both halves of the equation's reputation.</p>
       <div class="limit-grid">
         <article class="limit rest"><span class="tag">SET p = 0 - STAND STILL</span>
           <div class="limit-formula">E = mc²</div>
           <h3>The famous equation is one corner case</h3>
-          <p>With no momentum leg, the hypotenuse falls onto the mass leg. Einstein’s celebrity equation is the <b>rest-frame reading</b> of the full relation - and it says existing is expensive: one kilogram standing perfectly still stores 9×10¹⁶ J, about 21 megatons of TNT.</p>
+          <p>With the motion term gone, every scrap of E is the mass term. Einstein’s celebrity equation is the <b>rest-frame reading</b> of the full relation - and it says existing is expensive: one kilogram standing perfectly still stores 9×10¹⁶ J, about 21 megatons of TNT.</p>
         </article>
         <div class="or-join">or</div>
         <article class="limit light"><span class="tag">SET m = 0 - PURE LIGHT</span>
           <div class="limit-formula">E = pc</div>
           <h3>Massless means no choice about speed</h3>
-          <p>With no mass leg, the hypotenuse lies flat on the momentum leg, so β = pc/E = <b>1 exactly</b>. Anything massless must travel at c, always, in every frame - and it carries momentum with no mass at all, which is why sunlight can push a solar sail.</p>
+          <p>With the mass term gone, E is nothing but pc, so β = pc/E = <b>1 exactly</b>. Anything massless must travel at c, always, in every frame - and it carries momentum with no mass at all, which is why sunlight can push a solar sail.</p>
         </article>
       </div>
-      <div class="insight">Everything else lives between the two collapses: every electron, proton and rocket is a triangle with <b>both legs</b>. Massive things can flatten their triangle forever without finishing the job - <span>pc grows without bound, and E stays one step ahead</span>.</div>
+      <div class="insight">Everything else lives between the two extremes: every electron, proton and rocket carries <b>both terms at once</b>. Massive things can drive the motion term as high as they like and never erase the mass term - <span>pc grows without bound, and E stays one step ahead</span>. But both terms are numbers <b>somebody measured</b>. Next: <span>what happens when somebody else measures them</span>.</div>
     </div>
   </section>
 
   <section class="slide" data-title="The invariant">
     <div class="inner center">
-      <div class="head"><span class="step">04</span><h2>Observers disagree about E and p - never about m</h2></div>
-      <p class="intro">Chase a particle and its energy drops; run toward it and its momentum grows. E and p are <b>opinions that depend on the observer</b>. Rearranged, the equation names the one combination every observer computes identically:</p>
+      <div class="head"><span class="step">04</span><h2>If E and p depend on who is looking, what is real?</h2></div>
+      <p class="intro">Energy of motion depends on how fast something is going - <b>relative to you</b>. So two people who are themselves moving differently measure different speeds for the same particle, and write down a different E and a different p for it. Neither of them has made a mistake. Which leaves an awkward question: does the particle <i>have</i> an energy at all, or only an energy according to somebody? Watch three observers measure one proton.</p>
+      <div class="frames-card">
+        <header><b>One proton. Three people watching.</b><span>nothing about the proton changes - only who is holding the ruler</span></header>
+        <table class="frames">
+          <thead>
+            <tr><th>the observer</th><th data-i18n-skip>E</th><th data-i18n-skip>pc</th><th class="inv" data-i18n-skip>&#8730;(E&#178; &#8722; (pc)&#178;)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>riding alongside it - to them it is standing still</td><td>0.938</td><td>0</td><td class="inv">0.938</td></tr>
+            <tr><td>watching it fly past at 0.8c</td><td>1.563</td><td>1.251</td><td class="inv">0.938</td></tr>
+            <tr><td>watching it fly past at 0.99c</td><td>6.649</td><td>6.583</td><td class="inv">0.938</td></tr>
+          </tbody>
+        </table>
+        <p>Everything in GeV. E changes by a factor of seven and pc climbs from nothing to almost the whole of E - the two of them genuinely are opinions. Yet the last column never moves a digit. Every observer in the universe gets that same <b>0.938</b>, and that number is what we mean by the proton's <b>mass</b>.</p>
+      </div>
       <div class="eq-card invariant">
-        <span>The observer-proof combination</span>
+        <span>So the equation, rearranged, is a statement about what nobody can argue with</span>
         <div class="eq-line"><b class="t-m">(mc²)²</b><i>=</i><b class="t-e">E²</b><i>−</i><b class="t-p">(pc)²</b></div>
       </div>
+      <p class="intro">Which leaves one thing to explain: why should <i>subtracting</i> two quantities that both change leave something that does not? Because that is simply how spacetime measures distance - and you already know the version with a plus sign.</p>
       <div class="analogy-grid">
         <article><b>Rotate a stick</b>
           <svg viewBox="0 0 170 150" role="img" aria-label="A stick rotated about the origin: its x and y coordinates change but its length stays on the same circle">
@@ -93,25 +106,16 @@
           <p>Its E and pc change, but E² − (pc)² never does. Spacetime geometry conserves this with a <b>minus</b> sign: states slide on hyperbolas instead of circles.</p>
         </article>
       </div>
-      <div class="collider-card">
-        <header><b>How new particles are actually discovered</b><span>the equation used as a weighing scale</span></header>
-        <div class="collider-steps">
-          <span><b>1</b>Smash protons; measure the E and p of every piece of debris.</span>
-          <span><b>2</b>For interesting combinations, compute √(E² − (pc)²) - the invariant mass.</span>
-          <span><b>3</b>Histogram it. Random debris smears out; a real particle piles up at <b>its own mass</b>.</span>
-        </div>
-        <p class="collider-note">The Higgs boson announced itself in 2012 exactly this way - as a bump of collisions whose debris kept computing the same invariant mass, 125 GeV.</p>
-      </div>
-      <div class="insight">This is what mass <b>is</b> in relativity: not “amount of stuff”, but the invariant length of the energy–momentum arrow - <span>the one number about a particle that the whole universe agrees on</span>.</div>
+      <div class="insight">So mass is not “amount of stuff”. It is <b>the part of a particle that survives changing observer</b> - <span>the one number about it the whole universe agrees on</span>. It is also the only reason anyone can weigh a particle they never see: point this same subtraction at two tracks in a detector and out comes the mass of whatever made them, which is the last slide of this lesson. Next: <span>check the relation against the physics it had to replace</span>.</div>
     </div>
   </section>
 
   <section class="slide" data-title="Newton hides inside">
     <div class="inner center">
       <div class="head"><span class="step">05</span><h2>Slow down, and Newton reappears</h2></div>
-      <p class="intro">If the relation is right, it must contain the mechanics that ran physics for two centuries. Take the square root and let the triangle be nearly vertical - momentum small compared to mc²:</p>
+      <p class="intro">If the relation is right, it must contain the mechanics that ran physics for two centuries. Take the square root and let momentum be small compared with mc² - the everyday case, where almost all of E is just the mass term:</p>
       <div class="bound-steps">
-        <article><span>Exact, from the triangle</span><b>E = mc² · √(1 + (pc ∕ mc²)²)</b></article>
+        <article><span>Exact, from the relation</span><b>E = mc² · √(1 + (pc ∕ mc²)²)</b></article>
         <article><span>Now let momentum be small</span><b>√(1 + x²) ≈ 1 + x²⁄2 &nbsp;⟹&nbsp; E ≈ mc² + p²∕2m</b></article>
         <article class="final"><span>Newton, recovered</span><b>E ≈ mc² + ½mv² - the familiar kinetic energy, riding on an enormous constant</b></article>
       </div>
@@ -130,121 +134,7 @@
         <span><b>1938</b>fission: missing mass paid out as energy</span>
         <span><b>2012</b>Higgs found as an invariant-mass bump</span>
       </div>
-      <div class="insight">One relation, three regimes: <b>Newton</b> when the triangle is nearly vertical, <b>E = mc²</b> when it is exactly vertical, <b>pure light</b> when it is flat. Next: <span>drive the triangle yourself</span>.</div>
-    </div>
-  </section>
-
-  <section class="slide simulator-slide lab" data-title="Drive the triangle" data-simulator="triangle">
-    <div class="inner">
-      <div class="sim-head">
-        <div>
-          <div class="head"><span class="step">06</span><h2>Drive the triangle</h2></div>
-          <p class="intro">Pick a particle and crank its momentum: the triangle stretches, its state rides the mass hyperbola, and the race below shows how close to light speed you really are. Then boost into another observer’s frame and try to catch it - every number changes except one. Press <b>Swing the boost</b> to see what a change of observer really is: the green mass leg is a rod of fixed length, the tip is pinned to its rail, and every observer in the universe is just one more swing of the hypotenuse across it.</p>
-        </div>
-        <div class="scenario-tabs" id="triTabs">
-          <button class="scenario on" data-particle="electron">Electron</button>
-          <button class="scenario" data-particle="proton">Proton</button>
-          <button class="scenario" data-particle="photon">Photon</button>
-          <button class="scenario" data-particle="custom">Custom</button>
-        </div>
-      </div>
-
-      <div class="lab-grid">
-        <div class="lab-main">
-          <section class="panel bench-panel">
-            <header><b>Energy triangle · race against light</b><span><span>viewing from:</span> <em id="frameTag" data-i18n-skip>lab frame</em></span></header>
-            <canvas id="triCanvas" aria-label="Live right triangle with momentum and rest-energy legs and total-energy hypotenuse, above a race track comparing the particle's speed against light"></canvas>
-            <footer class="legend lab-legend">
-              <span><i class="k-p"></i>momentum leg pc</span>
-              <span><i class="k-m"></i>rest-energy leg mc²</span>
-              <span><i class="k-e"></i>total energy E</span>
-              <span><i class="k-ghost"></i>lab-frame triangle, when boosted</span>
-            </footer>
-          </section>
-        </div>
-
-        <aside class="lab-rail">
-          <div class="verdict waiting" id="verdict" data-i18n-skip><b id="verdictHead">Warming up…</b><span id="verdictDetail">Move the momentum slider to push the particle.</span></div>
-          <section class="panel">
-            <header><b>Mass hyperbola</b><span>E² − (pc)² = (mc²)²</span></header>
-            <canvas id="mapCanvas" aria-label="The E versus pc plane showing the particle's mass hyperbola, the light lines E equals pc, Newton's approximation, and dots for the lab and boosted observers"></canvas>
-            <p class="panel-note">Green: every (pc, E) this mass can have - one hyperbola. Orange dashes: light, <i>E = |p|c</i>. Blue dashes: Newton’s estimate. Boosting slides the dot <b>along</b> the curve, never off it.</p>
-          </section>
-          <section class="panel">
-            <header><b>Two observers, one particle</b><span>E, p are opinions</span></header>
-            <table class="scoreboard">
-              <thead><tr><th></th><th>lab</th><th>boosted</th></tr></thead>
-              <tbody>
-                <tr><th>total E</th><td id="labE">-</td><td id="obsE">-</td></tr>
-                <tr><th>momentum pc</th><td id="labP">-</td><td id="obsP">-</td></tr>
-                <tr><th>speed v</th><td id="labV">-</td><td id="obsV">-</td></tr>
-                <tr><th>stretch γ</th><td id="labG">-</td><td id="obsG">-</td></tr>
-                <tr><th>kinetic E − mc²</th><td id="labK">-</td><td id="obsK">-</td></tr>
-                <tr class="s-row"><th>√(E² − (pc)²)</th><td id="labI">-</td><td id="obsI">-</td></tr>
-              </tbody>
-            </table>
-          </section>
-        </aside>
-      </div>
-
-      <div class="sim-controls">
-        <div class="control"><label for="pSlider">Momentum pc <output id="pValue">0.5 MeV</output></label><input id="pSlider" type="range" min="-2" max="5" step="0.01" value="-0.3"></div>
-        <div class="control"><label for="mSlider">Custom mass mc² <output id="mValue">100 MeV</output></label><input id="mSlider" type="range" min="-1" max="4" step="0.01" value="2" disabled></div>
-        <div class="control"><label for="boostSlider">Observer boost <output id="boostValue">0 · lab</output></label><input id="boostSlider" type="range" min="-8" max="8" step="0.02" value="0"></div>
-        <div class="sim-actions"><button class="action primary" id="chaseBtn">Chase it</button><button class="action" id="sweepBtn" data-i18n-skip>Swing the boost</button><button class="action" id="labBtn">Lab frame</button><button class="action" id="resetBtn">Reset</button></div>
-      </div>
-      <div class="sim-note"><b id="modeTitle" data-i18n-skip>Electron</b><span id="modeNote" data-i18n-skip>-</span></div>
-    </div>
-  </section>
-
-  <section class="slide simulator-slide lab shell-lab" data-title="The mass shell" data-simulator="shell">
-    <div class="inner">
-      <div class="sim-head">
-        <div>
-          <div class="head"><span class="step">07</span><h2>One knob turns a cone into a bowl</h2></div>
-          <p class="intro">So far momentum has been a single number, pointing along one line. Let it point anywhere in a plane instead, and plot the energy the equation demands as a <b>height</b> above every possible momentum. The result is a surface - physicists call it the <b>mass shell</b> - and a particle of that mass is allowed to sit anywhere on it and nowhere else. Now drag the mass down to zero and watch what the bowl becomes.</p>
-        </div>
-      </div>
-
-      <div class="lab-grid">
-        <div class="lab-main">
-          <section class="panel">
-            <header><b>The surface E = √((pc)² + (mc²)²)</b><span>height above the momentum plane</span></header>
-            <canvas id="shellCanvas" aria-label="A three-dimensional surface showing energy as a height above the plane of momentum: a bowl whose vertex sits at mc squared, wrapped around the dashed light cone"></canvas>
-            <footer class="legend shell-legend">
-              <span><i class="k-shell"></i>the mass shell, green where it is slow, orange where it is light-like</span>
-              <span><i class="k-cone"></i>light cone, E = pc</span>
-              <span><i class="k-slice"></i>the pᵧ = 0 slice - the hyperbola from slide 03</span>
-              <span><i class="k-dot"></i>your particle</span>
-            </footer>
-          </section>
-        </div>
-
-        <aside class="lab-rail">
-          <div class="verdict" id="shellVerdict" data-i18n-skip><b id="shellVerdictHead">-</b><span id="shellVerdictDetail">-</span></div>
-          <section class="panel">
-            <header><b>Where you are standing</b><span>energy units, c = 1</span></header>
-            <table class="scoreboard">
-              <tbody>
-                <tr><th>height E</th><td id="shellE">-</td></tr>
-                <tr><th>distance from the axis pc</th><td id="shellP">-</td></tr>
-                <tr class="s-row"><th>vertex height mc²</th><td id="shellM">-</td></tr>
-                <tr><th>speed v = pc ∕ E</th><td id="shellBeta">-</td></tr>
-                <tr><th>stretch γ = E ∕ mc²</th><td id="shellGamma">-</td></tr>
-              </tbody>
-            </table>
-            <p class="panel-note">Spin the <b>direction</b> dial and the dot rides around the bowl at a <b>constant height</b>: the surface does not care which way momentum points, only how much there is. That circular symmetry is why one number, <i>|p|</i>, was ever enough.</p>
-          </section>
-        </aside>
-      </div>
-
-      <div class="sim-controls">
-        <div class="control"><label for="shellMass">Mass mc² <output id="shellMassValue">1.00</output></label><input id="shellMass" type="range" min="0" max="2.5" step="0.01" value="1"></div>
-        <div class="control"><label for="shellMom">Momentum |p|c <output id="shellMomValue">1.20</output></label><input id="shellMom" type="range" min="0" max="2.6" step="0.01" value="1.2"></div>
-        <div class="control"><label for="shellDir">Direction of travel <output id="shellDirValue">34°</output></label><input id="shellDir" type="range" min="0" max="6.28" step="0.01" value="0.6"></div>
-        <div class="sim-actions"><button class="action primary" id="shellLightBtn">Collapse to light</button><button class="action" id="shellRestBtn">Stand still</button><button class="action" id="shellSpinBtn" data-i18n-skip>Stop turning</button><button class="action" id="shellResetBtn">Reset</button></div>
-      </div>
-      <div class="sim-note"><b>Why it matters</b><span>The whole equation is this one shape. “Massive” and “massless” are not two different kinds of physics - they are the same surface with the vertex lifted off the floor or resting on it, and the height of that lift is <i>E = mc²</i>.</span></div>
+      <div class="insight">One relation, three regimes: <b>Newton</b> when the motion term is a whisper beside the mass term, <b>E = mc²</b> when it is gone, <b>pure light</b> when there is no mass term at all. Every one of those was <b>one particle</b>. Next: <span>point the same relation at a bagful of them, and watch mass stop meaning “amount of stuff”</span>.</div>
     </div>
   </section>
 
@@ -279,99 +169,41 @@
         </div>
         <p class="collider-note">Bound systems are lighter than their parts, confined ones are heavier - and both are the same equation, read with the right sign. Nuclear power stations and your own body weight are two sides of one accounting rule.</p>
       </div>
-      <div class="insight">Mass was never a substance. It is <b>the invariant length of a system's energy–momentum arrow</b> - so anything that raises the energy inside while leaving the momentum at zero <span>raises the mass</span>. Next: build one and weigh it.</div>
+      <div class="insight">Mass was never a substance. It is <b>the invariant length of a system's energy–momentum arrow</b> - so anything that raises the energy inside while leaving the momentum at zero <span>raises the mass</span>. Einstein's own 1905 argument was exactly this, run backwards: let a body emit two flashes of light in opposite directions and it loses energy while gaining no momentum, so it must have lost <i>mass</i>. That four-page afterthought is where E = mc² first appears. Next: <span>point the same sum at two tracks in a detector, and weigh something nobody can see</span>.</div>
     </div>
   </section>
 
-  <section class="slide simulator-slide lab box-lab" data-title="Weigh a box of light" data-simulator="box">
+  <section class="slide simulator-slide lab disc-lab" data-title="Weigh what you cannot see" data-simulator="discover">
     <div class="inner">
       <div class="sim-head">
         <div>
-          <div class="head"><span class="step">09</span><h2>A box of light has weight</h2></div>
-          <p class="intro">Two photons bouncing between perfect mirrors. Nothing in the box has any mass at all - yet the box as a whole is heavier, harder to push, and would tip a scale. Push the box up to speed and watch the honest consequences: one photon blueshifts, the other reddens, the box squashes along its length, and the two bounces stop happening at the same moment - so for stretches of each cycle both photons are heading the same way and the <b>mirrors are holding the missing momentum</b>. Every number on the right moves. The green one does not.</p>
-        </div>
-        <div class="scenario-tabs" id="boxTabs">
-          <button class="scenario" data-box="photon">One photon</button>
-          <button class="scenario" data-box="pair">Two photons</button>
-          <button class="scenario on" data-box="box">Mirror box</button>
-          <button class="scenario" data-box="proton">Proton</button>
-        </div>
-      </div>
-
-      <div class="lab-grid">
-        <div class="lab-main">
-          <section class="panel bench-panel">
-            <header><b>The box, seen from the lab</b><span><span>the system is</span> <em id="boxFrame" data-i18n-skip>at rest</em></span></header>
-            <canvas id="boxCanvas" aria-label="A mirrored box containing bouncing photons, drawn in the lab frame, above the right triangle formed by the system's total momentum, invariant mass and total energy"></canvas>
-            <footer class="legend lab-legend">
-              <span><i class="k-p"></i>blueshifted - running into you</span>
-              <span><i class="k-e"></i>redshifted - running away</span>
-              <span><i class="k-m"></i>the invariant mass leg</span>
-              <span><i class="k-ghost"></i>arrow length is momentum</span>
-            </footer>
-          </section>
-        </div>
-
-        <aside class="lab-rail">
-          <div class="verdict rest" id="boxVerdict" data-i18n-skip><b id="boxVerdictHead">-</b><span id="boxVerdictDetail">-</span></div>
-          <section class="panel">
-            <header><b>Mass budget</b><span>what the scale is really weighing</span></header>
-            <div class="budget">
-              <div class="budget-row"><span>rest mass of the parts</span><i class="budget-track"><i class="parts" id="budgetParts"></i></i><b id="budgetPartsValue" data-i18n-skip>-</b></div>
-              <div class="budget-row"><span>energy of the motion</span><i class="budget-track"><i class="motion" id="budgetMotion"></i></i><b id="budgetMotionValue" data-i18n-skip>-</b></div>
-            </div>
-            <p class="budget-note" id="budgetShare" data-i18n-skip>-</p>
-            <div class="weigh-line"><span>put it on a scale and you would read</span><b id="boxWeight" data-i18n-skip>-</b></div>
-          </section>
-          <section class="panel">
-            <header><b>Adding up the contents</b><span>lab frame</span></header>
-            <table class="scoreboard">
-              <thead><tr><th></th><th>E</th><th>pc</th></tr></thead>
-              <tbody id="boxRows" data-i18n-skip></tbody>
-              <tfoot>
-                <tr><th>Σ over the contents</th><td id="boxSumE">-</td><td id="boxSumP">-</td></tr>
-                <tr class="wall-row" id="wallRow"><th>parked in the walls</th><td id="boxWallE">-</td><td id="boxWallP">-</td></tr>
-                <tr class="s-row"><th>√(E² − (pc)²)</th><td id="boxInv" colspan="2">-</td></tr>
-              </tfoot>
-            </table>
-            <p class="panel-note" id="wallNote">The two bounces are simultaneous for the box, but <b>not</b> for you - so for a moment after each hit, the momentum you can see in the photons is wrong. It is in the mirrors. Slow the clock right down to catch it.</p>
-          </section>
-        </aside>
-      </div>
-
-      <div class="sim-controls">
-        <div class="control"><label for="boxEnergy">Energy of each photon <output id="boxEnergyValue">1 MeV</output></label><input id="boxEnergy" type="range" min="-1" max="1" step="0.01" value="0"></div>
-        <div class="control"><label for="boxSpeed">Push the whole box <output id="boxSpeedValue">0 · at rest</output></label><input id="boxSpeed" type="range" min="-3" max="3" step="0.01" value="0"></div>
-        <div class="control"><label for="boxRate">Clock rate <output id="boxRateValue">1.00×</output></label><input id="boxRate" type="range" min="0" max="2" step="0.01" value="1"></div>
-        <div class="sim-actions"><button class="action primary" id="boxBoostBtn">Push it</button><button class="action" id="boxStopBtn">Stop it</button><button class="action" id="boxResetBtn">Reset</button></div>
-      </div>
-      <div class="sim-note"><b>Einstein, 1905</b><span>His own argument was a box like this one: let a body emit two flashes of light in opposite directions, and it loses energy without gaining any momentum - so it must have lost <i>mass</i>. That four-page afterthought to special relativity is where E = mc² first appears.</span></div>
-    </div>
-  </section>
-
-  <section class="slide simulator-slide lab disc-lab" data-title="Discover a particle" data-simulator="discover">
-    <div class="inner">
-      <div class="sim-head">
-        <div>
-          <div class="head"><span class="step">10</span><h2>Find a particle you can never see</h2></div>
-          <p class="intro">A heavy particle made in a collision is gone long before it reaches anything: it decays in 10⁻²² seconds, leaving only debris. So you measure the debris - two tracks, each with an energy and a direction - and compute <b>√(E² − (pc)²)</b> for the pair. Random combinations give random answers and smear into a smooth background. But if the two really came from one parent, that number is the parent's mass <b>every single time</b>. Collect enough events and it stops being a number and becomes a bump.</p>
+          <div class="head"><span class="step">10</span><h2>How do you weigh a particle nobody can see?</h2></div>
+          <p class="intro">A Higgs boson is gone in 10⁻²² seconds. Nothing you can measure is <i>its</i> energy or <i>its</i> momentum - only two pieces of debris, flying apart. Its mass sounds unknowable. It is not, for the one reason this whole lesson has been about: <b>m is invariant</b>, so the debris still carries the answer. Four questions, then run it yourself - <b>start with the J/ψ</b>, where it takes seconds.</p>
         </div>
         <div class="scenario-tabs" id="discTabs">
-          <button class="scenario" data-parent="jpsi">J/ψ</button>
+          <button class="scenario on" data-parent="jpsi">J/ψ</button>
           <button class="scenario" data-parent="z">Z boson</button>
-          <button class="scenario on" data-parent="higgs">Higgs</button>
+          <button class="scenario" data-parent="higgs">Higgs</button>
         </div>
+      </div>
+
+      <div class="howto">
+        <span><b>1</b><b class="k">What do you actually measure?</b> Not the particle - two pieces of debris. For each one the detector gets a <b>direction</b>, plus either its momentum or its energy.</span>
+        <span><b>2</b><b class="k">How does it get those?</b> A charged piece curves in a magnet: the stiffer the curve, the bigger p. A photon has no charge, so it is buried in a dense block and the light it makes gives E. The other half comes from <b>this lesson's own relation</b> - you know which particle it is, so you know its m.</span>
+        <span><b>3</b><b class="k">And that gives the parent?</b> Add the two energies to get E, add the two momenta to get p, compute <b>&#8730;(E&#178; &#8722; (pc)&#178;)</b>. Mass is invariant, so that number <i>is</i> the parent's mass, in GeV.</span>
+        <span><b>4</b><b class="k">Then why thousands of them?</b> Nothing says which two pieces belonged together, so you do it for <b>every</b> pair. Wrong pairs land anywhere - the grey slope. Right pairs land on the same number every time, stacking into a <b>bump</b>. The bump is the particle.</span>
       </div>
 
       <div class="lab-grid">
         <div class="lab-main">
           <section class="panel bench-panel">
-            <header><b>Invariant mass of every pair</b><span><span>channel:</span> <em id="discChannel" data-i18n-skip>H → γγ</em></span></header>
+            <header><b>Invariant mass of every pair</b><span><span>channel:</span> <em id="discChannel" data-i18n-skip>J/ψ → e⁺e⁻</em></span></header>
             <canvas id="histCanvas" aria-label="A histogram of reconstructed invariant mass filling up event by event, with a smooth background and a growing peak at the parent particle's mass"></canvas>
             <footer class="legend hist-legend">
               <span><i class="k-bkg"></i>random pairs - background</span>
               <span><i class="k-sig"></i>pairs from a real parent</span>
               <span><i class="k-window"></i>the search window</span>
+              <span><i class="k-fit"></i>background fitted to the sidebands</span>
               <span><i class="k-true"></i>the true mass - hidden from a real experiment</span>
             </footer>
           </section>
@@ -388,33 +220,34 @@
             <table class="scoreboard">
               <tbody>
                 <tr><th>collisions recorded</th><td id="discTotal">-</td></tr>
-                <tr><th>events in the window</th><td id="discPeak">-</td></tr>
-                <tr><th>background expected there</th><td id="discUnder">-</td></tr>
-                <tr><th>excess</th><td id="discExcess">-</td></tr>
-                <tr><th>significance</th><td id="discSigma" class="big">-</td></tr>
+                <tr><th>pairs in the search window</th><td id="discPeak">-</td></tr>
+                <tr><th>expected from background alone</th><td id="discUnder">-</td></tr>
+                <tr><th>excess - the bump</th><td id="discExcess">-</td></tr>
+                <tr><th>how sure, in sigma</th><td id="discSigma" class="big">-</td></tr>
                 <tr class="s-row"><th>mass you measure</th><td id="discMass">-</td></tr>
+                <tr class="t-row"><th>the true mass, for comparison</th><td id="discTruth" data-i18n-skip>-</td></tr>
               </tbody>
             </table>
-            <p class="panel-note">Background is estimated the way experiments do it: from the <b>sidebands</b>, the parts of the spectrum where the particle cannot be. Widen the detector's resolution and the same signal spreads over more bins - the bump flattens and can drown, even though every event is still perfectly real.</p>
+            <p class="sigma-calc"><span>sigma is just</span> <b id="discSigmaCalc" data-i18n-skip>-</b></p>
+            <p class="sigma-scale"><b>2&#963;</b> luck  &#183;  <b>3&#963;</b> evidence  &#183;  <b>5&#963;</b> discovery</p>
+            <p class="panel-note">The orange colouring and the true mass are teaching aids - a real experiment has neither. All it can do is fit the dark curve to the flanks of the chart, where the particle cannot be, read it under the bump, and count what rises above. <b>Sigma</b> asks how that excess compares with the background's own random wobble - and for counting, that wobble is known: a count averaging N comes out a little different every time, by about <b>&#8730;N</b>. So dividing the excess by &#8730;background says how many wobbles' worth of bump you have.</p>
           </section>
         </aside>
       </div>
 
       <div class="sim-controls">
-        <div class="control"><label for="discRes">Detector resolution <output id="discResValue">1.5%</output></label><input id="discRes" type="range" min="0.003" max="0.06" step="0.001" value="0.015"></div>
-        <div class="control"><label for="discBkg">Background fraction <output id="discBkgValue">95%</output></label><input id="discBkg" type="range" min="0" max="0.99" step="0.01" value="0.95"></div>
+        <div class="control"><label for="discRes">Detector resolution <output id="discResValue">2.0%</output></label><input id="discRes" type="range" min="0.003" max="0.06" step="0.001" value="0.02"></div>
+        <div class="control"><label for="discBkg">Background fraction <output id="discBkgValue">45%</output></label><input id="discBkg" type="range" min="0" max="0.99" step="0.01" value="0.45"></div>
         <div class="control"><label for="discRate">Collision rate <output id="discRateValue">40/s</output></label><input id="discRate" type="range" min="0" max="400" step="2" value="40"></div>
         <div class="sim-actions"><button class="action primary" id="discRunBtn">Run 500</button><button class="action" id="discOneBtn">Fire one</button><button class="action" id="discPauseBtn" data-i18n-skip>Pause</button><button class="action" id="discResetBtn">Reset</button></div>
       </div>
-      <div class="sim-note"><b id="discTitle" data-i18n-skip>H → γγ</b><span id="discNote" data-i18n-skip>-</span></div>
+      <div class="sim-note"><b id="discTitle" data-i18n-skip>J/ψ → e⁺e⁻</b><span id="discNote" data-i18n-skip>-</span></div>
+      <div class="sim-note"><b>Where you have been</b><span>One relation, read four ways: <b>E = mc²</b> when nothing moves, <b>E = pc</b> when nothing has mass, Newton's ½mv² hiding inside it whenever things are slow, and mass as the <b>invariant</b> no observer can argue with - that last one being the only way anyone has ever weighed a particle they could not see.</span></div>
     </div>
   </section>
 </main>
 <nav class="nav"><button id="prev">← Previous</button><div class="dots" id="dots"></div><div class="counter"><b id="current">1</b> / <span id="total">10</span> · <span id="slideTitle">Start</span></div><button class="next" id="next">Next →</button></nav>
 <script src="./lesson.js"></script>
-<script src="./simulator.js"></script>
-<script src="./shell.js"></script>
-<script src="./box.js"></script>
 <script src="./discover.js"></script>
 </body>
 </html>

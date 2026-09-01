@@ -74,15 +74,6 @@
   background: var(--paper);
 }
 
-#triCanvas {
-  flex: 1 1 0;
-  min-height: clamp(340px, 47vh, 560px);
-}
-
-#mapCanvas {
-  height: clamp(150px, 20vh, 215px);
-}
-
 .panel-note {
   margin: 0;
   border-top: 1px solid var(--line);
@@ -194,31 +185,6 @@
   color: var(--green);
   font-weight: 850;
   background: var(--green-pale);
-}
-
-.lab-legend {
-  flex: 0 0 auto;
-  padding: 6px 12px;
-}
-
-.lab-legend i {
-  border-radius: 2px;
-}
-
-.lab-legend .k-p {
-  background: var(--blue);
-}
-
-.lab-legend .k-m {
-  background: var(--green);
-}
-
-.lab-legend .k-e {
-  background: var(--orange);
-}
-
-.lab-legend .k-ghost {
-  background: repeating-linear-gradient(90deg, var(--soft) 0 4px, transparent 4px 7px);
 }
 
 .lab .sim-controls {
