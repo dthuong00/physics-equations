@@ -477,6 +477,12 @@ I18N.register("vi", {
   // <b>2σ</b> luck · <b>3σ</b> evidence · <b>5σ</b> discovery
   "t:830a4bcb": "<b>2σ</b> ăn may  ·  <b>3σ</b> bằng chứng  ·  <b>5σ</b> khám phá",
 
+  // Why
+  "t:7b8038d9": "Vì sao",
+
+  // How the bump becomes a number
+  "t:32393b04": "Chỗ gồ biến thành con số bằng cách nào",
+
   // The orange colouring and the true mass are teaching aids - a real experiment has neither. All it
   // can do is fit the dark curve to the flanks of the chart, where the particle cannot be, read it
   // under the bump, and count what rises above. <b>Sigma</b> asks how that excess compares with the

@@ -226,3 +226,59 @@
     margin-top: 8px;
   }
 }
+
+.note-details {
+  border-top: 1px solid var(--line);
+}
+
+.note-details summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 7px 11px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.note-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.note-details summary span {
+  border-radius: 999px;
+  padding: 2px 6px;
+  background: var(--orange-pale);
+  color: var(--orange);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.note-details summary b {
+  font-size: 10px;
+}
+
+.note-details summary i {
+  color: var(--orange);
+  font-size: 9.5px;
+  font-style: normal;
+}
+
+.note-details[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.note-details[open] summary i {
+  font-size: 0;
+}
+
+.note-details[open] summary i::after {
+  content: "−";
+  font-size: 9.5px;
+}
+
+.note-details .panel-note {
+  border-top: 0;
+}
