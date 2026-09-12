@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An intuitive walkthrough of Newton's law of universal gravitation F = GMm/r², ending in an interactive 3D tide lab: watch the Moon and Sun raise two bulges on a turning Earth and read the tide at your own latitude.">
+<title>Newton's law of gravitation - the apple, the Moon and the tides</title>
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./tides.css">
+<script type="importmap">{"imports":{"three":"../assets/three.module.js"}}</script>
+</head>
+<body>
+<div class="progress"><i id="progress"></i></div>
+<main class="deck">
+  <section class="slide" data-title="Start">
+    <div class="inner center title-slide">
+      <div class="eyebrow">Newton's law of universal gravitation · one pull for everything</div>
+      <h1>The apple and the Moon<br>are doing the same thing.</h1>
+      <div class="hero-equation"><span class="t-f">F</span><b>=</b><span class="t-gm">G&hairsp;M&hairsp;m</span><b>∕</b><span class="t-r">r<sup>2</sup></span><span class="hero-tail">- the first law that reached from the ground to the sky</span></div>
+      <p class="lede">Before 1687 the heavens and the ground obeyed different rules: stones fell, planets wheeled, and nobody thought the two had anything to do with each other. Newton's one line says they are the same act. It weighs the Earth, steers spacecraft, and - once you subtract it from itself - explains why the sea rises twice a day. Walk through it, then raise the tide yourself in 3D.</p>
+      <div class="toc" id="toc"></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="The Moon is falling">
+    <div class="inner center">
+      <div class="head"><span class="step">01</span><h2>Why doesn't the Moon fall down?</h2></div>
+      <p class="intro">Drop an apple and it falls. Look up and the Moon just hangs there, night after night. If Earth pulls on everything, why isn't the Moon on its way down too? Newton's answer is the strangest sentence in the lesson: <b>it is</b>. The Moon falls toward Earth every second of its life - it simply moves sideways so fast that the ground curves away beneath it as quickly as it drops. Falling, and forever missing.</p>
+      <div class="analogy-grid">
+        <article><b>Falling and missing</b>
+          <svg viewBox="0 0 170 130" role="img" aria-label="A cannonball fired faster and faster from a mountain: slow shots land nearby, a fast enough shot falls all the way around the planet">
+            <circle class="t-earth" cx="60" cy="66" r="30"/>
+            <path class="t-path" d="M60 36 C70 35 78 40 84 47"/>
+            <path class="t-path" d="M60 36 C78 34 92 44 89.5 60.8"/>
+            <circle class="t-path orbit" cx="60" cy="66" r="37" fill="none"/>
+            <circle class="t-ball" cx="60" cy="36" r="3"/>
+            <text class="t-note" x="106" y="46">lands</text>
+            <text class="t-note" x="106" y="64">lands farther</text>
+            <text class="t-note big" x="10" y="124">fast enough: it never lands</text>
+          </svg>
+          <p>Fire a cannonball from a mountain. Faster shots land farther, because they have more time to fall before hitting ground. Fire it fast enough - about <b>8 km/s</b> at Earth's surface - and the ground curves away exactly as fast as the ball falls. It circles the planet forever. That is an <b>orbit</b>: not the absence of falling, but falling with perfect aim.</p>
+        </article>
+        <article><b>Then how far does the Moon fall each second?</b>
+          <svg viewBox="0 0 170 130" role="img" aria-label="An apple falling 4.9 metres in a second beside the Moon dropping only 1.4 millimetres toward Earth in the same second">
+            <line class="t-ground" x1="12" y1="112" x2="70" y2="112"/>
+            <circle class="t-apple" cx="40" cy="20" r="6"/>
+            <path class="t-drop" d="M40 30v70M35 94l5 6 5-6"/>
+            <text class="t-note hot" x="48" y="66">4.9 m</text>
+            <text class="t-tag" x="14" y="126">apple, 1 s</text>
+            <circle class="t-moon" cx="125" cy="40" r="11"/>
+            <path class="t-ghost" d="M125 55v45"/>
+            <path class="t-drop" d="M125 55v6"/>
+            <text class="t-note hot" x="133" y="60">1.4 mm</text>
+            <text class="t-note big" x="96" y="94">3600× less</text>
+            <text class="t-tag" x="104" y="126">Moon, 1 s</text>
+          </svg>
+          <p>Here is the test. The Moon is <b>60 Earth radii</b> away and takes 27.3 days to go round, so from its speed and its path you can work out how far it drops toward Earth's centre each second: <b>1.4 millimetres</b>. An apple drops <b>4.9 metres</b>. The ratio is 3600. And 60 × 60 = 3600. Sixty times farther away, the pull is sixty <em>squared</em> times weaker.</p>
+        </article>
+      </div>
+      <div class="insight">That one arithmetic coincidence - <b>60² = 3600</b> - is where the <i>r²</i> in the equation comes from. Newton checked it in 1666 and later wrote that he found the numbers "answer pretty nearly". <span>So if the pull weakens with the square of distance, what exactly decides how strong it is to begin with?</span></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Reading the equation">
+    <div class="inner center">
+      <div class="head"><span class="step">02</span><h2>What sets the strength - and why is <em>G</em> so tiny?</h2></div>
+      <p class="intro">Every pair of masses in the universe pulls on each other. Newton's law says how hard, and it has only three ingredients: how much stuff is on each side, how far apart the two centres are, and one fixed number that converts kilograms and metres into newtons.</p>
+      <div class="eq-card">
+        <span>Newton's law of universal gravitation, 1687 - the force between any two masses</span>
+        <div class="eq-line"><b class="t-f">F</b><i>=</i><b class="t-gm">G</b><i>·</i><b class="t-gm">M&hairsp;m</b><i>∕</i><b class="t-r">r<sup>2</sup></b><span class="eq-tail">the same F acts on both bodies, pointing each at the other</span></div>
+      </div>
+      <div class="term-cards">
+        <article class="tc-f"><b>F - the pull, on both</b><p>The force each mass feels, in newtons. The apple pulls Earth exactly as hard as Earth pulls the apple - the planet just has so much mass that its answering motion is invisible. There is no "puller" and "pulled": gravity is always mutual.</p></article>
+        <article class="tc-gm"><b>G · M · m - masses multiply</b><p>Double either mass and the pull doubles. <b>G</b> is the exchange rate, the same everywhere in the universe: <b>6.674 × 10⁻¹¹</b> newtons for two 1-kilogram masses one metre apart. That is about the weight of a single grain of pollen - gravity is by far the weakest force there is.</p></article>
+        <article class="tc-r"><b>r² - distance, squared</b><p>The distance between the two <em>centres</em>, not the surfaces. Twice as far means a quarter of the pull; ten times as far, a hundredth. It never reaches zero - which is why Newton called it <em>universal</em>: every mass tugs on every other, however far.</p></article>
+      </div>
+      <div class="fact-cards">
+        <article><b>Why you feel Earth but not your friend</b><p>A friend of 70 kg standing one metre away pulls you with about <b>5 × 10⁻⁹ N</b> - you would need a hundred million friends to match the weight of a paperclip. Earth wins not because gravity is strong but because there are <b>6 × 10²⁴ kg</b> of it under your feet.</p></article>
+        <article><b>Cavendish weighed the Earth</b><p>In 1798 Henry Cavendish hung lead balls on a fine wire and measured the twist as bigger balls pulled them sideways - the first laboratory value of G. With G known, your own weight gives Earth's mass: <b>M = gR²∕G</b>. A planet, weighed with a thread.</p></article>
+        <article><b>The same law all the way up</b><p>Put in the Sun's mass and Earth's distance and out comes a year of 365 days. Put in Jupiter's moons, Halley's comet, a GPS satellite - one formula, one constant, every orbit in the sky. That is what "universal" bought.</p></article>
+      </div>
+      <div class="insight">Now push the law to its obvious conclusion. The Moon pulls on <b>everything</b> on Earth - including the sea. So the water should heap up on the side facing the Moon: <b>one bulge</b>, pointing at the Moon, sweeping past you once as Earth turns. <span>One high tide a day. But every port on Earth records two.</span></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Why two tides">
+    <div class="inner center">
+      <div class="head"><span class="step">03</span><h2>Why does the sea rise <em>twice</em> a day, not once?</h2></div>
+      <p class="intro">High tide comes every 12 hours 25 minutes - twice per turn of the Earth under the Moon. A simple "the Moon pulls the water" can only make one heap. The picture is missing something, and the missing piece is that <b>Earth itself is falling toward the Moon</b>, just as the Moon falls toward Earth. Every rock and drop of water shares that fall. What you can feel is only how much your own pull <em>differs</em> from the pull on Earth's centre.</p>
+      <div class="analogy-grid">
+        <article><b>Three balls, one Moon</b>
+          <svg viewBox="0 0 190 130" role="img" aria-label="Three balls in a line being pulled toward the Moon with arrows of increasing length; the line stretches">
+            <circle class="t-moon" cx="174" cy="52" r="10"/>
+            <circle class="t-ball" cx="30" cy="52" r="6"/><circle class="t-ball" cx="72" cy="52" r="6"/><circle class="t-ball" cx="114" cy="52" r="6"/>
+            <path class="t-pull" d="M38 52h10M44 48l4 4-4 4"/>
+            <path class="t-pull" d="M80 52h18M94 48l4 4-4 4"/>
+            <path class="t-pull" d="M122 52h30M148 48l4 4-4 4"/>
+            <text class="t-note" x="18" y="76">weak</text><text class="t-note" x="56" y="76">stronger</text><text class="t-note" x="102" y="76">strongest</text>
+            <path class="t-ghost" d="M30 92h84"/>
+            <path class="t-out" d="M72 106h-40M37 102l-5 4 5 4"/><path class="t-out" d="M72 106h40M107 102l5 4-5 4"/>
+            <text class="t-note big" x="42" y="124">the line stretches</text>
+          </svg>
+          <p>Drop three balls in a row toward the Moon. The nearest is pulled hardest, the farthest least. Seen from the <em>middle</em> ball, the near one pulls ahead and the far one lags behind: the row <b>stretches along the line to the Moon</b>. Earth is that row - near-side sea, Earth's centre, far-side sea.</p>
+        </article>
+        <article><b>What is left after you subtract the shared fall</b>
+          <svg viewBox="0 0 190 130" role="img" aria-label="Earth with the Moon to the right; the leftover tidal pull points outward on the near and far sides and inward at the top and bottom, stretching the sea into two bulges">
+            <ellipse class="t-water" cx="80" cy="68" rx="46" ry="27"/>
+            <circle class="t-earth" cx="80" cy="68" r="30"/>
+            <circle class="t-moon" cx="168" cy="68" r="8"/>
+            <path class="t-out" d="M112 68h18M125 64l5 4-5 4"/>
+            <path class="t-out" d="M48 68h-18M35 64l-5 4 5 4"/>
+            <path class="t-in" d="M80 28v10M76 34l4 4 4-4"/>
+            <path class="t-in" d="M80 108v-10M76 102l4-4 4 4"/>
+            <text class="t-note hot" x="4" y="104">left behind</text>
+            <text class="t-note hot" x="104" y="104">pulled ahead</text>
+            <text class="t-note cool" x="86" y="24">squeezed</text>
+            <text class="t-tag" x="156" y="90">moon</text>
+          </svg>
+          <p>Take the Moon's pull at every point and <b>subtract the pull on Earth's centre</b>. On the near side something is left pointing at the Moon. On the far side something is left pointing <em>away</em> - Earth is pulled out from under that water. At the sides the leftover points inward. The sea is stretched into a rugby ball with <b>two bulges</b>, and Earth turns beneath them: two high tides per lunar day.</p>
+        </article>
+      </div>
+      <div class="eq-card tidal">
+        <span>The tidal pull - Newton's law subtracted from itself, for a body of mass M at distance d, on a planet of radius R</span>
+        <div class="eq-line"><b class="t-f">a<sub>tide</sub></b><i>=</i><b class="t-gm">GM</b><i>∕</i><b class="t-r">(d − R)<sup>2</sup></b><i>−</i><b class="t-gm">GM</b><i>∕</i><b class="t-r">d<sup>2</sup></b><i>≈</i><b class="t-gm">2GM<span class="t-r">R</span></b><i>∕</i><b class="t-r">d<sup>3</sup></b><span class="eq-tail">for the Moon: 1.1 × 10⁻⁶ m/s² - one ten-millionth of g</span></div>
+      </div>
+      <div class="steps-card">
+        <header><b>Where the d³ comes from</b><span>two copies of 1∕r², one subtraction</span></header>
+        <div class="steps-row">
+          <span><b>1</b>Near-side water is a distance <b>d − R</b> from the Moon, so it is pulled with <b>GM∕(d − R)²</b>.</span>
+          <span><b>2</b>Earth's centre is a distance <b>d</b> away and pulled with <b>GM∕d²</b>. Every part of Earth shares this - it is the free fall you cannot feel.</span>
+          <span><b>3</b>Subtract. Because R is small next to d (1∕60 for the Moon), the difference collapses to <b>2GMR∕d³</b>: one power of distance stronger than gravity itself.</span>
+        </div>
+        <p class="steps-note"><b>Ten-millionth of g sounds like nothing.</b> It moves oceans because it acts on every drop at once, for hours, with nothing pushing sideways to stop the water sliding toward the two bulges. It also stretches the solid Earth by about 30 cm - the ground under you rises and falls twice a day too.</p>
+      </div>
+      <div class="insight">Notice what the subtraction did: the tide falls off as <b>1∕d³</b>, not 1∕d². That extra power of distance has a consequence nobody would guess: <span>the Sun pulls Earth 180 times harder than the Moon does - so why is the Sun's tide the smaller one?</span></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="Sun versus Moon">
+    <div class="inner center">
+      <div class="head"><span class="step">04</span><h2>The Sun pulls Earth 180× harder. Why is its tide smaller?</h2></div>
+      <p class="intro">Earth orbits the Sun, not the Moon, for a plain reason: the Sun's pull on Earth is <b>180 times</b> the Moon's - 27 million times the mass, 389 times the distance, and 27 million ÷ 389² ≈ 180. If tides were about pull, the Sun would own them. But the tide is a <em>difference</em> in pull across Earth's width, and differences fall off as 1∕d³. That third power changes the winner.</p>
+      <div class="steps-card">
+        <header><b>The same two numbers, one more power of distance</b><span>M∕d² for the pull, M∕d³ for the tide</span></header>
+        <div class="steps-row">
+          <span><b>1</b><b>The pull.</b> Sun ÷ Moon = 27,000,000 ∕ 389² = <b>180</b>. The Sun wins by a mile - Earth's orbit is the proof.</span>
+          <span><b>2</b><b>The tide.</b> Sun ÷ Moon = 27,000,000 ∕ 389³ = <b>0.46</b>. Divide by 389 once more and the Sun drops to less than half.</span>
+          <span><b>3</b><b>Two bulges each.</b> The Moon raises a sea bulge of about <b>0.54 m</b> from high to low on an ideal water-covered Earth; the Sun about <b>0.25 m</b>. Both are always there, pointing at their own body.</span>
+        </div>
+        <p class="steps-note"><b>So the two bulges add or fight.</b> At new and full Moon the Sun and Moon line up and their bulges stack: <b>spring tides</b>, 1 + 0.46. At the quarter Moons they sit at right angles and the Sun's bulge lands on the Moon's low: <b>neap tides</b>, 1 − 0.46. Spring tides are about <b>2.7×</b> neap - every fortnight, on schedule, from one subtraction.</p>
+      </div>
+      <div class="fact-cards">
+        <article><b>Half a metre? Fundy gets sixteen</b><p>The 0.54 m is the tide on an ideal globe of deep water. Real oceans are basins that <b>slosh</b>, and some are tuned to a 12 h 25 min beat: the Bay of Fundy resonates to <b>16 m</b>, while the Mediterranean, too small to slosh, manages a few centimetres. The Moon sets the rhythm; the coastline sets the volume.</p></article>
+        <article><b>Earth tides the Moon 20× harder</b><p>The same subtraction, from the Moon's side: Earth is 81 times heavier and the Moon smaller, so Earth's tidal grip on the Moon is far stronger. Over billions of years it braked the Moon's spin until one face stays fixed toward us. Every large moon in the solar system is <b>tidally locked</b> the same way.</p></article>
+        <article><b>The day is getting longer</b><p>The bulges lag slightly behind the Moon as Earth turns, and that offset drags on Earth's spin: the day lengthens by <b>2.3 ms per century</b>, and the Moon, receiving the lost spin, recedes <b>3.8 cm per year</b> - measured by bouncing lasers off mirrors the Apollo crews left behind. Dinosaurs had 23-hour days.</p></article>
+      </div>
+      <div class="insight">Everything on this slide - two tides a day, springs and neaps, locked moons, lengthening days - came out of <b>F = GMm∕r²</b> written twice and subtracted once. <span>Next: watch it happen. Put the Moon where you like, stand at your own latitude, and read the tide off the sea.</span></div>
+    </div>
+  </section>
+
+  <section class="slide simulator-slide lab" data-title="Raise the tide" data-simulator="tides">
+    <div class="inner">
+      <div class="sim-head">
+        <div>
+          <div class="head"><span class="step">05</span><h2>Raise the tide yourself</h2></div>
+          <p class="intro">Here is what to look for. The ocean is drawn as a shell whose height is <b>Newton's tidal pull, summed for the Moon and the Sun</b> at every point - stretched about two million times or you would see nothing, since the real bulge is half a metre on a 6,400 km planet. <b>Colour is sea height.</b> The arrows are the leftover pull after Earth's shared fall is subtracted: orange where it lifts the water, blue where it squeezes. First check the claim from slide 3 - there really are <b>two</b> bulges, one facing the Moon and one facing away, and they stay pointed at the Moon while the <b>grid</b> of the solid Earth turns underneath. The green pin is you; the gauge on the right records the water under your feet, and two highs a day should appear about 12 h 25 min apart. Then drag the <b>Sun–Moon angle</b> from 0° to 90° and watch the Sun's bulge stop helping and start fighting. Bring the Moon closer and the arrows grow as 1∕d³ - eight times for half the distance. Drag to orbit the view, scroll to zoom.</p>
+        </div>
+        <div class="scenario-tabs">
+          <button class="scenario on" data-scenario="average">Average Moon</button>
+          <button class="scenario" data-scenario="perigee">Perigee spring tide</button>
+          <button class="scenario" data-scenario="neap">Neap tide</button>
+          <button class="scenario" data-scenario="tilted">Tilted Moon</button>
+          <button class="scenario" data-scenario="close">Moon at half distance</button>
+          <button class="scenario" data-scenario="sunOnly">No Moon</button>
+        </div>
+      </div>
+
+      <div class="lab-grid">
+        <div class="lab-main">
+          <section class="panel bench-panel tide-bench">
+            <header><b>Earth, Moon and sea</b><div class="view-toggle"><button id="homeBtn" class="on" type="button">⌖ Home</button><button id="sideViewBtn" type="button">Side-on</button><button id="poleViewBtn" type="button">Pole</button><i class="vt-gap"></i><button id="arrowsBtn" class="on" type="button">Arrows</button><button id="scaleBtn" type="button">To scale</button><i class="vt-gap"></i><button id="fsBtn" type="button">⛶ Full screen</button></div><span>drag orbits · scroll zooms · <em id="clockTag">-</em></span></header>
+            <canvas id="tideCanvas" aria-label="3D view of Earth with its ocean stretched into two bulges pointing toward and away from the Moon, coloured by sea height, with arrows showing the tidal pull and a pin marking the observer as the planet turns"></canvas>
+            <div class="no3d" id="no3d" hidden>This visualization needs WebGL, which your browser has disabled.</div>
+            <footer class="legend lab-legend">
+              <span><i class="k-sea"></i>colour = sea height · blue low, amber high</span>
+              <span><i class="k-out"></i>tidal pull lifting the sea</span>
+              <span><i class="k-in"></i>tidal pull squeezing it</span>
+              <span><i class="k-grid"></i>grid = the solid Earth, turning once a day</span>
+              <span><i class="k-you"></i>you, at the chosen latitude</span>
+              <span><i class="k-moon"></i>Moon, drawn close unless "To scale" is on</span>
+              <span>bulge height exaggerated ×<em id="exagTag">2,000,000</em></span>
+            </footer>
+          </section>
+        </div>
+
+        <aside class="lab-rail">
+          <div class="verdict" id="verdict"><b id="verdictHead">Two bulges, one Moon</b><span id="verdictDetail">Watch the grid turn under the sea while the bulges stay pointed at the Moon.</span></div>
+          <section class="panel">
+            <header><b>Tide gauge at your pin</b><span>last 3 days · sea height in metres</span></header>
+            <canvas id="gaugeCanvas" aria-label="Sea height under the observer over the last three days: the combined tide in black with the Moon-only and Sun-only tides dashed, high tides marked and the interval between the last two labelled"></canvas>
+            <footer class="legend lab-legend">
+              <span><i class="k-all"></i>Moon + Sun</span>
+              <span><i class="k-moon-line"></i>Moon alone</span>
+              <span><i class="k-sun-line"></i>Sun alone</span>
+              <span><i class="k-high"></i>high tide</span>
+            </footer>
+            <p class="panel-note">Two highs a day, about 12 h 25 min apart on average - not 12 h, because the Moon moves on while Earth turns and Earth needs 50 extra minutes to catch up. The last two came <span id="gapNote">-</span> apart; the Sun's bulge nudges them earlier or later through the month. Hover the curve to read it. If the two daily highs differ in height, the Moon is north or south of the equator: the <i>diurnal inequality</i>.</p>
+          </section>
+          <section class="panel">
+            <header><b>The numbers</b><span>from F = GMm∕r², twice</span></header>
+            <table class="scoreboard">
+              <thead><tr><th></th><th>your setup</th><th>average Moon</th></tr></thead>
+              <tbody>
+                <tr><th>Moon distance</th><td id="sbDist">-</td><td>384,400 km</td></tr>
+                <tr><th>tidal pull, near point</th><td id="sbAcc">-</td><td>1.10×10⁻⁶ m/s²</td></tr>
+                <tr><th>… as a fraction of g</th><td id="sbAccG">-</td><td>1.1×10⁻⁷</td></tr>
+                <tr><th>Moon's bulge, high − low</th><td id="sbMoonH">-</td><td>0.53 m</td></tr>
+                <tr><th>Sun's bulge, high − low</th><td id="sbSunH">-</td><td>0.25 m</td></tr>
+                <tr><th>Sun ÷ Moon</th><td id="sbRatio">-</td><td>0.46</td></tr>
+                <tr><th>range at your pin, last day</th><td id="sbRange">-</td><td>-</td></tr>
+                <tr><th>next high tide in</th><td id="sbNext">-</td><td>-</td></tr>
+                <tr class="s-row"><th>time between highs</th><td id="sbGap">-</td><td>12 h 25 min</td></tr>
+              </tbody>
+            </table>
+            <p class="panel-note">Bulge heights are the <i>equilibrium tide</i> on a water-covered globe: the surface where Newton's tidal pull and Earth's own gravity balance. Real coasts multiply them by sloshing. The Sun is kept over the equator here; the Moon's tilt slider lets it wander up to its real 28°.</p>
+          </section>
+        </aside>
+      </div>
+
+      <div class="sim-controls tide-controls">
+        <div class="control"><label for="distSlider">Moon distance <output id="distValue">384,400 km</output></label><input id="distSlider" type="range" min="180000" max="600000" step="100" value="384400"></div>
+        <div class="control"><label for="phaseSlider">Sun–Moon angle <output id="phaseValue">30° · waxing</output></label><input id="phaseSlider" type="range" min="0" max="360" step="1" value="30"></div>
+        <div class="control"><label for="latSlider">Your latitude <output id="latValue">40° N</output></label><input id="latSlider" type="range" min="-80" max="80" step="1" value="40"></div>
+        <div class="control"><label for="declSlider">Moon's tilt <output id="declValue">0°</output></label><input id="declSlider" type="range" min="-28" max="28" step="0.5" value="0"></div>
+        <div class="sim-actions"><button class="action primary" id="playBtn">⏸ Pause</button><button class="action" id="slowBtn">¼ speed</button><button class="action on" id="sunBtn">☀ Sun on</button><button class="action" id="resetBtn">↺ Reset</button></div>
+      </div>
+      <div class="sim-note"><b id="modeTitle">Average Moon</b><span id="modeNote">-</span></div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="What you now know">
+    <div class="inner center">
+      <div class="head"><span class="step">06</span><h2>Two copies of one formula, and the sea breathes</h2></div>
+      <p class="intro">At the start, an apple fell and the Moon hung in the sky and the two had nothing to do with each other. Here is what the one line has told you since.</p>
+      <div class="bound-steps">
+        <article><span>Slide 1 · <i>60² = 3600</i></span><b>The Moon falls 3600 times more gently than an apple, from 60 times farther away. <em>Gravity weakens as the square of the distance</em> - and the Moon is not hanging, it is falling and missing.</b></article>
+        <article><span>Slide 2 · <i>F = GMm∕r²</i></span><b>Every mass pulls every other, mutually, in proportion to both masses and G. <em>G is tiny</em>; planets are heavy. That is the whole story of why only Earth's pull is noticeable.</b></article>
+        <article><span>Slide 3 · <i>2GMR∕d³</i></span><b>Earth falls toward the Moon as a whole, so only the <em>difference</em> in pull across it counts. Subtract the law from itself and two bulges appear - <em>two tides a day</em>, with an extra power of distance.</b></article>
+        <article class="final"><span>Slide 4–5 · <i>M∕d³</i></span><b>That extra power is why the Sun, 180× the pull, gives less than half the tide - and why springs and neaps arrive every fortnight. You watched the bulges stay locked to the Moon while Earth turned beneath them.</b></article>
+      </div>
+      <div class="fact-cards">
+        <article><b>What Newton would not say</b><p>Asked <em>why</em> masses pull, he refused to guess: "I have not been able to discover the cause of those properties of gravity from phenomena, and I frame no hypotheses." The law describes; it does not explain.</p></article>
+        <article><b>The one thing it gets wrong</b><p>Mercury's orbit creeps <b>43 arcseconds per century</b> more than every tug from every planet can account for. Two hundred years of searching for a hidden planet found nothing. The formula was the problem.</p></article>
+        <article><b>And the one thing it forbids</b><p>Newton's pull is <b>instantaneous</b>: move the Sun and Earth feels it at once, across eight light-minutes. Nothing else in physics travels faster than light. The law that unified the sky needed a successor.</p></article>
+      </div>
+      <div class="insight">In 1915 Einstein replaced the pull with geometry: mass tells spacetime how to curve, and falling is just coasting through the curve. It hands back Newton's law wherever gravity is weak - tides included - and pays Mercury's missing 43″ exactly. <span>That is the next lesson.</span></div>
+      <a class="next-lesson" href="../einstein-field-equations/">Continue: Einstein field equations <i>→</i></a>
+    </div>
+  </section>
+</main>
+<nav class="nav"><button id="prev">← Previous</button><div class="dots" id="dots"></div><div class="counter"><b id="current">1</b> / <span id="total">7</span> · <span id="slideTitle">Start</span></div><button class="next" id="next">Next →</button></nav>
+<script src="./lesson.js"></script>
+<script type="module" src="./tides.js"></script>
+</body>
+</html>
