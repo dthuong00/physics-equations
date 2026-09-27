@@ -13,8 +13,9 @@ Easy, intuitive breakdowns of physics equations - with interactive visualization
 5. **Relativistic energy–momentum relation, E² = p²c² + m²c⁴** - [live lesson](https://dthuong00.github.io/physics-equations/energy-momentum/) · [tiếng Việt](https://dthuong00.github.io/physics-equations/energy-momentum/?lang=vi)
 6. **Einstein field equations, Gμν + Λgμν = 8πG Tμν/c⁴** - [live lesson](https://dthuong00.github.io/physics-equations/einstein-field-equations/)
 7. **Newton's law of gravitation, F = GMm/r²** - [live lesson](https://dthuong00.github.io/physics-equations/newton-gravity/)
-8. **Heisenberg's meth: uncertainty principle σₓ σₚ ≥ ℏ/2** - coming soon
-9. **Feynman diagrams: the QED perturbation series, M = Σ diagrams·αⁿ** - coming soon
+8. **Navier–Stokes equations, ρ Du/Dt = −∇p + μ∇²u + ρg** - [live lesson](https://dthuong00.github.io/physics-equations/navier-stokes/) · [tiếng Việt](https://dthuong00.github.io/physics-equations/navier-stokes/?lang=vi)
+9. **Heisenberg's meth: uncertainty principle σₓ σₚ ≥ ℏ/2** - coming soon
+10. **Feynman diagrams: the QED perturbation series, M = Σ diagrams·αⁿ** - coming soon
 
 
 

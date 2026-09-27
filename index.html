@@ -17,7 +17,7 @@
 
   <div class="heading-row">
     <h2>Available equations</h2>
-    <span class="count">7 available · 1 coming soon</span>
+    <span class="count">8 available · 1 coming soon</span>
   </div>
 
   <section class="equations" aria-label="Available physics equations">
@@ -71,7 +71,7 @@
       </div>
     </a>
 
-    <a class="equation bell" href="./bell-inequality/">
+    <a class="equation bell draft" href="./bell-inequality/">
       <div class="art bell-art" aria-hidden="true">
         <div class="entangled-source">S</div>
         <div class="beam beam-left"></div><div class="beam beam-right"></div>
@@ -100,7 +100,7 @@
       </div>
     </a>
 
-    <a class="equation field-equation" href="./einstein-field-equations/">
+    <a class="equation field-equation draft" href="./einstein-field-equations/">
       <div class="art gravity-art" aria-hidden="true">
         <div class="spacetime-grid"></div>
         <div class="gravity-mass"></div>
@@ -114,7 +114,7 @@
       </div>
     </a>
 
-    <a class="equation gravity" href="./newton-gravity/">
+    <a class="equation gravity draft" href="./newton-gravity/">
       <div class="art tide-art" aria-hidden="true">
         <div class="tide-sea"></div>
         <div class="tide-earth"></div>
@@ -130,6 +130,21 @@
       </div>
     </a>
 
+    <a class="equation navier draft" href="./navier-stokes/">
+      <div class="art flow-art" aria-hidden="true">
+        <i class="flow-lane lane-one"></i><i class="flow-lane lane-two"></i><i class="flow-lane lane-three"></i>
+        <div class="flow-stone"></div>
+        <span class="flow-eddy eddy-one"></span><span class="flow-eddy eddy-two"></span><span class="flow-eddy eddy-three"></span><span class="flow-eddy eddy-four"></span>
+        <span class="flow-label">vortex street</span>
+      </div>
+      <div class="copy">
+        <span class="number">EQUATION 08</span>
+        <h2>Navier–Stokes equations <span class="formula">ρ Du/Dt = −∇p + μ∇²u + ρg</span></h2>
+        <p>F = ma for anything that flows. Set honey against water, watch the flow behind a stone start to swing by itself, and see why OpenAI's 2026 claim to have "solved" the 3D version is bigger than the proof.</p>
+        <span class="open">Make the terms fight <i>→</i></span>
+      </div>
+    </a>
+
     <article class="equation coming uncertainty" aria-label="Heisenberg uncertainty principle, coming soon">
       <div class="art uncertainty-art" aria-hidden="true">
         <div class="uncertainty-wave"></div>
@@ -137,7 +152,7 @@
         <span class="momentum-spread">σₚ</span>
       </div>
       <div class="copy">
-        <span class="number">RELATION 08</span><span class="soon">Coming soon</span>
+        <span class="number">RELATION 09</span><span class="soon">Coming soon</span>
         <h2>Uncertainty principle <span class="formula">σₓ σₚ ≥ ℏ/2</span></h2>
         <p>See how localizing a particle in position broadens its possible momentum, revealing a fundamental quantum limit.</p>
       </div>
@@ -146,5 +161,13 @@
 
   <footer><span>Physics Equations Break Down</span><span>More equations coming soon.</span></footer>
 </main>
+<script>
+  // Draft lessons: a plain click does nothing; Ctrl+click (Cmd+click on Mac) opens them.
+  document.querySelectorAll('a.equation.draft').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      if (!(e.ctrlKey || e.metaKey)) e.preventDefault();
+    });
+  });
+</script>
 </body>
 </html>

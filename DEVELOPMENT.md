@@ -47,6 +47,22 @@ So no slide may open by stating its result. It opens by making the reader want i
 - **The closing slide answers the question the title asked.** State plainly what the
   reader now knows that they did not at slide 1.
 
+### Wording
+
+- **State the rule, not the anecdote.** A verdict, caption or card gives the physical rule in
+  one or two plain sentences: "Smooth and layered. Every swirl is wiped out faster than it can
+  form." Illustrations, stories and consequences ("stir ink into honey and stir back...",
+  "this is why wires sing") are left out unless the slide is about them.
+- **No anthropomorphic or cute wording for physical things.** Flows do not "change their
+  mind", storms do not "wind their own arms". Titles and captions say what happens: "from
+  smooth flow to a vortex street".
+- **Formula before cases.** When a slide introduces a number or a formula, show where it comes
+  from first, then the worked cases; never the other way round.
+- **Prefer a control with a few named cases over free sliders** when the point is comparison
+  ("bacteria", "a storm"); keep sliders only where the reader is meant to explore a range.
+- **Every unit, symbol and label must be defined once**, and a label must not name something
+  that is not on screen (no "behind the stone" when there is no stone).
+
 ### Checking a deck
 
 Read only the titles, in order. They should read as a chain of questions and claims that
@@ -79,7 +95,7 @@ swaps in the translation for the chosen language. Nothing in the markup has to b
 annotated, and editing the English can never leave a stale translation behind - the key
 stops matching and the page falls back to the new English until it is retranslated.
 
-`energy-momentum` is translated into Vietnamese. To add a language to a lesson:
+`energy-momentum` and `navier-stokes` are translated into Vietnamese. To add a language to a lesson:
 
 1. Include the runtime in `<head>`:
 
