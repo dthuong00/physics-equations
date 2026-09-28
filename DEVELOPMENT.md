@@ -160,4 +160,23 @@ npm run record -- "newton-2nd-law/#4" --click "#worldPlay" --crop .world-lab --s
 
 Useful flags: `--seconds` (length), `--click <selector>` (setup interactions, repeatable), `--crop <selector>` (capture one element instead of the full page), `--fps` / `--gif-width` (GIF quality), `--out` (output basename). Run `python tools/record.py --help` for everything.
 
+## Capturing images / PDFs
+
+`tools/capture.py` screenshots any page at high resolution (default 3 device pixels per CSS pixel) into `recordings/`, and can also print it to an A4 `.pdf`. Same Playwright setup as `record.py`, no ffmpeg needed.
+
+```sh
+# an A4 summary sheet as PNG (about 2400 px wide) plus a vector PDF
+npm run capture -- navier-stokes/summary.html --crop .sheet --print --pdf
+
+# a square thumbnail page at 2x, straight into the committed media folder
+npm run capture -- navier-stokes/thumbnail.html --width 1080 --height 1080 --scale 2 --out assets/media/navier-stokes
+
+# one slide, cropped to an element, after a click
+npm run capture -- "navier-stokes/#8" --click "button[data-mode=free]" --crop "#blowCanvas" --wait 3000
+```
+
+Useful flags: `--crop <selector>` (one element instead of the full page), `--scale` (resolution), `--print` (apply `@media print` rules, which hides toolbars), `--pdf` (also write an A4 PDF), `--click` / `--wait` (set the page up first), `--out` (output basename). Run `python tools/capture.py --help` for everything.
+
+Thumbnail pages such as `navier-stokes/thumbnail.html` are plain HTML sized to the final image; edit the text there and re-run the capture. Close the previous PNG in your editor first, or the write fails.
+
 The README gallery GIFs live in `assets/media/` (committed, unlike `recordings/`). To regenerate one, add `--fps 10 --gif-width 720 --out assets/media/<lesson-name>` to the matching command above and delete the leftover `.webm`.

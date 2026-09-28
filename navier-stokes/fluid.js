@@ -273,7 +273,7 @@
       detail.textContent = t("js.fluid.v.wait.detail", "By the numbers the carrying term can win here, but the flow is still the same on top and bottom. A tiny error in the numbers is growing behind the stone. Watch the sensor line.");
     } else if (re < 400) {
       head.textContent = t("js.fluid.v.street.head", "Vortex street: the flow swings by itself");
-      detail.textContent = t("js.fluid.v.street.detail", "Swirls break off from top and bottom in turn, one every {T} ms, with nobody shaking the stone. Strouhal number D∕(U·T) = {st} - the textbook value is about 0.2.", { T: period.toFixed(0), st: (state.D / (state.U * period)).toFixed(2) });
+      detail.textContent = t("js.fluid.v.street.detail", "Swirls break off from top and bottom in turn, one every {T} ms, with nothing shaking the stone.", { T: period.toFixed(0), st: (state.D / (state.U * period)).toFixed(2) });
     } else {
       box.classList.add("wild");
       head.textContent = t("js.fluid.v.wild.head", "Carrying wins: the flow turns messy");

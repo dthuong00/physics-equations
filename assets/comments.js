@@ -1,5 +1,5 @@
 // Reader questions via giscus (GitHub Discussions, category "Q&A").
-// One discussion per lesson, keyed by the page path. Loaded lazily on first open.
+// One discussion per slide, keyed by lesson folder + slide number. Loaded lazily on first open.
 (function () {
   var REPO = 'dthuong00/physics-equations';
   var REPO_ID = 'R_kgDOTq8f0Q';
@@ -7,8 +7,8 @@
   var CATEGORY_ID = 'DIC_kwDOTq8f0c4DGboo';
 
   var LABELS = {
-    en: { open: 'Questions?', title: 'Ask a question about this lesson', hint: 'Sign in with GitHub to post. Comments are stored as a GitHub Discussion.', close: 'Close' },
-    vi: { open: 'Có câu hỏi?', title: 'Đặt câu hỏi về bài học này', hint: 'Đăng nhập GitHub để gửi. Bình luận được lưu trong GitHub Discussions.', close: 'Đóng' }
+    en: { open: 'Questions?', title: 'Questions about slide {n}', hint: 'Sign in with GitHub to post. stored as a GitHub Discussion.', close: 'Close' },
+    vi: { open: 'Có câu hỏi?', title: 'Câu hỏi về slide {n}', hint: 'Đăng nhập GitHub để gửi.lưu trong GitHub Discussions.', close: 'Đóng' }
   };
 
   var css = '\
@@ -29,6 +29,22 @@
   function lang() {
     var l = (document.documentElement.lang || 'en').slice(0, 2);
     return LABELS[l] ? l : 'en';
+  }
+
+  // Lesson folder, e.g. "navier-stokes"; falls back to the full path for pages outside a folder.
+  function lessonKey() {
+    var parts = location.pathname.split('/').filter(Boolean);
+    if (parts.length && /\.html?$/i.test(parts[parts.length - 1])) parts.pop();
+    return parts[parts.length - 1] || location.pathname;
+  }
+
+  // Current slide: 1-based index of the ".slide.on" section, with the URL hash as a fallback.
+  function currentSlide() {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var on = document.querySelector('.slide.on');
+    var n = on ? slides.indexOf(on) + 1 : Number.parseInt(location.hash.slice(1), 10);
+    if (!(n > 0)) n = 1;
+    return { n: n, title: on && on.dataset.title ? on.dataset.title : '' };
   }
 
   function mount() {
@@ -53,20 +69,24 @@
     document.body.appendChild(panel);
 
     var body = panel.querySelector('.qa-body');
-    var loadedLang = null;
+    var loadedKey = null;
 
     function relabel() {
       var t = LABELS[lang()];
+      var slide = currentSlide();
       open.textContent = t.open;
-      panel.querySelector('h2').textContent = t.title;
+      panel.querySelector('h2').textContent = t.title.replace('{n}', slide.n) + (slide.title ? ' · ' + slide.title : '');
       panel.querySelector('p').textContent = t.hint;
       panel.querySelector('.qa-close').textContent = t.close;
     }
 
     function loadGiscus() {
       var l = lang();
-      if (loadedLang === l) return;
-      loadedLang = l;
+      var slide = currentSlide();
+      var term = lessonKey() + ' · slide ' + slide.n;
+      var key = l + '|' + term;
+      if (loadedKey === key) return;
+      loadedKey = key;
       body.innerHTML = '';
       var s = document.createElement('script');
       s.src = 'https://giscus.app/client.js';
@@ -75,7 +95,7 @@
       var attrs = {
         'data-repo': REPO, 'data-repo-id': REPO_ID,
         'data-category': CATEGORY, 'data-category-id': CATEGORY_ID,
-        'data-mapping': 'pathname', 'data-strict': '0',
+        'data-mapping': 'specific', 'data-term': term, 'data-strict': '1',
         'data-reactions-enabled': '1', 'data-emit-metadata': '0',
         'data-input-position': 'top', 'data-theme': 'light',
         'data-lang': l, 'data-loading': 'lazy'

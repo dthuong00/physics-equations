@@ -24,7 +24,8 @@ if (slide) {
     if (state.mode === "push") {
       const f = Math.max(0.012, 1 - time / T);
       const r = R0 * Math.sqrt(f);
-      return { r, w: W0 * (R0 / r) ** 2, len: 2.2 / Math.sqrt(f) ** 0.5, energy: 1, blow: time >= T };
+      // the push feeds energy and friction removes it: bounded, not constant
+      return { r, w: W0 * (R0 / r) ** 2, len: 2.2 / Math.sqrt(f) ** 0.5, energy: 1 - 0.03 * Math.min(1, time / T), blow: time >= T };
     }
     // no push: r falls to about a third, then friction wins and the tube widens and slows
     const dip = Math.exp(-time / 3), back = 1 - Math.exp(-Math.max(0, time - 3) / 2.5);
@@ -150,8 +151,8 @@ if (slide) {
     const card = $("bwVerdict");
     if (state.mode === "push") {
       card.className = "verdict" + (blow ? " wild" : "");
-      card.querySelector("b").textContent = blow ? t("js.blow.vBlow", "Blow-up: width zero, spin infinite, energy still limited") : t("js.blow.vPush", "The push stretches the tube; thinner means faster spin");
-      card.querySelector("span").textContent = blow ? t("js.blow.vBlowD", "This is what the proof says the equation can do when a smooth push is allowed. Real water would have shrunk to molecules long before.") : t("js.blow.vPushD", "Angular momentum is kept, so spin grows as 1 ∕ width². Each thinner, faster tube stretches harder still, and the picture repeats at a smaller scale.");
+      card.querySelector("b").textContent = blow ? t("js.blow.vBlow", "Heading to blow-up: width toward zero, spin without bound, energy still limited") : t("js.blow.vPush", "The push stretches the tube; thinner means faster spin");
+      card.querySelector("span").textContent = blow ? t("js.blow.vBlowD", "This is what the proof says the equation can do when a smooth push is allowed. Real water would have shrunk to molecules long before.") : t("js.blow.vPushD", "Angular momentum is kept, so spin grows as 1 ∕ width². The push keeps pulling, and the picture repeats at a smaller scale.");
     } else {
       card.className = "verdict calm";
       card.querySelector("b").textContent = t("js.blow.vFree", "No push: friction catches up and the tube smears out");
@@ -178,14 +179,6 @@ if (slide) {
     if (!state.active) draw();
   }
   for (const b of slide.querySelectorAll(".bw-mode button")) b.addEventListener("click", () => setMode(b.dataset.mode));
-  $("bwFollow").classList.remove("on");
-  $("bwFollow").textContent = t("js.blow.followOff", "camera fixed");
-  $("bwFollow").addEventListener("click", () => {
-    state.follow = !state.follow;
-    $("bwFollow").classList.toggle("on", state.follow);
-    $("bwFollow").textContent = state.follow ? t("js.blow.followOn", "camera follows the zoom") : t("js.blow.followOff", "camera fixed");
-  });
-  $("bwRestart").addEventListener("click", () => { state.time = 0; updateCards(true); });
 
   function activate() {
     state.active = true;
@@ -197,8 +190,7 @@ if (slide) {
   window.addEventListener("resize", () => { if (state.active) resize(); });
   window.addEventListener("i18n:change", () => {
     updateCards(true);
-    $("bwFollow").textContent = state.follow ? t("js.blow.followOn", "camera follows the zoom") : t("js.blow.followOff", "camera fixed");
-  });
+    });
   window.addEventListener("lesson:slide", (event) => {
     const active = event.detail.simulator === "blowup";
     if (active && !state.active) activate();

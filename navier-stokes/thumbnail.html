@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Navier–Stokes thumbnail</title>
+<style>
+  :root { --ink: #1b1d20; --muted: #4a4d53; --orange: #d95d39; --blue: #315a9f; --green: #21805a; --violet: #5552b9; --paper: #f6f4ef; --box: #e6e0d6; }
+  html, body { margin: 0; }
+  body { width: 1080px; height: 1080px; overflow: hidden; background: var(--paper); color: var(--ink); font-family: Inter, "Segoe UI", ui-sans-serif, sans-serif; position: relative; }
+  .title { position: absolute; top: 118px; left: 0; right: 0; text-align: center; font-size: 46px; font-weight: 700; letter-spacing: -.02em; }
+  .sub { position: absolute; top: 190px; left: 90px; right: 90px; text-align: center; font-size: 29px; line-height: 1.55; color: var(--muted); }
+  .sub mark { padding: 2px 8px; border-radius: 4px; color: var(--ink); background: transparent; }
+  .sub .m-a { background: #f8d7cb; } .sub .m-p { background: #dcdbf3; } .sub .m-v { background: #d6e1f5; } .sub .m-g { background: #d3ebdf; } .sub .m-r { background: #ece7d9; }
+  .box { position: absolute; left: 60px; right: 60px; top: 500px; height: 210px; border-radius: 34px; background: var(--box); }
+  .eq { position: absolute; left: 0; right: 0; top: 500px; height: 210px; display: flex; align-items: center; justify-content: center; gap: .18em; font: italic 58px Georgia, "Times New Roman", serif; white-space: nowrap; }
+  .eq .op { color: #6a6c72; font-style: normal; }
+  .eq .paren { font-style: normal; color: #8a8c92; }
+  .eq .t-r { color: var(--ink); }
+  .eq .t-a { color: var(--orange); }
+  .eq .t-p { color: var(--violet); }
+  .eq .t-v { color: var(--blue); }
+  .eq .t-g { color: var(--green); }
+  .eq sup { font-size: .55em; }
+  .eq .n { font-style: normal; font-family: "Cambria Math", "Segoe UI Symbol", Georgia, serif; font-size: .92em; }
+  .label { position: absolute; padding: 8px 20px; border-radius: 6px; font-size: 27px; font-weight: 600; white-space: nowrap; transform: translateX(-50%); }
+  .l-r { background: #ece7d9; } .l-a { background: #f8d7cb; } .l-p { background: #dcdbf3; } .l-v { background: #d6e1f5; } .l-g { background: #d3ebdf; }
+  svg.arrows { position: absolute; inset: 0; width: 1080px; height: 1080px; pointer-events: none; }
+  svg.arrows line { stroke: #55585e; stroke-width: 2.5; }
+  svg.arrows circle { fill: #55585e; }
+  svg.arrows path { fill: #55585e; }
+  .foot { position: absolute; bottom: 44px; left: 0; right: 0; text-align: center; font-size: 22px; color: #8a8c92; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+  <div class="title">What are the Navier–Stokes equations?</div>
+  <div class="sub">Newton's F = ma, written for a box of water. They relate the <mark class="m-a">acceleration</mark>, <mark class="m-p">pressure</mark>,<br><mark class="m-v">viscosity</mark> and <mark class="m-r">density</mark> of a flowing fluid.</div>
+
+  <div class="box"></div>
+  <div class="eq">
+    <span id="rho" class="t-r">ρ</span><span class="paren">(</span><span id="acc" class="t-a">∂u/∂t + (u·<span class="n">∇</span>)u</span><span class="paren">)</span>
+    <span class="op">=</span>
+    <span id="pre" class="t-p">−<span class="n">∇</span>p</span>
+    <span class="op">+</span>
+    <span id="vis" class="t-v">μ<span class="n">∇</span><sup>2</sup>u</span>
+    <span class="op">+</span>
+    <span id="gra" class="t-g">ρg</span>
+  </div>
+
+  <div class="label l-a" data-for="acc" data-side="top" style="top: 360px; left: 300px;">acceleration of the box</div>
+  <div class="label l-v" data-for="vis" data-side="top" style="top: 390px; left: 790px;">viscosity · friction</div>
+  <div class="label l-r" data-for="rho" data-side="bottom" style="top: 800px; left: 120px;">density</div>
+  <div class="label l-p" data-for="pre" data-side="bottom" style="top: 850px; left: 520px;">pressure gradient</div>
+  <div class="label l-g" data-for="gra" data-side="bottom" style="top: 800px; left: 900px;">gravity</div>
+
+  <svg class="arrows" viewBox="0 0 1080 1080"></svg>
+  <div class="foot">dthuong00.github.io/physics-equations</div>
+
+<script>
+  const svg = document.querySelector('svg.arrows');
+  const R = 6, GAP = 12, HEAD = 14, PAD = 40;
+  const el = (n, a) => { const e = document.createElementNS('http://www.w3.org/2000/svg', n); for (const k in a) e.setAttribute(k, a[k]); svg.appendChild(e); };
+  for (const label of document.querySelectorAll('.label')) {
+    const term = document.getElementById(label.dataset.for).getBoundingClientRect();
+    const lab = label.getBoundingClientRect();
+    const xTerm = term.left + term.width / 2;
+    const xLab = Math.min(Math.max(xTerm, PAD + lab.width / 2), 1080 - PAD - lab.width / 2);
+    label.style.left = xLab + 'px';
+    const top = label.dataset.side === 'top';
+    const yTerm = top ? term.top + 8 : term.bottom - 10;
+    const yTip = top ? lab.bottom + GAP : lab.top - GAP;
+    const ang = Math.atan2(yTip - yTerm, xLab - xTerm);
+    const xEnd = xTip(HEAD), yEnd = yTip - Math.sin(ang) * HEAD;
+    function xTip(d) { return xLab - Math.cos(ang) * d; }
+    el('circle', { cx: xTerm, cy: yTerm, r: R });
+    el('line', { x1: xTerm, y1: yTerm, x2: xEnd, y2: yEnd });
+    el('path', { d: `M0 -8 L0 8 L${HEAD} 0 Z`, transform: `translate(${xEnd} ${yEnd}) rotate(${ang * 180 / Math.PI})` });
+  }
+</script>
+</body>
+</html>

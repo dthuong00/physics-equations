@@ -17,10 +17,11 @@
   <section class="slide" data-title="Start">
     <div class="inner center title-slide">
       <div class="eyebrow">Navier–Stokes equations · F = ma for anything that flows</div>
-      <h1>Honey, smoke and storms<br>follow the same line.</h1>
+      <h1>Honey, smoke and storms<br>obey one equation.</h1>
       <div class="hero-equation"><span class="t-a">ρ<i class="paren">(</i>∂<b>u</b>∕∂t + <b>u</b>·∇<b>u</b><i class="paren">)</i></span><b>=</b><span class="t-p">−∇p</span><b>+</b><span class="t-v">μ∇²<b>u</b></span><b>+</b><span class="t-g">ρ<b>g</b></span><span class="hero-tail">- Newton's second law, written for a fluid</span></div>
-      <p class="lede">Pour honey and it falls in a smooth, thin stream. Light a candle and the smoke rises straight for a few centimetres, then breaks into curls. Both follow the same equation: F = ma for something that has no shape of its own. Navier wrote it down in 1822 and Stokes in 1845. It is used to forecast the weather, to design every aircraft, and to follow the blood in your arm. For ninety years it also hid a question nobody could answer: can a smooth flow tear itself apart? In September 2026 OpenAI claimed its AI had answered it. The claim is bigger than the proof: the proof covers an easier version of the question, and the version most people mean is still open.</p>
+      <p class="lede">Honey pours in a smooth stream. Candle smoke rises straight, then curls. A storm spins for days. One equation describes all three: Newton's F = ma, written for something with no shape of its own. It forecasts the weather, shapes every aircraft and follows the blood in your arm. Yet for ninety years nobody could answer one question about it: can a smooth flow tear itself apart in a limited time? In September 2026 OpenAI claimed an AI had answered it. The proof covers one accepted form of the question; the form most people mean is still open.</p>
       <div class="toc" id="toc"></div>
+      <a class="summary-link" href="./summary.html">Summary</a>
     </div>
   </section>
 
@@ -68,16 +69,16 @@
   <section class="slide" data-title="Acceleration without change" data-simulator="leaf">
     <div class="inner center">
       <div class="head"><span class="step">02</span><h2>How does water speed up where nothing is changing?</h2></div>
-      <p class="intro leaf-intro">The river narrows, and the flow is steady: it looks exactly the same now as it did an hour ago. Steady sounds like nothing is speeding up - yet the water at the narrow mark moves three times faster than at the wide mark. A leaf goes wherever the water goes, so watching the leaf is watching <b>one small box of water</b>. A woman on a bridge watches only the spot right below her; a boy runs along the river, keeping up with the leaf. Ask them both: is the water speeding up? <b>Watch</b> the dashed copies the leaf leaves behind, one every second: the gaps between them keep growing. Then watch what happens as the leaf passes under the bridge.</p>
+      <p class="intro leaf-intro">The river narrows, and the flow is steady: it looks exactly the same now as it did an hour ago. Steady sounds like nothing is speeding up - yet the water at the narrow mark moves three times faster than at the wide mark. A leaf goes wherever the water goes, so watching the leaf is watching <b>one small box of water</b>. A person on a bridge watches only the spot right below them; a child runs along the river, keeping up with the leaf. Ask them both: is the water speeding up? <b>Watch</b> the dashed copies the leaf leaves behind, one every second: the gaps between them keep growing. Then watch what happens as the leaf passes under the bridge.</p>
       <section class="panel leaf-bench">
         <header><b>The river, live</b><span>one second on screen is one second in the river · the blue line below shows the water's speed at each spot</span></header>
         <div class="leaf-grid">
-          <canvas id="leafCanvas" role="img" aria-label="A river narrowing from left to right, drawn above a graph of the water's speed against position. A leaf drifts along the river and speeds up in the narrowing, leaving a dashed copy of itself every second. A woman on a movable bridge watches one spot. On the graph, a triangle at the leaf's point shows how far it moves in the next second and how much faster the water is there."></canvas>
+          <canvas id="leafCanvas" role="img" aria-label="A river narrowing from left to right, drawn above a graph of the water's speed against position. A leaf drifts along the river and speeds up in the narrowing, leaving a dashed copy of itself every second. A person on a movable bridge watches one spot. On the graph, a triangle at the leaf's point shows how far it moves in the next second and how much faster the water is there."></canvas>
           <div class="leaf-rail">
             <article class="verdict still" id="wBridge"><i>On the bridge · one fixed spot</i><b data-i18n-skip>The water under me moves at 2.0 m/s. Change: 0.00 m/s per second.</b><span>It has been the same all day.</span></article>
             <article class="verdict" id="wLeaf"><i>Following the leaf · one box of water</i><b data-i18n-skip>2.0 m/s right now, and gaining 0.40 m/s every second.</b><span data-i18n-skip>In one second it moves 2.0 m, and every metre the water is 0.20 m/s faster: 2.0 × 0.20 = 0.40 m/s gained per second.</span></article>
             <p class="leaf-note"><b>Both are right.</b> The speed at each spot never changes, yet every box of water keeps moving into faster water. F = ma is about the moving box, so the leaf's number is the acceleration we are after.</p>
-            <div class="control leaf-control"><label for="bridgeX">Move the bridge. Does she ever see a change? And does the leaf gain more, or less, at her spot? <output id="bridgeOut">5.0 m · 2.0 m/s</output></label><input id="bridgeX" type="range" min="0" max="10" step="0.5" value="5"></div>
+            <div class="control leaf-control"><label for="bridgeX">Move the bridge. Does the person on it ever see a change? And does the leaf gain more, or less, at their spot? <output id="bridgeOut">5.0 m · 2.0 m/s</output></label><input id="bridgeX" type="range" min="0" max="10" step="0.5" value="5"></div>
             <button class="action" id="leafPlay" type="button" data-i18n-skip>⏸ Pause</button>
           </div>
         </div>
@@ -95,7 +96,7 @@
           <p class="eq-note">The blue line on the graph shows the water's speed at each spot, and you read it twice at the leaf: its height tells you how far the box moves in one second, and its slope tells you how much faster the water is one metre further on. That is why <b>u appears twice</b> - the water carries its own speed along - and that product is what makes this equation so hard. The ∇ means "for every metre further" in each of the three directions a river can carry a box: along it, across it, and up or down. The dot with u picks out the direction the box is actually moving. On the centre line of this straight river that is only downstream, so (u·∇)u is simply u × ∂u∕∂x.</p>
         </div>
         <div>
-          <span class="eyebrow">The left-hand side - the "ma" of F = ma, for each cubic metre of water</span>
+          <span class="eyebrow">Mass times acceleration, for each cubic metre of water</span>
           <div class="eq-build lhs">
             <em class="t-a" data-i18n-skip>ρ (</em>
             <div><i class="sym t-a" data-i18n-skip>∂u∕∂t</i><i class="chip still">change at one spot: 0</i></div>
@@ -103,10 +104,10 @@
             <div><i class="sym t-a" data-i18n-skip>(u·∇)u</i><i class="chip hot" id="chipLeaf" data-i18n-skip>change from moving: +0.40</i></div>
             <em class="t-a" data-i18n-skip>)</em>
           </div>
-          <span class="eq-tail">ρ (rho) is the density - the mass of one cubic metre of water. ∂u∕∂t is what the bridge sees: how much the speed at one fixed spot changes in a second - zero everywhere in a steady river. The bracket is the acceleration of the box under the leaf: the change at the spot plus the change from moving. Here the first part is zero, so the leaf's whole gain comes from the second. Physicists write the bracket as Du∕Dt for short.</span>
+          <span class="eq-tail">ρ (rho) is the density - the mass of one cubic metre of water. ∂u∕∂t is what the bridge sees: how much the speed at one fixed spot changes in a second - zero everywhere in a steady river. The bracket is the acceleration of the box under the leaf: the change at the spot plus the change from moving. Here the first part is zero, so the leaf's whole gain comes from the second. Let us write the bracket as Du∕Dt for short.</span>
         </div>
       </div>
-      <div class="insight">This slide has <b>measured</b> the acceleration, but it has not explained it. A box of water has no engine: if it speeds up, something must be pushing it. That something is the right-hand side of F = ma. <span>So: what actually pushes a box of water?</span></div>
+      <div class="insight">This slide has <b>measured</b> the acceleration, but it has not explained it. A box of water has no engine: if it speeds up, something must be pushing it. <span>So: what actually pushes a box of water?</span></div>
     </div>
   </section>
 
@@ -131,10 +132,10 @@
         <span>The Navier–Stokes equations, 1822–1845 - Newton's second law for a box of water</span>
         <div class="eq-line"><b class="t-a">ρ</b><i>(</i><b class="t-a">∂u∕∂t</b><i>+</i><b class="t-a">(u·∇)u</b><i>)</i><i>=</i><b class="t-p">−∇p</b><i>+</i><b class="t-v">μ∇²u</b><i>+</i><b class="t-g">ρg</b></div>
         <div class="eq-build push-build">
+          <div><i class="sym t-a" data-i18n-skip>ρ Du∕Dt</i><b class="num t-a" id="nMass" data-i18n-skip>1 000 kg × the gain in speed</b><span class="cap">the box's mass times its acceleration, per cubic metre: what the three pushes add up to</span></div>
           <div><i class="sym t-p" data-i18n-skip>−∇p</i><b class="num t-p" id="nPress" data-i18n-skip>2 000 N per m³</b><span class="cap">the pressure push: toward the low side, and only where pressure is uneven</span></div>
           <div><i class="sym t-v" data-i18n-skip>μ∇²u</i><b class="num t-v" id="nDrag" data-i18n-skip>−6 N per m³</b><span class="cap">the friction drag: toward the neighbours' average speed, μ times how far you are from it</span></div>
           <div><i class="sym t-g" data-i18n-skip>ρg</i><b class="num t-g" id="nGrav" data-i18n-skip>9 800 N per m³</b><span class="cap">gravity: on the whole box, not through its surface</span></div>
-          <div><i class="sym t-a" data-i18n-skip>ρ Du∕Dt</i><b class="num t-a" id="nMass" data-i18n-skip>1 000 kg × the gain in speed</b><span class="cap">the left-hand side: mass times acceleration, per cubic metre</span></div>
         </div>
         <span class="eq-tail">Nobody tells you the pressure in advance. Water cannot be squashed, so what flows into any box must flow out again - written <b>∇·u = 0</b> - and the pressure becomes whatever it has to be to keep that true. Push on the water anywhere and the pressure everywhere shifts to make room.</span>
       </div>
@@ -236,13 +237,13 @@
   <section class="slide" data-title="The Millennium Prize Problem">
     <div class="inner center">
       <div class="head"><span class="step">06</span><h2>The Millennium Prize Problem</h2></div>
-      <p class="intro leaf-intro">In 2000 the Clay Mathematics Institute named seven unsolved problems, the <b>Millennium Prize Problems</b>, a million dollars each. One is about this equation. It does not ask you to solve it; it asks one question: <b>starting from any smooth flow in three dimensions, does the flow stay smooth for ever?</b></p>
+      <p class="intro leaf-intro">In 2000 the Clay Mathematics Institute named seven unsolved problems, the <b>Millennium Prize Problems</b>, a million dollars each. One is about this equation. It does not ask you to solve it; it asks one question: <b>start from any smooth flow in three dimensions with a finite amount of energy. Does it stay smooth for ever, or can it blow up?</b></p>
       <div class="fact-cards two-up">
-        <article><b>Why it must be proved</b><p>The equation runs every weather forecast, aircraft design and blood-flow model, yet nobody knows whether its answers always exist and stay smooth. If a smooth flow can blow up, the equation stops describing water at that moment, and every use of it rests on a model with a hole in it.</p></article>
-        <article><b>What solving it gives</b><p>A yes means the equation is a complete description of a fluid and its simulations can be trusted in principle. A no marks exactly where the model fails and where new physics must enter. Either way, the tools built for the proof are the tools turbulence has been waiting for.</p></article>
+        <article><b>Why it matters</b><p>Weather forecasts, aircraft design and blood-flow models all solve cousins of this equation, and they are checked against experiment rather than against a proof.</p></article>
+        <article><b>What solving it gives</b><p>A yes means the equation never runs out of answers: every smooth flow has a smooth future. A no means the smooth solution can end. Rougher solutions are known to continue past that moment, proved in 1934, but nobody knows whether they are unique. Real water would not notice either way, because at such tiny sizes it is molecules, not a smooth fluid.</p></article>
       </div>
-      <div class="insight plain"><b>Why it is hard.</b> The other outcome is a <b>blow-up</b>: in a limited time the flow squeezes its swirl into one point, with infinite speed and spin. In two dimensions that never happens, and it is proved. In three dimensions a swirl can stretch along its own axis and spin faster as it thins, and nobody has proved that friction always wins that race.</div>
-      <p class="lead-line"><b>The prize sheet accepts the question in four forms.</b> The water either fills all of space or sits in a box that repeats in every direction. And you may prove either that every smooth start stays smooth with no outside push, or that some smooth start blows up when a smooth outside push is allowed. Proving any one of the four wins.</p>
+      <div class="insight plain"><b>Why it is hard.</b> The other outcome is a <b>blow-up</b>: in a limited time, somewhere in the water, the speed or the spin grows without bound. In two dimensions that never happens, and it is proved. In three dimensions nobody has proved that friction always wins.</div>
+      <p class="lead-line"><b>The prize sheet accepts the question in four forms. Proving any one of them wins.</b></p>
       <div class="versions">
         <div class="v-corner"></div>
         <div class="v-head">water fills all of space</div>
@@ -251,22 +252,20 @@
         <article class="v-cell open"><b>(A)</b><p>Every smooth start stays smooth for ever.</p><i>still open</i></article>
         <article class="v-cell open"><b>(B)</b><p>Same, inside the repeating box.</p><i>still open</i></article>
         <div class="v-row"><b>Blow-up</b><span>a smooth outside push is allowed</span></div>
-        <article class="v-cell claimed"><b>(C)</b><p>Some smooth start, with some smooth push, blows up in a limited time.</p><i>OpenAI's proof, September 2026</i></article>
+        <article class="v-cell claimed"><b>(C)</b><p>Some smooth start, with some smooth push, blows up in a limited time.</p><i>claimed by OpenAI, September 2026, still under review</i></article>
         <article class="v-cell open"><b>(D)</b><p>Same, inside the repeating box.</p><i>not claimed</i></article>
       </div>
-      <div class="fact-cards">
-        <article><b>What was claimed</b><p>Version <b>(C)</b>: a swirl in all of space that tightens and spins ever faster, while a smooth outside push helps it along. If the proof holds, that counts for the prize.</p></article>
-        <article><b>What it does not settle</b><p>(A) says water <em>left alone</em> never blows up. (C) says water <em>with the right push</em> can. Both can be true at once, so (C) says nothing about (A).</p></article>
-        <article><b>Why the push matters</b><p>A push feeds energy to the right place at the right moment. Water left alone only loses energy to friction.</p></article>
+      <div class="fact-cards one-up">
+        <article><b>Why the push matters</b><p>A push feeds energy to the right place at the right moment. Water left alone only loses energy to friction. Total energy is not the danger, though: the question is whether energy can pile into ever smaller swirls faster than friction smooths them out, and nobody has ruled that out.</p></article>
       </div>
-      <div class="insight">So "AI solved Navier–Stokes" means a proof of version (C), the form with a helping push. The no-push forms (A) and (B) are still open. <span>Still, a blow-up of any kind was thought impossible ten years ago. How can 3D water do what your 2D screen never did?</span></div>
+      <div class="insight">So "AI solved Navier–Stokes" means a proof of version (C), the form with a helping push. The no-push forms (A) and (B) are still open, and both can be true at once: water with the right push blows up, water left alone never does. <span>Many mathematicians already expected a blow-up somewhere in this family: in 2016 Terence Tao built one for a modified version of the equation as a warning. But the 2D flow you ran on the last slide never blew up, and that is a theorem. What can 3D water do that 2D water cannot?</span></div>
     </div>
   </section>
 
   <section class="slide" data-title="What the AI proved" data-simulator="blowup">
     <div class="inner center">
       <div class="head"><span class="step">07</span><h2>How can 3D water blow up - and does the water care?</h2></div>
-      <p class="intro">On your screen, however messy the flow got, every speed stayed limited. That is a theorem in two dimensions. In three dimensions there is one extra move a swirl can make, and it is the whole difference.</p>
+      <p class="intro">On your screen, however messy the flow got, every speed stayed limited. That is a theorem in two dimensions.</p>
       <section class="panel leaf-bench">
         <header><b>A tube of swirl, stretched</b><span>a drawing of the mechanism with an assumed result, not a computation of the equation</span></header>
         <div class="leaf-grid">
@@ -282,8 +281,7 @@
                 <tr><th>energy left</th><td id="bwEnergy" data-i18n-skip>100 %</td></tr>
               </tbody>
             </table>
-            <div class="mu-toggle"><button type="button" id="bwFollow" class="on" data-i18n-skip>camera follows the zoom</button><button type="button" id="bwRestart">↺ restart</button></div>
-            <p class="leaf-note">In two dimensions a swirl can only be carried and smoothed. In three it can be <b>pulled longer</b>: like a skater pulling in her arms, it spins faster as it thins, and a thinner, faster tube stretches harder still. Friction fights this, and the fight gets harder as the tube gets thinner.</p>
+            <p class="leaf-note">In two dimensions a swirl can only be carried and smoothed. In three it can be <b>pulled longer</b>: like a skater pulling in their arms, it spins faster as it thins. Here the push does the pulling.</p>
           </div>
         </div>
       </section>
@@ -291,16 +289,16 @@
         <header><b>What was announced on 8 September 2026</b><span>reported by OpenAI · mathematicians are still checking it</span></header>
         <div class="steps-row">
           <span><b>1</b><b>Blow-up, with a push.</b> OpenAI reported that one of its AI models produced a proof that the 3D Navier–Stokes equations <em>can</em> blow up in a limited time when a smooth outside push is allowed: a swirl that gets tighter and spins ever faster while the total energy stays limited. That is the third of the four official versions.</span>
-          <span><b>2</b><b>Checked by computer.</b> The proof was written for Lean, a program that checks every step of a proof, so a computer checked the steps rather than a human reader. Humans still have to check that the statement proved is the one the prize asks for. The company said the winning run took 88 hours and up to 10,000 AI agents working together.</span>
-          <span><b>3</b><b>Not yet the prize.</b> The Clay Mathematics Institute asks for the proof to be published and to hold up for two years before it pays the money. Mathematicians are still reading it. In the same week, Levent Alpöge and Tristan Buckmaster reported related results, with an argument over who should get the credit.</span>
+          <span><b>2</b><b>Checked by computer.</b> The proof was written for Lean, a program that checks every step of a proof, so a computer checked the steps rather than a human reader. Humans still have to check that the statement proved is the one the prize asks for.</span>
+          <span><b>3</b><b>Not yet the prize.</b> The Clay Mathematics Institute asks for the proof to be published and to hold up for two years before it pays the money. In the same week, Levent Alpöge and Tristan Buckmaster reported related results, with an argument over who should get the credit.</span>
         </div>
       </div>
       <div class="fact-cards">
-        <article><b>Did the AI do it alone? No.</b><p>Humans chose which of the four versions to attack. The proof builds on a method from two Spanish mathematicians, Diego Córdoba and Luis Martínez-Zoroa - "the heroes of the story", said Charles Fefferman, who wrote the prize question. And Lean, the checker that told the AI "wrong" thousands of times, was built by people. What moved to the machine is building the proof itself. That step had never moved before.</p></article>
-        <article><b>88 hours is the winning run</b><p>That is how long the run that worked took. It does not say how many runs failed first, or how long people spent setting the system up. A proof checked by Lean is correct however many tries it took. How <em>capable</em> the AI is depends on those hidden tries, and they have not been published.</p></article>
-        <article><b>Does the sea care? No.</b><p>Blow-up is a fact about the <em>model</em>. Long before any real swirl reached infinite speed, it would shrink to the size of a molecule. There, "a box of water" means nothing any more, and the equation was never valid to begin with. The result marks the edge of the map, not a new thing water can do.</p></article>
+        <article><b>Did the AI do it alone? No.</b><p>Humans chose which of the four versions to attack. The proof builds on a method from two Spanish mathematicians, Diego Córdoba and Luis Martínez-Zoroa - "the heroes of the story", said Charles Fefferman, who wrote the prize question. And Lean, the checker that told the AI "wrong" thousands of times, was built by people. What moved to the machine is building the proof itself.</p></article>
+        <article><b>88 hours is the winning run</b><p>OpenAI said the run that worked took 88 hours and up to 10,000 AI agents working together. It does not say how many runs failed first, or how long people spent setting the system up. A proof checked by Lean is correct however many tries it took. How <em>capable</em> the AI is depends on those hidden tries, and they have not been published.</p></article>
+        <article><b>Does the sea care? No.</b><p>Blow-up is a fact about the <em>model</em>. Long before any real swirl reached infinite speed, it would shrink to the size of a molecule. There, "a box of water" means nothing any more, and the equation stops applying there. The result marks the edge of the map, not a new thing water can do.</p></article>
       </div>
-      <div class="insight">So the equation is F = ma for water. It works everywhere it has ever been tested. And, at least when something is stirring it, it carries a built-in breaking point that real water never reaches. <span>The law you started with has now been to the sky with Newton and into the water with Navier and Stokes.</span></div>
+      <div class="insight">So the equation is F = ma for water. It works everywhere it has ever been tested. And, if the proof holds, then at least when something is stirring it, it carries a built-in breaking point that real water never reaches.</div>
       <a class="next-lesson" href="../newton-2nd-law/">Back to the beginning: F = ma <i>→</i></a>
     </div>
   </section>

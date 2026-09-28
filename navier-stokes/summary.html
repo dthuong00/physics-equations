@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The Navier–Stokes equations on one page: Newton's F = ma written for a fluid, the four pushes on a box of water, the Reynolds number, and the million-dollar question.">
+<title>F = ma for anything that flows</title>
+<link rel="stylesheet" href="./summary.css">
+</head>
+<body>
+<div class="toolbar"><a href="./">← Full lesson</a></div>
+<main class="sheet">
+
+  <div class="hero">
+    <div class="kicker">Navier–Stokes equations · 1822–1845</div>
+    <h1>Honey, smoke and storms<br>obey <em>one</em> equation.</h1>
+    <div class="hero-eq">
+      <div class="eq"><span class="t-a">ρ<i>(</i>∂u∕∂t + (u·∇)u<i>)</i></span> = <span class="t-p">−∇p</span> + <span class="t-v">μ∇²u</span> + <span class="t-g">ρg</span></div>
+      <p class="tail">Newton's <b>F = ma</b>, written for a small box of water - and for every other box at once.</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>Three pushes, one response</h2>
+    <div class="terms">
+      <article class="acc"><div class="eq">ρ Du∕Dt</div><b>the response: mass × acceleration</b><p>How fast the box's speed changes.</p></article>
+      <article class="pre"><div class="eq">−∇p</div><b>pressure</b><p>Pushes toward the low side.</p></article>
+      <article class="vis"><div class="eq">μ∇²u</div><b>friction</b><p>Drags the box toward its neighbours' speed.</p></article>
+      <article class="gra"><div class="eq">ρg</div><b>gravity</b><p>Pulls the whole box down.</p></article>
+    </div>
+    <div class="constraint">
+      <div class="eq">∇·u = 0</div>
+      <p>Water cannot be squashed. The pressure becomes <b>whatever it must be</b> to keep that true.</p>
+    </div>
+  </section>
+
+  <section class="picture">
+    <svg viewBox="0 0 306 176" role="img" aria-label="A river seen from above narrows from left to right. Velocity arrows grow longer where the channel is narrow. A leaf drifts along the centre line, leaving one dashed copy per second, and the gaps between copies grow. A bridge marks one fixed spot where the speed never changes.">
+      <defs><marker id="ah" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L6 3 L0 6 Z"/></marker></defs>
+      <path class="bank" d="M6 22 H130 C 200 22, 230 40, 300 52"/>
+      <path class="bank" d="M6 154 H130 C 200 154, 230 136, 300 124"/>
+      <path class="water" d="M6 22 H130 C 200 22, 230 40, 300 52 V124 C 230 136, 200 154, 130 154 H6 Z"/>
+      <g class="arrow">
+        <line x1="30" y1="52" x2="48" y2="52"/><line x1="30" y1="124" x2="48" y2="124"/>
+        <line x1="100" y1="52" x2="118" y2="52"/><line x1="100" y1="124" x2="118" y2="124"/>
+        <line x1="180" y1="62" x2="208" y2="62"/><line x1="180" y1="114" x2="208" y2="114"/>
+        <line x1="240" y1="70" x2="284" y2="70"/><line x1="240" y1="106" x2="284" y2="106"/>
+      </g>
+      <line class="bridge" x1="150" y1="14" x2="150" y2="162"/>
+      <text class="plot-label" x="150" y="10" text-anchor="middle">bridge · one fixed spot</text>
+      <line class="trail" x1="22" y1="88" x2="262" y2="88"/>
+      <g class="ghost"><circle cx="30" cy="88" r="4"/><circle cx="52" cy="88" r="4"/><circle cx="78" cy="88" r="4"/><circle cx="110" cy="88" r="4"/><circle cx="150" cy="88" r="4"/><circle cx="198" cy="88" r="4"/></g>
+      <circle class="leaf" cx="256" cy="88" r="5"/>
+      <text class="plot-label orange" x="228" y="100" text-anchor="end">one copy per second</text>
+      <text class="plot-label green" x="12" y="170">bridge: same speed all day</text>
+      <text class="plot-label orange" x="296" y="170" text-anchor="end">leaf: faster every second</text>
+    </svg>
+    <div>
+      <h2>Why u appears twice</h2>
+      <p class="big">The river is steady, yet every box of water keeps moving into <b>faster water</b>.</p>
+      <p class="big">Speed × how fast the speed changes per metre = <b>(u·∇)u</b>. That product is what makes the equation hard.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>One number decides what the flow looks like</h2>
+    <div class="re">
+      <div class="re-eq">
+        <div class="eq">Re = <span class="t-a">ρUL</span> ∕ <span class="t-v">μ</span></div>
+        <p><span class="t-a">carrying</span> ÷ <span class="t-v">friction</span></p>
+      </div>
+      <div class="regimes">
+        <article><span class="tag">Re &lt; 1</span><b>Friction wins</b><p>Smooth and layered.</p><i>bacteria · honey</i></article>
+        <article><span class="tag">1 – 40</span><b>Two quiet swirls</b><p>They sit behind the object and stay.</p><i>slow stick in a stream</i></article>
+        <article><span class="tag">40 – 2 000</span><b>Vortex street</b><p>Swirls break off, side to side.</p><i>stick in a stream</i></article>
+        <article><span class="tag">thousands +</span><b>Turbulence</b><p>Swirls inside swirls.</p><i>aircraft · storms</i></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="prize">
+    <div>
+      <h2>The million-dollar question</h2>
+      <p class="big">Start from any smooth 3D flow. Does it <b>stay smooth for ever</b>, or can it <b>blow up</b>?</p>
+      <table class="forms">
+        <thead><tr><th></th><th>all of space</th><th>repeating box</th></tr></thead>
+        <tbody>
+          <tr><td>smooth for ever, no push</td><td class="open">(A) open</td><td class="open">(B) open</td></tr>
+          <tr><td>blow-up, with a push</td><td class="claimed">(C) claimed, Sept 2026</td><td class="open">(D) open</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="verdict">
+      <p><b>"AI solved Navier–Stokes"</b> means version (C), with a helping push. The no-push forms are still open.</p>
+      <p><b>Does the sea care? No.</b> The swirl would shrink to molecular size long before it blows up.</p>
+    </div>
+  </section>
+
+  <p class="more">Every idea on this page is worked out step by step in the <a href="./">full lesson</a>, with a live fluid simulator.</p>
+
+</main>
+</body>
+</html>
