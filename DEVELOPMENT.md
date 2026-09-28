@@ -156,9 +156,16 @@ npm run record -- "schrodinger-equation/#6" --gif --seconds 10
 
 # newton rocket launch (click starts the sim before capture)
 npm run record -- "newton-2nd-law/#4" --click "#worldPlay" --crop .world-lab --seconds 12 --gif
+
+# navier-stokes flow past a stone at high resolution: the slide caps its column at 1080px,
+# so uncap it with --css and use a big viewport (gives a ~1930px-wide canvas)
+npm run record -- "navier-stokes/#6" --crop "#flowCanvas" --width 2400 --height 1700 --css ".inner{width:100%!important} #flowCanvas{max-height:none!important}" --seconds 30
+
+# navier-stokes tube of swirl (slide 8, loops every 10 s)
+npm run record -- "navier-stokes/#8" --crop "#blowCanvas" --seconds 10.5 --settle 0.5
 ```
 
-Useful flags: `--seconds` (length), `--click <selector>` (setup interactions, repeatable), `--crop <selector>` (capture one element instead of the full page), `--fps` / `--gif-width` (GIF quality), `--out` (output basename). Run `python tools/record.py --help` for everything.
+Useful flags: `--seconds` (length), `--click <selector>` (setup interactions, repeatable), `--css <rules>` (inject CSS first, e.g. to uncap a layout width, repeatable), `--crop <selector>` (capture one element instead of the full page), `--fps` / `--gif-width` (GIF quality), `--out` (output basename). Run `python tools/record.py --help` for everything.
 
 ## Capturing images / PDFs
 

@@ -82,6 +82,8 @@ def main():
     parser.add_argument("--crop", help="CSS selector of the element to crop the video to, e.g. .bench-panel")
     parser.add_argument("--click", action="append", default=[],
                         help="CSS selector to click before recording (repeatable)")
+    parser.add_argument("--css", action="append", default=[],
+                        help="extra CSS injected before recording, e.g. '.inner{width:100%%!important}' (repeatable)")
     parser.add_argument("--gif", action="store_true", help="also produce a .gif")
     parser.add_argument("--fps", type=int, default=12, help="gif frame rate (default 12)")
     parser.add_argument("--gif-width", type=int, default=960, help="gif width in px (default 960)")
@@ -114,6 +116,10 @@ def main():
             page = context.new_page()
             started = time.monotonic()
             page.goto(f"http://127.0.0.1:{port}/{args.path}", wait_until="networkidle")
+            for css in args.css:
+                page.add_style_tag(content=css)
+            if args.css:
+                page.wait_for_timeout(300)
             for selector in args.click:
                 page.click(selector)
                 page.wait_for_timeout(300)
